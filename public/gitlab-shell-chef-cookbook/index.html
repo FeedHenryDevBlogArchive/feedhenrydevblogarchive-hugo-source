@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.16" />
+
+  <title>Creating &amp; Publishing a Chef Cookbook for gitlab-shell &middot; Archive of FeedHenry Developer Blog 2012-2016</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+
+  <link rel="shortcut icon" href="http://feedhenrydevblogarchive.github.ioimg/favicon.ico" type="image/x-icon" />
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <a href="/"><img src = "/logo.png" /></a>
+    <small>Copyright Red Hat 2016</small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Creating &amp; Publishing a Chef Cookbook for gitlab-shell</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>11 Oct 2014, 12:25</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="http://feedhenrydevblogarchive.github.iotags/automation">automation</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://feedhenrydevblogarchive.github.iotags/chef">chef</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://feedhenrydevblogarchive.github.iotags/cookbook">cookbook</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://feedhenrydevblogarchive.github.iotags/git">git</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://feedhenrydevblogarchive.github.iotags/gitlab">gitlab</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://feedhenrydevblogarchive.github.iotags/gitlab-shell">gitlab-shell</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://feedhenrydevblogarchive.github.iotags/ruby">ruby</a>
+    
+  </div>
+  
+  
+
+</div>
+
+  
+
+<h1 id="what-was-done-and-why">What was done and why?</h1>
+
+<p>This article details the steps that were followed to:</p>
+
+<ul>
+<li><p>Create a new chef cookbook (for installing gitlab-shell)</p></li>
+
+<li><p>Write a recipe, with a set of configurable attributes</p></li>
+
+<li><p>Deploy/Publish this cookbook to the &lsquo;Chef Supermarket&rsquo;</p></li>
+
+<li><p>Include the newly published cookbook in chef based project</p></li>
+</ul>
+
+<p>The main reason for doing this was because a cookbook for installing <strong>just</strong> gitlab-shell did not exist (More than 1 for a full gitlab installation did)</p>
+
+<h1 id="creating-the-cookbook">Creating the cookbook</h1>
+
+<p>The <code>knife</code> command is the main cli tool for doing chef stuff. For example, to create a new cookbook in the default cookbook location, do this:</p>
+
+<pre><code>&lt;code&gt;knife cookbook create &lt;coobookname&gt;
+&lt;/code&gt;
+</code></pre>
+
+<p>The default location is usually <code>~/.chef/cookbooks/</code>. To specify a location, the <code>-o</code> switch can be used e.g.</p>
+
+<pre><code>&lt;code&gt;knife cookbook create gitlab-shell -o ~/work
+&lt;/code&gt;
+</code></pre>
+
+<p>This creates a bunch of files &amp; folders, a lot of which won&rsquo;t be needed this time. Some files will have useful placeholder info, especially the README.</p>
+
+<pre><code>&lt;code&gt;-rw-r--r-- CHANGELOG.md
+-rw-r--r-- README.md
+drwxr-xr-x attributes
+drwxr-xr-x definitions
+drwxr-xr-x files
+drwxr-xr-x libraries
+-rw-r--r-- metadata.rb
+drwxr-xr-x providers
+drwxr-xr-x recipes
+drwxr-xr-x resources
+drwxr-xr-x templates
+&lt;/code&gt;
+</code></pre>
+
+<p>The main files &amp; folders are:</p>
+
+<ul>
+<li><p>metadata.rb - cookbook definition &amp; version</p></li>
+
+<li><p>README.md - cookbook details, usage and attributes/config information</p></li>
+
+<li><p>CHANGELOG.md - your cookbook changes for each version</p></li>
+
+<li><p>/attributes - configuration files go in here</p></li>
+
+<li><p>/recipes - installation &amp; setup script(s)</p></li>
+
+<li><p>/files - files to &lsquo;drop in&rsquo; during installation and setup</p></li>
+
+<li><p>/templates - files to &lsquo;drop in&rsquo; with placeholders replaced with config values</p></li>
+</ul>
+
+<h1 id="cookbook-recipe">Cookbook recipe</h1>
+
+<p>This is a simple recipe, so we can do everything in a single file to install &amp; setup gitlab-shell. This file is <code>recipes/default.rb</code> To install gitlab-shell, there are a few steps</p>
+
+<ul>
+<li><p>Create a new user called <code>git</code></p></li>
+
+<li><p>Clone the gitlab-shell repo from github</p></li>
+
+<li><p>Create a config.yml file using a chef template file</p></li>
+
+<li><p>Ensure the gitlab repositories path is created and has the correct perms</p></li>
+
+<li><p>Ensure the <code>git</code> users authorized_keys file is created with the correct perms</p></li>
+</ul>
+
+<p>The complete source for this can be found at <a href="https://github.com/feedhenry-cookbooks/gitlab-shell/blob/master/recipes/default.rb">https://github.com/feedhenry-cookbooks/gitlab-shell/blob/master/recipes/default.rb</a> The most interesting part of the recipe is the template file for config.yml. The template file is in templates/default/gitlab_shell.yml.erb <a href="https://github.com/feedhenry-cookbooks/gitlab-shell/blob/master/templates/default/gitlab_shell.yml.erb">https://github.com/feedhenry-cookbooks/gitlab-shell/blob/master/templates/default/gitlab_shell.yml.erb</a> It&rsquo;s an embedded ruby template file, so there are some ruby placeholders in it. For example, the url to call back to for checking repo access and key permissions is injected here:</p>
+
+<pre><code>&lt;code&gt;gitlab_url: &lt;%= @url %&gt;
+&lt;/code&gt;
+</code></pre>
+
+<p>Back in the recipe, the template file is output to the gitlab-shell install directory as config.yml. The code to do this looks like:</p>
+
+<pre><code>&lt;code&gt;template File.join(gitlab_shell['shell_path'], &quot;config.yml&quot;) do
+  source &quot;gitlab_shell.yml.erb&quot;
+  user gitlab_shell['user']
+  group gitlab_shell['group']
+  variables({
+    # ....
+    :url =&gt; gitlab_shell['url'],
+    # ....
+  })
+end
+&lt;/code&gt;
+</code></pre>
+
+<p>The variables section is the object/hash passed into the template file. The value for this config is obtained from the cookbook attributes. More specifically, the file at attributes/default.rb <a href="https://github.com/feedhenry-cookbooks/gitlab-shell/blob/master/attributes/default.rb">https://github.com/feedhenry-cookbooks/gitlab-shell/blob/master/attributes/default.rb</a> The <code>gitlab_url</code> value comes from the following attribute:</p>
+
+<pre><code>&lt;code&gt;default['gitlab-shell']['url'] = &quot;http://localhost:3000/&quot;
+&lt;/code&gt;
+</code></pre>
+
+<h1 id="cookbook-preparation-for-publish">Cookbook preparation for publish</h1>
+
+<p>Now that we have a cookbook, we can publish it to the Chef Supermarked at <a href="https://supermarket.getchef.com">https://supermarket.getchef.com</a>. To do this, we need an account. At the time of writing, and account can be created at <a href="https://manage.opscode.com/signup?ref=community">https://manage.opscode.com/signup?ref=community</a>. After creating one and signing in, you&rsquo;ll be prompted to download/save your newly generated private key. The suggested location is <code>~/.chef/&lt;userid&gt;.pem</code>. This can be used later when we want to upload our cookbook from the terminal. Before uploading, we should make sure our README.md and metadata.rb files are in order.</p>
+
+<h2 id="readme-md">README.md</h2>
+
+<p><a href="https://github.com/feedhenry-cookbooks/gitlab-shell/blob/master/README.md">https://github.com/feedhenry-cookbooks/gitlab-shell/blob/master/README.md</a> This file is whats shown to users browsing cookbooks in the Chef Supermarket. The suggested content, based on the generated file form the <code>knife</code> command earlier, is:</p>
+
+<ul>
+<li><p>Requirements - e.g. other cookbook dependencies, platforms supported</p></li>
+
+<li><p>Attributes - List (or better yet, a table) of attributes you cookbook uses, with their default values</p></li>
+
+<li><p>Usage - Which recipe to run - usually ::default.rb</p></li>
+
+<li><p>Contributing Guide - if you cookbook is open source/public</p></li>
+
+<li><p>License &amp; Authors</p></li>
+</ul>
+
+<h2 id="metadata-rb">metadata.rb</h2>
+
+<p><a href="https://github.com/feedhenry-cookbooks/gitlab-shell/blob/master/metadata.rb">https://github.com/feedhenry-cookbooks/gitlab-shell/blob/master/metadata.rb</a> This is the most imporant file when uploading your cookbook. It contains the cookbook name &amp; version number, among other things:</p>
+
+<pre><code>&lt;code&gt;name             'gitlab-shell'
+maintainer       'FeedHenry'
+maintainer_email 'david.martin@feedhenry.com'
+license          'All rights reserved'
+description      'Installs/Configures gitlab-shell'
+long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
+version          '0.3.0'
+&lt;/code&gt;
+</code></pre>
+
+<p>Ever time we want to publish our cookbook, we should bump the version number. This ensures we keep a history of the coookbook and don&rsquo;t break it for users of previous versions. When we&rsquo;re happy that everything is in order &amp; ready to go, the publish command is:</p>
+
+<pre><code>&lt;code&gt;knife cookbook site share -k ~/.chef/&lt;userid&gt;.pem &quot;&lt;cookbook_name&gt;&quot; &quot;&lt;category&gt;&quot; -u &lt;userid&gt; -VV -o &lt;cookbook_location&gt;
+&lt;/code&gt;
+</code></pre>
+
+<p>For example:</p>
+
+<pre><code>&lt;code&gt;knife cookbook site share -k ~/.chef/davidmartin.pem &quot;gitlab-shell&quot; &quot;Other&quot; -u davidmartin -VV -o ~/work
+&lt;/code&gt;
+</code></pre>
+
+<p>More details on the <code>knife cookbook site</code> command, including available categories, can be found here <a href="https://docs.getchef.com/knife_cookbook_site.html">https://docs.getchef.com/knife_cookbook_site.html</a> After publishing, we can find our cookbook by searching on the Chef Supermarket <a href="https://supermarket.getchef.com/cookbooks">https://supermarket.getchef.com/cookbooks</a> The finished product for this article can be found at <a href="https://supermarket.getchef.com/cookbooks/gitlab-shell">https://supermarket.getchef.com/cookbooks/gitlab-shell</a></p>
+
+<h1 id="using-the-cookbook">Using the cookbook</h1>
+
+<p>Using the cookbook is simple. In your Chef project, add the following line to your Chefile</p>
+
+<pre><code>&lt;code&gt;cookbook 'gitlab-shell'
+&lt;/code&gt;
+</code></pre>
+
+<p>and run</p>
+
+<pre><code>&lt;code&gt;librarian-chef install
+&lt;/code&gt;
+</code></pre>
+
+<p>after which you should see the cookbook installed into cookbooks/gitlab-shell in your project.</p>
+
+<h1 id="credit">Credit</h1>
+
+<p>Credit goes to the maintainers of the gitlab cookbook at <a href="https://gitlab.com/gitlab-org/cookbook-gitlab/tree/master">https://gitlab.com/gitlab-org/cookbook-gitlab/tree/master</a>. This gitlab-shell cookbook is a subset of the gitlab cookbook.</p>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="http://feedhenrydevblogarchive.github.io/web-scraping-fun-profit/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="http://feedhenrydevblogarchive.github.io/web-scraping-fun-profit/">Web Scraping for Fun &amp; Profit</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="http://feedhenrydevblogarchive.github.io/publishing-jar-maven-central-repository/">Publishing the gitlab-shell Java client to the Maven Central Repository</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="http://feedhenrydevblogarchive.github.io/publishing-jar-maven-central-repository/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+  
+
+</div>
+
+</div>
+</div>
+<script src="http://feedhenrydevblogarchive.github.iojs/ui.js"></script>
+
+
+
+
+</body>
+</html>
+

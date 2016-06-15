@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Devops on Archive of FeedHenry Developer Blog 2012-2016</title>
+    <link>http://feedhenrydevblogarchive.github.io/tags/devops/</link>
+    <description>Recent content in Devops on Archive of FeedHenry Developer Blog 2012-2016</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 25 Apr 2014 12:37:39 +0000</lastBuildDate>
+    <atom:link href="http://feedhenrydevblogarchive.github.io/tags/devops/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Enterprise Node.js and Microservices talk at Node.js Dublin</title>
+      <link>http://feedhenrydevblogarchive.github.io/enterprise-node-js-microservices-talk-node-js-dublin/</link>
+      <pubDate>Fri, 25 Apr 2014 12:37:39 +0000</pubDate>
+      
+      <guid>http://feedhenrydevblogarchive.github.io/enterprise-node-js-microservices-talk-node-js-dublin/</guid>
+      <description>&lt;p&gt;Last night, Damian Beresford from the FeedHenry Engineering team gave a talk at &lt;a href=&#34;http://www.nodejsdublin.com/&#34;&gt;Node.js Dublin&lt;/a&gt; about our use of Node.js in the Enterprise. The resulting 20+ minute Q&amp;amp;A tells you it went down very well indeed with the audience! Two of the real hot-button topics were Microservices and the Operations approach around this type of platform. Expect to read a lot more here on both of these in the coming weeks.&lt;/p&gt;
+
+&lt;p&gt;Here is Damian&amp;rsquo;s deck:&lt;/p&gt;
+
+&lt;p&gt;** &lt;a href=&#34;https://www.slideshare.net/dberesford/nodejs-dublin-meetup-april2014&#34;&gt;Node.js Dublin Meetup April 2014&lt;/a&gt; ** from &lt;strong&gt;&lt;a href=&#34;http://www.slideshare.net/dberesford&#34;&gt;dberesford&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.16" />
+
+  <title>Several ways to avoid problems with the Cordova File API in your mobile apps &middot; Archive of FeedHenry Developer Blog 2012-2016</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+
+  <link rel="shortcut icon" href="http://feedhenrydevblogarchive.github.ioimg/favicon.ico" type="image/x-icon" />
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <a href="/"><img src = "/logo.png" /></a>
+    <small>Copyright Red Hat 2016</small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Several ways to avoid problems with the Cordova File API in your mobile apps</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>06 Aug 2014, 09:22</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="http://feedhenrydevblogarchive.github.iotags/cordova">cordova</a>
+    
+  </div>
+  
+  
+
+</div>
+
+  
+
+<p>The Cordova File API is one of the most widely used APIs when developing Cordova apps (Ranked as the No.3 the most downloaded plugin on the Cordova plugin registry). It implements the <a href="http://www.w3.org/TR/FileAPI/">W3C File API</a> for hybrid mobile apps. However, due to the complexity of the W3C specification, and the fact that each mobile OS handles file system for apps differently, the File API itself is quite complicated compared to other Cordova APIs. If you are planning to use the File API in your apps, you should read this <a href="http://www.html5rocks.com/en/tutorials/file/filesystem/">excellent article on html5rocks</a> about how to use it. However, there are a few other things you should be aware of. In this post, I would like summarize some of them.</p>
+
+<p><a href="http://cordova.apache.org/"><img src="/wp-content/uploads/2014/08/cordova_logo_normal_dark-300x133.png" alt="cordova_logo_normal_dark" /></a></p>
+
+<h2 id="requesting-the-file-system-after-cordova-is-ready">Requesting the file system after Cordova is ready</h2>
+
+<p>You probably think that we don&rsquo;t need to remind you about this because it is the first thing you will learn when using Cordova.</p>
+
+<p>Well, the thing is that if your app is using third party libraries, and they are not explicitly designed for Cordova apps, there is a chance that it may not use the API in the &ldquo;Cordova way&rdquo;.</p>
+
+<p>For example, we have used the <a href="http://brian.io/lawnchair/">Lawnchair</a> library in one of the projects. To use it with the file system, we use the <a href="https://github.com/brianleroux/lawnchair/blob/master/src/adapters/html5-filesystem.js">html5-filesystem adapter</a>provided by the library. When we tested the app inside Chrome, everything works fine. However, as soon as the application is deployed to the device, Lawnchair started to throw exceptions saying &ldquo;No valid adapter&rdquo;. After looking at the source code, we noticed that the adapter tries to get a reference of the file system <a href="https://github.com/brianleroux/lawnchair/blob/master/src/adapters/html5-filesystem.js#L14">as soon as it&rsquo;s loaded</a>. However, when running on the device, the file system may not ready at that point.</p>
+
+<p>To fix this issue, we have to make sure the adapter will not try to reference the file system on file load, but rather do that inside a function and then call that function when Cordova is ready. If you are interested, you can see the updated version <a href="https://gist.github.com/weili-feedhenry/33cede7faf01fe81c695">here</a>.</p>
+
+<p>This issue is not specific to the API file, but any other Cordova APIs too. So when using third-party libraries, if you think that it&rsquo;s possibly using Cordova APIs, it will be worth the effort to check the source code and make sure Cordova APIs are only called after the &ldquo;deviceready&rdquo; event is emitted.</p>
+
+<h2 id="icloud-backup">iCloud backup</h2>
+
+<p>This is an iOS specific issue. On iOS, if iCloud backup is turned on, according to Apple&rsquo;s <a href="https://developer.apple.com/icloud/documentation/data-storage/index.html">data storage guidelines</a>, everything in the app&rsquo;s home directory will be backed up, with the exception of the application bundle itself, the caches directory and the temp directory. If the app is going to be submitted to the App Store, one of the validation steps is to make sure only the data generated by the user is allowed to be backed up. If the application saves some data that is not generated by the user and tries to back up to iCloud, it will fail the validation and will be rejected.</p>
+
+<p>If you are using Cordova File API version &lt; 1.2, all the files created by default will be allowed to back up by iCloud and that may cause surprises!</p>
+
+<p>For example, in one of the apps we have developed, we tried to download some content data for the app on startup and save the data onto the file system using the Cordova File API. We never thought this could be an issue until we submitted the app to App Store and got rejected. The reason the app got rejected is because of this:</p>
+
+<p><strong>2.23: Apps must follow the iOS Data Storage Guidelines or they will be rejected</strong></p>
+
+<p>After reading the data storage guidelines (BTW, if you haven&rsquo;t read it, you should <a href="https://developer.apple.com/icloud/documentation/data-storage/index.html">read it now</a>), we realised the mistake we made. Luckily, the fix is quite easy - Cordova File API has <a href="https://cordova.apache.org/docs/en/3.0.0/cordova_file_file.md.html#FileEntry">provided a way</a> to prevent the file from being backed up:</p>
+
+<p><code>entry.setMetadata(success, fail, { &quot;com.apple.MobileBackup&quot;: 1});</code></p>
+
+<p>But that&rsquo;s not all. If your app saves non-user-generated data using local storage or websql, you should be careful too. By default, those files will be backed up to iCloud as well! Have a look at the config.xml file in your Cordova, you should see there is this preference:</p>
+
+<p><code>&lt;preference name=&quot;BackupWebStorage&quot; value=&quot;cloud&quot; /&gt;</code></p>
+
+<p>The value &ldquo;cloud&rdquo; means the web storage will be backed up. If that&rsquo;s not what you want, make sure change that value to &ldquo;local&rdquo; (iTunes back up only) or &ldquo;none&rdquo; (No backup at all).</p>
+
+<p>If you are using the latest version (v1.2) of the Cordova File API, you need to know that there are some <a href="https://github.com/apache/cordova-plugin-file/blob/master/doc/index.md">significant changes</a>. One of the important changes is that you will have direct access to some pre-created and useful directories inside javascript. E.g., in your app code, you can do</p>
+
+<p><code>
+var syncedDataDir = cordova.file.syncedDataDirectory; 
+var dataDir = cordova.file.dataDirectory;
+</code></p>
+
+<p>then if the data created should not be backed up, make sure it is saved inside the dataDir instead of the syncedDataDir.</p>
+
+<p>This rule applies to native iOS apps as well - you need to make sure only user-generated data is allowed to backup to iCloud. To prevent data from being backed up to iCloud in Objective-C, see <a href="https://developer.apple.com/library/ios/qa/qa1719/_index.html">this guide</a>.</p>
+
+<h2 id="know-the-quirks">Know the quirks</h2>
+
+<p>Even though Cordova tries its best to implement the same File API accross all the mobile platforms, there are still a few quirks due to native API constraints or performance concerns. All these quirks are listed on the <a href="http://cordova.apache.org/docs/en/3.3.0/cordova_file_file.md.html#File">Cordova File API documentation page</a>. You should read the documentation to have an idea about these quirks for each platform. It may save you some time when you come across a problem and you know it&rsquo;s a quirk for a particular platform already.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>When using Cordova APIs, always make sure the APIs are called after Cordova is ready. If possible, always use the latest version of the Cordva File API and specify where the file data should be saved clearly. Think about iCloud backup if your apps are targeting iOS platform. Knowing the quirks of the APIs could save you some valuable time during development.</p>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="http://feedhenrydevblogarchive.github.io/import-integrate-existing-apps-feedhenry-3-12-minutes/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="http://feedhenrydevblogarchive.github.io/import-integrate-existing-apps-feedhenry-3-12-minutes/">Import and integrate your existing apps into FeedHenry 3 in 12 minutes</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="http://feedhenrydevblogarchive.github.io/extending-cordova-mobile-spec-tester-app-cloud/">Extending the Cordova Mobile Spec Tester App into the Cloud</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="http://feedhenrydevblogarchive.github.io/extending-cordova-mobile-spec-tester-app-cloud/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+  
+
+</div>
+
+</div>
+</div>
+<script src="http://feedhenrydevblogarchive.github.iojs/ui.js"></script>
+
+
+
+
+</body>
+</html>
+

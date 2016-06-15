@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.16" />
+
+  <title>Web Scraping for Fun &amp; Profit &middot; Archive of FeedHenry Developer Blog 2012-2016</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+
+  <link rel="shortcut icon" href="http://feedhenrydevblogarchive.github.ioimg/favicon.ico" type="image/x-icon" />
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <a href="/"><img src = "/logo.png" /></a>
+    <small>Copyright Red Hat 2016</small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Web Scraping for Fun &amp; Profit</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>30 Sep 2014, 19:15</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="http://feedhenrydevblogarchive.github.iotags/HTML">HTML</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://feedhenrydevblogarchive.github.iotags/JSDom">JSDom</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://feedhenrydevblogarchive.github.iotags/legacy-APIs">legacy APIs</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://feedhenrydevblogarchive.github.iotags/MBaaS">MBaaS</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://feedhenrydevblogarchive.github.iotags/Mobile-Integration">Mobile Integration</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://feedhenrydevblogarchive.github.iotags/node.js">node.js</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://feedhenrydevblogarchive.github.iotags/screen-scraping">screen scraping</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://feedhenrydevblogarchive.github.iotags/web-development">web development</a>
+    
+  </div>
+  
+  
+
+</div>
+
+  
+
+<p>There’s a number of ways to retrieve data from a backend system within mobile projects. In an ideal world, everything would have a RESTful JSON API - but often, this isn’t the case.Sometimes, SOAP is the language of the backend. Sometimes, it’s some proprietary protocol which might not even be HTTP-based. Then, there’s scraping.</p>
+
+<p>Retrieving information from web sites as a human is easy. The page communicates information using stylistic elements like headings, tables and lists - this is the communication protocol of the web. Machines retrieve information with a focus on structure rather than style, typically using communication protocols like XML or JSON. Web scraping attempts to bridge this human protocol into a machine-readable format like JSON. This is what we try to achieve with web scraping.</p>
+
+<p>As a means of getting to data, it don’t get much worse than web scraping. Scrapers were often built with Regular Expressions to retrieve the data from the page. Difficult to craft, impossible to maintain, this means of retrieval was far from ideal. The risks are many - even the slightest layout change on a web page can upset scraper code, and break the entire integration. It’s a fragile means for building integrations, but sometimes it’s the only way.</p>
+
+<p>Having built a scraper service recently, the most interesting observation for me is how far we’ve come from these “dark days”. Node.js, and the massive ecosystem of community built modules has done much to change how these scraper services are built.</p>
+
+<h2 id="effectively-scraping-information">Effectively Scraping Information</h2>
+
+<p>Websites are built on the Document Object Model, or DOM. This is a tree structure, which represents the information on a page.By interpreting the source of a website as a DOM, we can retrieve information much more reliably than using methods like regular expression matching. The most popular method of querying the DOM is using jQuery, which enables us to build powerful and maintainable queries for information. The <a href="https://github.com/tmpvar/jsdom">JSDom</a> Node module allows us to use a DOM-like structure in serverside code.</p>
+
+<p>For purpose of Illustration, we&rsquo;re going to scrape the blog page of FeedHenry&rsquo;s website. <a href="https://gist.github.com/cianclarke/78b67dd614403cd90fb8">I’ve built a small code snippet</a> that retrieves the contents of the blog, and translates it into a JSON API. To find the queries I need to run, first I need to look at the HTML of the page. To do this, in Chrome, I right-click the element I&rsquo;m looking to inspect on the page, and click &ldquo;Inspect Element&rdquo;.</p>
+
+<p>[caption id=&ldquo;attachment_5025&rdquo; align=&ldquo;alignnone&rdquo; width=&ldquo;631&rdquo;]<a href="/wp-content/uploads/2014/09/Screen-Shot-2014-09-30-at-10.44.38.png"><img src="/wp-content/uploads/2014/09/Screen-Shot-2014-09-30-at-10.44.38.png" alt="Screen Shot 2014-09-30 at 10.44.38" /></a> Articles on the FeedHenry blog are a series of &lsquo;div&rsquo; elements with the &lsquo;.itemContainer&rsquo; class[/caption]</p>
+
+<p>Searching for a pattern in the HTML to query all blog post elements, we construct the <code>div.itemContainer</code> query. In jQuery, we can iterate over these using the .each method:</p>
+
+<pre><code>var posts = [];
+$('div.itemContainer').each(function(index, item){
+  // Make JSON objects of every post in here, pushing to the posts[] array
+});
+</code></pre>
+
+<p>From there, we pick off the heading, author and post summary using a child selector on the original post, querying the relevant semantic elements:</p>
+
+<p><a href="/wp-content/uploads/2014/09/scrapingChildElements.png"><img src="/wp-content/uploads/2014/09/scrapingChildElements.png" alt="" /></a></p>
+
+<ol>
+<li><p>Post Title, using jQuery:</p>
+
+<p>$(item).find(&lsquo;h3&rsquo;).text()trim() // trim, because titles have white space either side</p></li>
+
+<li><p>Post Author, using jQuery:</p>
+
+<p>$(item).find(&lsquo;.catItemAuthor a&rsquo;).text()</p></li>
+
+<li><p>Post Body, using jQuery:</p>
+
+<p>$(item).find(&lsquo;p&rsquo;).text()</p></li>
+</ol>
+
+<p>Adding some JSDom magic to our snippet, and pulling together the above two concept (iterating through posts, and picking off info from each post), we get <a href="https://gist.github.com/cianclarke/78b67dd614403cd90fb8">this snippet</a>:</p>
+
+<pre><code>var request = require('request'),
+jsdom = require('jsdom');
+
+jsdom.env(
+  &quot;http://www.feedhenry.com/category/blog&quot;,
+  [&quot;http://code.jquery.com/jquery.js&quot;],
+  function (errors, window) {
+    var $ = window.$, // Alias jQUery
+    posts = [];
+    $('div.itemContainer').each(function(index, item){
+      item = $(item); // make queryable in JQ
+      posts.push({
+        heading : item.find('h3').text().trim(),
+        author : item.find('.catItemAuthor a').text(),
+        teaser : item.find('p').text()
+      });
+    });
+    console.log(posts);
+  }
+);
+</code></pre>
+
+<p><a href="/wp-content/uploads/2014/09/Screen-Shot-2014-09-30-at-11.03.52.png"><img src="/wp-content/uploads/2014/09/Screen-Shot-2014-09-30-at-11.03.52-300x91.png" alt="" /></a></p>
+
+<h3 id="a-note-on-building-css-queries">A note on building CSS Queries</h3>
+
+<p>As with styling web sites with CSS, building effective CSS queries is equally as important when building a scraper. It&rsquo;s important to build queries that are not too specific, or likely to break when the structure of the page changes. Equally important is to pick a query that is not too general, and likely to select extra data from the page you don&rsquo;t want to retrieve.</p>
+
+<p>A neat trick for generating the relevant selector statement is to use Chrome&rsquo;s &ldquo;CSS Path&rdquo; feature in the inspector. After finding the element in the inspector panel, right click, and select &ldquo;Copy CSS Path&rdquo;. This method is good for individual items, but for picking repeating patterns (like blog posts), this doesn&rsquo;t work though. Often, the path it gives is much too specific, making for a fragile binding. Any changes to the page&rsquo;s structure will break the query.</p>
+
+<h2 id="making-a-re-usable-scraping-service">Making a Re-usable Scraping Service</h2>
+
+<p>Now that we&rsquo;ve retrieved information from a web page, and made some JSON, let&rsquo;s build a reusable API from this. We&rsquo;re going to make a FeedHenry Blog Scraper service in FeedHenry3. For those of you not familiar with service creation, see <a href="http://www.feedhenry.com/creating-re-usable-mbaas-services-feedhenry-3/">this video walkthrough.</a></p>
+
+<p>We&rsquo;re going to start by creating a &rdquo;new mBaaS Service&rdquo;, rather than selecting one of the off-the-shelf services. To do this, we modify the <code>application.js</code> file of our service to include one route, <code>/blog</code>, which includes our code snippet from earlier:</p>
+
+<pre><code>// just boilerplate scraper setup
+var mbaasApi = require('fh-mbaas-api'),
+express = require('express'),
+mbaasExpress = mbaasApi.mbaasExpress(),
+cors = require('cors'),
+request = require('request'),
+jsdom = require('jsdom');
+
+var app = express();
+app.use(cors());
+app.use('/sys', mbaasExpress.sys([]));
+app.use('/mbaas', mbaasExpress.mbaas);
+app.use(mbaasExpress.fhmiddleware());
+// Our /blog scraper route
+app.get('/blog', function(req, res, next){
+  jsdom.env(
+    &quot;http://www.feedhenry.com/category/blog&quot;,
+    [&quot;http://code.jquery.com/jquery.js&quot;],
+    function (errors, window) {
+      var $ = window.$, // Alias jQUery
+      posts = [];
+      $('div.itemContainer').each(function(index, item){
+        item = $(item); // make queryable in JQ
+        posts.push({
+          heading : item.find('h3').text().trim(),
+          author : item.find('.catItemAuthor a').text(),
+          teaser : item.find('p').text()
+        });
+      });
+      return res.json(posts);
+    }
+  );
+});
+app.use(mbaasExpress.errorHandler());
+
+var port = process.env.FH_PORT || process.env.VCAP_APP_PORT || 8001;
+var server = app.listen(port, function() {});
+</code></pre>
+
+<p>We&rsquo;re also going to write some <a href="http://docs.feedhenry.com/v3/product_features/services.html#services-service_documentation">documentation for our service</a>, so we (and other developers) can interact with it using the FeedHenry discovery console. We&rsquo;re going to modify the <code>README.md</code> file to document what we&rsquo;ve just done using <a href="http://apiblueprint.org/">API Blueprint</a> documentation format:</p>
+
+<pre><code># FeedHenry Blog Web Scraper
+This is a feedhenry blog scraper service. It uses the `JSDom` and `request` modules to retrieve the contents of the FeedHenry developer blog, and parse the content using jQuery.
+# Group Scraper API Group
+# blog [/blog]
+Blog Endpoint
+## blog [GET]
+Get blog posts endpoint, returns JSON data.
++ Response 200 (application/json)
+    + Body
+            [{ blog post}, { blog post}, { blog post}]
+</code></pre>
+
+<p>We can now try out the scraper service in the studio, and see the response:</p>
+
+<p><a href="/wp-content/uploads/2014/09/Screen-Shot-2014-09-30-at-15.03.10.png"><img src="/wp-content/uploads/2014/09/Screen-Shot-2014-09-30-at-15.03.10-300x252.png" alt="" /></a></p>
+
+<h2 id="scraping-the-ultimate-in-api-creation">Scraping - The Ultimate in API Creation?</h2>
+
+<p>Now that I&rsquo;ve described some modern techniques for effectively scraping data from web sites, it&rsquo;s time for some major caveats. First,  WordPress blogs like ours already have feeds and APIs available to developers - there&rsquo;s no need to ever scrape any of this content. Web Scraping is <strong>not a replacement for an API</strong>. It should be used only as a <strong>last resort</strong>, after every endeavour to discover an API has already been made. Using a web scraper in a commercial setting requires much time set aside to maintain the queries, and an agreement with the source data is being scraped on to alert developers in the event the page changes structure.
+With all this in mind, it can be a useful tool to iterate quickly on an integration when waiting for an API, or as a fun hack project.</p>
+
+<p><em><a href="http://www.twitter.com/cianclarke">@cianclarke</a><a href="/wp-content/uploads/2014/06/Screen-Shot-2014-06-11-at-15.56.07.png"> </a>is a Software Engineer with FeedHenry. Primarily focused on the mobile-backend-as-a-service space, Cian is responsible for many of FeedHenry&rsquo;s mBaaS developer features.</em>
+  *[mBaaS]: Mobile Backend As A Service</p>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="http://feedhenrydevblogarchive.github.io/mobile-solution-development-5-steps/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="http://feedhenrydevblogarchive.github.io/mobile-solution-development-5-steps/">Mobile Solution Development for the enterprise - the 5 steps to bring order to chaos</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="http://feedhenrydevblogarchive.github.io/gitlab-shell-chef-cookbook/">Creating &amp; Publishing a Chef Cookbook for gitlab-shell</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="http://feedhenrydevblogarchive.github.io/gitlab-shell-chef-cookbook/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+  
+
+</div>
+
+</div>
+</div>
+<script src="http://feedhenrydevblogarchive.github.iojs/ui.js"></script>
+
+
+
+
+</body>
+</html>
+

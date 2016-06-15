@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.16" />
+
+  <title>RHMAP and Google Accounts in Android &middot; Archive of FeedHenry Developer Blog 2012-2016</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+
+  <link rel="shortcut icon" href="http://feedhenrydevblogarchive.github.ioimg/favicon.ico" type="image/x-icon" />
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <a href="/"><img src = "/logo.png" /></a>
+    <small>Copyright Red Hat 2016</small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>RHMAP and Google Accounts in Android</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>04 Apr 2016, 13:20</time>
+  </div>
+
+  
+
+  
+
+  
+
+</div>
+
+  
+
+<p>The Red Hat Mobile Application Platform (RHMAP) has strong authentication and authorization mechanisms baked into its <a href="http://docs.feedhenry.com/v3/product_features/admin.html#admin-auth_policies">Auth Policy</a> system. Android has deep integration with Google&rsquo;s ecosystem which provides many easy mechanisms for authorizing services to act on a user&rsquo;s behalf. Out of the box RHMAP allows for connecting to a Google account using OAuth and a web view, but a better user experience is using Google&rsquo;s Android account picker. To enable this integration in RHMAP we can use an MBaaS Auth Policy.</p>
+
+<h1 id="prerequisites">Prerequisites</h1>
+
+<p>This post should be informative to anybody who wishes to learn more about RHMAP; however, you will have the most benefit if you have access to a RHMAP instance and have read through the <a href="http://docs.feedhenry.com/v3/getting_started.html">Getting Started</a> documentation. If you do not have access to a instance of RHMAP, you may sign up for a free one at <a href="https://openshift.feedhenry.com/">openshift.feedhenry.com</a>.</p>
+
+<p>Additionally you will need a Google account and Android emulator or device with Google&rsquo;s APIs set up.</p>
+
+<h1 id="demo">Demo</h1>
+
+<p>You can view an example of this integration in my <a href="https://www.youtube.com/watch?v=eNLKj6wvbQg">FehBot video</a>. The Android portion of this post will refer to the code in the application.</p>
+
+<h1 id="creating-an-mbaas-auth-policy">Creating an MBaaS Auth Policy</h1>
+
+<h2 id="create-a-blank-mbaas-service">Create a blank MBaaS Service</h2>
+
+<p>Select &ldquo;Services &amp; APIs&rdquo; from the top navigation. Click &ldquo;Provision MBaaS Services/API&rdquo;</p>
+
+<p><a href="/wp-content/uploads/2016/04/CReate_MBaaS_1.png"><img src="/wp-content/uploads/2016/04/CReate_MBaaS_1-300x121.png" alt="CReate_MBaaS_1" /></a></p>
+
+<p>Select &ldquo;Choose&rdquo; next to the item &ldquo;New mBaaS Service&rdquo;.</p>
+
+<p><a href="/wp-content/uploads/2016/04/CReate_MBaaS_2.png"><img src="/wp-content/uploads/2016/04/CReate_MBaaS_2-300x121.png" alt="CReate_MBaaS_2" /></a></p>
+
+<p>Name the service, click &ldquo;Next&rdquo;, ensure you are using the &ldquo;Development&rdquo; environment, and finally click &ldquo;Deploy&rdquo;. The service should deploy and you should have a green bar.</p>
+
+<p><a href="/wp-content/uploads/2016/04/CReate_MBaaS_3.png"><img src="/wp-content/uploads/2016/04/CReate_MBaaS_3-300x121.png" alt="CReate_MBaaS_3" /></a></p>
+
+<p>You are now ready to set up the Auth Policy.</p>
+
+<h2 id="setup-the-auth-policy">Setup the Auth Policy</h2>
+
+<p>Select &ldquo;Admin&rdquo; from the top navigation and then &ldquo;Auth Policies&rdquo; from the 6 boxes which appear.</p>
+
+<p><a href="/wp-content/uploads/2016/04/Create_auth_policy_11.png"><img src="/wp-content/uploads/2016/04/Create_auth_policy_11-300x121.png" alt="Create_auth_policy_1" /></a></p>
+
+<p>Click &ldquo;Create&rdquo; on the next screen to begin setting up an Auth Policy.</p>
+
+<p><a href="/wp-content/uploads/2016/04/CReate_Auth_Policy_2.png"><img src="/wp-content/uploads/2016/04/CReate_Auth_Policy_2-300x121.png" alt="CReate_Auth_Policy_2" /></a></p>
+
+<p>Name the Policy and select &ldquo;MBaaS Service&rdquo; as the &ldquo;Type&rdquo; under &ldquo;Authentication. From the &ldquo;Service&rdquo; drop down select the service you created in the previous step. For &ldquo;Endpoint&rdquo; our MBaaS service will use &ldquo;/auth/init&rdquo;. Finally select for your &ldquo;Default Environment&rdquo; the value &ldquo;Development&rdquo;.</p>
+
+<p><a href="/wp-content/uploads/2016/04/CReate_Auth_Policy_3.png"><img src="/wp-content/uploads/2016/04/CReate_Auth_Policy_3-300x121.png" alt="CReate_Auth_Policy_3" /></a></p>
+
+<p>Scroll down to the bottom of the page and click &ldquo;Create Auth Policy&rdquo;.</p>
+
+<h1 id="implementing-the-mbaas">Implementing the MBaaS</h1>
+
+<p>I have created a <a href="https://github.com/secondsun/FH-Google-mBaas-Auth">MBaaS Service</a> for us to use. It implements the server side token validation that Google recommends in <a href="https://developers.google.com/identity/sign-in/android/backend-auth">its documentation</a>. You should be able to copy this project into your MBaaS&rsquo;s source and redeploy it.</p>
+
+<p>You may wish to limit which Cloud applications can access your MBaaS services in the &ldquo;Service Settings&rdquo; section of the MBaaS &ldquo;Details&rdquo; page.</p>
+
+<p><a href="/wp-content/uploads/2016/04/Create_MBaas_4.png"><img src="/wp-content/uploads/2016/04/Create_MBaas_4-300x121.png" alt="Create_MBaas_4" /></a></p>
+
+<h2 id="auth-init">/auth/init</h2>
+
+<p>The <a href="https://github.com/secondsun/FH-Google-mBaas-Auth/blob/master/lib/auth.js#L12">/auth/init</a> route will consume tokens from the Android device and set up user accounts in RHMAP. The code should be easy ish to follow along. The most important part is that we return a <a href="https://github.com/secondsun/FH-Google-mBaas-Auth/blob/master/lib/auth.js#L25">userId</a> value in the json which we can use to look up the user&rsquo;s session informaiton.</p>
+
+<h2 id="list-session">/list/:session</h2>
+
+<p>The route <a href="https://github.com/secondsun/FH-Google-mBaas-Auth/blob/master/application.js#L23">/list/:session</a> can be used by Cloud applications to fetch a user&rsquo;s account information which is created and saved after a call to &ldquo;/auth/init&rdquo;.</p>
+
+<h1 id="android-integration">Android Integration</h1>
+
+<p>In order to integrate with Android, please follow <a href="https://developers.google.com/identity/sign-in/android/sign-in#configure_google_sign-in_and_the_googleapiclient_object">Google&rsquo;s Guide</a> for instructions on how to setup an Android account and get an IdToken from a sign in. The <a href="https://github.com/secondsun/fehbot-android/blob/master/app/src/main/java/com/feedhenry/oauth/oauth_android_app/">FehBot Android client</a> contains a working example.</p>
+
+<p>Once you have a IdToken you can use <a href="https://github.com/feedhenry/fh-android-sdk/blob/master/fh-android-sdk/src/main/java/com/feedhenry/sdk/FH.java#L279">FH.buildAuthRequest</a> to perform the sign-in with RHMAP. For the three parameters us the Auth Policy name you assigned during &ldquo;Setup the Auth Policy&rdquo;, the IdToken you retrived from Google, and an empty string for the final parameter. <a href="https://github.com/secondsun/fehbot-android/blob/master/app/src/main/java/com/feedhenry/oauth/oauth_android_app/FHOAuth.java#L127">Here</a> is an example from the FeHBot app.</p>
+
+<h1 id="caveats">Caveats</h1>
+
+<p>As per the <a href="http://docs.feedhenry.com/v3/api/api_auth.html#api_auth-app_api-create_your_own_authentication_providers">RHMAP Authentication API</a> if you use this you will have to manually verify your sessions in your application yourself. The built in verification methods will not work.</p>
+
+<h1 id="conclusion">Conclusion</h1>
+
+<p>As you can see, it is easy to add a third party authentication mechanism to RHMAP. The principles in this post can be applied to many other authentication providers and client platforms.</p>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="http://feedhenrydevblogarchive.github.io/upcoming-deployment-of-version-3-9-of-the-red-hat-mobile-application-platform/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="http://feedhenrydevblogarchive.github.io/upcoming-deployment-of-version-3-9-of-the-red-hat-mobile-application-platform/">Upcoming deployment of version 3.9 of the Red Hat Mobile Application Platform</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="http://feedhenrydevblogarchive.github.io/release-of-red-hat-mobile-application-platform-v3-9/">Release of Red Hat Mobile Application Platform v3.9 including Forms Data Sources</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="http://feedhenrydevblogarchive.github.io/release-of-red-hat-mobile-application-platform-v3-9/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+  
+
+</div>
+
+</div>
+</div>
+<script src="http://feedhenrydevblogarchive.github.iojs/ui.js"></script>
+
+
+
+
+</body>
+</html>
+

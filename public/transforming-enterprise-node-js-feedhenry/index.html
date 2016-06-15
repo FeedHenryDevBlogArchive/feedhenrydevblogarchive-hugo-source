@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.16" />
+
+  <title>Transforming the Enterprise with Node.js  &middot; Archive of FeedHenry Developer Blog 2012-2016</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+
+  <link rel="shortcut icon" href="http://feedhenrydevblogarchive.github.ioimg/favicon.ico" type="image/x-icon" />
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <a href="/"><img src = "/logo.png" /></a>
+    <small>Copyright Red Hat 2016</small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Transforming the Enterprise with Node.js </h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>04 Dec 2013, 18:11</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="http://feedhenrydevblogarchive.github.iotags/business">business</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://feedhenrydevblogarchive.github.iotags/node">node</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://feedhenrydevblogarchive.github.iotags/node.js">node.js</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://feedhenrydevblogarchive.github.iotags/nodeconf">nodeconf</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://feedhenrydevblogarchive.github.iotags/transformation">transformation</a>
+    
+  </div>
+  
+  
+
+</div>
+
+  
+
+<p><strong><em>By Damian Beresford - Engineering. Conor O&rsquo;Neill - Product Management. Joe O&rsquo;Reilly - Solutions Architecture.</em></strong></p>
+
+<p>Node.js has gone in a few short years from an interesting twist on server-side JavaScript to the engine of change in Enterprise Architecture. This blog post explores the market trends in using Node.js as a core tool for improving, mobilising and potentially migrating Enterprise legacy systems. It amalgamates our own experiences in integrating with legacy applications  and how we&rsquo;ve helped our Enterprise customers begin the mobilisation of legacy systems and evaluate candidates for moving to a next generation platform. It also draws upon recent case studies and conference talks from companies such as PayPal, Walmart, Ebay, Groupon, etc who are using Node.js in production to run their businesses.</p>
+
+<h2 id="mobile">Mobile</h2>
+
+<p>Mobile is the chief driving force behind new requirements for these Enterprise Systems. The internal and external demands for attractive, high-performance apps increases daily. The work force also expects all internal systems (web applications in particular) to work well on mobile phones and tablets. Current systems are struggling to keep up with this flood of mobile requirements and the cutting edge technology demanded of them.</p>
+
+<p><a href="/wp-content/uploads/2013/12/Traditional_Mobilisation.png"><img src="/wp-content/uploads/2013/12/Traditional_Mobilisation.png" alt="Traditional_Mobilisation" /></a></p>
+
+<p>Fig 1: Traditional mobilisation of an existing Enterprise System</p>
+
+<h2 id="node-js-as-an-emerging-best-of-breed-enterprise-solution">Node.js as an emerging best-of-breed Enterprise solution</h2>
+
+<p>FeedHenry provides a Mobile Application Platform which provides all of the end-to-end tools and infrastructure you need to build Cloud-powered Mobile Apps. Node is a critical part of our platform and enables our customers to connect mobile apps to complex Enterprise systems without drama.</p>
+
+<p>We fundamentally believe that Node.js is the best tool for enabling organizations to meet the requirements of cutting edge Enterprise Mobile development. We, among many others, find Node.js to be an order of magnitude faster than other tools for developing services.</p>
+
+<p>We highly recommend you watch this &ldquo;<a href="http://www.youtube.com/watch?v=V5yk5SZxWX4">Releasing the Kraken</a>&rdquo; video by PayPal&rsquo;s Bill Scott at the recent Nodeconf EU which FeedHenry sponsored. Some of his metrics around efficiencies gained are genuinely shocking. Also check out the great post about it on the <a href="http://www.nearform.com/nodecrunch/?p=109">nearForm blog</a>.</p>
+
+<p>Jeff Harrell of PayPal has followed it up <a href="https://www.paypal-engineering.com/2013/11/22/node-js-at-paypal/">with another post</a> and Eran Hammer of Walmart <a href="https://twitter.com/search?q=%23nodebf%20%40eranhammer&amp;src=typd">live-tweeted</a> the zero-drama nature of running all of their mobile traffic through Node on Black Friday. </p>
+
+<h2 id="legacy-systems-node-proxy-as-a-first-step">Legacy Systems - Node Proxy as a first step</h2>
+
+<p>Node can initially be used to implement the &lsquo;<a href="http://www.eaipatterns.com/SmartProxy.html">Smart Proxy</a>&rsquo; pattern which can be applied to migrating requests from an old System to new System services. Node.js makes for a highly efficient request proxy. The idea here is that Node sits in front of your existing Enterprise Systems (usually a portal server, e.g. Apache/Tomcat) and simply routes http traffic to its correct destination.This pattern also helps with API backward compatibility, e.g. for a new service that replaces a part of the old System.</p>
+
+<p>From a development perspective, the first version of Proxy can be a simple pass-through, i.e. just forward each request to the back end without any routing/modification. Not only will this give you a foothold in production, but also confidence that there is only a minimal performance overhead with the proxy (~10 milliseconds).</p>
+
+<p>As a bonus here, the Proxy can log all API requests to the backend allowing you to effectively see what parts of the backend API are being used most frequently. Once the initial version is embedded in Production, it’s then time to start routing requests to new services and start consolidating API’s from various different sources.</p>
+
+<h2 id="node-and-development-of-micro-business-services">Node and development of micro business services</h2>
+
+<p>Node is purpose-built for developing small web services. In fact, even the &ldquo;hello world&rdquo; example on nodejs.org is a simple web server. And thanks to the Node community, a huge number of NPM modules exist for all sorts of integrations. There are also various Node.js based frameworks for assisting with micro service development, e.g. hapijs.com.</p>
+
+<p>In Node, these micro services should consist of several smaller component modules which are versioned and used in node via NPM. These modules can be shared with other services, also via NPM, allowing you to implement a truly <em>component-based architecture</em>.</p>
+
+<p>Architecturally, depending on your system boundaries, these business services may be new business requirements, or replacing a part of the old System that had heavy technical debt. Also bear in mind that you may never get to replace all of an old System, due to legal or other complications.</p>
+
+<p><a href="/wp-content/uploads/2013/12/Proxy_Micro_services_03.png"><img src="/wp-content/uploads/2013/12/Proxy_Micro_services_03.png" alt="Proxy_Micro_services_03" /></a></p>
+
+<p>Fig 2: Moving to proxying and micro-services with Node</p>
+
+<h2 id="enterprise-system-migration">Enterprise System Migration</h2>
+
+<p>CIOs are under constant pressure to deliver new mobility-focused services whilst preserving the integrity of existing mission-critical systems.  Many Enterprise systems are well architected, resilient and scalable under load but many others can be monolithic and brittle in nature, fuelled by years of entropy.</p>
+
+<p>Organizations often mitigate risk by having long and complicated change approval processes and test-release cycles. The systems become ever-more-difficult to change and extend, particularly for core system modules which are essential to overall system stability. It is a serious challenge facing Enterprises to be able to meet high velocity requirements and drive the business forward.</p>
+
+<p>However, these existing systems are the foundation of the Enterprise’s business, and are typically what generates revenue. Migrating large Enterprise Systems in one large rewrite rarely works out well. Typically this is done by forming a new team, who plan to deliver ‘like for like’ functionality in a ‘greenfield’ environment. Often new teams under-estimate the size/complexity of the old system and fail to deliver. Meanwhile, the old system has been held together by a skeletal team, and overall the migration effort has been an expensive set-back to the business.</p>
+
+<p>Instead of the big rewrite, we have found that working with the old system from the start, and then creating new micro-services built around it, is a more successful approach. This is sometimes referred to as a ‘brownfield’ development effort. These new services are then either replacement parts of the old System, or services purpose-built for new business requirements.</p>
+
+<p>Eventually over time, the old system can get smaller and less core to the overall architecture, whilst these new micro-services grow more numerous in number and also in depth of functionality.</p>
+
+<p>Having smaller decoupled, autonomous micro-services is a more desirable modern architecture. It allows for quicker development and testing, less risk on production stability, and faster/better turnaround of requirements, allowing the development teams to focus on adding business value.</p>
+
+<h2 id="flexible-cloud-hosted-node-js-backend">Flexible Cloud-hosted Node.js backend</h2>
+
+<p>FeedHenry made the move to Node.js a long time ago (in Node years) at the beginning of 2011 when it was at v0.4. Our flexible Node-powered backend enables you to quickly and easily develop Node.js services that can interact with your existing business systems on one side and your mobile apps on the other. Using the FeedHenry cloud, you don’t need to expose your existing systems directly on the internet in order to interact with mobile applications. Instead, your mobile applications talk to the proven robust, scalable infrastructure of the FeedHenry Cloud which then talks securely to your backend systems.</p>
+
+<p>This pattern is in active use today by all of our customers including a major UK rail infrastructure company, a leading airline, large UK utility companies and Government agencies. In every case, existing systems provide both the data sources and sinks for totally new mobile applications with all of the necessary management and manipulation happening securely in the Node.js business logic.</p>
+
+<h2 id="professional-services-consultancy">Professional Services/Consultancy</h2>
+
+<p>Our long history with Node is critically important to your business success. Rather than being just another hot technology that has attracted bandwagon-jumpers, we made the strategic decision several years ago that Node should be at the heart of everything we do. In addition to a battle-hardened Node infrastructure, we also have a battle-hardened Professional Services team who have been delivering high-performance robust resilient Node-powered mobile solutions for many years.</p>
+
+<p>But they provide far more than point-solutions and can take you on the journey we have described above from initial micro-services and mobile applications to our full Mobile Application Platform. Our PS team understands that mobility is not just about Apps. By taking a strategic platform approach, they can guide you through the architectural, process and implementation decisions you need to make, to put mobility and agility at the heart of your enterprise and transform your business.</p>
+
+<h2 id="large-enterprises-making-the-transition-to-node-js">Large Enterprises making the transition to Node.js</h2>
+
+<p>The velocity of Node.js through the software development community has frankly been jaw-dropping. We have never before seen any tech become so important so quickly to so many businesses. What is even more shocking is how large corporations have embraced it and have begun evangelising it both internally and externally. They are doing so because of one reason - Node is transforming the Enterprise.</p>
+
+<ol>
+<li><p><a href="https://engineering.groupon.com/2013/node-js/geekon-i-tier/">Groupon</a></p></li>
+
+<li><p><a href="http://www.ebaytechblog.com/2013/05/17/how-we-built-ebays-first-node-js-application/">eBay</a></p></li>
+
+<li><p><a href="http://venturebeat.com/2012/01/24/why-walmart-is-using-node-js/">Walmart</a></p></li>
+
+<li><p><a href="http://www.nearform.com/nodecrunch/how-node-js-has-revolutionized-the-mailonline#.UpS7eMRdV8E">The Daily Mail</a></p></li>
+
+<li><p><a href="http://nodered.org/">IBM</a></p></li>
+
+<li><p><a href="http://venturebeat.com/2011/08/16/linkedin-node/">LinkedIn</a></p></li>
+
+<li><p><a href="http://www.slideshare.net/gblock/node-js-enterprise-class">Microsoft</a></p></li>
+</ol>
+
+<p>And <a href="http://nodejs.org/industry/">many many more</a>.</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>By using Node.js in a step-wise fashion, large Enterprises can move at a pace that works for their organisation. A mobility strategy using Node in the modes we have described above can eventually lead to fundamental changes in how you deliver services to your employees and customers.</p>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="http://feedhenrydevblogarchive.github.io/managing-and-understanding-your-cloud-environments-in-the-feedhenry-platform/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="http://feedhenrydevblogarchive.github.io/managing-and-understanding-your-cloud-environments-in-the-feedhenry-platform/">Managing and understanding your Cloud Environments in the FeedHenry platform</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="http://feedhenrydevblogarchive.github.io/reminder-developers-ios7-sdk/">A reminder to all developers about the iOS7 SDK</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="http://feedhenrydevblogarchive.github.io/reminder-developers-ios7-sdk/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+  
+
+</div>
+
+</div>
+</div>
+<script src="http://feedhenrydevblogarchive.github.iojs/ui.js"></script>
+
+
+
+
+</body>
+</html>
+

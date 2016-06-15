@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Microservices on Archive of FeedHenry Developer Blog 2012-2016</title>
+    <link>http://feedhenrydevblogarchive.github.io/tags/microservices/</link>
+    <description>Recent content in Microservices on Archive of FeedHenry Developer Blog 2012-2016</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 08 Apr 2015 13:54:34 +0000</lastBuildDate>
+    <atom:link href="http://feedhenrydevblogarchive.github.io/tags/microservices/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Evolving a Mobile-centric Architecture: The Microservices Way</title>
+      <link>http://feedhenrydevblogarchive.github.io/microservices-for-mobile/</link>
+      <pubDate>Wed, 08 Apr 2015 13:54:34 +0000</pubDate>
+      
+      <guid>http://feedhenrydevblogarchive.github.io/microservices-for-mobile/</guid>
+      <description>
+
+&lt;p&gt;There seems to have been an explosion in the use of the term “microservices” recently. I’ve been peripherally aware of the concept for some time now, but it seems it first came to light with a fantastic collection of &lt;a href=&#34;http://martinfowler.com/articles/microservices.html&#34;&gt;thoughts by Martin Fowler&lt;/a&gt;[1] - some great reading on the topic.&lt;/p&gt;
+
+&lt;p&gt;This three-part post will not help you make a business case for rewriting your existing monolith as a series of microservices - for that, I’d recommend &lt;a href=&#34;http://blog.softwhere.org/2015/02/21/microservices-the-new-architecture-for-digital-engagement/&#34;&gt;Rich Sharples’ writings on the topic&lt;/a&gt; [2] - but I am going to show how microservices make sense for mobile in a series of practical examples.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;A Microservices Primer: Introducing the concepts, along with mobile-specific microservice considerations&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Hands-on examples how to build some simple microservices&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;A benchmarking exercise revealing the impact microservices-based architectures can have on mobile.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The end result of this exercise can be performance improvements between ~**2.5x &lt;strong&gt;and&lt;/strong&gt; ~250x**, depending on network conditions[3]. To see a 10 minute video presentation &lt;a href=&#34;http://www2.feedhenry.com/mobile-tech-talk-microservices&#34;&gt;click here&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;1-a-microservices-primer&#34;&gt;1: A Microservices Primer&lt;/h1&gt;
+
+&lt;h2 id=&#34;microservices-the-term&#34;&gt;Microservices - The Term&lt;/h2&gt;
+
+&lt;p&gt;I’ve been somewhat amused by the term microservices, since we&amp;rsquo;ve been composing small, loosely coupled applications which combine to do work since I first started using Node.js with FeedHenry. I&amp;rsquo;d love to claim some visionary stroke of trend-predicting genius, but really it’s the path the Node.js community led us down. Of course, it&amp;rsquo;s widely accepted the concept has been around since Unix days - it&amp;rsquo;s just a shiny new name.&lt;/p&gt;
+
+&lt;p&gt;In the Node community, what started as cries of “Make everything you possibly can as small re-usable modules” (micromodules anybody?) quickly became &amp;ldquo;Make everything small re-usable applications,” and now we&amp;rsquo;re calling them microservices.&lt;/p&gt;
+
+&lt;h2 id=&#34;microservices-considerations-for-mobile&#34;&gt;Microservices - Considerations for Mobile&lt;/h2&gt;
+
+&lt;p&gt;Introducing a microservices-based architecture has some specific considerations when it comes to delivering content to mobile applications. I&amp;rsquo;m going to deal with two main concerns - &lt;strong&gt;coupling and performance&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;loose-coupled-tight-coupled-practically-welded-shut&#34;&gt;Loose-Coupled, Tight-Coupled, Practically Welded Shut&lt;/h3&gt;
+
+&lt;p&gt;For web applications, if we change the API we know that once we deploy an update to the web application, all our connected clients are using the new API. It&amp;rsquo;s easy to swap out URLs, and even expected payloads in the code of the web application, because we can deploy in tandem. Then we can deprecate the old API. This makes for a relatively loose coupling between client and server.&lt;/p&gt;
+
+&lt;p&gt;Mobile applications are different, however. A mobile app is released into an app store. In an enterprise environment, this app store is often private. We can usually force an update out to our app and watch it propagate to users within a matter of days. This makes the relationship between client and API more tightly coupled than in the case of the web application.&lt;/p&gt;
+
+&lt;p&gt;Releasing to the public app store, there may be a review period, but once released, users download this update over the course of weeks, months, maybe never. The previous API still needs to be maintained, and this makes for an integration which is so tightly coupled, it&amp;rsquo;s practically welded shut. (See, these days everybody is coining new terms!)&lt;/p&gt;
+
+&lt;p&gt;This makes for some very special considerations when architecting for mobile. The lifespan of any APIs the mobile application touches need to be much longer-lived, and APIs should be built with this in mind. Consider versioning, and some way of forcing users to update.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/04/Microservices_diag1.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/04/Microservices_diag1.png&#34; alt=&#34;Microservices_diag1&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Mobile release cycles are much longer, leading to tighter coupling between client and API&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;performance-considerations&#34;&gt;Performance Considerations&lt;/h3&gt;
+
+&lt;p&gt;The other major consideration specific to mobile is performance. Web applications typically run on devices connected over WiFi or Ethernet, with low latency. Mobile devices often connect over lossy connections - 3G, Edge, or even GPRS.&lt;/p&gt;
+
+&lt;p&gt;Returning the minimum payload required to render the screen is more important now than ever. Intelligent pagination on lists can drastically reduce payload size, especially when users are only operating on the most recent items. This also means reducing the number of calls made across the network. As the number of calls grow, every HTTP transaction can contribute to an exponential growth in overall response time. Creating a microservice to act as a unified mobile API, which returns data from many sources in one single call is often a good option.&lt;/p&gt;
+
+&lt;p&gt;This can introduce some interesting trade-offs that need to be balanced:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;At what point does a unified API returning multiple types of data compromise the RESTful nature of an API?&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;At what point does the response body size of a combined payload negate any potential performance gains?&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&#34;2-a-mobile-example-of-a-microservice&#34;&gt;2. A Mobile Example of a Microservice&lt;/h1&gt;
+
+&lt;p&gt;In part 1, we introduced the term, and presented some unique considerations for mobile. Now, let&amp;rsquo;s take a more practical look by creating some microservices.&lt;/p&gt;
+
+&lt;h3 id=&#34;the-tale-of-the-traveling-umbrella-salesperson&#34;&gt;The Tale of the Traveling Umbrella Salesperson&lt;/h3&gt;
+
+&lt;p&gt;To illustrate the use of microservices, let&amp;rsquo;s take a mock use case, that of a traveling umbrella salesperson (of no relation to the Traveling Salesperson of Distributed Computing fame). This salesperson needs to be able to:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Create orders in a back-end database&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Automatically scale their order quantities according to the weather (I know - work with me here, people…)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Notify the account manager of the new order on their account&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;our-first-microservice-orders&#34;&gt;Our first Microservice - Orders&lt;/h3&gt;
+
+&lt;p&gt;First, we&amp;rsquo;re going to create a microservice for orders for our traveling umbrella sales team. We&amp;rsquo;re going to write our microservices in Node.js, and they&amp;rsquo;re going to communicate JSON payloads over HTTP, but these are by no means prerequisites. Microservices can of course be implemented using any programming language, over any communication protocol.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s a service which can both create and list umbrella orders. It creates a REST API, &lt;code&gt;/orders&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var app = require(&#39;express&#39;)().use(require(&#39;body-parser&#39;)());
+var orders = [];
+// Create a new order
+app.post(&#39;/orders&#39;, function(req, res){
+  orders.push(req.body);
+  return res.json(req.body);
+});
+// list orders
+app.get(&#39;/orders&#39;, function(req, res){
+  return res.json(orders);
+});
+
+var server = app.listen(3000);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Ten lines - pretty micro, huh? Ok, so I cheated a bit - that first line is concise to the point of unreadable, and we&amp;rsquo;re just putting orders in memory - but we now have a really micro service.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;For future code snippets, I&amp;rsquo;m going to drop some of the boilerplate setup code on the first and last lines&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;adding-more-microservices-weather-and-sms&#34;&gt;Adding more Microservices - Weather and SMS&lt;/h2&gt;
+
+&lt;p&gt;Our order service is working just fine - our folk out in the field can create orders, and list the orders they&amp;rsquo;ve previously created. But before the team creates an order, they want the system to scale their order size based on the upcoming weather forecast at that location. Let&amp;rsquo;s call this the rain service. Here, we&amp;rsquo;re going to reach out to a third party API, sum the rainfall totals for the upcoming forecast, and append it to the original weather information.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var weatherUrl = &#39;http://api.openweathermap.org/data/2.5/forecast&#39;;
+
+app.get(&#39;/rain&#39;, function(req, res){
+  var city = req.query.city,
+  country = req.query.country;
+
+  request.get({url : weatherUrl + &#39;?q=&#39; + city + &#39;,&#39; + country, json : true}, function(err, response, weatherbody){
+    // sum all the inches rainfall in the forecast
+    weatherbody.rainfall = _.reduce(weatherbody.list, function(a, b){ return a + b.rain[&#39;3h&#39;] }, 0);
+    return res.json(weatherbody);
+  });
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Lastly, we&amp;rsquo;re also going to add a service to allow us to push an SMS alert to the account manager when a new order is created.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;app.post(&#39;/sms&#39;, function(req, res){
+  var to = req.body.to,
+  message = req.body.message;
+  client.sms.messages.create({ to: to, from : process.env.TWILIO_NUM, body : message}, function(error, message){
+    return res.json(message);
+  });
+});
+app.listen(3002);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We&amp;rsquo;ve now created our series of three microservices. To get started with the examples provided, follow these steps in a terminal:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# clone the repository
+git clone https://github.com/cianclarke/microservices-primer.gitcd microservices-primer
+# Install dependencies
+npm install -d
+# Set Twilio environment variables
+export TWILIO_AUTH=foo; export TWILIO_SID=bar; export TWILIO_NUM=&amp;quot;+1234567&amp;quot;;
+# start the 4 microservices &amp;amp; the test runner
+npm start
+# To view the test runner, visit http://localhost:3004/ in a browser. 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We&amp;rsquo;re now running our series of microservices, and can interact with them using CURL&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# Service 1: Create a new order in the database 
+curl &#39;http://127.0.0.1:3000/orders/umbrellas&#39; -H &#39;Content-Type: application/json&#39; --data-binary &#39;{&amp;quot;city&amp;quot;:&amp;quot;Dublin&amp;quot;,&amp;quot;country&amp;quot;:&amp;quot;Ireland&amp;quot;,&amp;quot;quantity&amp;quot;:984.4999999999999,&amp;quot;accountManager&amp;quot;:&amp;quot;+1 123 456 789&amp;quot;}&#39; 
+# Service 1: List orders in the database 
+curl &#39;http://127.0.0.1:3000/orders/umbrellas&#39;
+# Service 2: GET request to rain svc to retrieve info for Dublin 
+curl &#39;http://127.0.0.1:3001/rain?city=Dublin&amp;amp;country=Ireland&#39; 
+# Service 3: POST to the SMS service 
+curl &#39;http://127.0.0.1:3002/sms&#39; -H &#39;Content-Type: application/json&#39; --data-binary &#39;{&amp;quot;to&amp;quot;:&amp;quot;+1 123 456 789&amp;quot;,&amp;quot;message&amp;quot;:&amp;quot;My SMS Message!&amp;quot;}&#39; 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We&amp;rsquo;ve now built a series of microservices, and verified we can interact with them.3: Taking our Microservices MobileNow, let&amp;rsquo;s look at two different approaches to consuming these. The first will show a more traditional approach to building out the application. The second will introduce another microservice specifically for mobile, taking into account the mobile-specific concerns raised in part 1. Then, we&amp;rsquo;ll look at some results of our benchmark.&lt;/p&gt;
+
+&lt;h2 id=&#34;take-1-client-side-business-logic&#34;&gt;Take 1: Client-Side Business Logic&lt;/h2&gt;
+
+&lt;p&gt;First, we&amp;rsquo;ll build this application the way many existing mobile apps are built - we&amp;rsquo;ll implement a lot of business logic on the client (scaling the order according to the rainfall microservice, submitting to the orders microservice, then notifying the account manager via the SMS microservice), and make three separate REST calls from the mobile device.Sure, we&amp;rsquo;ve still got microservices on the server-side - but we could equally picture this as a monolith, for what little use we&amp;rsquo;re making of the microservices philosophy.&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/04/microservices_2.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/04/microservices_2.png&#34; alt=&#34;microservices_2&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;This illustrates the &amp;ldquo;wrong way.&amp;rdquo;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;We’re making several calls from the app, so we’re not minimizing our number of requests.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;None of the calls have been optimized for mobile. We’re sending back unnecessary data, so we’re not trimming the payload for mobile.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;take-2-microservices-for-mobile&#34;&gt;Take 2: Microservices for Mobile&lt;/h2&gt;
+
+&lt;p&gt;As before, we&amp;rsquo;re going to achieve this integration using a series of microservices - but we&amp;rsquo;re going to meld the data together in a fourth and final mobile-specific microservice.&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/04/microservices-3.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/04/microservices-3.png&#34; alt=&#34;microservices-3&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Now, we send our order information to a new mobile specific microservice which wraps up the three steps we took in “take 1.” We’re now making one call from the mobile device. We&amp;rsquo;ve got one simple API to maintain, a perfectly reasonable POST of a JSON payload, and this integration becomes a much looser coupling. We&amp;rsquo;re not sending unnecessary data back to the mobile app.&lt;/p&gt;
+
+&lt;h2 id=&#34;benchmarking-client-side-logic-vs-microservices-approach-across-mobile-networks&#34;&gt;Benchmarking – Client-side Logic vs. Microservices approach across mobile networks&lt;/h2&gt;
+
+&lt;p&gt;Now, let&amp;rsquo;s see how these two approaches compare across a range of mobile network types. If interested, some notes on the benchmarks are available in the footnotes[3].&lt;/p&gt;
+
+&lt;p&gt;A simple mobile client implementing the two approaches to integrating discussed above was created, which also measures request time across each approach.&lt;/p&gt;
+
+&lt;h3 id=&#34;payload-size&#34;&gt;Payload Size&lt;/h3&gt;
+
+&lt;p&gt;First, a brief look at the total payload size over 100 requests. Using the mobile microservice, &lt;strong&gt;68kb&lt;/strong&gt; of data was exchanged. Calling each microservice individually resulted in &lt;strong&gt;1.5mb&lt;/strong&gt; of data, a substantial increase likely due to returning weather information in it&amp;rsquo;s entirety on every request.&lt;/p&gt;
+
+&lt;h3 id=&#34;response-times&#34;&gt;Response Times&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/04/responseTimes.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/04/responseTimes.png&#34; alt=&#34;Response Times&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Examining the results, we see nominal difference between approaches using a 4G network. When we move to a 3G network, the gap widens - there&amp;rsquo;s eight** seconds** in the difference across requests. Edge networks show a wider gap still, with an increase in average request time of almost &lt;strong&gt;27 seconds&lt;/strong&gt;. At this point, the end user would really feel the pain of an inferior architecture. Lastly, over GPRS the impact of implementing multiple calls on the client is eye-opening. With average request times of &lt;strong&gt;more than 2&lt;/strong&gt;** minutes**, the application would be effectively unusable. Compare this to a microservice based architecture, with response times averaging 12 seconds, the application is slow but still usable. The key take away from this benchmark is that as the network slows, &lt;strong&gt;response times grow exponentially&lt;/strong&gt; when not considering mobile in your microservice architecture.&lt;/p&gt;
+
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;Having seen the results, what can we conclude from these benchmarks? I&amp;rsquo;m not going to try make such bold, linkbait-esque claims as &amp;ldquo;Microservices make mobile 10x faster&amp;rdquo; - that&amp;rsquo;s simply not true. What is true, however, is that the roll-out of a Microservices based architecture needs to consider mobile as a first class citizen. Not doing so can ruin the user experience for end users, and render applications virtually useless on slower networks. If the above considerations are taken into approach, the rollout of this new breed of architecture should prove a much smoother transition.&lt;/p&gt;
+
+&lt;h1 id=&#34;further-reading&#34;&gt;Further Reading&lt;/h1&gt;
+
+&lt;p&gt;[1] Martin Fowler - Microservices. The post which for many started the momentum behind the term.
+&lt;a href=&#34;http://martinfowler.com/articles/microservices.html&#34;&gt;http://martinfowler.com/articles/microservices.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;[2] Rich Sharples - Micro services – the new architecture for digital engagement? Some observations from a higher level on the trends and applications of microservices.
+&lt;a href=&#34;http://blog.softwhere.org/2015/02/21/microservices-the-new-architecture-for-digital-engagement/&#34;&gt;http://blog.softwhere.org/2015/02/21/microservices-the-new-architecture-for-digital-engagement/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;[3] 100 requests in each run. SMS API calls to Twilio simulated with 250ms timeout to avoid excessive calls to their API. Chrome Developer Tools network throttling used to simulate network speeds. Node.js processes restarted after every batch of 100 requests. Requests had timestamp appended to prevent browser caching.&lt;/p&gt;
+
+&lt;p&gt;Watch a powerful &lt;a href=&#34;http://www2.feedhenry.com/mobile-tech-talk-microservices&#34;&gt;10-minute video&lt;/a&gt; on this content that includes a live demo of the benchmarking exercise.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;&lt;a href=&#34;http://www.twitter.com/cianclarke&#34;&gt;@cianclarke&lt;/a&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/06/Screen-Shot-2014-06-11-at-15.56.07.png&#34;&gt; &lt;/a&gt;is a Software Engineer with FeedHenry. Primarily focused on the mobile-backend-as-a-service space, Cian is responsible for many of FeedHenry’s mBaaS developer features.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;*[mBaaS]: Mobile Backend As A Service&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Creating re-usable mBaaS Services in FeedHenry 3</title>
+      <link>http://feedhenrydevblogarchive.github.io/creating-re-usable-mbaas-services-feedhenry-3/</link>
+      <pubDate>Thu, 10 Jul 2014 11:06:49 +0000</pubDate>
+      
+      <guid>http://feedhenrydevblogarchive.github.io/creating-re-usable-mbaas-services-feedhenry-3/</guid>
+      <description>&lt;p&gt;One of the most powerful features in FeedHenry 3 is the ability to deploy mBaaS Services that can be accessed by multiple projects. This means you can, for example, encapsulate all of the functionality to access one of your back-end systems and then provide a consistent interface to it for all of your projects. This also facilitates a separation of concerns between those building mobile apps or Node.js business logic and those creating the services for them. The consumers of the services never need know about the nitty gritty of how back-end systems are accessed, they just develop against the provided APIs.&lt;/p&gt;
+
+&lt;p&gt;In this video, Jason walks you through the mBaaS Service functionality and you will see the types of efficiencies possible by taking a Microservices approach.&lt;/p&gt;
+
+&lt;p&gt;In addition to using one of our off-the-shelf services, you can easily generate your own custom mBaaS Services by creating an &lt;a href=&#34;http://expressjs.com/&#34;&gt;Express 4&lt;/a&gt; Node.js application and documenting the RESTful API end-points you wish to expose with &lt;a href=&#34;http://apiblueprint.org/&#34;&gt;API Blueprint&lt;/a&gt;. Doing this gives your Service consumers a dashboard in FeedHenry 3 which provides both the information needed to use the service and an interactive tool to exercise the service directly.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/07/oracle_service-1024x504.jpg&#34; alt=&#34;oracle_service&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Making developers more productive was one of FeedHenry 3&amp;rsquo;s biggest drivers. With mBaaS Services, they can mobilise their back-end systems once, rather than re-inventing the wheel on each new project.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

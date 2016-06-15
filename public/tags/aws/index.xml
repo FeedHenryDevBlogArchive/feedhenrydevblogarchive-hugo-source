@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Aws on Archive of FeedHenry Developer Blog 2012-2016</title>
+    <link>http://feedhenrydevblogarchive.github.io/tags/aws/</link>
+    <description>Recent content in Aws on Archive of FeedHenry Developer Blog 2012-2016</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 04 Apr 2014 13:43:12 +0000</lastBuildDate>
+    <atom:link href="http://feedhenrydevblogarchive.github.io/tags/aws/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Getting started with MySQL and the FeedHenry studio.</title>
+      <link>http://feedhenrydevblogarchive.github.io/getting-started-mysql-feedhenry-studio/</link>
+      <pubDate>Fri, 04 Apr 2014 13:43:12 +0000</pubDate>
+      
+      <guid>http://feedhenrydevblogarchive.github.io/getting-started-mysql-feedhenry-studio/</guid>
+      <description>
+
+&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+
+&lt;p&gt;The FeedHenry platform allows apps to connect to external MySQL instances.  The following is a run-through of the process required to create a MYSQL instance within the Amazon cloud and creating an app to pull data from it. This document contains many screenshots of the process as a visual aid to the procedure but it is possible that websites outside of FeedHenrys control may change and not match the screenshots in the future. For the purposes of this procedure, we are going to create a micro RDS instance of MySQL on the Amazon cloud.  The MySQL instance documented here is for demonstration purposes.  There is currently no charge by Amazon for running this instance but that could possibly change.&lt;/p&gt;
+
+&lt;h1 id=&#34;method&#34;&gt;Method&lt;/h1&gt;
+
+&lt;h2 id=&#34;part-1-amazon&#34;&gt;Part 1 - Amazon&lt;/h2&gt;
+
+&lt;p&gt;The first requirement for this task is to create your MySQL instance within the cloud.  In this case, we will use Amazon&amp;rsquo;s RDS facility. The first step is to set yourself up with an Amazon AWS account.  Instructions on how to do this can be found at &lt;a href=&#34;http://aws.amazon.com/&#34;&gt;http://aws.amazon.com/&lt;/a&gt; by clicking &amp;ldquo;Sign Up&amp;rdquo;.  Follow the on screen instructions to create your Amazon AWS account. Next, making sure you are logged into your new account, go to &lt;a href=&#34;https://console.aws.amazon.com/console/home?#&#34;&gt;https://console.aws.amazon.com/console/home?#&lt;/a&gt; and select RDS &amp;hellip;..&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/03/Screenshot-2014-03-20-15.34.40.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/03/Screenshot-2014-03-20-15.34.40.png&#34; alt=&#34;Screenshot 2014-03-20 15.34.40&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;hellip;. which will take you to the RDS console where you can keep track of all your database instances.&lt;/p&gt;
+
+&lt;p&gt;To begin creating an instance of MySQL, click on the _Launch a DB Instance_ button.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/03/Screenshot-2014-03-20-15.37.29.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/03/Screenshot-2014-03-20-15.37.29.png&#34; alt=&#34;Screenshot 2014-03-20 15.37.29&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Once here, we are presented with a selection of databases to choose from.  Select MySQL.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/03/Screenshot-2014-03-20-15.41.01.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/03/Screenshot-2014-03-20-15.41.01.png&#34; alt=&#34;Screenshot 2014-03-20 15.41.01&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For our purposes, we will use RDS free usage.  Select that option and select &lt;em&gt;Next Step&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/03/Screenshot-2014-03-20-15.47.55.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/03/Screenshot-2014-03-20-15.47.55.png&#34; alt=&#34;Screenshot 2014-03-20 15.47.55&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;We will stick with the defaults here.  However, there are a few field that need to be filled in by the user.  For this demonstration, we will keep things small.  Select the following values &amp;hellip;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Db Instance Class is &lt;em&gt;db.t1.micro&lt;/em&gt;.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Multi-AX Deployment is &lt;em&gt;No&lt;/em&gt;.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Allocated Storage is the minimum &lt;em&gt;5Gb&lt;/em&gt;.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Db Instance Identifier is the name you wish to give to your MySQL instance.  In this case, we will go with &lt;em&gt;myTestInstance&lt;/em&gt;.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Master Username and Master Password are up to you.  Just make sure to write them down after you decide them.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/03/Screenshot-2014-03-20-15.54.42.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/03/Screenshot-2014-03-20-15.54.42.png&#34; alt=&#34;Screenshot 2014-03-20 15.54.42&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Click &lt;em&gt;Next Step&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;__ &lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/03/Screenshot-2014-03-20-20.21.00.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/03/Screenshot-2014-03-20-20.21.00.png&#34; alt=&#34;Screenshot 2014-03-20 20.21.00&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note that this document assumes that you are using a brand new, just created, AWS account.  A new account will provide the correct default values for VPC settings shown here but for older accounts, the default values may be different.  There may not be a &lt;em&gt;Choose a VPC&lt;/em&gt; option available, for example.  You can find details regarding the differences in VPC for older accounts at &lt;a href=&#34;http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/default-vpc.html&#34;&gt;http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/default-vpc.html&lt;/a&gt;.  &lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Pick a Database name (in this case, I have picked &lt;em&gt;testDb1&lt;/em&gt;).  Leave the rest of the fields with their default values and click &lt;em&gt;Next Step.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/03/Screenshot-2014-03-20-20.24.47.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/03/Screenshot-2014-03-20-20.24.47.png&#34; alt=&#34;Screenshot 2014-03-20 20.24.47&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Keep the defaults and select &lt;em&gt;Next Step.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/03/Screenshot-2014-03-20-16.56.11.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/03/Screenshot-2014-03-20-16.56.11.png&#34; alt=&#34;Screenshot 2014-03-20 16.56.11&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Final step, for now.  Select &lt;em&gt;Launch Db Instance&lt;/em&gt;. The DB Instance takes a few minutes to create.  You can view the progress of the instance creation by clicking on the &lt;em&gt;View your DB Instances on the DB Instances page&lt;/em&gt; link.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/03/Screenshot-2014-03-20-16.58.34.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/03/Screenshot-2014-03-20-16.58.34.png&#34; alt=&#34;Screenshot 2014-03-20 16.58.34&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Eventually, the instance is up and running.  Click on the instance in the &lt;em&gt;DB Instances&lt;/em&gt; page to see its details.&lt;/p&gt;
+
+&lt;h3 id=&#34;security&#34;&gt;Security&lt;/h3&gt;
+
+&lt;p&gt;The instance you have just created is up and running.  However, we must ensure that the security group the instance is running with will allow MySQL connections, otherwise connecting our app to this instance will be impossible.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/03/Screenshot-2014-03-20-20.39.35.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/03/Screenshot-2014-03-20-20.39.35.png&#34; alt=&#34;Screenshot 2014-03-20 20.39.35&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Click on the link beside &lt;em&gt;Security Groups&lt;/em&gt; within your instance and select the &lt;em&gt;Inbound&lt;/em&gt; tab&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/03/Screenshot-2014-03-20-20.49.11.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/03/Screenshot-2014-03-20-20.49.11.png&#34; alt=&#34;Screenshot 2014-03-20 20.49.11&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Add a new rule consisting of &amp;hellip;.
+&lt;table align=&#34;left&#34; border=&#34;0&#34; &gt;
+&lt;tbody &gt;
+&lt;tr &gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td &gt;&lt;strong&gt;Type&lt;/strong&gt;
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td &gt;&lt;strong&gt;Protocol&lt;/strong&gt;
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td &gt;&lt;strong&gt;Port Range&lt;/strong&gt;
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td &gt;&lt;strong&gt;Source&lt;/strong&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr &gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td &gt;MYSQL
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td &gt;TCP
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td &gt;3306
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td &gt;0.0.0.0/0
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;hellip; to allow access from a MySQL client/app.&lt;/p&gt;
+
+&lt;p&gt;Part 2 - Creating your app.&lt;/p&gt;
+
+&lt;p&gt;Almost there!  Final stage is to create an app that can access the instance of RDS that you have created.  Within the studio, select &amp;ldquo;Plugins&amp;rdquo; &amp;hellip;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/04/Screenshot-2014-04-03-12.10.502.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/04/Screenshot-2014-04-03-12.10.502.png&#34; alt=&#34;Screenshot 2014-04-03 12.10.50&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;hellip; and then select &amp;ldquo;MySQL&amp;rdquo;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/04/Screenshot-2014-04-03-12.13.49.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/04/Screenshot-2014-04-03-12.13.49.png&#34; alt=&#34;Screenshot 2014-04-03 12.13.49&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The current instructions for adding the MySQL plugin will be displayed.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/04/Screenshot-2014-04-03-12.16.05.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/04/Screenshot-2014-04-03-12.16.05.png&#34; alt=&#34;Screenshot 2014-04-03 12.16.05&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;In order to get you started faster, here&amp;rsquo;s an app we rustled up earlier that you can use to access your MySQL instance!  You can find it at &lt;a href=&#34;https://github.com/FeedHenrySuprt/fh_mysql&#34;&gt;https://github.com/FeedHenrySuprt/fh_mysql&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Perform the following &amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;First, login into your GitHub account (if you do not have a GitHub account, you can set one up at &lt;a href=&#34;https://github.com/&#34;&gt;https://github.com/&lt;/a&gt;).  Once logged in, go to &lt;a href=&#34;https://github.com/FeedHenrySuprt/fh_mysql&#34;&gt;https://github.com/FeedHenrySuprt/fh_mysql&lt;/a&gt; and fork this repository to your own.&lt;/p&gt;
+
+&lt;p&gt;Then, in a 2nd browser tab, log into your FeedHenry domain.&lt;/p&gt;
+
+&lt;p&gt;Under the &lt;em&gt;Apps&lt;/em&gt; tab, press &lt;em&gt;Create an App&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/04/Screenshot-2014-04-03-12.21.01.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/04/Screenshot-2014-04-03-12.21.01.png&#34; alt=&#34;Screenshot 2014-04-03 12.21.01&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;On the pop up screen, select &lt;em&gt;Create an App from a Git Repository&lt;/em&gt; and click &lt;em&gt;Next&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/04/Screenshot-2014-04-03-12.22.36.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/04/Screenshot-2014-04-03-12.22.36.png&#34; alt=&#34;Screenshot 2014-04-03 12.22.36&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Give your app a name, use the &amp;ldquo;SSH Clone URL&amp;rdquo; of the forked app as your &lt;em&gt;Git URL&lt;/em&gt; and enter &lt;em&gt;Master&lt;/em&gt; for the branch.  Click &lt;em&gt;Next&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/04/Screenshot-2014-04-03-12.24.27.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/04/Screenshot-2014-04-03-12.24.27.png&#34; alt=&#34;Screenshot 2014-04-03 12.24.27&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The next screen gives you a public key to add to your git setup.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/04/Screenshot-2014-04-03-12.32.32.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/04/Screenshot-2014-04-03-12.32.32.png&#34; alt=&#34;Screenshot 2014-04-03 12.32.32&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;You add this to your github account by copying the entire key to your clipboard, going to &lt;a href=&#34;https://github.com/settings/ssh&#34;&gt;https://github.com/settings/ssh&lt;/a&gt; and adding the key.  Once added, click &lt;em&gt;Next&lt;/em&gt; and your app will be created.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/04/Screenshot-2014-04-03-12.58.02.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/04/Screenshot-2014-04-03-12.58.02.png&#34; alt=&#34;Screenshot 2014-04-03 12.58.02&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Click &lt;em&gt;Finish&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Soon be finished.  The FeedHenry studio has a facility to create &lt;em&gt;Environment Variables&lt;/em&gt; that you can place the details of your MySQL instance into that can be accessed by the app.  This is quite a handy facility as it means you can change the database that the app points to fairly easily.&lt;/p&gt;
+
+&lt;p&gt;On the sidebar, select &lt;em&gt;Environment Variables&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/04/Screenshot-2014-04-03-17.14.13.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/04/Screenshot-2014-04-03-17.14.13.png&#34; alt=&#34;Screenshot 2014-04-03 17.14.13&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;hellip; and create the following variable and push them, to both Dev and Live.&lt;/p&gt;
+
+&lt;p&gt;MYSQL_HOST - This is the endpoint for your instance.  You can get the value for this from the AWS display for your RDS instance.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/04/scr.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/04/scr.png&#34; alt=&#34;scr&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;MYSQL_USERNAME - Username for your instance.&lt;/p&gt;
+
+&lt;p&gt;MYSQL_PASSWORD - Password for your instance.&lt;/p&gt;
+
+&lt;p&gt;Don&amp;rsquo;t forget to push your variables once they have been created.&lt;/p&gt;
+
+&lt;p&gt;Once that is done, you are ready to go.  Go to the &lt;em&gt;Details&lt;/em&gt; section of your studio and click on the _Emulator_ at the right side of the screen &amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/04/Screenshot-2014-04-03-17.27.31.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/04/Screenshot-2014-04-03-17.27.31.png&#34; alt=&#34;Screenshot 2014-04-03 17.27.31&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;to spawn an emulator window for the app.&lt;/p&gt;
+
+&lt;p&gt;You can enter SQL command into the white text field and view the returned results in the green field.  Try the following to get started (make sure you use the correct database name when making your SQL queries as specified in the &lt;em&gt;Additional Config&lt;/em&gt; section in the AWS setup process), make sure you hit &lt;em&gt;Submit&lt;/em&gt; after each line and watch the results in the green section.&lt;/p&gt;
+
+&lt;p&gt;[code]&lt;/p&gt;
+
+&lt;p&gt;create table testDb1.myStudents (student_number int, firstname varchar(30), surname varchar(30));&lt;/p&gt;
+
+&lt;p&gt;insert into testDb1.students (student_number, firstname, surname) values (1, &amp;lsquo;Joe&amp;rsquo;, &amp;lsquo;Bloggs&amp;rsquo;);
+insert into testDb1.students (student_number, firstname, surname) values (2, &amp;lsquo;Jane&amp;rsquo;, &amp;lsquo;Brown&amp;rsquo;);
+insert into testDb1.students (student_number, firstname, surname) values (3, &amp;lsquo;Mick&amp;rsquo;, &amp;lsquo;Jones&amp;rsquo;);&lt;/p&gt;
+
+&lt;p&gt;select * from testDb1.students;&lt;/p&gt;
+
+&lt;p&gt;[/code]&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/04/Screenshot-2014-04-04-08.47.04.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/04/Screenshot-2014-04-04-08.47.04.png&#34; alt=&#34;Screenshot 2014-04-04 08.47.04&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Final Thoughts.&lt;/p&gt;
+
+&lt;p&gt;Now that you have basic app that can access a MySQL database running on the cloud, the stage is set for you to integrate all MySQL functionality into your FeedHenry apps from now on.  You can find more information about using the FeedHenry MySQL plugin &lt;a href=&#34;https://github.com/felixge/node-mysql&#34;&gt;here&lt;/a&gt; as well as more information about &lt;a href=&#34;http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.html&#34;&gt;getting started with AWS&lt;/a&gt; as well.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

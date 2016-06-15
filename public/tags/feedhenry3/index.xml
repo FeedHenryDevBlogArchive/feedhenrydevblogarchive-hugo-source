@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Feedhenry3 on Archive of FeedHenry Developer Blog 2012-2016</title>
+    <link>http://feedhenrydevblogarchive.github.io/tags/feedhenry3/</link>
+    <description>Recent content in Feedhenry3 on Archive of FeedHenry Developer Blog 2012-2016</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 24 Jun 2014 17:26:33 +0000</lastBuildDate>
+    <atom:link href="http://feedhenrydevblogarchive.github.io/tags/feedhenry3/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>A summary of the FeedHenry 3 changes in our fhc command-line tool</title>
+      <link>http://feedhenrydevblogarchive.github.io/summary-new-feedhenry-3-features-fhc-command-line-tool/</link>
+      <pubDate>Tue, 24 Jun 2014 17:26:33 +0000</pubDate>
+      
+      <guid>http://feedhenrydevblogarchive.github.io/summary-new-feedhenry-3-features-fhc-command-line-tool/</guid>
+      <description>
+
+&lt;p&gt;We develop everything in FeedHenry API-first ,which means our command-line tooling is just as powerful as our Web UIs, with the added advantage of automation and scriptability.&lt;/p&gt;
+
+&lt;p&gt;The main FeedHenry CLI is called &lt;em&gt;fhc&lt;/em&gt; and it is how most developers interact with the platform. Version 0.30.x has had quite a few changes (to put it mildly!) for FeedHenry 3 and we&amp;rsquo;ll summarise those changes here. &lt;em&gt;fhc&lt;/em&gt; will continue to work with both FeedHenry 3 and previous versions of the platform for the foreseeable future. Of course, being a Node.js App, it supports Windows, OSX and Linux.&lt;/p&gt;
+
+&lt;h2 id=&#34;new-feedhenry-3-commands&#34;&gt;New FeedHenry 3 Commands&lt;/h2&gt;
+
+&lt;h3 id=&#34;fhc-projects&#34;&gt;fhc projects&lt;/h3&gt;
+
+&lt;p&gt;Projects are a major new concept within FeedHenry 3 and enable groups of developers to work together on different but related Apps (e.g. iOS Native Client,  Cordova Client, Cloud Code and mBaaS Service). You can this command to list/create/update/read/delete or clone a project. &amp;ldquo;Clone&amp;rdquo; is particularly powerful as it does a &amp;lsquo;git clone&amp;rsquo; of each App in your Project into the current working directory.&lt;/p&gt;
+
+&lt;h3 id=&#34;fhc-services&#34;&gt;fhc services&lt;/h3&gt;
+
+&lt;p&gt;Services are one of the other main pillars of FeedHenry 3, enabling you to create standalone cloud services which are re-usable across one or more projects. This makes them ideal as connectors to your back-end systems and we are regularly expanding the list of out-of-the-box services. You can this command to list/create/update/read or delete a service.&lt;/p&gt;
+
+&lt;h3 id=&#34;fhc-connections&#34;&gt;fhc connections&lt;/h3&gt;
+
+&lt;p&gt;Connections provide the ability to dynamically reconfigure which Cloud Code a specific app (and app version) communicates with. This can be done without needing to release new versions of your apps. Different apps/versions can simultaneously talk to different versions of your cloud code. You can use this command to easily list and change the connections.&lt;/p&gt;
+
+&lt;h3 id=&#34;fhc-artifacts&#34;&gt;fhc artifacts&lt;/h3&gt;
+
+&lt;p&gt;In FeedHenry 3, you can now view your build artifacts including the download URL and credential credential bundles used. This command shows you Platform, App Version, Date, Type, Credentials and URL for a given Project and App. Since our Build Farm now supports native iOS, Android and Windows Phone 8, all of those are available too.&lt;/p&gt;
+
+&lt;h3 id=&#34;fhc-forms-fhc-submissions-and-fhc-themes&#34;&gt;fhc forms, fhc submissions and fhc themes&lt;/h3&gt;
+
+&lt;p&gt;Our zero-code Drag and Drop Apps, based around Forms, had a massive upgrade in FeedHenry 3 and they have really been grabbing everyone&amp;rsquo;s attention. Everything you can do with Forms in the Studio, you can also do on the command line. For Forms themselves, this includes list/create/update/get/delete. Similar commands are available for Forms Apps, Forms Groups, Forms Themes and Forms Notifications. Everything is built on JSON and can be easily modified and moved. All of the data submitted by users using Drag and Drop Apps is also available&lt;/p&gt;
+
+&lt;h3 id=&#34;fhc-templates&#34;&gt;fhc templates&lt;/h3&gt;
+
+&lt;p&gt;We have an ever expanding set of template/sample/tutorial Apps which can be listed and read on the command line.&lt;/p&gt;
+
+&lt;h3 id=&#34;fhc-ssh-keys-and-fhc-user-keys&#34;&gt;fhc ssh-keys and fhc user-keys&lt;/h3&gt;
+
+&lt;p&gt;You can manage both your ssh keys and FeedHenry API Keys from the cli including commands like list/add/delete/read/update.&lt;/p&gt;
+
+&lt;h2 id=&#34;changes-to-existing-commands&#34;&gt;Changes to existing commands&lt;/h2&gt;
+
+&lt;h3 id=&#34;fhc-apps&#34;&gt;fhc apps&lt;/h3&gt;
+
+&lt;p&gt;The apps command, instead of just listing apps as it did in the past, contains all apps related sub commands like list/create/read/update/delete.&lt;/p&gt;
+
+&lt;p&gt;The following older apps related commands still exist but have been deprecated:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;fhc read&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;fhc delete&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;fhc update&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;fhc delete&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;fhc-import&#34;&gt;fhc import&lt;/h3&gt;
+
+&lt;p&gt;This is now invoked as follows:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;fhc import &amp;lt;project-id&amp;gt; &amp;lt;app-title&amp;gt; &amp;lt;app-template-type&amp;gt; [&amp;lt;zip-file&amp;gt; || &amp;lt;git-repo&amp;gt;]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Note: if no file or repo is specified, a bare git repo is created&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>A summary of all the new Developer Features of FeedHenry 3</title>
+      <link>http://feedhenrydevblogarchive.github.io/summary-new-developer-features-feedhenry-3/</link>
+      <pubDate>Tue, 29 Apr 2014 18:31:37 +0000</pubDate>
+      
+      <guid>http://feedhenrydevblogarchive.github.io/summary-new-developer-features-feedhenry-3/</guid>
+      <description>
+
+&lt;p&gt;CONOR O&amp;rsquo;NEILL, DIRECTOR OF PRODUCT MANAGEMENT, FEEDHENRY&lt;/p&gt;
+
+&lt;p&gt;As you&amp;rsquo;ve &lt;a href=&#34;http://www.feedhenry.com/feedhenry-launches-new-mobile-app-platform/&#34;&gt;probably read&lt;/a&gt; here and elsewhere, we launched FeedHenry 3 today. This is the culmination of many different development efforts over the past several months and is a major leap forward for the FeedHenry platform. We&amp;rsquo;ve taken all the things you know and love about FeedHenry like local development, Node.js, Git integration, our build farm and Drag &amp;amp; Drop Apps; and turned them all up to 11. Over the next 2 weeks we&amp;rsquo;ll dive into the nitty gritty of all the new and improved features here, but for today we thought you&amp;rsquo;d like to read the technical highlights.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/04/project.jpg&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/04/project-1024x535.jpg&#34; alt=&#34;project&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;projects-not-apps&#34;&gt;Projects not Apps&lt;/h2&gt;
+
+&lt;p&gt;As App complexity increases and back-end integrations multiply, your mobile efforts become more than a single developer building a single app. We now support multiple client apps, Node apps, web apps and services, all within one project. This means your iOS team, Android team, Cordova team and back-end team can all work independently in their own Git repos but connected together as part of one overall project.&lt;/p&gt;
+
+&lt;h2 id=&#34;native-ios-native-android-and-wp8-build-farm&#34;&gt;Native iOS, Native Android and WP8 Build Farm&lt;/h2&gt;
+
+&lt;p&gt;Our Build Farm has always been able to build simple Cordova/PhoneGap Apps for iOS/Android/WP/Blackberry. We can now build fully Native iOS and Android Apps along with Windows Phone 8, and those Apps can be part of the same project as the Cordova ones. This means that you can automate all of your builds for all targets and Configuration Management staff can build for all platforms without needing local IDEs installed for them all.&lt;/p&gt;
+
+&lt;h2 id=&#34;import-external-code-including-xamarin-and-appcelerator&#34;&gt;Import external code including Xamarin and Appcelerator&lt;/h2&gt;
+
+&lt;p&gt;Not only can you easily import HTML5, Cordova, Node and Native iOS/Android/WP8 projects into FeedHenry 3, you can import Xamarin and Appcelerator projects too. In every case it is trivial to add the relevant FeedHenry SDK whilst we walk you through the steps.&lt;/p&gt;
+
+&lt;h2 id=&#34;build-history-and-credential-bundles&#34;&gt;Build History and Credential Bundles&lt;/h2&gt;
+
+&lt;p&gt;Your build history is accessible along with the bundles of credentials that were used to build the various versions. Our larger customers tell us that the management of binaries/certs is a particular pain point for them and they really appreciate having one central point of control in FeedHenry 3.&lt;/p&gt;
+
+&lt;h2 id=&#34;cordova-plugins&#34;&gt;Cordova Plugins&lt;/h2&gt;
+
+&lt;p&gt;You can now bundle any Cordova plugin with your HTML5/JS/CSS/Cordova apps and build them in our Build Farm. This opens up a huge range of plugins, including those you write yourself.&lt;/p&gt;
+
+&lt;h2 id=&#34;zero-code-drag-drop-apps-and-apis-natch&#34;&gt;Zero Code, Drag &amp;amp; Drop Apps (and APIs, natch)&lt;/h2&gt;
+
+&lt;p&gt;You can now build Forms-based Apps with zero code end-to-end inside the Studio and you can also use the new Forms APIs to easily add dynamic forms to any App. Any changes to your Forms appear in the apps the next time your users load them up, so no new versions are required in the Apps Stores. Non-developers can build Forms and content admins can be limited to only viewing submissions, ensuring that they are can&amp;rsquo;t interfere with app development.&lt;/p&gt;
+
+&lt;h2 id=&#34;deep-git-integration&#34;&gt;Deep Git Integration&lt;/h2&gt;
+
+&lt;p&gt;We realised the power of Git long before most people in this business and we&amp;rsquo;ve had it baked-in for years. But, as with all of our FeedHenry 3 features, we listened to developers and added exactly what they needed. Firstly we have Git hosting integrated so you don&amp;rsquo;t have to rely on having a GitHub or Bitbucket account. But just as importantly, we fully support git remote, so you now have the full power of distributed version control and can push/pull changes from whereever you wish into/out-of FeedHenry. Which leads neatly to the next feature&amp;hellip;&amp;hellip;.&lt;/p&gt;
+
+&lt;h2 id=&#34;grunt-ified-local-development&#34;&gt;Grunt-ified local development&lt;/h2&gt;
+
+&lt;p&gt;Whilst you can always work using the web gui and our improved Ace editor, most developers prefer to use their own local development environment and tools. Our fhc tool has always supported this to give you all the commands you need to interact with the platform. Now you also have full Grunt support in all of our templates. So you can use the power of fhc+git+grunt to develop and debug both your Cordova and Node.js code locally and then deploy it to FeedHenry. This of course opens up a wide range of possibilities with automation too.&lt;/p&gt;
+
+&lt;h2 id=&#34;full-node-js-express-rest-api-support&#34;&gt;Full Node.js Express REST API support&lt;/h2&gt;
+
+&lt;p&gt;FeedHenry has been doing Node since 2011, long long before the Node-washers arrived and jumped on the latest cool thing. This means we know it inside out. We&amp;rsquo;ve taken the pain of the early days and know how to make Node sing. We&amp;rsquo;ve had Express support for quite a while but we now also offer completely standard support for REST APIs in Express. So take whatever Node code you have and drop it straight into FeedHenry 3.&lt;/p&gt;
+
+&lt;h2 id=&#34;connections&#34;&gt;Connections&lt;/h2&gt;
+
+&lt;p&gt;Connections are an extremely powerful way of dynamically reconfiguring which Node.js Cloud App your mobile Apps are talking to without having to re-deploy your Apps. For example you can spin up a new version of your cloud code to try out a fix for Android and point all of your Android users to that code, whilst everyone else continues to use another version.&lt;/p&gt;
+
+&lt;h2 id=&#34;shared-discoverable-microservices&#34;&gt;Shared Discoverable Microservices&lt;/h2&gt;
+
+&lt;p&gt;Rather than having unique custom cloud code for every app and every project, you should aim for maximum re-use. As Enterprises roll-out suites of Apps, many of them will want to access the same back-end systems. By spinning up standalone discoverable (via API Blueprint) Microservices inside FeedHenry 3, you can create something re-usable that your apps can share. Also, rather than exposing an entire internal system to the entire world, you can use our Services functionality to provide just a sub-set of APIs to your Apps, all proxied securely through FeedHenry.&lt;/p&gt;
+
+&lt;h2 id=&#34;web-app-hosting&#34;&gt;Web App Hosting&lt;/h2&gt;
+
+&lt;p&gt;Web Apps are first class citizens in FeedHenry 3. You can host both static web-sites or your own Node.js web apps that can use the same APIs as your mobile apps to talk to your Node.js Cloud Apps. These Web Apps are ideal for management and admin portals to go with your mobile apps.&lt;/p&gt;
+
+&lt;h2 id=&#34;responsive-touch-friendly-studio-ui&#34;&gt;Responsive touch-friendly Studio UI&lt;/h2&gt;
+
+&lt;p&gt;New features aren&amp;rsquo;t much good if they are hard to use. Our Studio UI has been re-built from the ground up. Best practice responsive design and it even works nicely on your Tablet. This new UI gives us the ability to add new functionality quickly and easily and gives you a far superior user experience. We&amp;rsquo;ve also carried out some major improvements in our App preview to cover a wide range of devices, device sizes and orientations.&lt;/p&gt;
+
+&lt;h2 id=&#34;new-templates-examples-and-tutorials&#34;&gt;New templates, examples and tutorials&lt;/h2&gt;
+
+&lt;p&gt;We&amp;rsquo;re building out a great set of templates, examples and tutorials so you can be up and running with FeedHenry, using best practices, in the shortest time possible. Add in our fully integrated docs with context-aware help and you&amp;rsquo;ll be productive on day 1.&lt;/p&gt;
+
+&lt;p&gt;Lots more detail to come, very soon!&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

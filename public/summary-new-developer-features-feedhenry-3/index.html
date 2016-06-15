@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.16" />
+
+  <title>A summary of all the new Developer Features of FeedHenry 3 &middot; Archive of FeedHenry Developer Blog 2012-2016</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+
+  <link rel="shortcut icon" href="http://feedhenrydevblogarchive.github.ioimg/favicon.ico" type="image/x-icon" />
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <a href="/"><img src = "/logo.png" /></a>
+    <small>Copyright Red Hat 2016</small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>A summary of all the new Developer Features of FeedHenry 3</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>29 Apr 2014, 18:31</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="http://feedhenrydevblogarchive.github.iotags/feedhenry3">feedhenry3</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://feedhenrydevblogarchive.github.iotags/fh3">fh3</a>
+    
+  </div>
+  
+  
+
+</div>
+
+  
+
+<p>CONOR O&rsquo;NEILL, DIRECTOR OF PRODUCT MANAGEMENT, FEEDHENRY</p>
+
+<p>As you&rsquo;ve <a href="http://www.feedhenry.com/feedhenry-launches-new-mobile-app-platform/">probably read</a> here and elsewhere, we launched FeedHenry 3 today. This is the culmination of many different development efforts over the past several months and is a major leap forward for the FeedHenry platform. We&rsquo;ve taken all the things you know and love about FeedHenry like local development, Node.js, Git integration, our build farm and Drag &amp; Drop Apps; and turned them all up to 11. Over the next 2 weeks we&rsquo;ll dive into the nitty gritty of all the new and improved features here, but for today we thought you&rsquo;d like to read the technical highlights.</p>
+
+<p><a href="/wp-content/uploads/2014/04/project.jpg"><img src="/wp-content/uploads/2014/04/project-1024x535.jpg" alt="project" /></a></p>
+
+<h2 id="projects-not-apps">Projects not Apps</h2>
+
+<p>As App complexity increases and back-end integrations multiply, your mobile efforts become more than a single developer building a single app. We now support multiple client apps, Node apps, web apps and services, all within one project. This means your iOS team, Android team, Cordova team and back-end team can all work independently in their own Git repos but connected together as part of one overall project.</p>
+
+<h2 id="native-ios-native-android-and-wp8-build-farm">Native iOS, Native Android and WP8 Build Farm</h2>
+
+<p>Our Build Farm has always been able to build simple Cordova/PhoneGap Apps for iOS/Android/WP/Blackberry. We can now build fully Native iOS and Android Apps along with Windows Phone 8, and those Apps can be part of the same project as the Cordova ones. This means that you can automate all of your builds for all targets and Configuration Management staff can build for all platforms without needing local IDEs installed for them all.</p>
+
+<h2 id="import-external-code-including-xamarin-and-appcelerator">Import external code including Xamarin and Appcelerator</h2>
+
+<p>Not only can you easily import HTML5, Cordova, Node and Native iOS/Android/WP8 projects into FeedHenry 3, you can import Xamarin and Appcelerator projects too. In every case it is trivial to add the relevant FeedHenry SDK whilst we walk you through the steps.</p>
+
+<h2 id="build-history-and-credential-bundles">Build History and Credential Bundles</h2>
+
+<p>Your build history is accessible along with the bundles of credentials that were used to build the various versions. Our larger customers tell us that the management of binaries/certs is a particular pain point for them and they really appreciate having one central point of control in FeedHenry 3.</p>
+
+<h2 id="cordova-plugins">Cordova Plugins</h2>
+
+<p>You can now bundle any Cordova plugin with your HTML5/JS/CSS/Cordova apps and build them in our Build Farm. This opens up a huge range of plugins, including those you write yourself.</p>
+
+<h2 id="zero-code-drag-drop-apps-and-apis-natch">Zero Code, Drag &amp; Drop Apps (and APIs, natch)</h2>
+
+<p>You can now build Forms-based Apps with zero code end-to-end inside the Studio and you can also use the new Forms APIs to easily add dynamic forms to any App. Any changes to your Forms appear in the apps the next time your users load them up, so no new versions are required in the Apps Stores. Non-developers can build Forms and content admins can be limited to only viewing submissions, ensuring that they are can&rsquo;t interfere with app development.</p>
+
+<h2 id="deep-git-integration">Deep Git Integration</h2>
+
+<p>We realised the power of Git long before most people in this business and we&rsquo;ve had it baked-in for years. But, as with all of our FeedHenry 3 features, we listened to developers and added exactly what they needed. Firstly we have Git hosting integrated so you don&rsquo;t have to rely on having a GitHub or Bitbucket account. But just as importantly, we fully support git remote, so you now have the full power of distributed version control and can push/pull changes from whereever you wish into/out-of FeedHenry. Which leads neatly to the next feature&hellip;&hellip;.</p>
+
+<h2 id="grunt-ified-local-development">Grunt-ified local development</h2>
+
+<p>Whilst you can always work using the web gui and our improved Ace editor, most developers prefer to use their own local development environment and tools. Our fhc tool has always supported this to give you all the commands you need to interact with the platform. Now you also have full Grunt support in all of our templates. So you can use the power of fhc+git+grunt to develop and debug both your Cordova and Node.js code locally and then deploy it to FeedHenry. This of course opens up a wide range of possibilities with automation too.</p>
+
+<h2 id="full-node-js-express-rest-api-support">Full Node.js Express REST API support</h2>
+
+<p>FeedHenry has been doing Node since 2011, long long before the Node-washers arrived and jumped on the latest cool thing. This means we know it inside out. We&rsquo;ve taken the pain of the early days and know how to make Node sing. We&rsquo;ve had Express support for quite a while but we now also offer completely standard support for REST APIs in Express. So take whatever Node code you have and drop it straight into FeedHenry 3.</p>
+
+<h2 id="connections">Connections</h2>
+
+<p>Connections are an extremely powerful way of dynamically reconfiguring which Node.js Cloud App your mobile Apps are talking to without having to re-deploy your Apps. For example you can spin up a new version of your cloud code to try out a fix for Android and point all of your Android users to that code, whilst everyone else continues to use another version.</p>
+
+<h2 id="shared-discoverable-microservices">Shared Discoverable Microservices</h2>
+
+<p>Rather than having unique custom cloud code for every app and every project, you should aim for maximum re-use. As Enterprises roll-out suites of Apps, many of them will want to access the same back-end systems. By spinning up standalone discoverable (via API Blueprint) Microservices inside FeedHenry 3, you can create something re-usable that your apps can share. Also, rather than exposing an entire internal system to the entire world, you can use our Services functionality to provide just a sub-set of APIs to your Apps, all proxied securely through FeedHenry.</p>
+
+<h2 id="web-app-hosting">Web App Hosting</h2>
+
+<p>Web Apps are first class citizens in FeedHenry 3. You can host both static web-sites or your own Node.js web apps that can use the same APIs as your mobile apps to talk to your Node.js Cloud Apps. These Web Apps are ideal for management and admin portals to go with your mobile apps.</p>
+
+<h2 id="responsive-touch-friendly-studio-ui">Responsive touch-friendly Studio UI</h2>
+
+<p>New features aren&rsquo;t much good if they are hard to use. Our Studio UI has been re-built from the ground up. Best practice responsive design and it even works nicely on your Tablet. This new UI gives us the ability to add new functionality quickly and easily and gives you a far superior user experience. We&rsquo;ve also carried out some major improvements in our App preview to cover a wide range of devices, device sizes and orientations.</p>
+
+<h2 id="new-templates-examples-and-tutorials">New templates, examples and tutorials</h2>
+
+<p>We&rsquo;re building out a great set of templates, examples and tutorials so you can be up and running with FeedHenry, using best practices, in the shortest time possible. Add in our fully integrated docs with context-aware help and you&rsquo;ll be productive on day 1.</p>
+
+<p>Lots more detail to come, very soon!</p>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="http://feedhenrydevblogarchive.github.io/enterprise-node-js-microservices-talk-node-js-dublin/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="http://feedhenrydevblogarchive.github.io/enterprise-node-js-microservices-talk-node-js-dublin/">Enterprise Node.js and Microservices talk at Node.js Dublin</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="http://feedhenrydevblogarchive.github.io/ibeacons-primer/">iBeacons: A Primer in Proximity Programming</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="http://feedhenrydevblogarchive.github.io/ibeacons-primer/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+  
+
+</div>
+
+</div>
+</div>
+<script src="http://feedhenrydevblogarchive.github.iojs/ui.js"></script>
+
+
+
+
+</body>
+</html>
+

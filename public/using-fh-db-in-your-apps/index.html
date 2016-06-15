@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.16" />
+
+  <title>Using fh.db in your apps. &middot; Archive of FeedHenry Developer Blog 2012-2016</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+
+  <link rel="shortcut icon" href="http://feedhenrydevblogarchive.github.ioimg/favicon.ico" type="image/x-icon" />
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <a href="/"><img src = "/logo.png" /></a>
+    <small>Copyright Red Hat 2016</small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Using fh.db in your apps.</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>03 Nov 2014, 15:06</time>
+  </div>
+
+  
+
+  
+
+  
+
+</div>
+
+  
+
+<h1 id="introduction">Introduction.</h1>
+
+<p>MongoDb is the leading NoSQL database available at the moment and the FeedHenry platform provides access to this hosted storage via the standard MongoDb driver or via the <a href="http://docs.feedhenry.com/v3/api/api_db.html">FeedHenry <em>fh.db</em> API</a>.  Details of this API can be found in the <em>Docs</em> section of your development studio but, for now, here is an example of how <em>fh.db</em> can be used in your app to host a database that can be accessed by multiple apps.  We will &hellip;</p>
+
+<ul>
+<li><p>Create a single project.</p></li>
+
+<li><p>Add a cloud app that acts as the interface to MongoDb using fh.db.</p></li>
+
+<li><p>Add a 2nd cloud app that calls this apps endpoints.</p></li>
+
+<li><p>Add a client app that will act as the user interface.</p></li>
+</ul>
+
+<h1 id="overview">Overview.</h1>
+
+<p><a href="/wp-content/uploads/2014/10/fhdb-shrunk.png"><img src="/wp-content/uploads/2014/10/fhdb-shrunk.png" alt="fhdb shrunk" /></a></p>
+
+<p>The project consists of 3 apps that reside in 3 public GitHub repositories.</p>
+
+<table width="534" style="height: 101px; width: 534px;" border="1px" class=" alignleft" >
+<tbody >
+<tr >
+
+<td >**Name**
+</td>
+
+<td >**URL**
+</td>
+</tr>
+<tr >
+
+<td >fhdb_cloud_main
+</td>
+
+<td >[https://github.com/FeedHenrySuprt/fhdb_cloud_main](https://github.com/FeedHenrySuprt/fhdb_cloud_main)
+</td>
+</tr>
+<tr >
+
+<td >fhdb_cloud_app
+</td>
+
+<td >[https://github.com/FeedHenrySuprt/fhdb_cloud_app](https://github.com/FeedHenrySuprt/fhdb_cloud_app)
+</td>
+</tr>
+<tr >
+
+<td >fhdb_client
+</td>
+
+<td >[https://github.com/FeedHenrySuprt/fhdb_client_app](https://github.com/FeedHenrySuprt/fhdb_client_app)
+</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="part-1-creating-the-project">Part 1 - Creating the project.</h2>
+
+<p>The code for this app is stored in GitHub.  Here is how to use it.</p>
+
+<ul>
+<li><p>In your FeedHenry (V3) studio, create a &ldquo;bare&rdquo; project.  You can find instructions on getting started on this in the _Getting Started_ section of the docs.</p></li>
+
+<li><p>Once created, add a new cloud app to the project by clicking the &ldquo;+&rdquo; under the _Cloud Code Apps_ section on the project view.</p></li>
+
+<li><p>Choose _Import Existing App_ when given the option, click <em>Next</em></p></li>
+
+<li><p>Give your app a name.  For this example, we will name it _fhdb_cloud<em>main</em>.  Click <em>Next</em>.</p></li>
+
+<li><p>Select _Public Git Repository_ and enter <a href="https://github.com/FeedHenrySuprt/fhdb_cloud_main.git">https://github.com/FeedHenrySuprt/fhdb_cloud_main.git</a> as the URL.  Make sure that you put _master_ as the branch.</p></li>
+
+<li><p>Hit _Import &amp; Move onto Integration_ to create your app.</p></li>
+</ul>
+
+<p>That&rsquo;s the 1st app done.  Now select <em>Apps, Cloud Apps &amp; Services</em> to go to the project overview. Create a 2nd cloud app by clicking the &ldquo;+&rdquo; under the <em>Cloud Code Apps</em> section.  The procedure is the same as for the _fhdb_cloud<em>main</em> app but use <a href="https://github.com/FeedHenrySuprt/fhdb_cloud_app.git">https://github.com/FeedHenrySuprt/fhdb_cloud_app.git</a> as the URL and <em>master</em> as the branch.  For the purposes of this example, we will call it _fhdb_cloud<em>app.</em> Finally, for this section, create a client facing app.  This is the same procedure again, except for the following &hellip;</p>
+
+<ul>
+<li><p>Add the app by pressing the &ldquo;+&rdquo; under the _Apps_ section of the project view.</p></li>
+
+<li><p>Choose the _Cordova Light_ option when presented.  Use <a href="https://github.com/FeedHenrySuprt/fhdb_client_app.git">https://github.com/FeedHenrySuprt/fhdb_client_app.git</a> as the URL and _master_ as the branch.</p></li>
+
+<li><p>We shall call this app _fhdb<em>app</em>.</p></li>
+
+<li><p>Follow the instructions that are presented for integrating the app into FeedHenry.</p></li>
+</ul>
+
+<p>Once this is done, you should have 2 cloud apps and 1 client facing app.</p>
+
+<h2 id="part-2-adjustments">Part 2 - Adjustments.</h2>
+
+<p>The _fhdb_cloud_app _app we have created needs to know the cloud url of the first app in order to communicate with it.  We can ensure this by placing the value of the URL in an environmental variable which is available to _fhdb_cloud<em>app</em>.</p>
+
+<ul>
+<li><p>Go to the _Details_ section of the _fhdb_cloud_main_ app and copy the value of <em>Current Host</em>.</p></li>
+
+<li><p>In the _fhdb_cloud<em>app</em>, go to _Environmental Variables, _create an APP_URL variable and give it the value of <em>Currant Host</em> that you have just copied.</p></li>
+</ul>
+
+<h2 id="part-3-using-the-app">Part 3 - Using the app.</h2>
+
+<p>In the _fhdb<em>app</em>, you can perform _fh,db_ functions in the preview.  Just make sure that your app is pointing to the _fhdb_cloud_app _in the preview.</p>
+
+<p><a href="/wp-content/uploads/2014/10/Screenshot-2014-10-16-16.56.58.png"><img src="/wp-content/uploads/2014/10/Screenshot-2014-10-16-16.56.58.png" alt="Screenshot 2014-10-16 16.56.58" /></a></p>
+
+<p>You can &hellip;</p>
+
+<ul>
+<li><p>Add entries to the collection by pressing _Add Mr Jones to MongoDb_ or <em>Add Mr Smith to MongoDb</em>.</p></li>
+
+<li><p>Clear the database by selecting <em>Delete From MongoDb</em>.</p></li>
+
+<li><p>List contents of the database by pressing <em>List From MongoDb</em>.</p></li>
+
+<li><p>List &ldquo;Mr Smith&rdquo; entries by pressing <em>List Mr Smith Entries</em>.</p></li>
+</ul>
+
+<p>Results from each action will appear in the pale green section of the app.</p>
+
+<h2 id="summary">Summary.</h2>
+
+<p>As you can see from examining the code of these 3 apps &hellip;</p>
+
+<ul>
+<li><p>We have one app, _fhdb_cloud_main,_ which maintains an instance of MongoDb and exposes endpoints to perform actions on and return data from this instance.</p></li>
+
+<li><p>The 2nd, _fhdb_cloud<em>app</em>, app is an example of a 2nd cloud app that calls these endpoints</p></li>
+
+<li><p>The 3rd app, running on a device, performs _fh.cloud_ calls to its own cloud app, _fhdb_cloud<em>app</em>, and displays the results on screen.</p></li>
+</ul>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="http://feedhenrydevblogarchive.github.io/publishing-jar-maven-central-repository/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="http://feedhenrydevblogarchive.github.io/publishing-jar-maven-central-repository/">Publishing the gitlab-shell Java client to the Maven Central Repository</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="http://feedhenrydevblogarchive.github.io/feedhenry-and-red-hat-pushing-ahead-with-integrations/">FeedHenry and Red Hat Pushing ahead with Integrations</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="http://feedhenrydevblogarchive.github.io/feedhenry-and-red-hat-pushing-ahead-with-integrations/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+  
+
+</div>
+
+</div>
+</div>
+<script src="http://feedhenrydevblogarchive.github.iojs/ui.js"></script>
+
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.16" />
+
+  <title>So long jQuery-UI, hello Bootstrap &middot; Archive of FeedHenry Developer Blog 2012-2016</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+
+  <link rel="shortcut icon" href="http://feedhenrydevblogarchive.github.ioimg/favicon.ico" type="image/x-icon" />
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <a href="/"><img src = "/logo.png" /></a>
+    <small>Copyright Red Hat 2016</small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>So long jQuery-UI, hello Bootstrap</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>24 Aug 2012, 10:58</time>
+  </div>
+
+  
+
+  
+
+  
+
+</div>
+
+  
+
+<h2 id="the-way-things-were">The way things were&hellip;</h2>
+
+<p>The FeedHenry App Studio in its old form was built primarily on jQuery, jQuery-UI and numerous jQuery plugins. The main plugins used were Accordion, Tabs, Button, Dialog, jWizard, jqGrid and UI-Layout. On top of this, there was a tonne of custom CSS classes, id&rsquo;s and styles. It was (and still is) a big project with a lot of files. Despite this, it did what it was required to do i.e. Provide a frontend to the FeedHenry Cloud platform.</p>
+
+<h2 id="why-change-it-works">Why change? It works!</h2>
+
+<p>Yes, it did work, but had some problems. It had problems from both the User&rsquo;s (your) and Developer&rsquo;s (our) point of view. The UI was dated looking and needed some love. We made a choice a few years back to create the studio as a single page application (jQuery UI-Layout). As it evolved, this choice proved troublesome as we added new elements like metrics and reporting. In fact, any new features that were added had to fit strict size constraints. It was a pain, but we did it nonetheless.</p>
+
+<p>jQuery UI was great at the time, but didn&rsquo;t do enough for the general look and feel of the Studio. We still ended up adding custom classes and styles for a lot of things. This led to confusion between class conventions and patterns, and ultimately led to multiple classes all doing similar things. The level of selector reuse was bad.</p>
+
+<p>The javascript was a similar story. There was no strict pattern followed throughout the Studio code. Instead, there were small pockets of patterns as various features were added over the years. Some patterns matched, but in general the code was badly structured. We used John Resig&rsquo;s javascript inheritance &lsquo;Class.extend&rsquo; <a href="http://ejohn.org/blog/simple-javascript-inheritance/">http://ejohn.org/blog/simple-javascript-inheritance</a> in some parts, and functions with public &amp; private members in other parts (similar to how Douglas Crockford describes private members <a href="http://javascript.crockford.com/private.html">http://javascript.crockford.com/private.html</a>). There were some nice sub-patterns in the code, particularly around the auto creation &amp; binding of the tabs (&lsquo;north&rsquo; layout), each with an accordion (in the &lsquo;west&rsquo; layout) that controlled the main content shown in the &lsquo;center&rsquo; layout. As it was a single page application, the footer sat in the &lsquo;south&rsquo; layout.</p>
+
+<p>From a User&rsquo;s point of view, the UI needed to be overhauled to give a nicer experience. From our point of view, the code needed restructuring and simplifying to make maintenance easier and more fun. A good knock-on-effect of this, as we discovered, would be speed improvements, particularly the initial load time of the Studio and the time it takes to switch tabs.</p>
+
+<h2 id="out-with-the-old">Out with the old&hellip;</h2>
+
+<p>We used Bootstrap <a href="http://twitter.github.com/bootstrap/">http://twitter.github.com/bootstrap/</a> before for the Docs site <a href="http://docs.feedhenry.com/">http://docs.feedhenry.com</a> and landing pages on <a href="https://hpcs.feedhenry.com/">https://hpcs.feedhenry.com</a> and <a href="https://mobilecf.feedhenry.com/">https://mobilecf.feedhenry.com</a>. It worked well and provided a nice UI layout out of the box. It was a good fit for what we wanted to do with the Studio UI. So while we replaced the old jQuery UI components with the shiny new Bootstrap equivalent, we also untangled and rewired as much of the coding mess as possible. We made a big leap towards an MVC pattern everywhere.</p>
+
+<p>For those who are interested in what we replaced the jQuery UI/plugin components with, here&rsquo;s a table:
+<table cellpadding="0" cellspacing="0" style="width: 75%;" border="0" ></p>
+
+<p><tr >
+jQuery
+Bootstrap
+</tr></p>
+
+<p><tbody >
+<tr ></p>
+
+<p><td >UI-Layout
+</td></p>
+
+<p><td >Fluid Grid System
+</td>
+</tr>
+<tr ></p>
+
+<p><td >UI-Tabs
+</td></p>
+
+<p><td >Basic Tabs
+</td>
+</tr>
+<tr ></p>
+
+<p><td >UI-Accordion
+</td></p>
+
+<p><td >Nav list
+</td>
+</tr>
+<tr ></p>
+
+<p><td >UI-Button
+</td></p>
+
+<p><td >Buttons/Button Groups
+</td>
+</tr>
+<tr ></p>
+
+<p><td >qTip
+</td></p>
+
+<p><td >Tooltip/Popover, Labels
+</td>
+</tr>
+<tr ></p>
+
+<p><td >jqGrid
+</td></p>
+
+<p><td >dataTables
+</td>
+</tr>
+<tr ></p>
+
+<p><td >Dialog
+</td></p>
+
+<p><td >Modals
+</td>
+</tr>
+</tbody>
+</table></p>
+
+<p>Also, some other Bootstrap components we used in place of our old custom code/styles:</p>
+
+<ul>
+<li><p>Breadcrumbs (custom styles before)</p></li>
+
+<li><p>Forms (custom form &amp; input styles before)</p></li>
+
+<li><p>Font-Awesome icons in nav list (no icons before in accordions)</p></li>
+
+<li><p>Transitions (no transition before, anywhere)</p></li>
+</ul>
+
+<h2 id="where-did-the-magic-go">Where did the magic go?</h2>
+
+<p>Wizards haven&rsquo;t changed at this time. There&rsquo;s still one old plugin in use because the migration for it is a big task on its own. The jQuery jWizard plugin is heavily integrated into the UI. The plugin was also modified to allow showing and hiding buttons at different steps in the wizard. Before we make a decision on this, we need to ask ourselves if wizards are the most appropriate solution. Should we even use a modal dialog for them (we don&rsquo;t in some places already)? Should all the wizard steps be presented on a single screen (currently only do this for &lsquo;Generate App&rsquo;)? Watch this space&hellip;</p>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="http://feedhenrydevblogarchive.github.io/unit-testing-a-node-js-backend/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="http://feedhenrydevblogarchive.github.io/unit-testing-a-node-js-backend/">Unit Testing a Node.js Backend</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="http://feedhenrydevblogarchive.github.io/agile-in-a-services-based-team/">Agile in a Services Based Team</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="http://feedhenrydevblogarchive.github.io/agile-in-a-services-based-team/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+  
+
+</div>
+
+</div>
+</div>
+<script src="http://feedhenrydevblogarchive.github.iojs/ui.js"></script>
+
+
+
+
+</body>
+</html>
+

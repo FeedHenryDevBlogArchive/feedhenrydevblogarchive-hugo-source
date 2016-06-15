@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.16" />
+
+  <title>FeedHenry Workflow &middot; Archive of FeedHenry Developer Blog 2012-2016</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+
+  <link rel="shortcut icon" href="http://feedhenrydevblogarchive.github.ioimg/favicon.ico" type="image/x-icon" />
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <a href="/"><img src = "/logo.png" /></a>
+    <small>Copyright Red Hat 2016</small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>FeedHenry Workflow</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>26 Sep 2012, 10:54</time>
+  </div>
+
+  
+
+  
+
+  
+
+</div>
+
+  
+
+<p>If you&rsquo;ve used the FeedHenry platform to develop mobile apps, chances are you&rsquo;ve gotten to grips with some of our power user features. This post attempts to bring together all these features and tweaks that the Apps team here at FeedHenry use on a daily basis to build apps like a power user.</p>
+
+<h2 id="fhc">FHC</h2>
+
+<p>The first tool of choice is our Command Line Interface (CLI). FHC allows you to list, create, build and deploy applications in FeedHenry from the command line. Why is this a power user feature? Most power users prefer to be able to perform tasks through a few keystrokes on a command line, rather than through a visual UI. Here are a few popular use cases for FHC:</p>
+
+<ul>
+<li><p>A SCM system that doesn&rsquo;t support post receive hooks to automatically pull code after a checkin?</p>
+
+<p>fhc git pull someAppID</p></li>
+
+<li><p>Find yourself frequently creating a series of iPhone and Android builds for distribution Over The Air (OTA)? Build a shell script that kicks these builds off through FHC, come back once done</p></li>
+
+<li><p>Want to search through log output of an app in a live environment?</p>
+
+<p>fhc logs someAppID | grep -i &lsquo;ERROR: &lsquo;</p></li>
+
+<li><p>Need to quickly apply a hotfix?</p>
+
+<p>git push origin release
+fhc git pull someAppID
+fhc stage someAppID &ndash;live</p></li>
+</ul>
+
+<h3 id="aliases">Aliases</h3>
+
+<p>To make the use of FHC more useful, we make use of aliases. The ID assigned to an app is really long - and while we can copy and paste, it&rsquo;s nice to be able to alias it to something else. Setting up an alias is simple:</p>
+
+<pre><code>fhc alias myapp=sX7ITIjMxxLiZllZi0rRWHrM
+</code></pre>
+
+<p>Now, we can run commands like</p>
+
+<pre><code>fhc logs myapp
+</code></pre>
+
+<h3 id="working-locally">Working Locally</h3>
+
+<p>Another very useful power user feature of FHC is <em>fhc local</em>. Local allows developers to work on their app offline. To get set up for working locally, we first need to install dependencies, as you would with any Node.js application. To do this:</p>
+
+<pre><code>cd cloud
+npm install -d
+cd ..
+</code></pre>
+
+<p>Now, we&rsquo;re good to go. We simply run</p>
+
+<pre><code>fhc local
+</code></pre>
+
+<p>and open <a href="http://127.0.0.1:8888">http://127.0.0.1:8888</a> (localhost) in our web browser. What this does in the background is runs the _main.js _cloud code from your cloud directory locally as a Node.js process, and also runs a webserver serving up the files in client/default/index.html.</p>
+
+<p>There&rsquo;s many options available too, such as watching the local file system for changes, proxying requests through to the FeedHenry live environment rather than running the app locally and applying packages. To see all the options available, run</p>
+
+<pre><code>fhc local --help
+</code></pre>
+
+<h3 id="using-over-the-air-ota">Using Over The Air (OTA)</h3>
+
+<p>OTA makes installing builds on device much quicker. This feature is available for all Android developers, but only those in possession of an iOS Enterprise Development account ($299/yr rather than $99/yr) can sign apps Over The Air. To do this, you need to use a Distribution Certificate &amp; Private Key, along with an In-House provisioning profile. Once these resources are uploaded to your account, you can use <em>fhc ota</em> to generate OTA builds, and builds in the studio will also show an OTA install URl.</p>
+
+<h2 id="using-git">Using Git</h2>
+
+<p>In a team-based environment, using some form of SCM is vital to the success of the project. We use git.</p>
+
+<p>Usually, we&rsquo;ll have sprint branches, where the user stories for that sprint are checked in. All developers work off this sprint. Developers will develop and test code locally using <em>fhc local</em> (described above), and once done commit it to the repository.
+To make sure we don&rsquo;t need to <em>git pull</em> our app every time, we use a post receive hook - this tells FeedHenry to grab the latest code on every commit.</p>
+
+<p>Releases are done off either <em>master</em> or, more than likely, a <em>release</em> branch. The reason for using a release branch rather than master is it&rsquo;s too easy to accidentally check into <em>master</em>.
+We have a corresponding FeedHenry studio app for &lsquo;dev&rsquo; and &lsquo;release&rsquo; - one of which points to the latest sprint branch, the other the release branch. When we&rsquo;re ready to ship new code, the sprint branch gets merged into release. We then stage the cloud code, and generate builds, both from the live project in FeedHenry.</p>
+
+<h2 id="screencast">Screencast</h2>
+
+<p>Some of these points are illustrated in our screencast.</p>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="http://feedhenrydevblogarchive.github.io/agile-in-a-services-based-team/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="http://feedhenrydevblogarchive.github.io/agile-in-a-services-based-team/">Agile in a Services Based Team</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="http://feedhenrydevblogarchive.github.io/mobile-and-cloud-a-match-made-in-heaven/">Mobile and Cloud : A Match Made In Heaven</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="http://feedhenrydevblogarchive.github.io/mobile-and-cloud-a-match-made-in-heaven/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+  
+
+</div>
+
+</div>
+</div>
+<script src="http://feedhenrydevblogarchive.github.iojs/ui.js"></script>
+
+
+
+
+</body>
+</html>
+

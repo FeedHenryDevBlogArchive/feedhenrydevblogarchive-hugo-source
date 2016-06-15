@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mobile Platform on Archive of FeedHenry Developer Blog 2012-2016</title>
+    <link>http://feedhenrydevblogarchive.github.io/categories/mobile-platform/</link>
+    <description>Recent content in Mobile Platform on Archive of FeedHenry Developer Blog 2012-2016</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 07 Dec 2015 13:19:42 +0000</lastBuildDate>
+    <atom:link href="http://feedhenrydevblogarchive.github.io/categories/mobile-platform/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Madrid Hackathon</title>
+      <link>http://feedhenrydevblogarchive.github.io/madrid-hackathon/</link>
+      <pubDate>Mon, 07 Dec 2015 13:19:42 +0000</pubDate>
+      
+      <guid>http://feedhenrydevblogarchive.github.io/madrid-hackathon/</guid>
+      <description>&lt;p&gt;In Madrid, in a cool location in the centre of the city, Red Hat sponsored a IoT hackathon, 3 groups used RHMAP (Red Hat Mobile Application Platform) to build their entry for the competition. Over the course of two days (19 - 20th November), 11 groups and 6 individuals battled to find out who could build the best application.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/11/Windows-phone_20151119_22_36_23_Rich_LI.jpg&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/11/Windows-phone_20151119_22_36_23_Rich_LI.jpg&#34; alt=&#34;Windows phone_20151119_22_36_23_Rich_LI&#34; /&gt;&lt;/a&gt; &lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/11/Windows-phone_20151119_10_39_06_Rich_LI.jpg&#34; alt=&#34;Windows phone_20151119_10_39_06_Rich_LI&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We where there to get them going and help where needed. For most of them doing anything mobile or IoT was completely new, but they had some experience with Node.js, once we explained them how things globally worked and shown them how to build a simple &amp;ldquo;Hello World&amp;rdquo; they where off. Remarkably, little help was needed the most questions we got where: &amp;ldquo;how do I do &amp;lsquo;xyz&amp;rsquo;&amp;rdquo; or &amp;ldquo;what is the best approach to add a feature like this&amp;rdquo;. Although I had explained that you could develop / run things locally some contestants where comfortable using a online approach developing locally and testing the app in the &amp;lsquo;App Preview&amp;rsquo; window.&lt;/p&gt;
+
+&lt;p&gt;It wasn&amp;rsquo;t all work, there was some entertainment as well, there where some guys making jokes and some presentations about the possible future of IoT. Everything that happened was documented with some sketch notes. My portrait is also on it:&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/11/Windows-phone_20151119_20_45_17_Rich_LI.jpg&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/11/Windows-phone_20151119_20_45_17_Rich_LI.jpg&#34; alt=&#34;Windows phone_20151119_20_45_17_Rich_LI&#34; /&gt;&lt;/a&gt; &lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/11/Windows-phone_20151119_10_39_06_Rich_LI.jpg&#34;&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;One of &amp;ldquo;our&amp;rdquo; teams won the big prize of 6000 euros, they got 2 checks like the one in the picture. As you can see from the eyes they pulled an &amp;ldquo;all nighter&amp;rdquo; to get something cool in the end.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/11/20151120_123940.jpg&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/11/20151120_123940.jpg&#34; alt=&#34;20151120_123940&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;So a very successful and cool event, for us an opportunity to see how easy it is to get going on the platform and get ideas to improve the getting started. Till next year.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>iBeacons: A Primer in Proximity Programming</title>
+      <link>http://feedhenrydevblogarchive.github.io/ibeacons-primer/</link>
+      <pubDate>Thu, 01 May 2014 21:37:54 +0000</pubDate>
+      
+      <guid>http://feedhenrydevblogarchive.github.io/ibeacons-primer/</guid>
+      <description>
+
+&lt;p&gt;iBeacons are a low-power bluetooth device Apple quietly release as part of the iOS7 launch recently. They&amp;rsquo;re the Apple alternative to NFC, a small location aware device which developers can use to track user&amp;rsquo;s proximity to a location, and trigger various actions in a mobile app. Potential use cases include payments, exhibit information, proximity advertising and promotions (read: spam),  and many more besides. iBeacons are a departure from the normal way Apple deals with Hardware  - interestingly, any vendor is free to make iBeacons which will work with Apple SDKs. The devices are both simple and cheap, and it&amp;rsquo;s pretty easy to hack one together with a Raspberry Pi and a bluetooth receiver, or an old iPhone.&lt;/p&gt;
+
+&lt;h2 id=&#34;what-is-an-ibeacon&#34;&gt;What is an iBeacon?&lt;/h2&gt;
+
+&lt;p&gt;An iBeacon is a Bluetooth Low Energy device that transmits some important information back to a mobile device to identify it, and it&amp;rsquo;s location.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Proximity UUID:&lt;/strong&gt; The &amp;lsquo;unique&amp;rsquo; identifier of this type of iBeacon. Unfortunately, this isn&amp;rsquo;t unique at all  - more on that later.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Major:&lt;/strong&gt; A number that identifies a group of iBeacons, e.g. all those deployed within a specific store&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Minor:&lt;/strong&gt; A number (which at least should be unique - finally!) to identify the specific device&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Proximity:&lt;/strong&gt; A number which identifies how close the beacon is - Far, Near or Immediate.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;identifying-ibeacons&#34;&gt;Identifying iBeacons&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://res.cloudinary.com/cianclarke/image/upload/c_scale,w_225/v1398957797/photo1_1_k7twsu.jpg&#34; alt=&#34;&#34; /&gt;As eluded to in the above bullet points, the UUID is not unique. If you&amp;rsquo;ve made your own iBeacons, great, you&amp;rsquo;ll use this number to identify all the beacons you&amp;rsquo;ve made.
+If you&amp;rsquo;ve bought iBeacons, they&amp;rsquo;ll already have been assigned an UUID by the manufacture. Here&amp;rsquo;s where things get a little messy - manufacturers don&amp;rsquo;t always provide the end user with the UUID. This locks you into using their SDK toolset (no thank you), rather than just interfacing directly with the iBeacons using the iOS SDK APIs.
+Some quick googling reveals the UUID of some common iBeacon manufactures - as to which one, it&amp;rsquo;s just trial and error I&amp;rsquo;m afraid:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Roximity: 8DEEFBB9-F738-4297-8040-96668BB44281 || 8deefbb9-f738-4297-8040-96668bb44281 [2]&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Estimote: B9407F30-F5F8-466E-AFF9- 25556B57FE6D [3]&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Kontakt: ed3a6985-8872-4bb7-b784-c59ef3589844 [4]&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Now that you have the Proximity UUID, you can start ranging for iBeacons in your app. All three of our Beacons were identical in every way - there was no unique identifier on the casing, so I enabled the beacons one by one, &lt;a href=&#34;https://github.com/cianclarke/iBeacons-primer/blob/hardcoded-beacons/BeaconReceiver/ViewController.m#L79&#34;&gt;logging the Major and Minor IDs as I went&lt;/a&gt;. Turns out, all our beacons have a Major ID of 1, and unique minor IDs.
+Taking note of this, and reaching into my developer toolkit, there&amp;rsquo;s two things I did. First,  we can construct a simple &lt;a href=&#34;https://github.com/cianclarke/iBeacons-primer/blob/hardcoded-beacons/BeaconReceiver/ViewController.m#L82-L105&#34;&gt;switch statement that does special logic for each beacon&lt;/a&gt; in our iOS app. Then, I use a very advanced piece of equipment known as a Sharpie, so I don&amp;rsquo;t mix up the beacons!&lt;/p&gt;
+
+&lt;h2 id=&#34;a-note-on-proximity&#34;&gt;A note on Proximity&lt;/h2&gt;
+
+&lt;p&gt;The proximity of these devices isn&amp;rsquo;t particularly precise. The near and immediate values in particular look to fluctuate quite rapidly. For accurate readings, some slightly more complex logic than illustrated in this example code may be needed in the &lt;a href=&#34;https://github.com/cianclarke/iBeacons-primer/blob/hardcoded-beacons/BeaconReceiver/ViewController.m#L53&#34;&gt;didRangeBeacons delegate function&lt;/a&gt;, for example taking an average proximity across the last N calls.&lt;/p&gt;
+
+&lt;p&gt;Another interesting observation I made was that across our three small offices, all adjacent, the &amp;lsquo;near&amp;rsquo; value wasn&amp;rsquo;t wide enough to distinguish one from the other, and the &amp;lsquo;immediate&amp;rsquo; value was too close to identify an office. It seems these devices don&amp;rsquo;t function well on such a small location scale.&lt;/p&gt;
+
+&lt;h2 id=&#34;enter-mbaas&#34;&gt;Enter mBaaS&lt;/h2&gt;
+
+&lt;p&gt;We&amp;rsquo;ve hardcoded a few iBeacon Secondary IDs and the relevant responses for these in a switch statement - but let&amp;rsquo;s make this a little more dynamic. I&amp;rsquo;ve added my project to FeedHenry, and I&amp;rsquo;m going to make use of the FeedHenry Data Browser to set up a collection of iBeacons that I can easily mange. I&amp;rsquo;m also going to write &lt;a href=&#34;https://gist.github.com/cianclarke/272fae631ab34ac38161#file-beacons-js-L5-L19&#34;&gt;some simple cloud code&lt;/a&gt; to return an object of iBeacon minor ID key, object value pairs back to the client.&lt;/p&gt;
+
+&lt;p&gt;[caption id=&amp;ldquo;attachment_646&amp;rdquo; align=&amp;ldquo;alignnone&amp;rdquo; width=&amp;ldquo;594&amp;rdquo;]&lt;img src=&#34;http://res.cloudinary.com/cianclarke/image/upload/v1398957033/Screen_Shot_2014-05-01_at_11_10_02_qdolou.png&#34; alt=&#34;&#34; /&gt; My project setup in FeedHenry mBaaS[/caption]&lt;/p&gt;
+
+&lt;p&gt;Lastly, I&amp;rsquo;ve altered the mobile app to &lt;a href=&#34;https://github.com/cianclarke/iBeacons-primer/blob/master/BeaconReceiver/ViewController.m#L40-L56&#34;&gt;request the list of iBeacons from the FeedHenry cloud&lt;/a&gt;, and &lt;a href=&#34;https://github.com/cianclarke/iBeacons-primer/blob/master/BeaconReceiver/ViewController.m#L92-L102&#34;&gt;draw the label, sublabel, and colour from this description&lt;/a&gt;. I can now easily change my iBeacon text labels and colours that show when the beacon enters range.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s a video of it all in action:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.youtube.com/watch?v=E9XkkeTpxNg&#34;&gt;http://www.youtube.com/watch?v=E9XkkeTpxNg&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;how-about-indoor-mapping&#34;&gt;How about Indoor Mapping?&lt;/h2&gt;
+
+&lt;p&gt;One of the big implications of these new devices is their potential use for indoor mapping. Unfortunately, the usefulness of three beacon which can transmit no more than signal strength (and thus, in turn, an estimation of proximity as we use above) makes for a poor location monitoring device out of the box. I tried some simple triangulation logic, and took the beacons into the car park of our office. Although there was clearly some consistency in the (x,y) coordinate pairs I was receiving at each beacon, I found no correlation between the number range at each triangular point and a cartesian plane.
+In summary: Unless you have a lot of time on your hands, or a higher level API becomes available for triangulating position based on iBeacons, it&amp;rsquo;s probably not worth the effort.&lt;/p&gt;
+
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;There are plenty of potential applications for this technology in retail, manufacturing, museums, healthcare, and more besides! Of course, this iOS demo app could be expanded to more advanced uses of the iBeacon SDK - but this quick example illustrates the concepts. Hopefully this primer shows how to get up and running with iBeacons, and illustrates how easy it is to manage these in the FeedHenry cloud.&lt;/p&gt;
+
+&lt;p&gt;[1] &lt;a href=&#34;https://developer.apple.com/library/ios/documentation/userexperience/conceptual/LocationAwarenessPG/RegionMonitoring/RegionMonitoring.html (Monitoring&#34;&gt;https://developer.apple.com/library/ios/documentation/userexperience/conceptual/LocationAwarenessPG/RegionMonitoring/RegionMonitoring.html (Monitoring&lt;/a&gt; Beacon Regions)&lt;/p&gt;
+
+&lt;p&gt;[2] &lt;a href=&#34;http://stackoverflow.com/questions/21208634/detect-roximity-ibeacon-without-roximity-sdk&#34;&gt;http://stackoverflow.com/questions/21208634/detect-roximity-ibeacon-without-roximity-sdk&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;[3] &lt;a href=&#34;https://community.estimote.com/hc/en-us/articles/200761958-Advertising-Packet-Estimote-s-Proximity-UUID&#34;&gt;https://community.estimote.com/hc/en-us/articles/200761958-Advertising-Packet-Estimote-s-Proximity-UUID&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;[4] &lt;a href=&#34;http://docs.kontakt.io/beacon/kontakt-beacon-v1.pdf&#34;&gt;http://docs.kontakt.io/beacon/kontakt-beacon-v1.pdf&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

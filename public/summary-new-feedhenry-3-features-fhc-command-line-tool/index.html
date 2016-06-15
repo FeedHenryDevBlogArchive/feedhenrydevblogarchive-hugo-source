@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.16" />
+
+  <title>A summary of the FeedHenry 3 changes in our fhc command-line tool &middot; Archive of FeedHenry Developer Blog 2012-2016</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+
+  <link rel="shortcut icon" href="http://feedhenrydevblogarchive.github.ioimg/favicon.ico" type="image/x-icon" />
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <a href="/"><img src = "/logo.png" /></a>
+    <small>Copyright Red Hat 2016</small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>A summary of the FeedHenry 3 changes in our fhc command-line tool</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>24 Jun 2014, 17:26</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="http://feedhenrydevblogarchive.github.iotags/cli">cli</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://feedhenrydevblogarchive.github.iotags/feedhenry3">feedhenry3</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://feedhenrydevblogarchive.github.iotags/fhc">fhc</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://feedhenrydevblogarchive.github.iotags/node">node</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://feedhenrydevblogarchive.github.iotags/node.js">node.js</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://feedhenrydevblogarchive.github.iotags/npm">npm</a>
+    
+  </div>
+  
+  
+
+</div>
+
+  
+
+<p>We develop everything in FeedHenry API-first ,which means our command-line tooling is just as powerful as our Web UIs, with the added advantage of automation and scriptability.</p>
+
+<p>The main FeedHenry CLI is called <em>fhc</em> and it is how most developers interact with the platform. Version 0.30.x has had quite a few changes (to put it mildly!) for FeedHenry 3 and we&rsquo;ll summarise those changes here. <em>fhc</em> will continue to work with both FeedHenry 3 and previous versions of the platform for the foreseeable future. Of course, being a Node.js App, it supports Windows, OSX and Linux.</p>
+
+<h2 id="new-feedhenry-3-commands">New FeedHenry 3 Commands</h2>
+
+<h3 id="fhc-projects">fhc projects</h3>
+
+<p>Projects are a major new concept within FeedHenry 3 and enable groups of developers to work together on different but related Apps (e.g. iOS Native Client,  Cordova Client, Cloud Code and mBaaS Service). You can this command to list/create/update/read/delete or clone a project. &ldquo;Clone&rdquo; is particularly powerful as it does a &lsquo;git clone&rsquo; of each App in your Project into the current working directory.</p>
+
+<h3 id="fhc-services">fhc services</h3>
+
+<p>Services are one of the other main pillars of FeedHenry 3, enabling you to create standalone cloud services which are re-usable across one or more projects. This makes them ideal as connectors to your back-end systems and we are regularly expanding the list of out-of-the-box services. You can this command to list/create/update/read or delete a service.</p>
+
+<h3 id="fhc-connections">fhc connections</h3>
+
+<p>Connections provide the ability to dynamically reconfigure which Cloud Code a specific app (and app version) communicates with. This can be done without needing to release new versions of your apps. Different apps/versions can simultaneously talk to different versions of your cloud code. You can use this command to easily list and change the connections.</p>
+
+<h3 id="fhc-artifacts">fhc artifacts</h3>
+
+<p>In FeedHenry 3, you can now view your build artifacts including the download URL and credential credential bundles used. This command shows you Platform, App Version, Date, Type, Credentials and URL for a given Project and App. Since our Build Farm now supports native iOS, Android and Windows Phone 8, all of those are available too.</p>
+
+<h3 id="fhc-forms-fhc-submissions-and-fhc-themes">fhc forms, fhc submissions and fhc themes</h3>
+
+<p>Our zero-code Drag and Drop Apps, based around Forms, had a massive upgrade in FeedHenry 3 and they have really been grabbing everyone&rsquo;s attention. Everything you can do with Forms in the Studio, you can also do on the command line. For Forms themselves, this includes list/create/update/get/delete. Similar commands are available for Forms Apps, Forms Groups, Forms Themes and Forms Notifications. Everything is built on JSON and can be easily modified and moved. All of the data submitted by users using Drag and Drop Apps is also available</p>
+
+<h3 id="fhc-templates">fhc templates</h3>
+
+<p>We have an ever expanding set of template/sample/tutorial Apps which can be listed and read on the command line.</p>
+
+<h3 id="fhc-ssh-keys-and-fhc-user-keys">fhc ssh-keys and fhc user-keys</h3>
+
+<p>You can manage both your ssh keys and FeedHenry API Keys from the cli including commands like list/add/delete/read/update.</p>
+
+<h2 id="changes-to-existing-commands">Changes to existing commands</h2>
+
+<h3 id="fhc-apps">fhc apps</h3>
+
+<p>The apps command, instead of just listing apps as it did in the past, contains all apps related sub commands like list/create/read/update/delete.</p>
+
+<p>The following older apps related commands still exist but have been deprecated:</p>
+
+<ul>
+<li><p>fhc read</p></li>
+
+<li><p>fhc delete</p></li>
+
+<li><p>fhc update</p></li>
+
+<li><p>fhc delete</p></li>
+</ul>
+
+<h3 id="fhc-import">fhc import</h3>
+
+<p>This is now invoked as follows:</p>
+
+<pre><code>fhc import &lt;project-id&gt; &lt;app-title&gt; &lt;app-template-type&gt; [&lt;zip-file&gt; || &lt;git-repo&gt;]
+</code></pre>
+
+<p>Note: if no file or repo is specified, a bare git repo is created</p>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="http://feedhenrydevblogarchive.github.io/announcing-feedhenry-c-net-native-sdk-windows-phone-xamarin/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="http://feedhenrydevblogarchive.github.io/announcing-feedhenry-c-net-native-sdk-windows-phone-xamarin/">Announcing the FeedHenry C#/.NET Native SDK for Windows Phone and Xamarin </a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="http://feedhenrydevblogarchive.github.io/creating-re-usable-mbaas-services-feedhenry-3/">Creating re-usable mBaaS Services in FeedHenry 3</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="http://feedhenrydevblogarchive.github.io/creating-re-usable-mbaas-services-feedhenry-3/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+  
+
+</div>
+
+</div>
+</div>
+<script src="http://feedhenrydevblogarchive.github.iojs/ui.js"></script>
+
+
+
+
+</body>
+</html>
+

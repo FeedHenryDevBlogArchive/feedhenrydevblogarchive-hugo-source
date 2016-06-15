@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.16" />
+
+  <title>Building a Developer Studio in NodeJS &middot; Archive of FeedHenry Developer Blog 2012-2016</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+
+  <link rel="shortcut icon" href="http://feedhenrydevblogarchive.github.ioimg/favicon.ico" type="image/x-icon" />
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <a href="/"><img src = "/logo.png" /></a>
+    <small>Copyright Red Hat 2016</small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Building a Developer Studio in NodeJS</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>25 Jul 2012, 11:00</time>
+  </div>
+
+  
+
+  
+
+  
+
+</div>
+
+  
+
+<p>Back in December of 2011, our CTO Mícheál had an interesting concept: What if we tried building a developer studio on top of our Node.js Module, FHC? Here&rsquo;s how we went about doing just that.</p>
+
+<p>Some background: Since November 2011, FeedHenry has had a Node.js module that interfaces with the FeedHenry platform. It&rsquo;s primary purpose was as a CLI, but since it was written in Node.js, it was perfect to use as a gateway into FeedHenry to do other stuff! FHC was originally an internal tool, but we found it such a great tool to our workflows that we decided to open source the module, and open it up to the world. Since then, we&rsquo;ve been building this tool in the open, adding functionality as people using the platform demand. It served as the perfect basis for building a studio.</p>
+
+<p>The fh-skunkworks department spent a few long nights hacking, the output of which was a simple architecture forming the basis of this project: ExpressJS, FHC, Node.js and Bootstrap. The first iteration did little more than show a list of apps in a user&rsquo;s account in a very shiny matter. The finished project was a different beast entirely. What follows is a look at some of the cool stuff we learned along the way.</p>
+
+<h2 id="express-as-a-framework">Express as a Framework</h2>
+
+<p>Express has been around since the earliest days of Node. It gives support for routing, templating, static directory support &amp; loads more out of the box. It achieves lots of it&rsquo;s core functionality by extending Sencha&rsquo;s Connect module for Node middleware.
+It powers all the route handling of the studio&rsquo;s API, generates on-the-fly stylesheets, and renders views.</p>
+
+<h2 id="templating-engines">Templating Engines</h2>
+
+<p>The project started with using EJS as it&rsquo;s templating engine. Based on JavaScript, the syntax is immediately apparent, and Express supports EJS out of the box.
+Some research revealed that EJS wasn&rsquo;t the only contender - a whole host of templating languages exist. There&rsquo;s Jade, HAML, Mustache, and of course Dust. LinkedIn had some <a href="http://engineering.linkedin.com/frontend/leaving-jsps-dust-moving-linkedin-dustjs-client-side-templates">interesting musings</a> on the subject, and their evaluation lead us to chose Dust.
+Dust promotes logic-less templates, with any logic pushed out to helper functions. In theory, this sounds great.
+The reality, I&rsquo;ve found, was this was too lofty an ambition. It&rsquo;s incredibly useful to have short one-line conditional wrapping an element. This proves particularly difficult in Dust, and is a breeze in EJS.
+Another issue with Dust is the project is no longer actively maintained, and doesn&rsquo;t work with Node &gt; 0.6.*, meaning we have to point to a branch of the project we maintain.
+There are two distinct schools of thought when it comes to templating - logic, or logicless. Dust falls into the latter, and whilst I&rsquo;m sure it works for some projects, I found it lead to unwieldy and convoluted helper functions which could have been easier achieved using a small piece of logic in the template.
+On reflection EJS was the best choice - it&rsquo;s perhaps one we&rsquo;ll revisit in the future.</p>
+
+<h2 id="generated-stylesheets">Generated Stylesheets</h2>
+
+<p>Prior to beginning work on this project, my only experience of generated stylesheets was SASS when combined with the Sencha Touch framework. While it solved a problem, I hated the fact that I had to run a command to re-compile my stylesheets upon making any change.
+Express has a few generated stylesheet options - the difference is it uses it&rsquo;s middleware to monitor for changes to the style file, and if it&rsquo;s changed, automatically generates the .CSS output on the next page request.
+The main options were Stylus and LESS, both of which have middleware available for Express. Stylus is part of the &ldquo;who needs curly braces and semicolons&rdquo; school - not for me. LESS, on the other hand, is still valid CSS - the choice was obvious.
+Less, when combined with Express, is incredibly powerful.Things get even more interesting when we add Bootstrap.</p>
+
+<h2 id="bootstrap-apps-all-look-the-same">Bootstrap apps all look the same&hellip;</h2>
+
+<p>Picture an entire web-app, who&rsquo;s look &amp; feel can be modified with <a href="https://github.com/feedhenry/fh-studio/blob/master/client/css/main.less#L23">one line of CSS</a>. That&rsquo;s exactly what we built.
+Bootstrap&rsquo;s CSS is based on LESS, meaning it plugged into the existing LESS stylesheet of our application with a simple import.</p>
+
+<p>Combined with the fact that the outer frame of our studio was largely hand-rolled, this negates an issue often present with a project that uses Twitter&rsquo;s amazing Bootstrap framework - things no longer look the same.</p>
+
+<h2 id="a-single-page-app-only-not">A Single-page App, only not!</h2>
+
+<p>One of the biggest challenges of writing a big web application is handling the framework around page navigation. Wouldn&rsquo;t it be great if you could just wire up <a href="/somePage"> tags as normal?</p>
+
+<p>Perfectly achievable! When the app gets initialized, an event handler is attached to all anchor links. This handler decides if, based on the URL, it needs to do a single-page navigation or a full page reload.
+We do this by appending a class to all links suitable. We also cancel the event handler if somebody has the CMD, Shift or CTRL keys pressed. This means links still function perfectly opened in a new window, and the current tab doesn&rsquo;t navigate - a huge point of frustration for many single page apps!</p>
+
+<p>Once we&rsquo;ve decided we&rsquo;re going to do a single page navigation, we request from our Express route a JSON representation of this page. It returns the data, and what template we need to lookup to render it. This is best illustrated with a code example.</p>
+
+<table cellpadding="0" cellspacing="0" >
+<tbody >
+<tr >
+
+<td width="100%" >
+
+    
+    // attach an event handler to all links with the singlepage class
+    // that is all links we want to not do a full page nav
+    // where possible
+
+
+
+    
+    $('a.singlepage').click(function(e){
+      e.preventDefault();
+      var url = $(this).attr('href'),
+    
+      // Continue as normal for cmd clicks etc
+      if ( event.which == 2 || event.metaKey || url==="#" || !url ) { 
+        return true; 
+      }
+
+
+
+    
+      // Now do a call to our JSON API made by Express.
+      // Because the resource type is JSON, we get JSON back!
+      $.get(self.url + ".json", function(res){
+        // Res contains the template we need to look up,
+        // and the data to apply to it.
+        var tpl = res.tpl, // the template name we need for this view
+        data = res.data; // the data to apply to the template
+        dust.render(tpl, data, function(err, out){
+          // DustJS has rendered our HTML. Use JQuery to append it.
+          $('body').html(out);
+        });
+      }).error(function(){
+        alert("Error Changing Page");
+      });
+    });
+
+
+
+</td>
+</tr>
+</tbody>
+</table>
+
+<p>This means every page can be rendered from scratch, or as a single-page app navigation. Every page is addressable, and whatever you see in the address bar is the valid URL for that page.</p>
+
+<p>Death to the Hashbang URL? Sure - however recent trends are moving away from AJAX single-page applications altogether. In retrospect, I think we&rsquo;ve over-engineered this one. The only piece of the app which really needs to asynchronously load server responses is the editor itself. Opening files within the editor, switching tabs, saving and deleting should be all async - the rest? Why bother! A responsive web server, with caching, should be well capable of serving up page loads response enough to make the difference near imperceivable.</p>
+
+<h2 id="websockets">WebSockets</h2>
+
+<p>Traditionally, building an app in an IDE can be a pretty slow and resource intensive process. The FeedHenry App Build Farm takes this strain away from the user, returning a zipped binary which can be installed straight onto your device. Whilst we could poll for the progress of this task, Socket.IO makes doing so over WebSockets completely painless. If the user&rsquo;s browser doesn&rsquo;t support WebSocket connections, the transport mechanism automatically falls back to polling.</p>
+
+<p>So - building a studio in Node.js, can it be done? Absolutely. It&rsquo;s been a great chance to tinker with emerging technologies, and evaluate a plethora of Node modules. We&rsquo;ve learnt a lot along the way - if you&rsquo;ve tried to do similar, and have anything to add, we&rsquo;d love to hear from you! Please feel free to reach out in the comments.</p>
+
+<p><em><a href="http://www.twitter.com/cianclarke">@cianclarke</a> leads FeedHenry’s development of complex mobile apps build in web technologies. He is author of many Node.js modules and contributes actively to the Node.js community.</em></p>
+
+<p>*[CLI]: Command Line Interface</p>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="http://feedhenrydevblogarchive.github.io/sencha-touches-the-feedhenry-cloud/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="http://feedhenrydevblogarchive.github.io/sencha-touches-the-feedhenry-cloud/">Sencha Touches the FeedHenry Cloud</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="http://feedhenrydevblogarchive.github.io/unit-testing-a-node-js-backend/">Unit Testing a Node.js Backend</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="http://feedhenrydevblogarchive.github.io/unit-testing-a-node-js-backend/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+  
+
+</div>
+
+</div>
+</div>
+<script src="http://feedhenrydevblogarchive.github.iojs/ui.js"></script>
+
+
+
+
+</body>
+</html>
+

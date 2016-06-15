@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.16" />
+
+  <title>AeroGear quick start push Templates &middot; Archive of FeedHenry Developer Blog 2012-2016</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+
+  <link rel="shortcut icon" href="http://feedhenrydevblogarchive.github.ioimg/favicon.ico" type="image/x-icon" />
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <a href="/"><img src = "/logo.png" /></a>
+    <small>Copyright Red Hat 2016</small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>AeroGear quick start push Templates</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>10 Jun 2015, 13:29</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="http://feedhenrydevblogarchive.github.iotags/aerogear">aerogear</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://feedhenrydevblogarchive.github.iotags/mobile-application-platform">mobile application platform</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://feedhenrydevblogarchive.github.iotags/red-hat">red hat</a>
+    
+  </div>
+  
+  
+
+</div>
+
+  <p>Currently in software development the biggest challenge is integrating. A lot of what we do involves integrating with other platforms or libraries. Knowing how to integrate is important, so here I&rsquo;m going to show how to integrate the Unified Push Server (UPS) with Feedhenry, for adding push notification support. To make things even easier we created a Feedhenry Template that you can use as a starting point for your application that contains all the parts you&rsquo;ll need.</p>
+
+<p>To illustrate how to use the FeedHenry Template for push notifications, you will build a set of sample applications for receiving sports news. You will use a centralized cloud application that integrates with both a push server as well as any client applications. The centralized cloud app contains various categories (i.e. different sports) and news stories associated with one or more categories. There are also two client applications:</p>
+
+<ul>
+<li><p>Console web application: Let administrators create and update the category list, as well as create news stories on the centralized cloud app</p></li>
+
+<li><p>Mobile application: Lets users subscribe to any of the available categories and receive a push notification whenever a new story is posted with that category</p></li>
+</ul>
+
+<p>To build a project based on this template:</p>
+
+<ol>
+<li><p>Create a new project.</p></li>
+
+<li><p>Click <strong>Sample Projects</strong>, and then find the Project named: <strong>Push Hello World</strong>.</p></li>
+
+<li><p>Click select type a name, and then click <strong>create</strong>.</p></li>
+</ol>
+
+<p><img src="/wp-content/uploads/2015/05/1.png" alt="1" /></p>
+
+<p>Now you have three apps one Cloud Code App and two Client Apps.</p>
+
+<p><a href="/wp-content/uploads/2015/05/5.png"><img src="/wp-content/uploads/2015/05/5.png" alt="5" /></a>
+The <em>Push Cloud App</em> is a simple server-side CRUD application for categories. The <em>Push Console App</em> is a &ldquo;management inteface&rdquo; where you create and delete these categories. These categories are used by the <em>Push Notifications Mobile Client</em> to &ldquo;subscribe&rdquo; to. For example I have a sports news site and I push messages about different sports to the mobile users. The users <em>subscribe</em> to different sports they want to receive notifications about.</p>
+
+<p>With this generated project all that is left to do is connect the Unified Push Server to this project, first go to openshift.com and create an UPS instance, search on AeroGear pick a name and &ldquo;Create Application&rdquo;. For more information on how to set up a unified push server on Openshift have a look at the <a href="https://aerogear.org/docs/unifiedpush/ups_userguide/index/#openshift">AeroGear documentation</a>. Now you have a running UPS on Openshift you need to login and create an &ldquo;application&rdquo; that will be used by your Feedhenry apps to send push notifications. Note down the <code>Application ID</code>, <code>Master Secret</code> and the <code>Server URL</code> as we going to need those later on.</p>
+
+<p><a href="/wp-content/uploads/2015/05/10.png"><img src="/wp-content/uploads/2015/05/10.png" alt="10" /></a></p>
+
+<p>For the clients that we want to use (e.g. Android iOS) we need to create variants, for more information on how to do this have a look at the UPS documentation for <a href="https://aerogear.org/docs/unifiedpush/aerogear-push-android/">Android</a> and <a href="https://aerogear.org/docs/unifiedpush/aerogear-push-ios/">iOS</a></p>
+
+<p>Next we need to do two things we need create a &ldquo;Service connector&rdquo; for UPS and we need to tell the Cloud App the <code>GUID</code> of the &ldquo;Service connector&rdquo; so that it can use this to send messages to UPS. First we setup the &ldquo;Service connector&rdquo; to connect to our openshift UPS instance, go to the <code>Services &amp;amp; APIs</code> tab and click <code>Provision mBaaS Service/API</code>:</p>
+
+<p><a href="/wp-content/uploads/2015/05/3.png"><img src="/wp-content/uploads/2015/05/3.png" alt="3" /></a>
+Then choose <code>AeroGear Push Service</code>, give it a name and click <code>Next</code>, fill in the <code>Server URL</code>, <code>Application ID</code> and <code>Master Secret</code> and click <code>Next</code> now it will create your &ldquo;Service connector&rdquo;</p>
+
+<p><a href="/wp-content/uploads/2015/05/7.png"><img src="/wp-content/uploads/2015/05/7.png" alt="7" /></a>
+After that is done go back to your project, here we need to add the service so that we can use it click the &ldquo;+&rdquo; in the mBaas Services box in the overview page:</p>
+
+<p><a href="/wp-content/uploads/2015/05/2.png"><img src="/wp-content/uploads/2015/05/2.png" alt="2" /></a>
+Select the created &ldquo;Service connector&rdquo; and then the &ldquo;Associate Service&rdquo; button. Now you&rsquo;ll see the &ldquo;Service Connector&rdquo; in the &ldquo;mBaas Services&rdquo; column. Let&rsquo;s configure the &ldquo;Cloud App&rdquo; to use this &ldquo;Service Connector&rdquo;, for that we need to the GUID of the &ldquo;Service Connector&rdquo;, click on it and you will see the info page:</p>
+
+<p><a href="/wp-content/uploads/2015/05/4.png"><img src="/wp-content/uploads/2015/05/4.png" alt="4" /></a></p>
+
+<p>On the info page copy the <code>Service ID</code> and under access control add you project, then click save.</p>
+
+<p>Then in the project click on the &ldquo;Push Cloud App&rdquo; and select &ldquo;Environment variables&rdquo; from the sidebar. Click &ldquo;Add Variable&rdquo; and enter <code>AEROGEAR_SERVICE_GUID</code> for name and paste the <code>Service ID</code> you copied earlier for the &ldquo;Development&rdquo; label. Next click on &ldquo;Push Environment Variables&rdquo; to publish these.</p>
+
+<p><a href="/wp-content/uploads/2015/05/6.png"><img src="/wp-content/uploads/2015/05/6.png" alt="6" /></a>
+Now that that is all setup, the &ldquo;Cloud App&rdquo; can use the &ldquo;GUID&rdquo; to fetch the &ldquo;Service Connector&rdquo;, that connects to UPS to send the messages.</p>
+
+<p>Let&rsquo;s fire up a browser and open the <em>Push Console App</em> to create a couple of categories for instance: Football, Rugby and Basketball:</p>
+
+<p><a href="/wp-content/uploads/2015/05/8.png"><img src="/wp-content/uploads/2015/05/8.png" alt="8" /></a></p>
+
+<p>Now go to your <em>Push Notifications Mobile Client</em> and open the file called <code>push-config.json</code>. You&rsquo;ll need to update the <em>Variant ID</em> and <em>Variant Secret</em> for each platform and the <em>pushServerURL</em> to the location of your UnifiedPush Server, so that it can register itself with the UnifiedPush Server in order to receive messages. For Android you also need to specify the <em>senderID</em> (also called project number on the google console) inside of that JSON file. Finally build and install the <em>Push Notifications Mobile Client</em> on a device and select the categories you want to receive.</p>
+
+<p>Now go back to the <em>Push Console App</em> and send a message. If all worked well, you will see how the push notifications arrive on the mobile client.</p>
+
+<p><a href="/wp-content/uploads/2015/05/9.png"><img src="/wp-content/uploads/2015/05/9.png" alt="9" /></a>
+You can use and extend this template for your own use case. More detailed information on the setup of this template can be found in the help of the App Console</p>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="http://feedhenrydevblogarchive.github.io/microservices-for-mobile/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="http://feedhenrydevblogarchive.github.io/microservices-for-mobile/">Evolving a Mobile-centric Architecture: The Microservices Way</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="http://feedhenrydevblogarchive.github.io/an-easier-way-to-demo-mobile-application-platforms/">An Easier Way to Demo the Mobile Application Platform</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="http://feedhenrydevblogarchive.github.io/an-easier-way-to-demo-mobile-application-platforms/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+  
+
+</div>
+
+</div>
+</div>
+<script src="http://feedhenrydevblogarchive.github.iojs/ui.js"></script>
+
+
+
+
+</body>
+</html>
+

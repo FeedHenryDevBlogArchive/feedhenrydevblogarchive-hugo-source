@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.16" />
+
+  <title>Updates &amp; industry releases related to mobile OSes, SDKs and tools on RHMAP &middot; Archive of FeedHenry Developer Blog 2012-2016</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+
+  <link rel="shortcut icon" href="http://feedhenrydevblogarchive.github.ioimg/favicon.ico" type="image/x-icon" />
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <a href="/"><img src = "/logo.png" /></a>
+    <small>Copyright Red Hat 2016</small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Updates &amp; industry releases related to mobile OSes, SDKs and tools on RHMAP</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>02 Nov 2015, 17:05</time>
+  </div>
+
+  
+
+  
+
+  
+
+</div>
+
+  
+
+<p>By: Conor O&rsquo;Neill, Product Manager, Red Hat Mobile</p>
+
+<p>There are a range of updates and industry releases related to various mobile Operating Systems (OSes), Software Development Kits (SDKs) and tools used in the Red Hat Mobile Application Platform (RHMAP) that we wish to let you know about.</p>
+
+<p><em>It&rsquo;s important to note that no changes or actions are necessary by you for any currently installed apps on existing devices.</em></p>
+
+<h2 id="summary">Summary</h2>
+
+<ol>
+<li><p>The release of iOS 9 by Apple</p></li>
+
+<li><p>The release of Android M by Google</p></li>
+
+<li><p>The upgrade of our Build Farm to support Android API Level 22 (5.1, Lollipop)</p></li>
+
+<li><p>The deprecation by the Apache Cordova team of the Cordova Registry</p></li>
+
+<li><p>The removal of BlackBerry and Windows Phone 7.x Support from RHMAP</p></li>
+
+<li><p>The addition of Windows 8.1 Universal App support to RHMAP</p></li>
+
+<li><p>The removal of some older unused integrations from RHMAP</p></li>
+</ol>
+
+<h2 id="ios-9">iOS 9</h2>
+
+<p>Apple recently released iOS 9 and Xcode 7 which has some changes related to security which may impact your Apps.</p>
+
+<h3 id="where-no-action-is-required">Where no action is required</h3>
+
+<ol>
+<li><p>Existing iOS Apps using any version of our iOS SDK will continue to run as before on an iOS 9 device</p></li>
+
+<li><p>Existing iOS Apps using any version of our iOS SDK installed on an iOS 8 device will continue to run as before after the device is upgraded to iOS 9</p></li>
+</ol>
+
+<h3 id="ios-9-mandatory-bundle-identifier-on-rhmap-enterprise-app-store">iOS 9 Mandatory bundle identifier on RHMAP Enterprise App Store</h3>
+
+<p>iOS 9 now requires that you specify the bundle identifier in what is called the plist file. If you do not specify it, then apps will not install from the RHMAP Enterprise App Store on iOS 9 devices.</p>
+
+<p>You can set the bundle identifier in the RHMAP Studio at Projects &gt; Your Project &gt; Client App &gt; Config page under the relevant iPad/iPhone/iOS Universal section. This value needs to be copied to the “iPhone Bundle ID” field for individual binaries in Admin &gt; Mobile App Management &gt; App Store Apps &gt; Binaries.</p>
+
+<p>Once this is done, the correct plist file will be generated when you download the app from the store and this will allow the app to install on iOS 9.</p>
+
+<h3 id="running-xcode-7-locally-and-targeting-ios9">Running Xcode 7 locally and targeting iOS9</h3>
+
+<p>When building an app with Xcode 7 and base SDK iOS 9 on your local workstation, for installation on an iOS 9 device, you must:</p>
+
+<ol>
+<li><p>Switch &ldquo;Enable Bitcode&rdquo; to off in build settings.</p></li>
+
+<li><p>Check if you use NSURLSession to make HTTP calls instead of the provided RHMAP classes. If you do, and if you are not on a TLS 1.2 compatible RHMAP grid, you&rsquo;ll need to <a href="https://forums.developer.apple.com/thread/4017">define a plist exception</a>. (see note below)</p></li>
+
+<li><p>The same rule applies if you are making calls directly to other 3rd party services</p></li>
+
+<li><p>Check if you are using UIWebView (i.e. Cordova). If you are, and if you are not on a TLS 1.2 compatible RHMAP grid, you&rsquo;ll need to <a href="https://forums.developer.apple.com/thread/4017">define a plist exception</a>.</p></li>
+</ol>
+
+<p>NOTE: All of our AWS grids are TLS 1.2 compatible and our LON3 grid in the UK will be compatible by November 5th. Customers who run dedicated installations of RHMAP on TEF Instant Server based grids must make the plist exception changes listed above.</p>
+
+<h3 id="upcoming-addition-of-ios-9-support-removal-of-ios-6-support">Upcoming addition of iOS 9 Support &amp; removal of iOS 6 Support</h3>
+
+<p>The RHMAP Build Farm does not currently support the targeting of iOS 9. Apps built in the Build Farm will continue to target iOS 8 until the relevant upgrade is complete. Once iOS 9 and Xcode 7 are added, they will become the defaults in the Build Farm.</p>
+
+<p>In keeping with our long-standing policy of tracking Apple’s OS support (CurrentVersion / CurrentVersion-1 / CurrentVersion-2), this means that iOS 6 will no longer be supported in the Build Farm.</p>
+
+<p>We currently expect this upgrade to occur in v3.8.0 of RHMAP in early 2016.</p>
+
+<h2 id="android-5-1-lollipop-api-level-22-support">Android 5.1, Lollipop, API Level 22 support</h2>
+
+<p>In the upcoming v3.5.4 release of RHMAP, we will be changing the default version of Android that we target in our Apps from Android API 19 (Android 4.4, KitKat) to Android API 22 (Android 5.1, Lollipop). This also means that the Build Farm will be able to support Gradle builds from Android Studio in addition to the existing Ant builds from ADT.</p>
+
+<p>All current apps should continue to work as before and no action is necessary on your part for those apps.</p>
+
+<p>However, if you wish, you will be able to target Android API 22 and make use of any newer functionality available there.</p>
+
+<p>Once the update has been completed in the platform, Cordova Light Apps and Forms Apps will continue to default to Android 19 for the moment. Native Android Apps and Full Cordova Apps will be able to specify any API level &lt;= 22.</p>
+
+<h2 id="android-6-0-m-marshmallow-api-level-23-topics">Android 6.0, M, Marshmallow, API Level 23 topics</h2>
+
+<p>Google recently released Android M which has some changes that may impact your Apps. Note that M is only available at the moment on a small number of Nexus devices and one other LG device.</p>
+
+<ul>
+<li><p>Existing App binaries built using our Android SDK that target versions of Android API lower than 23 will continue to run unchanged on devices that are updated to Android M. The same is true for new devices running Android M.</p></li>
+
+<li><p>The current version of our Android SDK (v2.x.x) is not compatible with Apps that are built locally on your workstation in Android Studio and target Android M (Android API Level 23).</p></li>
+
+<li><p>The next major version our Android SDK (v3.x.x) will be compatible with Apps that are built locally on your workstation in Android Studio and target Android M (Android API Level 23). The release date for this version will be announced soon.</p></li>
+
+<li><p>If you have any Android app (not just those using our SDKs) that makes use of the older Android HttpClient APIs, and you wish to target Android M, then you will need to update those apps to use <a href="http://developer.android.com/reference/java/net/HttpURLConnection.html">HttpUrlConnection</a> (or <a href="http://square.github.io/okhttp/">OKHttp</a>), or include the <a href="http://developer.android.com/about/versions/marshmallow/android-6.0-changes.html">HttpClient support library</a> from Google.</p></li>
+
+<li><p>The RHMAP Build Farm also does not currently support the targeting of Android M. We will announce when Android M support is available.</p></li>
+</ul>
+
+<h2 id="cordova-registry">Cordova Registry</h2>
+
+<p>The Apache Software Foundation <a href="https://cordova.apache.org/announcements/2015/04/21/plugins-release-and-move-to-npm.html">announced in April</a> that they were planning to shut down the Cordova Registry on October 15th and move to NPM for plugins. Whilst it appears this shutdown has been delayed, you should ensure any of your Hybrid Apps where you have specified extra Cordova plugins are updated. Red Hat Mobile developers who make use of our config.json file will need to follow <a href="http://docs.feedhenry.com/v3/guides/using_cordova_plugins.html">the existing instructions here</a> to point to the GitHub URLs for the plugins instead of the Cordova Registry.</p>
+
+<p>All of the plugins used by default in Red Hat Mobile Templates have already made this move so if you are just using our default set of plugins in Cordova Light Apps, Cordova Apps or Forms Apps, then no action is necessary.</p>
+
+<p>A future release of of RHMAP will fully support the use of NPM for Cordova plugins.</p>
+
+<h2 id="removal-of-blackberry-and-windows-phone-7-x-support">Removal of BlackBerry and Windows Phone 7.x Support</h2>
+
+<p>Due to the ever-shrinking market share of BlackBerry and the complete lack of use of this target in our platform, we are removing all support for it with immediate notice. Our JS SDKs may continue to work on more modern BlackBerry devices but this is not supported in the product.</p>
+
+<p>As Microsoft ceased support for Windows Phone 7.x in 2014 and we have no active customers using this target, we are removing all support for it with immediate notice too.</p>
+
+<h2 id="windows-8-1-and-windows-10-universal-apps">Windows 8.1 and Windows 10 Universal Apps</h2>
+
+<p>Due to licensing changes in Visual Studio, we currently cannot provide Build Farm support for Windows 8.1 or 10 Universal Apps. Windows 8.1 is supported in our Hybrid JS and Native .NET SDKs, which can be built locally on a developer machine. The same support for Windows 10 will be available in v3.6.x of RHMAP by the end of November.</p>
+
+<h2 id="removal-of-older-unused-integrations">Removal of older unused integrations</h2>
+
+<p>We have a variety of old integrations built into the platform which have not been used by customers for a very long time. We have therefore decided to remove these SDKs from the Build Farm with immediate effect.</p>
+
+<p>The removals are as follows:</p>
+
+<ul>
+<li><p>MonkeyTalk</p></li>
+
+<li><p>Urban Airship Push</p></li>
+
+<li><p>Flurry Analytics</p></li>
+</ul>
+
+<p>In every case you can still use these products with RHMAP by manually adding their latest SDKs to your projects and creating custom MBaaS Connectors.</p>
+
+<p>Note that we are also replacing Urban Airship Push with an integrated version of the Red Hat Unified Push Server in the 3.6.0 release of RHMAP.</p>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="http://feedhenrydevblogarchive.github.io/one-small-change-needed-to-cloud-apps-after-the-rhmap-3-5-x-release/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="http://feedhenrydevblogarchive.github.io/one-small-change-needed-to-cloud-apps-after-the-rhmap-3-5-x-release/">One small change needed to Cloud Apps after the RHMAP 3.5.x release</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="http://feedhenrydevblogarchive.github.io/release-of-rhmap-3-5-4/">Release of RHMAP 3.5.4</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="http://feedhenrydevblogarchive.github.io/release-of-rhmap-3-5-4/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+  
+
+</div>
+
+</div>
+</div>
+<script src="http://feedhenrydevblogarchive.github.iojs/ui.js"></script>
+
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Openshift Online on Archive of FeedHenry Developer Blog 2012-2016</title>
+    <link>http://feedhenrydevblogarchive.github.io/tags/openshift-online/</link>
+    <description>Recent content in Openshift Online on Archive of FeedHenry Developer Blog 2012-2016</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 27 Jun 2015 12:29:12 +0000</lastBuildDate>
+    <atom:link href="http://feedhenrydevblogarchive.github.io/tags/openshift-online/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>An Easier Way to Demo the Mobile Application Platform</title>
+      <link>http://feedhenrydevblogarchive.github.io/an-easier-way-to-demo-mobile-application-platforms/</link>
+      <pubDate>Sat, 27 Jun 2015 12:29:12 +0000</pubDate>
+      
+      <guid>http://feedhenrydevblogarchive.github.io/an-easier-way-to-demo-mobile-application-platforms/</guid>
+      <description>&lt;p&gt;Over the last year a lot of exciting events have hit the FeedHenry team, most notably our acquisition by Red Hat to be their new Mobile offering. This past week many team members were able to attend the annual &lt;a href=&#34;http://www.redhat.com/summit/&#34;&gt;Red Hat Summit&lt;/a&gt;, and it’s safe to say many spotlights were pointed our way.&lt;/p&gt;
+
+&lt;p&gt;I’m not going to recap too much as our &lt;a href=&#34;http://www.theregister.co.uk/2015/06/25/feedhenry_becomes_red_hat_mobile_app_platform_gets_openshift_cloud_integration/&#34;&gt;rebranding to become Red Hat Mobile&lt;/a&gt;, &lt;a href=&#34;http://fortune.com/2015/06/23/samsung-and-red-hat/?xid=timehp-category&#34;&gt;Samsung partnership announcement&lt;/a&gt; and &lt;a href=&#34;https://www.youtube.com/watch?v=wWNVpFibayA&amp;amp;feature=youtu.be&amp;amp;t=1260&#34;&gt;on-stage mobile capabilities&lt;/a&gt; have all been well documented, but do want to cover a really exciting offering that may have slipped under some radars. As part of the growing demand by developers to try their hand in the new world of mobility, the Red Hat Mobile Application Platform can now be stood up on OpenShift Online! Even better, this can often be done in under 10 minutes!&lt;/p&gt;
+
+&lt;p&gt;The process is rather simple:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Sign up for an OpenShift Online account (&lt;a href=&#34;https://www.openshift.com/app/account/new&#34;&gt;https://www.openshift.com/app/account/new&lt;/a&gt;)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Follow the directions in the activation email you receive&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Sign up for a Red Hat Mobile Application Platform Account (&lt;a href=&#34;https://openshift.feedhenry.com/&#34;&gt;https://openshift.feedhenry.com/&lt;/a&gt;)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Follow the directions in the second activation email you receive&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Log in, read the getting started documentation and code away!&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;We hope this streamlined developer environment will help introduce mobile technologies to a whole new wave of developers while also giving seasoned mobile developers the access they need to try out our offerings!&lt;/p&gt;
+
+&lt;p&gt;Author: Chad Holmes, Solutions Architect, Red Hat Mobile.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

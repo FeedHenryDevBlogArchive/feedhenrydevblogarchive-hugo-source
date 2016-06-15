@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.16" />
+
+  <title>Using Cluster to scale your Node Applications &middot; Archive of FeedHenry Developer Blog 2012-2016</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+
+  <link rel="shortcut icon" href="http://feedhenrydevblogarchive.github.ioimg/favicon.ico" type="image/x-icon" />
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <a href="/"><img src = "/logo.png" /></a>
+    <small>Copyright Red Hat 2016</small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Using Cluster to scale your Node Applications</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>16 Jun 2014, 12:00</time>
+  </div>
+
+  
+
+  
+
+  
+
+</div>
+
+  
+
+<p>Cluster (<a href="http://nodejs.org/api/cluster.html#cluster_cluster">API Docs »</a>) landed in Node 0.8, but because of it&rsquo;s label as still an Experimental API, it probably hasn&rsquo;t yet received the recognition it deserves. There are downsides to using such experimental APIs - the API footprint of cluster within your application is <strong>very likely to change</strong> in future releases. But, the upsides are massive - multi-process scaling of your application with a few lines of code.</p>
+
+<p>Traditionally, Node.js applications are single threaded, and will operate on one CPU.  Cluster works by scaling your Node application across multiple CPUs. Cluster applications have a master, which controls N worker processes - where N is typically the number of CPUs on your system.
+In current versions of Node, the master presently assigns an incoming connection to these works by waking up one of the N workers - but this changes in 0.12. Soon, the master will accept connections, and pass them off to workers using a Round Robin scheduler. Waking up processes can be an expensive operation, so this shift should see even better efficiencies from using Cluster.</p>
+
+<p>I first came across Cluster when trying to scale out large exports and imports of binary data through our data storage component. Thankfully, the component was already cluster enabled - and I&rsquo;d spent some time figuring why things weren&rsquo;t scaling to multiple workers. Turns out, the VM I was running in had one CPU. Bump the count, and viola - instant scaling!</p>
+
+<p>Cluster does much more than just help scale your code, however - it also adds a degree of high availability.
+The key to adding resilience using workers is to keep the amount of work the master does to a minimum, reducing the risk of uncaught exceptions. If your master has an uncaught exception, the entire process is in trouble. If a worker has an uncaught exception, however, we&rsquo;re able to restart the worker.
+Along with uncaught exceptions, we also use Cluster to perform configuration changes, upgrades, etc on our Node components without taking the service off the air. By sending our process a <code>SIG</code> <a href="http://nodejs.org/api/process.html#process_signal_events">signal event</a>, we can listen for this event and when received restart each of our worker nodes individually.</p>
+
+<p><img src="/wp-content/uploads/2014/06/Screen-Shot-2014-06-11-at-16.26.54-300x255.png" alt="AutoScale" /></p>
+
+<h2 id="is-it-really-that-simple">Is it really that simple?</h2>
+
+<p>Sort of! Scaling your application using Cluster is pretty straightforward. Our <a href="https://github.com/feedhenry-templates/helloworld-cloud-cluster">MBaaS Instance template</a>, an Express app, is offered with cluster scaling built in. It&rsquo;s the best place to start learning how Cluster works, and we&rsquo;re going to take code snippets from this throughout. Links to highlighted lines from the source code are supplied if more context for the snippets is needed.</p>
+
+<p>Let&rsquo;s start with our existing express app - we&rsquo;ve already <a href="https://github.com/feedhenry-templates/helloworld-cloud-cluster/blob/master/application.js#L5">included the cluster module</a>, and we&rsquo;ve <a href="https://github.com/feedhenry-templates/helloworld-cloud-cluster/blob/master/application.js#L12-L28">setup an express application called &lsquo;app&rsquo;</a>. We then <a href="https://github.com/feedhenry-templates/helloworld-cloud-cluster/blob/master/application.js#L31-L36">create a function</a> which is responsible inside the express application for starting a new server, and call this for every worker.</p>
+
+<pre><code>function startWorker() {
+  var port = process.env.FH_PORT || process.env.VCAP_APP_PORT || 8001;
+  server = app.listen(port, function(){
+    console.log(&quot;App started at: &quot; + new Date() + &quot; on port: &quot; + port);
+  });
+};
+</code></pre>
+
+<p>Then, we&rsquo;ve got <a href="https://github.com/feedhenry-templates/helloworld-cloud-cluster/blob/master/application.js#L41-L52">the same code snippet</a> we use across all our cluster-enabled Node apps to startup the master, and then start the subsequent worker nodes using our above startWorker() function:</p>
+
+<pre><code>  if (cluster.isMaster) {
+    var numCPUs = process.env.FH_NUM_WORKERS || require('os').cpus().length;
+    for (var i = 0; i &lt; numCPUs; i++) {
+      var worker = cluster.fork();
+      workers.push(worker);
+    }
+  } else {
+    startWorker();
+  }
+</code></pre>
+
+<p>If we now run this application, we can see multiple cluster workers have started up:</p>
+
+<p><a href="/wp-content/uploads/2014/06/cluster-workers.png"><img src="/wp-content/uploads/2014/06/cluster-workers-300x158.png" alt="Cluster Workers" /></a></p>
+
+<p>My laptop has 8 CPU cores available for Node to use, so we see &ldquo;App started&rdquo; console output 8 times. Now, we&rsquo;re going to see cluster in action.
+First, let&rsquo;s alter the hello endpoint in lib/hello.js to return the cluster worker ID on every request:</p>
+
+<pre><code>hello.get('/', function(req, res) {
+    res.json({worker: require('cluster').worker.workerID});
+});
+</code></pre>
+
+<p>Now, let&rsquo;s generate some traffic to the /hello endpoint using CURL.</p>
+
+<pre><code>for i in {1..100}; do curl http://localhost:8001/hello; done
+</code></pre>
+
+<p><a href="/wp-content/uploads/2014/06/Screen-Shot-2014-06-10-at-16.55.50.png"><img src="/wp-content/uploads/2014/06/Screen-Shot-2014-06-10-at-16.55.50.png" alt="CURL Output" /></a>
+In the output, we&rsquo;ll see a whole variety of different workers being returned. This is Node balancing the requests across a number of processes, all of which are running on separate CPUs. We also see if we search for a running <code>application.js</code> by doing <code>ps -a | grep application.js</code>, we see 9 processes running.</p>
+
+<p><a href="/wp-content/uploads/2014/06/Screen-Shot-2014-06-10-at-16.58.48.png"><img src="/wp-content/uploads/2014/06/Screen-Shot-2014-06-10-at-16.58.48.png" alt="application.js processes" /></a>
+Why are we seeing 9? We have one master process, which distributes the load across these 8 workers - hence 9 processes total.</p>
+
+<p>We&rsquo;ve done <a href="https://github.com/feedhenry-templates/helloworld-cloud-cluster/blob/master/application.js#L56-L73">some additional work in our workerExitHandler function</a> to ensure a clean shutdown of our master, and all the worker nodes too - we bind this function by doing:</p>
+
+<pre><code>cluster.on('exit', workerExitHandler);
+</code></pre>
+
+<p>You&rsquo;re now cluster ready! Well, almost..</p>
+
+<h2 id="there-s-a-catch-right">There&rsquo;s a catch, right?</h2>
+
+<p>Of course - there&rsquo;s always a catch! This pattern is great for scaling up applications that serve up a REST API, serving up responses to a client request. The issue is we&rsquo;ve effectively introduced 8 instances of our application, with a load balancer in front of it. We&rsquo;ve gone from building a single application to having a distributed system on our hands, and we need to manage this. Your application needs to be stateless.</p>
+
+<p>Here&rsquo;s a common pattern to avoid when moving from a single-process application to a clustered application:</p>
+
+<h3 id="variables-to-cache-or-persist-state">Variables to cache or persist state</h3>
+
+<p>JavaScript objects make for a convenient short-term store of data - for example, authentication requests. In the following example, we check for the presence of an api key in the database - if it exists, we set our auth cache to true. Otherwise, it&rsquo;s set to false for this key. Now, future requests will simply return the authCache value of this user&rsquo;s auth.</p>
+
+<pre><code>var authCache = {}, 
+db = require('common/db.js');
+
+exports.checkAuth = function(req, res, next){
+  var apikey = req.body.apikey; // Take a param from the request body
+  if (authCache[apikey] === true){
+    return next();
+  }
+  db.users.find(username, function(err, authres){ // Some DB helper function we've got
+    if (err || !authres){
+      authCache[apikey] = false;
+      return next('User unauthorised');
+    }
+    authCache[apikey] = true;
+    return next();
+  });
+}
+</code></pre>
+
+<p>Of course, the issue here is our authCache is a variable available just to this cluster worker. All our other cluster workers have a different version of the authCache variable.</p>
+
+<p>The best solution would be to rewrite our code to use a suitable cache, such as redis. This would make our application stateless once again, and stop us checking auth repeatedly.
+<img src="/wp-content/uploads/2014/06/Screen-Shot-2014-06-11-at-15.56.07.png" alt="Cluster Template" />Of course, cache misses because of a cache that isn&rsquo;t shared across the cluster applications isn&rsquo;t a catostrophic error, but what if we were using the same variable, instead of caching auth results, to store locks on an article that a user was editing?</p>
+
+<p>For more information, the Twelve Factor App&rsquo;s <a href="http://12factor.net/processes">entry on building Stateless Processes</a> is worth reading.</p>
+
+<p>To Use cluster with a FeedHenry app, just select the &lsquo;MBaaS Instance Cluster&rsquo; template, and your app will have cluster included!</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Cluster is a fantastic way of scaling your application to make use of multiple CPU systems. It does come with some downsides - the API is not yet locked down, and it introduces some of the complexities of a building distributed system. Following best practices should result in any single-process app scaling to use cluster well, however.
+The upsides far outweigh the negatives here. It provides a way to scale CPU-intensive operations, and prevent your app from going off the air under load. It should be part of the toolkit of anybody looking to scale their applications.</p>
+
+<p><em><a href="/wp-content/uploads/2014/06/Screen-Shot-2014-06-11-at-15.56.07.png"><a href="http://www.twitter.com/cianclarke">@cianclarke</a> </a>is a Software Engineer with FeedHenry. Primarily focused on the mobile-backend-as-a-service space, Cian is responsible for many of FeedHenry&rsquo;s mBaaS developer features.</em></p>
+
+<p>*[mBaaS]: Mobile Backend As A Service</p>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="http://feedhenrydevblogarchive.github.io/ibeacons-primer/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="http://feedhenrydevblogarchive.github.io/ibeacons-primer/">iBeacons: A Primer in Proximity Programming</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="http://feedhenrydevblogarchive.github.io/announcing-feedhenry-c-net-native-sdk-windows-phone-xamarin/">Announcing the FeedHenry C#/.NET Native SDK for Windows Phone and Xamarin </a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="http://feedhenrydevblogarchive.github.io/announcing-feedhenry-c-net-native-sdk-windows-phone-xamarin/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+  
+
+</div>
+
+</div>
+</div>
+<script src="http://feedhenrydevblogarchive.github.iojs/ui.js"></script>
+
+
+
+
+</body>
+</html>
+

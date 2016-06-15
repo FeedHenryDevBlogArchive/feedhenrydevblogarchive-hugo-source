@@ -1,0 +1,1198 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Archive of FeedHenry Developer Blog 2012-2016</title>
+    <link>http://feedhenrydevblogarchive.github.io/</link>
+    <description>Recent content on Archive of FeedHenry Developer Blog 2012-2016</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 12 May 2016 18:05:41 +0000</lastBuildDate>
+    <atom:link href="http://feedhenrydevblogarchive.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Release of v3.10 of the Red Hat Mobile Application Platform including Swift 2.1 and WFM</title>
+      <link>http://feedhenrydevblogarchive.github.io/release-of-v3-10-of-the-red-hat-mobile-application-platform-including-swift-2-1-and-wfm/</link>
+      <pubDate>Thu, 12 May 2016 18:05:41 +0000</pubDate>
+      
+      <guid>http://feedhenrydevblogarchive.github.io/release-of-v3-10-of-the-red-hat-mobile-application-platform-including-swift-2-1-and-wfm/</guid>
+      <description>
+
+&lt;p&gt;This post was &lt;a href=&#34;http://developerblog.redhat.com/&#34;&gt;originally published&lt;/a&gt; on Red Hat Developers, the community to learn, code, and share faster. To read the original post, click &lt;a href=&#34;http://developers.redhat.com/blog/2016/05/12/announcing-v3-10-of-the-red-hat-mobile-application-platform-including-swift-2-1-and-wfm/&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;We have just completed the deployment of the Red Hat Mobile Application Platform v3.10 to all our actively updated grids.&lt;/p&gt;
+
+&lt;p&gt;The main features of this release are:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;iOS SDK now has full &lt;a href=&#34;https://developer.apple.com/swift/&#34;&gt;Swift 2.1&lt;/a&gt; support&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;First Tech Preview release of our Field Workforce Management (WFM) modules&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Forms performance improvements, bug fixes and import/export&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;swift-sdk&#34;&gt;Swift SDK&lt;/h2&gt;
+
+&lt;p&gt;Our iOS SDK now has full &lt;a href=&#34;https://developer.apple.com/swift/&#34;&gt;Swift&lt;/a&gt; 2.1 support. You can learn how to use it by following these links:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://docs.feedhenry.com/v3/dev_tools/sdks/ios-swift.html&#34;&gt;Swift SDK Docs&lt;/a&gt;, with links to SDK and Sample App&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://docs.feedhenry.com/v3/api.html&#34;&gt;All API Docs&lt;/a&gt; including code snippets&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The following project templates now have Swift App options:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;* Blank - Minimal starting point
+
+
+* Hello World - Simple Client and Cloud
+
+
+* Push - Push Notifications
+
+
+* Data Sync - Offline and Data Sync
+
+
+* SAML- Starting point for your SAML integrations
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Both the Data Sync Framework and the Unified Push Server are now fully supported in Swift.&lt;/p&gt;
+
+&lt;p&gt;The Build Farm is using &lt;a href=&#34;https://developer.apple.com/swift/resources/&#34;&gt;Xcode 7.2 and Swift 2.1&lt;/a&gt;. Note that some whilst most Swift 2.2 syntax will work, some 2.2 syntax not work on our Build Farm and we will update to Xcode 7.3 in a later release to support full 2.2.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;IMPORTANT NOTE:&lt;/strong&gt; Customers who use their own Enterprise Certificates  to build Swift applications will have to check if the certificate has the Organizational Unit field within the subject name section. This is not the same as “Organization”. You will have to revoke and reissue a new Apple enterprise certificate for distribution. &lt;a href=&#34;https://developer.apple.com/support/certificates/expiration/&#34;&gt;See Apple documentation&lt;/a&gt; around this.&lt;/p&gt;
+
+&lt;h2 id=&#34;wfm-modules-tech-preview&#34;&gt;WFM Modules - Tech Preview&lt;/h2&gt;
+
+&lt;p&gt;Red Hat Mobile WFM modules are a set of more than 20 reusable npm modules (JavaScript and Node.js) for building field mobile workforce management solutions.&lt;/p&gt;
+
+&lt;p&gt;These modules cover the top features for a field workforce management multi-platform mobile solution and include integration with the Red Hat Mobile Application Platform (RHMAP) Forms Builder, where apps can easily use forms built within RHMAP.&lt;/p&gt;
+
+&lt;p&gt;Some of the modules include:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;fh-wfm-workorder - For work orders&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;fh-wfm-sync - For data synchronization&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;fh-wfm-schedule - For job scheduling&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;fh-wfm-vehicle-inspection - For vehicle inspections&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;fh-wfm-mediator - An implementation of the &lt;a href=&#34;https://addyosmani.com/largescalejavascript/&#34;&gt;mediator pattern&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The modules come with a sample mobile application and web portal based on &lt;a href=&#34;https://angularjs.org/&#34;&gt;Angular.js&lt;/a&gt;, using Material Design,  which you can use to quickly bootstrap your own developments and create solutions like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/05/wfm01.jpg&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/05/wfm01.jpg&#34; alt=&#34;wfm01&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/05/wfm06.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/05/wfm06.png&#34; alt=&#34;wfm06&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Our &lt;a href=&#34;https://github.com/feedhenry-staff/wfm-doc/blob/master/Getting-Started.md&#34;&gt;Getting Started Guide&lt;/a&gt; explains how to setup and use the sample application.&lt;/p&gt;
+
+&lt;p&gt;You can see the &lt;a href=&#34;https://www.npmjs.com/search?q=fh-wfm&#34;&gt;full set of modules on NPM here&lt;/a&gt;. Each one can be installed as usual via the npm command line.&lt;/p&gt;
+
+&lt;p&gt;As this is a Tech Preview, we will be iterating the functionality and documentation with your feedback and input. You can expect to see more blog posts and videos about WFM shortly. You can read the &lt;a href=&#34;https://github.com/feedhenry-staff/wfm-doc/blob/master/Release-Notes.md&#34;&gt;current release notes here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;forms-builder&#34;&gt;Forms Builder&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Import/Export buttons for Forms&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;FHC Command to import/export forms&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Performance improvements on Forms Submission viewing with large number of submissions&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Performance improvements on Rules Engine for complex Forms&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Upcoming deployment of version 3.10 of the Red Hat Mobile Application Platform</title>
+      <link>http://feedhenrydevblogarchive.github.io/upcoming-deployment-of-version-3-10-of-the-red-hat-mobile-application-platform/</link>
+      <pubDate>Tue, 19 Apr 2016 14:52:49 +0000</pubDate>
+      
+      <guid>http://feedhenrydevblogarchive.github.io/upcoming-deployment-of-version-3-10-of-the-red-hat-mobile-application-platform/</guid>
+      <description>&lt;p&gt;The deployment of v3.10 of the Red Hat Mobile Application Platform should begin for actively updated Grids on April 28th. It may take up to a week for all Grids to be updated.&lt;/p&gt;
+
+&lt;p&gt;There may be a period of several minutes during the deployment where your Studio is intermittently unavailable but this should not affect running applications or end-users of apps.&lt;/p&gt;
+
+&lt;p&gt;The main items of note in this release are:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Full Swift 2.0 support in our SDKs and templates&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;First release of the suite of reusable Workforce Management (WFM) Modules&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Xamarin support updated to latest version&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Appcelerator support updates to latest version&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Additional Import/Export features&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;An ongoing focus on bug fixing and enhancements to existing functionality&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Further details on this feature will follow here at deployment time.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Release of Red Hat Mobile Application Platform v3.9 including Forms Data Sources</title>
+      <link>http://feedhenrydevblogarchive.github.io/release-of-red-hat-mobile-application-platform-v3-9/</link>
+      <pubDate>Wed, 06 Apr 2016 05:27:03 +0000</pubDate>
+      
+      <guid>http://feedhenrydevblogarchive.github.io/release-of-red-hat-mobile-application-platform-v3-9/</guid>
+      <description>
+
+&lt;p&gt;We have just completed the deployment of version 3.9 of the Red Hat Mobile Application Platform to all actively updated Grids.&lt;/p&gt;
+
+&lt;h3 id=&#34;summary&#34;&gt;Summary&lt;/h3&gt;
+
+&lt;p&gt;The main items of note in this release are:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Data Sources for Forms&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Swift Apps can be built in the Build Farm. Our SDKs will move to Swift in a later release&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;New Default Red Hat Forms Theme&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;New Read-Only Text type for Forms which can optionally use Data Sources&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Performance improvements and bug fixes for Forms&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;forms-data-sources&#34;&gt;Forms Data Sources&lt;/h3&gt;
+
+&lt;p&gt;The major new feature of this release is Data Sources for Forms which I&amp;rsquo;m really pleased to tell you about.&lt;/p&gt;
+
+&lt;p&gt;As you may know, our Forms Builder enables you to generate mobile applications with a dynamic set of Forms that contain both standard web controls and mobile-specific controls like location capture, signature, maps, etc. These apps can be auto-generated, then built in our Build Farm and distributed in our Enterprise App Store without ever seeing a line of code.&lt;/p&gt;
+
+&lt;p&gt;Data Sources builds on this by enabling your developers to create reusable data sets from your back-end systems that non-developers can then attach to Forms elements.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;You can create custom Data Sources that can connect to any back-end system&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;You can set the update schedule for contents returned by the Data Source&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;You implement each Data Source as an MBaaS Service in Node.js&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;We provide three example Data Sources as starting points - Static File, MongoDB and Internet&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;You can populate various Form fields from Data Sources including drop-downs and radio-boxes&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;You can display read-only textual information from Data Sources in Forms using a new field type&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Non-technical users can make use of Data Sources without coding&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;You can share Data Sources across Forms&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Multiple Data Sources can be served on different URLs from one MBaaS Service&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The easiest way to get started is to use one of our examples. Lets create a Data Source which pulls information from a remote CSV file and makes it usable in a Drop Down field in a Form.&lt;/p&gt;
+
+&lt;h3 id=&#34;create-a-data-source-service&#34;&gt;Create a Data Source Service&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;In the Studio, navigate to Services &amp;amp; APIs. Click Provision MBaaS Service/API.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;On the left, choose the Data Sources category.&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/04/forms_data_sources_04.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/04/forms_data_sources_04.png&#34; alt=&#34;forms_data_sources_04&#34; /&gt;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Select the Static Data Source template&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Choose a name for the service and deploy it to an environment.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Go to Service Details and make the Service public and then re-deploy when instructed to&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;customise-the-data-source-service-to-work-with-csv&#34;&gt;Customise the Data Source Service to work with CSV&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Go to the Editor for the Service and change application.js to add the second line here in the appropriate location:&lt;/p&gt;
+
+&lt;p&gt;app.use(&amp;lsquo;/static_ds&amp;rsquo;, require(&amp;lsquo;./lib/static-datasource.js&amp;rsquo;));
+app.use(&amp;lsquo;/csv_ds&amp;rsquo;, require(&amp;lsquo;./lib/csv-datasource.js&amp;rsquo;));&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Browse to the lib directory in the Editor and create csv-datasource.js with the following contents:&lt;/p&gt;
+
+&lt;p&gt;var express = require(&amp;lsquo;express&amp;rsquo;);
+var request = require(&amp;lsquo;request&amp;rsquo;);
+var router = express.Router();&lt;/p&gt;
+
+&lt;p&gt;router.get(&amp;lsquo;/&amp;rsquo;, function (req, res) {&lt;/p&gt;
+
+&lt;p&gt;var url = &amp;lsquo;&lt;a href=&#34;https://gist.githubusercontent.com/conoro/2090f52225832787766b3340c1c3caaf/raw/847108af1026bc07c42297ac699e0dbdc3a12195/workers.csv&#39;&#34;&gt;https://gist.githubusercontent.com/conoro/2090f52225832787766b3340c1c3caaf/raw/847108af1026bc07c42297ac699e0dbdc3a12195/workers.csv&#39;&lt;/a&gt;;&lt;/p&gt;
+
+&lt;p&gt;request(url, function (err, resp, html) {
+if (err) {
+console.log(err)
+return handleError(err, res);
+}
+var people = [];&lt;/p&gt;
+
+&lt;p&gt;var lines = html.toString().split(&amp;rsquo;\n&amp;rsquo;);
+for (var i = 0; i &amp;lt; lines.length; i++) {
+people.push({&amp;ldquo;key&amp;rdquo;: i, value: lines[i].toString().split(&amp;lsquo;,&amp;rsquo;)[0], selected: true});
+}
+res.send(people);&lt;/p&gt;
+
+&lt;p&gt;});
+});&lt;/p&gt;
+
+&lt;p&gt;module.exports = router;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The code above simply reads the remote CSV file and converts it to the specific JSON format we need. Your code here can be as complex as you need to get at the data you want and crunch it down to the data sets for your forms.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;You can view the example CSV I&amp;rsquo;ve created over on &lt;a href=&#34;https://gist.githubusercontent.com/conoro/2090f52225832787766b3340c1c3caaf/raw/847108af1026bc07c42297ac699e0dbdc3a12195/workers.csv&#34;&gt;GitHub Gist&lt;/a&gt;. You could host your data anywhere. My example is a simple single column CSV file with a list of names.&lt;/p&gt;
+
+&lt;p&gt;Roger Flopple,
+Demetrius Levenworth,
+Salamander Hammerhead,
+Ferrari Montenegro,
+Paul Corduroy,
+Hank Fracas,
+Ludwig Von Instagram,
+Lisa Toboggan,
+Heather Kerfuffle,
+Rebecca Beretta,
+Lindsay McMartinhamson,
+Mirandella Houndstooth,&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Edit package.json to add the request module in this location:&lt;/p&gt;
+
+&lt;p&gt;&amp;ldquo;express&amp;rdquo;: &amp;ldquo;^4.13.3&amp;rdquo;,
+&amp;ldquo;fh-mbaas-api&amp;rdquo;: &amp;ldquo;5.9.1&amp;rdquo;,
+&amp;ldquo;request&amp;rdquo;: &amp;ldquo;~2.40.0&amp;rdquo;
+},&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Re-deploy the Service code with those changes&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Get the URL of your Service in its details page and browse to &lt;a href=&#34;https://the.url.of.the.service/csv_ds&#34;&gt;https://the.url.of.the.service/csv_ds&lt;/a&gt; and you should see a JSON version of your CSV returned.&lt;/p&gt;
+
+&lt;p&gt;[{&amp;ldquo;key&amp;rdquo;:0,&amp;ldquo;value&amp;rdquo;:&amp;ldquo;Roger Flopple&amp;rdquo;,&amp;ldquo;selected&amp;rdquo;:true},{&amp;ldquo;key&amp;rdquo;:1,&amp;ldquo;value&amp;rdquo;:&amp;ldquo;Demetrius Levenworth&amp;rdquo;,&amp;ldquo;selected&amp;rdquo;:true},{&amp;ldquo;key&amp;rdquo;:2,&amp;ldquo;value&amp;rdquo;:&amp;ldquo;Salamander Hammerhead&amp;rdquo;,&amp;ldquo;selected&amp;rdquo;:true},{&amp;ldquo;key&amp;rdquo;:3,&amp;ldquo;value&amp;rdquo;:&amp;ldquo;Ferrari Montenegro&amp;rdquo;,&amp;ldquo;selected&amp;rdquo;:true},{&amp;ldquo;key&amp;rdquo;:4,&amp;ldquo;value&amp;rdquo;:&amp;ldquo;Paul Corduroy&amp;rdquo;,&amp;ldquo;selected&amp;rdquo;:true},{&amp;ldquo;key&amp;rdquo;:5,&amp;ldquo;value&amp;rdquo;:&amp;ldquo;Hank Fracas&amp;rdquo;,&amp;ldquo;selected&amp;rdquo;:true},{&amp;ldquo;key&amp;rdquo;:6,&amp;ldquo;value&amp;rdquo;:&amp;ldquo;Ludwig Von Instagram&amp;rdquo;,&amp;ldquo;selected&amp;rdquo;:true},{&amp;ldquo;key&amp;rdquo;:7,&amp;ldquo;value&amp;rdquo;:&amp;ldquo;Lisa Toboggan&amp;rdquo;,&amp;ldquo;selected&amp;rdquo;:true},{&amp;ldquo;key&amp;rdquo;:8,&amp;ldquo;value&amp;rdquo;:&amp;ldquo;Heather Kerfuffle&amp;rdquo;,&amp;ldquo;selected&amp;rdquo;:true},{&amp;ldquo;key&amp;rdquo;:9,&amp;ldquo;value&amp;rdquo;:&amp;ldquo;Rebecca Beretta&amp;rdquo;,&amp;ldquo;selected&amp;rdquo;:true},{&amp;ldquo;key&amp;rdquo;:10,&amp;ldquo;value&amp;rdquo;:&amp;ldquo;Lindsay McMartinhamson&amp;rdquo;,&amp;ldquo;selected&amp;rdquo;:true},{&amp;ldquo;key&amp;rdquo;:11,&amp;ldquo;value&amp;rdquo;:&amp;ldquo;Mirandella Houndstooth&amp;rdquo;,&amp;ldquo;selected&amp;rdquo;:true}]&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;This is the format the Data Source needs.&lt;/p&gt;
+
+&lt;h3 id=&#34;create-the-data-source&#34;&gt;Create the Data Source&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;In the Studio, navigate to Drag &amp;amp; Drop Apps &amp;gt; Data Sources. Click New Data Source.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Set a name and a description. Both are required.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Choose your previously created MBaaS service and set /csv_ds as its endpoint&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Check you have done everything correctly using the Validate button&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Leave the other settings as they are&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Click Create Data Source&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;forms-data-sources-03-wp-content-uploads-2016-04-forms-data-sources-03-png-wp-content-uploads-2016-04-forms-data-sources-03-png&#34;&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/04/forms_data_sources_03.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/04/forms_data_sources_03.png&#34; alt=&#34;forms_data_sources_03&#34; /&gt;&lt;/a&gt;&lt;/h3&gt;
+
+&lt;h3 id=&#34;using-the-data-source-in-a-form&#34;&gt;Using the Data Source in a Form&lt;/h3&gt;
+
+&lt;p&gt;Note, these steps can be carried out by non-developers. Once you have your Data Sources setup and configured the access to them, your Forms creators can then make use of them without having to know the technical details of where the data is coming from.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Navigate to Drag &amp;amp; Drop Apps &amp;gt; Forms Builder&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Open an existing form, or create a new form.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Drag a Dropdown field on to the Form and select the created field&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;In the Options section, check Use a Data Source&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Select the data source created in the previous step&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/04/forms_data_sources_08.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/04/forms_data_sources_08.png&#34; alt=&#34;forms_data_sources_08&#34; /&gt;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Save and deploy the form.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;See the data in the dropdown in the Forms Preview or just Build the App and use it&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/04/forms_data_sources_01.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/04/forms_data_sources_01.png&#34; alt=&#34;forms_data_sources_01&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/04/forms_data_sources_10.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/04/forms_data_sources_10.png&#34; alt=&#34;forms_data_sources_10&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;You can read more of the technical information &lt;a href=&#34;http://docs.feedhenry.com/v3/product_features/forms/data_sources.html&#34;&gt;here&lt;/a&gt; and &lt;a href=&#34;http://docs.feedhenry.com/v3/guides/create_forms_data_source.html&#34;&gt;here&lt;/a&gt; on our Docs site.&lt;/p&gt;
+
+&lt;p&gt;We&amp;rsquo;re looking forward to seeing how you make use of this new feature set that many of you have been eager to try.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>RHMAP and Google Accounts in Android</title>
+      <link>http://feedhenrydevblogarchive.github.io/rhmap-google-accounts-android/</link>
+      <pubDate>Mon, 04 Apr 2016 13:20:22 +0000</pubDate>
+      
+      <guid>http://feedhenrydevblogarchive.github.io/rhmap-google-accounts-android/</guid>
+      <description>
+
+&lt;p&gt;The Red Hat Mobile Application Platform (RHMAP) has strong authentication and authorization mechanisms baked into its &lt;a href=&#34;http://docs.feedhenry.com/v3/product_features/admin.html#admin-auth_policies&#34;&gt;Auth Policy&lt;/a&gt; system. Android has deep integration with Google&amp;rsquo;s ecosystem which provides many easy mechanisms for authorizing services to act on a user&amp;rsquo;s behalf. Out of the box RHMAP allows for connecting to a Google account using OAuth and a web view, but a better user experience is using Google&amp;rsquo;s Android account picker. To enable this integration in RHMAP we can use an MBaaS Auth Policy.&lt;/p&gt;
+
+&lt;h1 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h1&gt;
+
+&lt;p&gt;This post should be informative to anybody who wishes to learn more about RHMAP; however, you will have the most benefit if you have access to a RHMAP instance and have read through the &lt;a href=&#34;http://docs.feedhenry.com/v3/getting_started.html&#34;&gt;Getting Started&lt;/a&gt; documentation. If you do not have access to a instance of RHMAP, you may sign up for a free one at &lt;a href=&#34;https://openshift.feedhenry.com/&#34;&gt;openshift.feedhenry.com&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Additionally you will need a Google account and Android emulator or device with Google&amp;rsquo;s APIs set up.&lt;/p&gt;
+
+&lt;h1 id=&#34;demo&#34;&gt;Demo&lt;/h1&gt;
+
+&lt;p&gt;You can view an example of this integration in my &lt;a href=&#34;https://www.youtube.com/watch?v=eNLKj6wvbQg&#34;&gt;FehBot video&lt;/a&gt;. The Android portion of this post will refer to the code in the application.&lt;/p&gt;
+
+&lt;h1 id=&#34;creating-an-mbaas-auth-policy&#34;&gt;Creating an MBaaS Auth Policy&lt;/h1&gt;
+
+&lt;h2 id=&#34;create-a-blank-mbaas-service&#34;&gt;Create a blank MBaaS Service&lt;/h2&gt;
+
+&lt;p&gt;Select &amp;ldquo;Services &amp;amp; APIs&amp;rdquo; from the top navigation. Click &amp;ldquo;Provision MBaaS Services/API&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/04/CReate_MBaaS_1.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/04/CReate_MBaaS_1-300x121.png&#34; alt=&#34;CReate_MBaaS_1&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Select &amp;ldquo;Choose&amp;rdquo; next to the item &amp;ldquo;New mBaaS Service&amp;rdquo;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/04/CReate_MBaaS_2.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/04/CReate_MBaaS_2-300x121.png&#34; alt=&#34;CReate_MBaaS_2&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Name the service, click &amp;ldquo;Next&amp;rdquo;, ensure you are using the &amp;ldquo;Development&amp;rdquo; environment, and finally click &amp;ldquo;Deploy&amp;rdquo;. The service should deploy and you should have a green bar.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/04/CReate_MBaaS_3.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/04/CReate_MBaaS_3-300x121.png&#34; alt=&#34;CReate_MBaaS_3&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;You are now ready to set up the Auth Policy.&lt;/p&gt;
+
+&lt;h2 id=&#34;setup-the-auth-policy&#34;&gt;Setup the Auth Policy&lt;/h2&gt;
+
+&lt;p&gt;Select &amp;ldquo;Admin&amp;rdquo; from the top navigation and then &amp;ldquo;Auth Policies&amp;rdquo; from the 6 boxes which appear.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/04/Create_auth_policy_11.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/04/Create_auth_policy_11-300x121.png&#34; alt=&#34;Create_auth_policy_1&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Click &amp;ldquo;Create&amp;rdquo; on the next screen to begin setting up an Auth Policy.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/04/CReate_Auth_Policy_2.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/04/CReate_Auth_Policy_2-300x121.png&#34; alt=&#34;CReate_Auth_Policy_2&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Name the Policy and select &amp;ldquo;MBaaS Service&amp;rdquo; as the &amp;ldquo;Type&amp;rdquo; under &amp;ldquo;Authentication. From the &amp;ldquo;Service&amp;rdquo; drop down select the service you created in the previous step. For &amp;ldquo;Endpoint&amp;rdquo; our MBaaS service will use &amp;ldquo;/auth/init&amp;rdquo;. Finally select for your &amp;ldquo;Default Environment&amp;rdquo; the value &amp;ldquo;Development&amp;rdquo;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/04/CReate_Auth_Policy_3.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/04/CReate_Auth_Policy_3-300x121.png&#34; alt=&#34;CReate_Auth_Policy_3&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Scroll down to the bottom of the page and click &amp;ldquo;Create Auth Policy&amp;rdquo;.&lt;/p&gt;
+
+&lt;h1 id=&#34;implementing-the-mbaas&#34;&gt;Implementing the MBaaS&lt;/h1&gt;
+
+&lt;p&gt;I have created a &lt;a href=&#34;https://github.com/secondsun/FH-Google-mBaas-Auth&#34;&gt;MBaaS Service&lt;/a&gt; for us to use. It implements the server side token validation that Google recommends in &lt;a href=&#34;https://developers.google.com/identity/sign-in/android/backend-auth&#34;&gt;its documentation&lt;/a&gt;. You should be able to copy this project into your MBaaS&amp;rsquo;s source and redeploy it.&lt;/p&gt;
+
+&lt;p&gt;You may wish to limit which Cloud applications can access your MBaaS services in the &amp;ldquo;Service Settings&amp;rdquo; section of the MBaaS &amp;ldquo;Details&amp;rdquo; page.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/04/Create_MBaas_4.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/04/Create_MBaas_4-300x121.png&#34; alt=&#34;Create_MBaas_4&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;auth-init&#34;&gt;/auth/init&lt;/h2&gt;
+
+&lt;p&gt;The &lt;a href=&#34;https://github.com/secondsun/FH-Google-mBaas-Auth/blob/master/lib/auth.js#L12&#34;&gt;/auth/init&lt;/a&gt; route will consume tokens from the Android device and set up user accounts in RHMAP. The code should be easy ish to follow along. The most important part is that we return a &lt;a href=&#34;https://github.com/secondsun/FH-Google-mBaas-Auth/blob/master/lib/auth.js#L25&#34;&gt;userId&lt;/a&gt; value in the json which we can use to look up the user&amp;rsquo;s session informaiton.&lt;/p&gt;
+
+&lt;h2 id=&#34;list-session&#34;&gt;/list/:session&lt;/h2&gt;
+
+&lt;p&gt;The route &lt;a href=&#34;https://github.com/secondsun/FH-Google-mBaas-Auth/blob/master/application.js#L23&#34;&gt;/list/:session&lt;/a&gt; can be used by Cloud applications to fetch a user&amp;rsquo;s account information which is created and saved after a call to &amp;ldquo;/auth/init&amp;rdquo;.&lt;/p&gt;
+
+&lt;h1 id=&#34;android-integration&#34;&gt;Android Integration&lt;/h1&gt;
+
+&lt;p&gt;In order to integrate with Android, please follow &lt;a href=&#34;https://developers.google.com/identity/sign-in/android/sign-in#configure_google_sign-in_and_the_googleapiclient_object&#34;&gt;Google&amp;rsquo;s Guide&lt;/a&gt; for instructions on how to setup an Android account and get an IdToken from a sign in. The &lt;a href=&#34;https://github.com/secondsun/fehbot-android/blob/master/app/src/main/java/com/feedhenry/oauth/oauth_android_app/&#34;&gt;FehBot Android client&lt;/a&gt; contains a working example.&lt;/p&gt;
+
+&lt;p&gt;Once you have a IdToken you can use &lt;a href=&#34;https://github.com/feedhenry/fh-android-sdk/blob/master/fh-android-sdk/src/main/java/com/feedhenry/sdk/FH.java#L279&#34;&gt;FH.buildAuthRequest&lt;/a&gt; to perform the sign-in with RHMAP. For the three parameters us the Auth Policy name you assigned during &amp;ldquo;Setup the Auth Policy&amp;rdquo;, the IdToken you retrived from Google, and an empty string for the final parameter. &lt;a href=&#34;https://github.com/secondsun/fehbot-android/blob/master/app/src/main/java/com/feedhenry/oauth/oauth_android_app/FHOAuth.java#L127&#34;&gt;Here&lt;/a&gt; is an example from the FeHBot app.&lt;/p&gt;
+
+&lt;h1 id=&#34;caveats&#34;&gt;Caveats&lt;/h1&gt;
+
+&lt;p&gt;As per the &lt;a href=&#34;http://docs.feedhenry.com/v3/api/api_auth.html#api_auth-app_api-create_your_own_authentication_providers&#34;&gt;RHMAP Authentication API&lt;/a&gt; if you use this you will have to manually verify your sessions in your application yourself. The built in verification methods will not work.&lt;/p&gt;
+
+&lt;h1 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h1&gt;
+
+&lt;p&gt;As you can see, it is easy to add a third party authentication mechanism to RHMAP. The principles in this post can be applied to many other authentication providers and client platforms.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Upcoming deployment of version 3.9 of the Red Hat Mobile Application Platform</title>
+      <link>http://feedhenrydevblogarchive.github.io/upcoming-deployment-of-version-3-9-of-the-red-hat-mobile-application-platform/</link>
+      <pubDate>Mon, 21 Mar 2016 16:14:41 +0000</pubDate>
+      
+      <guid>http://feedhenrydevblogarchive.github.io/upcoming-deployment-of-version-3-9-of-the-red-hat-mobile-application-platform/</guid>
+      <description>&lt;p&gt;The deployment of v3.9 of the Red Hat Mobile Application Platform will begin for actively updated Grids on March 29th. It may take up to a week for all Grids to be updated.&lt;/p&gt;
+
+&lt;p&gt;There may be a period of several minutes during the deployment where your Studio is intermittently unavailable but this should not affect running applications or end-users of apps.&lt;/p&gt;
+
+&lt;p&gt;The major new feature of this release is Data Sources for Forms:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Create custom Data Sources that can connect to any back-end system&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Set the update schedule for the Data Source&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Implement a Data Source as an MBaaS Service in Node.js&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Example Data Sources provided as starting points&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Populate various Form fields from Data Sources including drop-downs and radio-boxes&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Display textual information from Data Sources in Forms&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Non-technical users can make use of Data Sources without coding&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Share Data Sources across Forms and/or provide multiple Data Sources from one MBaaS Service&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The release also includes a wide range of bug fixes and enhancements, particularly for Forms.&lt;/p&gt;
+
+&lt;p&gt;Further details on this feature will follow here at deployment time.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Release of Red Hat Mobile Application Platform v3.8.0</title>
+      <link>http://feedhenrydevblogarchive.github.io/release-of-red-hat-mobile-application-platform-v3-8-0/</link>
+      <pubDate>Wed, 09 Mar 2016 18:33:43 +0000</pubDate>
+      
+      <guid>http://feedhenrydevblogarchive.github.io/release-of-red-hat-mobile-application-platform-v3-8-0/</guid>
+      <description>
+
+&lt;p&gt;In keeping with our recent release cadence, version 3.8 of the Red Hat Mobile Application Platform has just been deployed to all actively updated Grids.&lt;/p&gt;
+
+&lt;p&gt;The main features of this release are:&lt;/p&gt;
+
+&lt;h2 id=&#34;ios-9-updates&#34;&gt;iOS 9 updates&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Full iOS 9 support in the Build Farm has now been added. All iOS apps are now built using Xcode 7.2 and target iOS 9.2.1 by default, including Forms Apps and Cordova Light Apps.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;All of our iOS templates work without any code change on iOS9&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;No iOS9 specific SDK updates are needed&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;All Studio iOS template apps are now &lt;a href=&#34;http://www.redhat.com/blog/mobile/cocoapods-and-rhmap-a-love-story/&#34;&gt;based on Cocoapods&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Note that full Swift support is coming in a later release. However you can already use our current SDK with ObjC if you are writing in mixed Swift/ObjC.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;cordova-updates&#34;&gt;Cordova updates&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;In RHMAP 3.7, we added support for the latest version of Cordova Android. We are now doing the same for Cordova iOS which is at v3.9.x and is the default for Full Cordova Apps.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Both iOS and Android now use Cordova CLI 5.2.0 which gives you access to all the latest Cordova platforms and plugins. As mentioned in the &lt;a href=&#34;http://www.redhat.com/blog/mobile/release-of-rhmap-3-7-including-api-mapper-preview/&#34;&gt;RHMAP 3.7.0 release notes&lt;/a&gt;, you can now use Cordova’s config.xml to specify platform versions and plugins.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Forms Apps and Cordova Light App continue to use Cordova 3.x on iOS. We will be upgrading these in a later release.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;integration-with-the-apperian-mam&#34;&gt;Integration with the Apperian MAM&lt;/h2&gt;
+
+&lt;p&gt;If you make use of &lt;a href=&#34;https://www.apperian.com/&#34;&gt;Apperian&lt;/a&gt; for Mobile Application Management, you can now automatically send your built mobile binaries from our Build Farm to your Apperian App Store.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/03/apperian_feedhenry_blog.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/03/apperian_feedhenry_blog.png&#34; alt=&#34;apperian_feedhenry_blog&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Detailed blogpost and video will follow soon on this.&lt;/p&gt;
+
+&lt;h2 id=&#34;sustaining-engineering&#34;&gt;Sustaining Engineering&lt;/h2&gt;
+
+&lt;p&gt;There were a large number of bug-fixes and enhancements made in this release, including:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;A major focus on migrating very large MongoDB datasets via the Studio and providing more progress information about the migration.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Adding a strict step on project deletion to avoid mistakes by users&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Adding more metadata to Forms Submission Export&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Fixing App Preview refresh&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;unified-push-server-updates&#34;&gt;Unified Push Server updates&lt;/h2&gt;
+
+&lt;p&gt;We have updated our integrated Unified Push Server based on the &lt;a href=&#34;https://aerogear.org/push/&#34;&gt;Aerogear Push&lt;/a&gt; Open Source upstream project  v1.1.1. Release notes for that are &lt;a href=&#34;https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12313724&amp;amp;version=12327457&amp;amp;_sscc=t&#34;&gt;available here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;data-sync-offline-support-updates&#34;&gt;Data Sync / Offline Support updates&lt;/h2&gt;
+
+&lt;p&gt;We updated the &lt;a href=&#34;http://docs.feedhenry.com/v3/api/api_sync.html&#34;&gt;Data Sync example code/snippets&lt;/a&gt; in Docs for iOS, Windows and Android.&lt;/p&gt;
+
+&lt;h2 id=&#34;known-issue-s&#34;&gt;Known Issue(s)&lt;/h2&gt;
+
+&lt;p&gt;When trying to download an app built through the Build Farm on an iOS 9.1 device, the message &amp;ldquo;Unable to Download App&amp;rdquo; is shown and the app can not be downloaded/installed.&lt;/p&gt;
+
+&lt;p&gt;This issue only affects version 9.1 of iOS. To work around it, you can either build the app locally in Xcode, or upgrade your device to an iOS version higher than 9.1.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Upcoming deployment of version 3.8 of the Red Hat Mobile Application Platform</title>
+      <link>http://feedhenrydevblogarchive.github.io/upcoming-deployment-of-version-3-8-of-the-red-hat-mobile-application-platform/</link>
+      <pubDate>Fri, 19 Feb 2016 13:34:12 +0000</pubDate>
+      
+      <guid>http://feedhenrydevblogarchive.github.io/upcoming-deployment-of-version-3-8-of-the-red-hat-mobile-application-platform/</guid>
+      <description>&lt;p&gt;The deployment of v3.8 of the Red Hat Mobile Application Platform will occur for all actively updated Grids in the week beginning Feb 29th.&lt;/p&gt;
+
+&lt;p&gt;There may be a period of several minutes during the deployment where your Studio is intermittently unavailable but this should not affect running applications or end-users of apps.&lt;/p&gt;
+
+&lt;p&gt;There will be notification of same to all users in each Studio shortly.&lt;/p&gt;
+
+&lt;p&gt;This release includes:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Full iOS 9 support in the Build Farm. All iOS apps will be be built using Xcode 7.2 and will target iOS 9.2.1 by default, including Forms Apps and Cordova Light Apps.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;All Studio iOS template apps moved to Cocoapods&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Updated Cordova iOS to v3.9.x which will be the default for Full Cordova Apps.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Both iOS and Android now use Cordova CLI 5.2.0 which gives you access to all the latest Cordova platforms and plugins.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Integration with the Apperian MAM&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Updated Sync example code/snippets in Docs for iOS, Windows, Android&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Further details on features will follow here at deployment time.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Getting started with the Red Hat Mobile API Mapper</title>
+      <link>http://feedhenrydevblogarchive.github.io/get-started-with-the-red-hat-mobile-api-mapper/</link>
+      <pubDate>Tue, 16 Feb 2016 14:24:54 +0000</pubDate>
+      
+      <guid>http://feedhenrydevblogarchive.github.io/get-started-with-the-red-hat-mobile-api-mapper/</guid>
+      <description>
+
+&lt;p&gt;Two weeks ago &lt;a href=&#34;http://www.feedhenry.com/release-of-rhmap-3-7/&#34;&gt;we announced the 3.7.0 release&lt;/a&gt; of the Red Hat Mobile Application Platform including a Preview of our all new &lt;a href=&#34;http://docs.feedhenry.com/v3/guides/api_mapper.html&#34;&gt;API Mapper&lt;/a&gt;. The API Mapper enables everyone from new Node.js developers to hardcore map-reducers to interact with existing back-end APIs and customise them for use in their mobile applications.&lt;/p&gt;
+
+&lt;p&gt;This simple-looking but extremely powerful tool provides the following features:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Create GET/POST/PUT/PATCH/DELETE/HEAD/OPTIONS requests&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Set headers&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Save your Requests&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Create a Mapping from a Request&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Map fields (Include/Exclude/Rename)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Carry out complex data Transforms using custom Node.js code&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Mount mappings to specific end-points&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Make mappings accessible to your Cloud Code&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Automatically generate Node.js code and Curl requests&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In this post, I&amp;rsquo;m going to walk through the functionality from the simplest request all the way to creating custom transforms.&lt;/p&gt;
+
+&lt;p&gt;There are a few simple setup steps needed in the Preview which you can read &lt;a href=&#34;http://docs.feedhenry.com/v3/guides/api_mapper.html&#34;&gt;in the Docs&lt;/a&gt; that I’m going to skip over. Note that you can use the API Mapper either within the Studio or popped out into its own browser tab.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/02/apimapper02_small2.jpg&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/02/apimapper02_small2.jpg&#34; alt=&#34;apimapper02_small2&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;home-page&#34;&gt;Home Page&lt;/h3&gt;
+
+&lt;p&gt;The home page shows you all of your existing saved Mappings. You can Edit, Delete or Export them as JSON files.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/02/apimapper01_small2.jpg&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/02/apimapper01_small2.jpg&#34; alt=&#34;apimapper01_small2&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;enter-a-url&#34;&gt;Enter a URL&lt;/h3&gt;
+
+&lt;p&gt;To build a new mapping, you first start with a New Request.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/02/apimapper03_small.jpg&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/02/apimapper03_small.jpg&#34; alt=&#34;apimapper03_small&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Let’s use the OpenShift Online REST API to find out what version it is currently on and its status.&lt;/p&gt;
+
+&lt;p&gt;Their API is at:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;https://openshift.redhat.com/broker/rest/api
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;headers&#34;&gt;Headers&lt;/h3&gt;
+
+&lt;p&gt;Enter that URL and use the default GET option&lt;/p&gt;
+
+&lt;p&gt;The OpenShift API requires one simple header which is the type of response you want so add&lt;/p&gt;
+
+&lt;p&gt;Header Key = Accept
+Header Value = application/json&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/02/apimapper04_small.jpg&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/02/apimapper04_small.jpg&#34; alt=&#34;apimapper04_small&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;and click SEND REQUEST.&lt;/p&gt;
+
+&lt;p&gt;You can click on the tabs to see the Raw Request, Response Headers and Raw Response.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/02/apimapper05_small.jpg&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/02/apimapper05_small.jpg&#34; alt=&#34;apimapper05_small&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/02/apimapper06_small.jpg&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/02/apimapper06_small.jpg&#34; alt=&#34;apimapper06_small&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;You can continue to try out requests and add relevant headers (e.g for Auth) until you are satisfied with the basic request. Don’t forget you can use POST, PUT, DELETE, etc requests on your API if they are supported.&lt;/p&gt;
+
+&lt;h3 id=&#34;mount-path&#34;&gt;Mount Path&lt;/h3&gt;
+
+&lt;p&gt;Next you should give the request a reasonable Mount Path. Let’s use /osoapi&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/02/apimapper10_small.jpg&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/02/apimapper10_small.jpg&#34; alt=&#34;apimapper10_small&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;You can then click Create Request to save it in the Home Page list and start working with mappings and transformations.&lt;/p&gt;
+
+&lt;p&gt;Click Try Request to refresh the data.&lt;/p&gt;
+
+&lt;p&gt;Now we’re going to Map that API and turn it into something simple. So click Add Mapping.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/02/apimapper07_small.jpg&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/02/apimapper07_small.jpg&#34; alt=&#34;apimapper07_small&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;You can now see all of the fields in a hierarchical collapse/expand view along with the Unmapped and Mapped output. At this point they are, of course, the same. Now start clicking on various elements and unticking them from “Use this field?”. Note that unticking a parent will untick all of the children too.&lt;/p&gt;
+
+&lt;p&gt;As you do this, the Mapped output is updated automatically. Untick everything except api_version and status and you will end up with this:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/02/apimapper08_small.jpg&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/02/apimapper08_small.jpg&#34; alt=&#34;apimapper08_small&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;simple-transformations&#34;&gt;Simple Transformations&lt;/h3&gt;
+
+&lt;p&gt;The simplest and most common of all transformations is to rename so that is highlighted separately in the UI. Let’s rename api_version to current_version.&lt;/p&gt;
+
+&lt;p&gt;If you click on the Transform dropdown, the only option is “round” since it’s a numeric field. Another example is Arrays where you can pick “sum”. However let’s click on the status element in the api and then click on transform. As it’s text we can capitalize or lowercase. Let’s pick capitalize, which results in:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/02/apimapper09_small.jpg&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/02/apimapper09_small.jpg&#34; alt=&#34;apimapper09_small&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;using-the-mapped-api&#34;&gt;Using the Mapped API&lt;/h3&gt;
+
+&lt;p&gt;Now that we are happy with our Mapped API, we can use it in a variety of ways&lt;/p&gt;
+
+&lt;p&gt;First, you can see where it’s available directly on a URL by clicking the mount path.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/02/apimapper11_small.jpg&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/02/apimapper11_small.jpg&#34; alt=&#34;apimapper11_small&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;And clicking on the Sample Code tab gives you everything you need to get going in your own coding. So you have&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;an fh.service snippet for use in your Cloud code&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;a direct Node.js request module snippet&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;and finally the correct Curl command&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/02/apimapper12_small.jpg&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/02/apimapper12_small.jpg&#34; alt=&#34;apimapper12_small&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;advanced-transformations-using-node-js&#34;&gt;Advanced Transformations using Node.js&lt;/h3&gt;
+
+&lt;p&gt;For many users, the features I’ve just described are more than enough to work with. But for advanced users, we have one more card up our sleeve. You can write your own transformations in Node.js and make them available for use inside your instance of the API Mapper.&lt;/p&gt;
+
+&lt;p&gt;Let’s look at an example in the Studio Editor.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/02/apimapper13_small.jpg&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/02/apimapper13_small.jpg&#34; alt=&#34;apimapper13_small&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;In application.js you can see a transformations object where you can specify the transformations you want to make available. In the case of our OpenShift API, it might be useful to return the minimum API version supported as a distinct thing. So let’s create a transformation called minimumArrayTransform which takes an array and returns the minimum value in it.&lt;/p&gt;
+
+&lt;p&gt;Update application.js like so:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// fhlint-begin: custom-routes
+ app.use(&#39;/&#39;, apiMapper({
+ transformations: {
+ // Add your custom transformations here! `customMixedArrayTransform` is an example of this.
+ mixedArrayTransform: require(&#39;./transformations/mixedArrayTransform.js&#39;),
+ minimumArrayTransform: require(&#39;./transformations/minimumArrayTransform.js&#39;)
+ }
+ }));
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/02/apimapper14_small.jpg&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/02/apimapper14_small.jpg&#34; alt=&#34;apimapper14_small&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;And create a new minimumArrayTransform.js in the transformations directory with these contents:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// First, tell the mapper what value types this transformation is valid for
+ exports.type = &amp;quot;array&amp;quot;;
+ // Then, implement the transformation function
+ exports.transform = function(arr){
+ return arr.reduce(function (p, v) {
+ console.log(&amp;quot;p = &amp;quot; + p + &amp;quot; v = &amp;quot; + v)
+ return ( p &amp;lt; v ? p : v );
+ });
+ };
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/02/apimapper15_small.jpg&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/02/apimapper15_small.jpg&#34; alt=&#34;apimapper15_small&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Deploy your updated code and now go back to API Mapper and refresh the screen to pick up the new transform. Go to the Mapper section and re-enable the supported_api_versions field, change its name to minimum_api_version and select minimumArrayTransform from the drop-down list. You should now see the updated API output that you were looking for.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/02/apimapper16_small.jpg&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/02/apimapper16_small.jpg&#34; alt=&#34;apimapper16_small&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;You can expect to see lots more features coming in later releases and we’d be delighted to hear any feedback that you have.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Release of RHMAP 3.7 including API Mapper preview</title>
+      <link>http://feedhenrydevblogarchive.github.io/release-of-rhmap-3-7/</link>
+      <pubDate>Wed, 03 Feb 2016 17:17:36 +0000</pubDate>
+      
+      <guid>http://feedhenrydevblogarchive.github.io/release-of-rhmap-3-7/</guid>
+      <description>
+
+&lt;p&gt;Hot on the heels of our 3.6 releases just before Christmas, we have completed our roll-out of version 3.7 of the Red Hat Mobile Application Platform to all of our actively updated grids.&lt;/p&gt;
+
+&lt;p&gt;The main points of interest in this release are:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Build Farm and SDK support for Android M(arshmallow), 6.0, API 23&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Support for Cordova CLI 5.x on Android&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;API Mapper Service Preview&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Cocoapods Support and Template&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Example templates for SAML-based applications&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Over 100 bugs were fixed&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Removal of MonkeyTalk, Urban Airship Push and Flurry Analytics&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;android-m-arshmallow-6-0-api-23&#34;&gt;Android M(arshmallow), 6.0, API 23&lt;/h2&gt;
+
+&lt;p&gt;You can now use the latest version of Android in both your Native and Full Cordova Apps in RHMAP. This includes support for the new &lt;a href=&#34;http://developer.android.com/training/permissions/requesting.html&#34;&gt;fine-grained permissions system&lt;/a&gt;. You can see the full list of Android 6.0 changes (not specific to RHMAP) &lt;a href=&#34;http://developer.android.com/about/versions/marshmallow/android-6.0.html&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Our Native Android templates now use targetSdkVersion 23 and minSdkVersion 10 (Android 2.3.3).&lt;/p&gt;
+
+&lt;p&gt;Note that Forms Apps and Cordova Light Apps will continue to use API 19 and Cordova 3.x for the moment. A later release of RHMAP will bring both of these, along with the plugins they use, fully up to date too.&lt;/p&gt;
+
+&lt;h2 id=&#34;cordova-cli-5-2-0-for-android&#34;&gt;Cordova CLI 5.2.0 for Android&lt;/h2&gt;
+
+&lt;p&gt;With this release, we have upgraded our Build Farm to use &lt;a href=&#34;http://cordova.apache.org/docs/en/latest/guide/cli/index.html&#34;&gt;Cordova CLI 5.2.0&lt;/a&gt;. This means you can now specify any version of Cordova Android from 3.5.1 to 5.0.0 in your full Cordova Apps.&lt;/p&gt;
+
+&lt;p&gt;If you don’t specify a Cordova version in your Apps, we will build your applications using the Cordova platform versions that are pinned to 5.2.0. The version used for Android is Cordova-Android 4.1.x&lt;/p&gt;
+
+&lt;p&gt;In addition, the Build Farm now respects the Cordova&amp;rsquo;s config.xml file as a way of specifying &lt;a href=&#34;http://cordova.apache.org/docs/en/latest/platform_plugin_versioning_ref/index.html&#34;&gt;platform versions and plugins&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Note that Cordova CLI for iOS will be updated in RHMAP 3.8. Also note again the comment above about Cordova Light and Forms Apps.&lt;/p&gt;
+
+&lt;h2 id=&#34;api-mapper-service-preview&#34;&gt;API Mapper Service Preview&lt;/h2&gt;
+
+&lt;p&gt;We’re really pleased to give you a Preview of our new API Mapper Service. This simple-looking but extremely powerful tool provides the following features:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Interact with your back-end APIs&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Create GET/POST/PUT/PATCH/DELETE/HEAD/OPTIONS requests&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Set headers&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Save your Requests&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Create a Mapping from a Request&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Map fields (Include/Exclude/Rename)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Carry out complex data Transforms using custom Node.js code&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Mount mappings to specific end-points&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Make mappings accessible to your Cloud Code&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Automatically generate Node.js code and Curl requests&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/02/API-Mapper.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/02/API-Mapper.png&#34; alt=&#34;API Mapper&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The fact that the API Mapper runs in your MBaaS means that, if you have VPN connectivity from RHMAP to your back-end systems, it can access those systems.&lt;/p&gt;
+
+&lt;p&gt;As it’s a Preview, there are a few simple setup steps required. But once they are done you’ll be able to make use of all the initial features. &lt;a href=&#34;http://docs.feedhenry.com/v3/guides/api_mapper.html&#34;&gt;Our Docs&lt;/a&gt; have the details on getting started.&lt;/p&gt;
+
+&lt;p&gt;We have a lot more functionality planned for API Mapper and welcome all your feedback on things you’d like to see. Look out for a more detailed post about API Mapper in the coming days.&lt;/p&gt;
+
+&lt;h2 id=&#34;cocoapods-support-and-template&#34;&gt;Cocoapods Support and Template&lt;/h2&gt;
+
+&lt;p&gt;We now have support for &lt;a href=&#34;https://cocoapods.org/&#34;&gt;Cocoapods&lt;/a&gt; in the Build Farm and have added our first Cocoapods-based template to the Studio.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/02/cocoapods.jpg&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/02/cocoapods.jpg&#34; alt=&#34;cocoapods&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;In RHMAP 3.8, all templates should be available in Cocoapods.&lt;/p&gt;
+
+&lt;h2 id=&#34;saml-templates&#34;&gt;SAML Templates&lt;/h2&gt;
+
+&lt;p&gt;We’ve had various requests for example templates showing how to use &lt;a href=&#34;https://wiki.oasis-open.org/security/FrontPage&#34;&gt;SAML&lt;/a&gt; with RHMAP. We have added Client and Cloud templates for the following:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Cordova&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;iOS&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Android&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Windows&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/02/saml01.jpg&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2016/02/saml01.jpg&#34; alt=&#34;saml01&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;These can easily be wired up to (for example) an ADFS instance to see the entire flow working. Learn all about the functionality and templates in &lt;a href=&#34;http://docs.feedhenry.com/v3/guides/using_saml_for_authentication.html&#34;&gt;our Docs&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;removals&#34;&gt;Removals&lt;/h2&gt;
+
+&lt;p&gt;As &lt;a href=&#34;http://www.feedhenry.com/updates-industry-releases-related-to-mobile-oses-sdks-and-tools-on-rhmap/&#34;&gt;previously announced&lt;/a&gt;, we have removed the following SDKs from our Build Farm. You can continue to manually include them in your projects if you wish.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;MonkeyTalk&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Urban Airship Push&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Flurry Analytics&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Release of RHMAP 3.6 including UnifiedPush Server integration</title>
+      <link>http://feedhenrydevblogarchive.github.io/release-of-rhmap-3-6-0-including-unified-push-server-integration/</link>
+      <pubDate>Wed, 16 Dec 2015 12:44:19 +0000</pubDate>
+      
+      <guid>http://feedhenrydevblogarchive.github.io/release-of-rhmap-3-6-0-including-unified-push-server-integration/</guid>
+      <description>
+
+&lt;p&gt;Version 3.6 of the Red Hat Mobile Application Platform has been released to all of our actively-updated production clusters and to the &lt;a href=&#34;http://openshift.feedhenry.com/&#34;&gt;Community Edition&lt;/a&gt;. The main focus of this release was the integration of the Aerogear UnifiedPush Server into the platform. This means you now have iOS, Android and Windows Phone Push Notification capabilities inside RHMAP.&lt;/p&gt;
+
+&lt;p&gt;We also:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Added Windows 10 support, including Hybrid Apps, Native Apps and Forms Builder Apps&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Added Forms Builder support to &lt;a href=&#34;http://openshift.feedhenry.com/&#34;&gt;openshift.feedhenry.com&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Closed over 350 JIRA tickets including Forms bug-fixes and Community Edition bug-fixes&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Removed our old Cloud Plugins lists&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;ups&#34;&gt;UPS&lt;/h2&gt;
+
+&lt;p&gt;Several months ago, we introduced you to the UnifiedPush Server on RHMAP, leveraging our MBaaS Services along with an OpenShift instance of UPS. We&amp;rsquo;re really pleased to now have UPS as a fully integrated component of RHMAP. This integration includes a full admin console inside the platform and updated SDKs for Native iOS, Native Android, Native Windows Phone and Cordova.&lt;/p&gt;
+
+&lt;p&gt;This diagram shows how it all connects together in the platform:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/12/push_notifications.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/12/push_notifications-1024x692.png&#34; alt=&#34;push_notifications&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;UPS enables you to send native push messages to different mobile operating systems. We currently support:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html&#34;&gt;Apple’s APNs&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://developers.google.com/cloud-messaging/&#34;&gt;Google Cloud Messaging&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://msdn.microsoft.com/en-us/library/windows/apps/ff402558.aspx&#34;&gt;Microsoft’s Push Notification service (MPNs)&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you want to get going now, you should first read our &lt;a href=&#34;https://docs.feedhenry.com/v3/product_features/push_notifications.html&#34;&gt;Introduction to Push&lt;/a&gt; and then dig into our &lt;a href=&#34;https://docs.feedhenry.com/v3/guides/using_push_notifications.html&#34;&gt;End-to-End Tutorial&lt;/a&gt;. Expert users can also study the updated &lt;a href=&#34;https://docs.feedhenry.com/v3/api/api_push.html&#34;&gt;Push APIs&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;One of our UPS developers,  Matthias Wessendorf, has created an excellent walkthrough of the integrated functionality, using iOS as the example.&lt;/p&gt;
+
+&lt;p&gt;Note that we have kept the original &lt;a href=&#34;https://docs.feedhenry.com/v3/guides/app_development_push.html&#34;&gt;Services-based template&lt;/a&gt; for Push in the Platform and now refer to it as the Community version. This is for users who wish to make use of the upstream &lt;a href=&#34;https://aerogear.org/push/&#34;&gt;AeroGear Push&lt;/a&gt; Open Source project which may have features that have not yet been productized. However please note that this is a Community-supported solution only.&lt;/p&gt;
+
+&lt;h2 id=&#34;windows-10&#34;&gt;Windows 10&lt;/h2&gt;
+
+&lt;p&gt;The platform APIs, SDKs and Template Apps now support Windows 10 in addition to Windows 8.1. You can use Visual Studio to locally build both Native and Cordova Apps for Windows 10 that work with the Mobile Application platform through our SDKs.&lt;/p&gt;
+
+&lt;p&gt;You can read all about our Windows support &lt;a href=&#34;https://docs.feedhenry.com/v3/guides/windows_platform_support.html&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;We have also added Forms App support for Windows 1o so you can build Universal Windows 10 Apps with Forms functionality. You can learn how to use this functionality in &lt;a href=&#34;https://docs.feedhenry.com/v3/guides/windows_forms_apps_tutorial.html&#34;&gt;our tutorial&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Note that our Build Farm currently does not support Windows 8.1 or Windows 10 for Microsoft licensing reasons.&lt;/p&gt;
+
+&lt;h2 id=&#34;platform-version-number-and-grid-name&#34;&gt;Platform Version Number and Grid Name&lt;/h2&gt;
+
+&lt;p&gt;It&amp;rsquo;s a small thing but oft-requested. If you look in the bottom right hand corner of the Studio, you will now see both the current RHMAP version and the Grid (instance) of RHMAP you are using. If you ever have to open a support ticket, please quote both.&lt;/p&gt;
+
+&lt;h2 id=&#34;community-edition-using-openshift&#34;&gt;Community Edition using OpenShift&lt;/h2&gt;
+
+&lt;p&gt;We have added Forms Builder support to OpenShift._ _&lt;strong&gt;Note this requires some extra setup compared to non-OpenShift grids&lt;/strong&gt;. You can find &lt;a href=&#34;https://openshift.feedhenry.com/docs/guides/forms_support_openshift.html&#34;&gt;the instructions for that here&lt;/a&gt;. Community Edition users have already been notified of this release.&lt;/p&gt;
+
+&lt;p&gt;We have also added information about how to get Community Support on &lt;a href=&#34;http://openshift.feedhenry.com&#34;&gt;openshift.feedhenry.com&lt;/a&gt; including an updated email template for new users. For reference, that Community Support is:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;irc://irc.freenode.net/feedhenry&#34;&gt;#feedhenry&lt;/a&gt; on Freenode IRC&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The &lt;a href=&#34;https://www.redhat.com/mailman/listinfo/redhat-mobile-open-access-users&#34;&gt;redhat-mobile-open-access-users&lt;/a&gt; mailing list&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;There were also bug fixes on the Community Edition around Data Browser and Logging.&lt;/p&gt;
+
+&lt;h2 id=&#34;cloud-plugins-removal&#34;&gt;Cloud Plugins Removal&lt;/h2&gt;
+
+&lt;p&gt;In the past, back when &lt;a href=&#34;https://www.npmjs.com/&#34;&gt;NPM&lt;/a&gt; had &lt;em&gt;only&lt;/em&gt; 50,000 modules we had a list of recommended commonly used Node modules in the platform which we called &amp;ldquo;Cloud Plugins&amp;rdquo;. As NPM has continued to grow and improve, this list has become redundant and some found it confusing. For these reasons, we have removed this section from the Studio.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Madrid Hackathon</title>
+      <link>http://feedhenrydevblogarchive.github.io/madrid-hackathon/</link>
+      <pubDate>Mon, 07 Dec 2015 13:19:42 +0000</pubDate>
+      
+      <guid>http://feedhenrydevblogarchive.github.io/madrid-hackathon/</guid>
+      <description>&lt;p&gt;In Madrid, in a cool location in the centre of the city, Red Hat sponsored a IoT hackathon, 3 groups used RHMAP (Red Hat Mobile Application Platform) to build their entry for the competition. Over the course of two days (19 - 20th November), 11 groups and 6 individuals battled to find out who could build the best application.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/11/Windows-phone_20151119_22_36_23_Rich_LI.jpg&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/11/Windows-phone_20151119_22_36_23_Rich_LI.jpg&#34; alt=&#34;Windows phone_20151119_22_36_23_Rich_LI&#34; /&gt;&lt;/a&gt; &lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/11/Windows-phone_20151119_10_39_06_Rich_LI.jpg&#34; alt=&#34;Windows phone_20151119_10_39_06_Rich_LI&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We where there to get them going and help where needed. For most of them doing anything mobile or IoT was completely new, but they had some experience with Node.js, once we explained them how things globally worked and shown them how to build a simple &amp;ldquo;Hello World&amp;rdquo; they where off. Remarkably, little help was needed the most questions we got where: &amp;ldquo;how do I do &amp;lsquo;xyz&amp;rsquo;&amp;rdquo; or &amp;ldquo;what is the best approach to add a feature like this&amp;rdquo;. Although I had explained that you could develop / run things locally some contestants where comfortable using a online approach developing locally and testing the app in the &amp;lsquo;App Preview&amp;rsquo; window.&lt;/p&gt;
+
+&lt;p&gt;It wasn&amp;rsquo;t all work, there was some entertainment as well, there where some guys making jokes and some presentations about the possible future of IoT. Everything that happened was documented with some sketch notes. My portrait is also on it:&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/11/Windows-phone_20151119_20_45_17_Rich_LI.jpg&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/11/Windows-phone_20151119_20_45_17_Rich_LI.jpg&#34; alt=&#34;Windows phone_20151119_20_45_17_Rich_LI&#34; /&gt;&lt;/a&gt; &lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/11/Windows-phone_20151119_10_39_06_Rich_LI.jpg&#34;&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;One of &amp;ldquo;our&amp;rdquo; teams won the big prize of 6000 euros, they got 2 checks like the one in the picture. As you can see from the eyes they pulled an &amp;ldquo;all nighter&amp;rdquo; to get something cool in the end.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/11/20151120_123940.jpg&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/11/20151120_123940.jpg&#34; alt=&#34;20151120_123940&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;So a very successful and cool event, for us an opportunity to see how easy it is to get going on the platform and get ideas to improve the getting started. Till next year.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Release of RHMAP 3.5.4</title>
+      <link>http://feedhenrydevblogarchive.github.io/release-of-rhmap-3-5-4/</link>
+      <pubDate>Fri, 20 Nov 2015 11:04:08 +0000</pubDate>
+      
+      <guid>http://feedhenrydevblogarchive.github.io/release-of-rhmap-3-5-4/</guid>
+      <description>&lt;p&gt;Version 3.5.4 of the Red Hat Mobile Application Platform has been released to all of our public hosted Grids. This is mainly a bug-fix release with one major new feature.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;NEW: Addition of Android API 22 (Android 5.1) to our Build Farms for our AWS Grids. Whilst our Cordova Light Apps and Forms App will default to SDK 19 for the moment, developers on AWS Grids can now specify SDK 22 for their Full Cordova and Native Android Apps in the standard ways.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;NEW: The addition of Android SDK 22 means that Gradle-based Android projects are now supported on those Grids too.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Variety of bug-fixes, particularly around the Community Edition at &lt;a href=&#34;http://openshift.feedhenry.com&#34;&gt;openshift.feedhenry.com&lt;/a&gt;. Sign-up issues should now be resolved.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Updates &amp; industry releases related to mobile OSes, SDKs and tools on RHMAP</title>
+      <link>http://feedhenrydevblogarchive.github.io/updates-industry-releases-related-to-mobile-oses-sdks-and-tools-on-rhmap/</link>
+      <pubDate>Mon, 02 Nov 2015 17:05:15 +0000</pubDate>
+      
+      <guid>http://feedhenrydevblogarchive.github.io/updates-industry-releases-related-to-mobile-oses-sdks-and-tools-on-rhmap/</guid>
+      <description>
+
+&lt;p&gt;By: Conor O&amp;rsquo;Neill, Product Manager, Red Hat Mobile&lt;/p&gt;
+
+&lt;p&gt;There are a range of updates and industry releases related to various mobile Operating Systems (OSes), Software Development Kits (SDKs) and tools used in the Red Hat Mobile Application Platform (RHMAP) that we wish to let you know about.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;It&amp;rsquo;s important to note that no changes or actions are necessary by you for any currently installed apps on existing devices.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;The release of iOS 9 by Apple&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The release of Android M by Google&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The upgrade of our Build Farm to support Android API Level 22 (5.1, Lollipop)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The deprecation by the Apache Cordova team of the Cordova Registry&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The removal of BlackBerry and Windows Phone 7.x Support from RHMAP&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The addition of Windows 8.1 Universal App support to RHMAP&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The removal of some older unused integrations from RHMAP&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;ios-9&#34;&gt;iOS 9&lt;/h2&gt;
+
+&lt;p&gt;Apple recently released iOS 9 and Xcode 7 which has some changes related to security which may impact your Apps.&lt;/p&gt;
+
+&lt;h3 id=&#34;where-no-action-is-required&#34;&gt;Where no action is required&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Existing iOS Apps using any version of our iOS SDK will continue to run as before on an iOS 9 device&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Existing iOS Apps using any version of our iOS SDK installed on an iOS 8 device will continue to run as before after the device is upgraded to iOS 9&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;ios-9-mandatory-bundle-identifier-on-rhmap-enterprise-app-store&#34;&gt;iOS 9 Mandatory bundle identifier on RHMAP Enterprise App Store&lt;/h3&gt;
+
+&lt;p&gt;iOS 9 now requires that you specify the bundle identifier in what is called the plist file. If you do not specify it, then apps will not install from the RHMAP Enterprise App Store on iOS 9 devices.&lt;/p&gt;
+
+&lt;p&gt;You can set the bundle identifier in the RHMAP Studio at Projects &amp;gt; Your Project &amp;gt; Client App &amp;gt; Config page under the relevant iPad/iPhone/iOS Universal section. This value needs to be copied to the “iPhone Bundle ID” field for individual binaries in Admin &amp;gt; Mobile App Management &amp;gt; App Store Apps &amp;gt; Binaries.&lt;/p&gt;
+
+&lt;p&gt;Once this is done, the correct plist file will be generated when you download the app from the store and this will allow the app to install on iOS 9.&lt;/p&gt;
+
+&lt;h3 id=&#34;running-xcode-7-locally-and-targeting-ios9&#34;&gt;Running Xcode 7 locally and targeting iOS9&lt;/h3&gt;
+
+&lt;p&gt;When building an app with Xcode 7 and base SDK iOS 9 on your local workstation, for installation on an iOS 9 device, you must:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Switch &amp;ldquo;Enable Bitcode&amp;rdquo; to off in build settings.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Check if you use NSURLSession to make HTTP calls instead of the provided RHMAP classes. If you do, and if you are not on a TLS 1.2 compatible RHMAP grid, you&amp;rsquo;ll need to &lt;a href=&#34;https://forums.developer.apple.com/thread/4017&#34;&gt;define a plist exception&lt;/a&gt;. (see note below)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The same rule applies if you are making calls directly to other 3rd party services&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Check if you are using UIWebView (i.e. Cordova). If you are, and if you are not on a TLS 1.2 compatible RHMAP grid, you&amp;rsquo;ll need to &lt;a href=&#34;https://forums.developer.apple.com/thread/4017&#34;&gt;define a plist exception&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;NOTE: All of our AWS grids are TLS 1.2 compatible and our LON3 grid in the UK will be compatible by November 5th. Customers who run dedicated installations of RHMAP on TEF Instant Server based grids must make the plist exception changes listed above.&lt;/p&gt;
+
+&lt;h3 id=&#34;upcoming-addition-of-ios-9-support-removal-of-ios-6-support&#34;&gt;Upcoming addition of iOS 9 Support &amp;amp; removal of iOS 6 Support&lt;/h3&gt;
+
+&lt;p&gt;The RHMAP Build Farm does not currently support the targeting of iOS 9. Apps built in the Build Farm will continue to target iOS 8 until the relevant upgrade is complete. Once iOS 9 and Xcode 7 are added, they will become the defaults in the Build Farm.&lt;/p&gt;
+
+&lt;p&gt;In keeping with our long-standing policy of tracking Apple’s OS support (CurrentVersion / CurrentVersion-1 / CurrentVersion-2), this means that iOS 6 will no longer be supported in the Build Farm.&lt;/p&gt;
+
+&lt;p&gt;We currently expect this upgrade to occur in v3.8.0 of RHMAP in early 2016.&lt;/p&gt;
+
+&lt;h2 id=&#34;android-5-1-lollipop-api-level-22-support&#34;&gt;Android 5.1, Lollipop, API Level 22 support&lt;/h2&gt;
+
+&lt;p&gt;In the upcoming v3.5.4 release of RHMAP, we will be changing the default version of Android that we target in our Apps from Android API 19 (Android 4.4, KitKat) to Android API 22 (Android 5.1, Lollipop). This also means that the Build Farm will be able to support Gradle builds from Android Studio in addition to the existing Ant builds from ADT.&lt;/p&gt;
+
+&lt;p&gt;All current apps should continue to work as before and no action is necessary on your part for those apps.&lt;/p&gt;
+
+&lt;p&gt;However, if you wish, you will be able to target Android API 22 and make use of any newer functionality available there.&lt;/p&gt;
+
+&lt;p&gt;Once the update has been completed in the platform, Cordova Light Apps and Forms Apps will continue to default to Android 19 for the moment. Native Android Apps and Full Cordova Apps will be able to specify any API level &amp;lt;= 22.&lt;/p&gt;
+
+&lt;h2 id=&#34;android-6-0-m-marshmallow-api-level-23-topics&#34;&gt;Android 6.0, M, Marshmallow, API Level 23 topics&lt;/h2&gt;
+
+&lt;p&gt;Google recently released Android M which has some changes that may impact your Apps. Note that M is only available at the moment on a small number of Nexus devices and one other LG device.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Existing App binaries built using our Android SDK that target versions of Android API lower than 23 will continue to run unchanged on devices that are updated to Android M. The same is true for new devices running Android M.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The current version of our Android SDK (v2.x.x) is not compatible with Apps that are built locally on your workstation in Android Studio and target Android M (Android API Level 23).&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The next major version our Android SDK (v3.x.x) will be compatible with Apps that are built locally on your workstation in Android Studio and target Android M (Android API Level 23). The release date for this version will be announced soon.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;If you have any Android app (not just those using our SDKs) that makes use of the older Android HttpClient APIs, and you wish to target Android M, then you will need to update those apps to use &lt;a href=&#34;http://developer.android.com/reference/java/net/HttpURLConnection.html&#34;&gt;HttpUrlConnection&lt;/a&gt; (or &lt;a href=&#34;http://square.github.io/okhttp/&#34;&gt;OKHttp&lt;/a&gt;), or include the &lt;a href=&#34;http://developer.android.com/about/versions/marshmallow/android-6.0-changes.html&#34;&gt;HttpClient support library&lt;/a&gt; from Google.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The RHMAP Build Farm also does not currently support the targeting of Android M. We will announce when Android M support is available.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;cordova-registry&#34;&gt;Cordova Registry&lt;/h2&gt;
+
+&lt;p&gt;The Apache Software Foundation &lt;a href=&#34;https://cordova.apache.org/announcements/2015/04/21/plugins-release-and-move-to-npm.html&#34;&gt;announced in April&lt;/a&gt; that they were planning to shut down the Cordova Registry on October 15th and move to NPM for plugins. Whilst it appears this shutdown has been delayed, you should ensure any of your Hybrid Apps where you have specified extra Cordova plugins are updated. Red Hat Mobile developers who make use of our config.json file will need to follow &lt;a href=&#34;http://docs.feedhenry.com/v3/guides/using_cordova_plugins.html&#34;&gt;the existing instructions here&lt;/a&gt; to point to the GitHub URLs for the plugins instead of the Cordova Registry.&lt;/p&gt;
+
+&lt;p&gt;All of the plugins used by default in Red Hat Mobile Templates have already made this move so if you are just using our default set of plugins in Cordova Light Apps, Cordova Apps or Forms Apps, then no action is necessary.&lt;/p&gt;
+
+&lt;p&gt;A future release of of RHMAP will fully support the use of NPM for Cordova plugins.&lt;/p&gt;
+
+&lt;h2 id=&#34;removal-of-blackberry-and-windows-phone-7-x-support&#34;&gt;Removal of BlackBerry and Windows Phone 7.x Support&lt;/h2&gt;
+
+&lt;p&gt;Due to the ever-shrinking market share of BlackBerry and the complete lack of use of this target in our platform, we are removing all support for it with immediate notice. Our JS SDKs may continue to work on more modern BlackBerry devices but this is not supported in the product.&lt;/p&gt;
+
+&lt;p&gt;As Microsoft ceased support for Windows Phone 7.x in 2014 and we have no active customers using this target, we are removing all support for it with immediate notice too.&lt;/p&gt;
+
+&lt;h2 id=&#34;windows-8-1-and-windows-10-universal-apps&#34;&gt;Windows 8.1 and Windows 10 Universal Apps&lt;/h2&gt;
+
+&lt;p&gt;Due to licensing changes in Visual Studio, we currently cannot provide Build Farm support for Windows 8.1 or 10 Universal Apps. Windows 8.1 is supported in our Hybrid JS and Native .NET SDKs, which can be built locally on a developer machine. The same support for Windows 10 will be available in v3.6.x of RHMAP by the end of November.&lt;/p&gt;
+
+&lt;h2 id=&#34;removal-of-older-unused-integrations&#34;&gt;Removal of older unused integrations&lt;/h2&gt;
+
+&lt;p&gt;We have a variety of old integrations built into the platform which have not been used by customers for a very long time. We have therefore decided to remove these SDKs from the Build Farm with immediate effect.&lt;/p&gt;
+
+&lt;p&gt;The removals are as follows:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;MonkeyTalk&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Urban Airship Push&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Flurry Analytics&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In every case you can still use these products with RHMAP by manually adding their latest SDKs to your projects and creating custom MBaaS Connectors.&lt;/p&gt;
+
+&lt;p&gt;Note that we are also replacing Urban Airship Push with an integrated version of the Red Hat Unified Push Server in the 3.6.0 release of RHMAP.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>One small change needed to Cloud Apps after the RHMAP 3.5.x release</title>
+      <link>http://feedhenrydevblogarchive.github.io/one-small-change-needed-to-cloud-apps-after-the-rhmap-3-5-x-release/</link>
+      <pubDate>Mon, 12 Oct 2015 11:59:53 +0000</pubDate>
+      
+      <guid>http://feedhenrydevblogarchive.github.io/one-small-change-needed-to-cloud-apps-after-the-rhmap-3-5-x-release/</guid>
+      <description>&lt;p&gt;We have now rolled out RHMAP 3.5.x to all of the relevant pre-production and production grids.&lt;/p&gt;
+
+&lt;p&gt;There is one small breaking change which needs to be flagged. If, on deployment of your cloud code, you receive a message saying&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;quot;pre-deploy checks failed. Error: fh-mbaas-api version ~x.y.z is not valid. Please make sure it is &amp;gt;=5.0.0&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then you will need to do the following:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Go to the Editor for the Cloud App&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Click on package.json&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Locate the line that starts with fh-mbaas-api and change it so the version is &amp;ldquo;~5.0.0&amp;rdquo;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Click Save&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;You can now re-deploy&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;If you run into any issues with this change, please contact Red Hat Support via your usual channels.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Lots of lovely new features in the Red Hat Mobile Application Platform v3.5.x</title>
+      <link>http://feedhenrydevblogarchive.github.io/lots-of-lovely-new-features-in-the-red-hat-mobile-application-platform-v3-5-x/</link>
+      <pubDate>Wed, 30 Sep 2015 16:00:28 +0000</pubDate>
+      
+      <guid>http://feedhenrydevblogarchive.github.io/lots-of-lovely-new-features-in-the-red-hat-mobile-application-platform-v3-5-x/</guid>
+      <description>
+
+&lt;p&gt;We have some really interesting and powerful new features in RHMAP v3.5.x which has just been deployed to our evaluation SaaS grids and will be deployed to the production grids next week.&lt;/p&gt;
+
+&lt;h3 id=&#34;lifecycle-management-for-forms-builder&#34;&gt;Lifecycle Management for Forms Builder&lt;/h3&gt;
+
+&lt;p&gt;We released our Application Lifecycle Management (ALM/LCM) functionality earlier this year and it has proven to be a big hit with customers who need strong lifecycle support in their process. The one area which didn&amp;rsquo;t have this was our Forms Builder and we&amp;rsquo;re pleased to now make LCM available in Forms too.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/09/forms_lifecycle_new_02.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/09/forms_lifecycle_new_02.png&#34; alt=&#34;forms_lifecycle_new_02&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Where previously your Forms went &amp;ldquo;live&amp;rdquo; as soon as you saved them, now with LCM you edit a central definition and then deploy your edits to specific Environments. This ensures you can work through your defined lifecycle and not interfere with Production Forms Apps during development. There are also many features available to enable you to deploy, promote and copy Forms in your Environments. You can read more of the details on the &lt;a href=&#34;http://docs.feedhenry.com/v3/guides/app_forms_lifecycle.html&#34;&gt;docs site&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;forms-builder-support-on-openshift-online&#34;&gt;Forms Builder support on OpenShift Online&lt;/h3&gt;
+
+&lt;p&gt;The &lt;a href=&#34;https://openshift.feedhenry.com/&#34;&gt;Community Edition of RHMAP&lt;/a&gt;, which uses OpenShift Online for &lt;a href=&#34;http://docs.feedhenry.com/v3/guides/openshift_online_code_staging.html&#34;&gt;its MBaaS&lt;/a&gt;, is the fastest way to get going with our platform. The most common request we have received since the launch in June, is to have the Forms Builder available there. Our LCM functionality described above now makes that possible.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/09/forms5.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/09/forms5.png&#34; alt=&#34;forms5&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;RHMAP + OpenShift Online + Forms Builder is an extremely useful combination that means you can create, build and deploy Cloud-powered Android Apps immediately without writing a line of code. You can read more of the details on the &lt;a href=&#34;http://docs.feedhenry.com/v3/guides/forms_support_openshift.html&#34;&gt;docs site&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;revamped-enterprise-app-store&#34;&gt;Revamped Enterprise App Store&lt;/h3&gt;
+
+&lt;p&gt;Enterprise customers need a way to distribute Apps to their employees. For those who don&amp;rsquo;t require full-blown MDM or MAM, our lightweight Enterprise App Store is ideal. It works for iOS, Android and Windows Apps and isn&amp;rsquo;t limited to Apps you build in the platform.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/09/app_store_new.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/09/app_store_new.png&#34; alt=&#34;app_store_new&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;This release sees a much slicker mobile interface for end-users along with more meta-data per App. You can read more of the details on the &lt;a href=&#34;http://docs.feedhenry.com/v3/product_features/admin.html#admin-app_store&#34;&gt;docs site&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;windows-8-1-support-including-windows-tablets&#34;&gt;Windows 8.1 Support including Windows tablets&lt;/h3&gt;
+
+&lt;p&gt;We have had Windows Phone 8 support since last year and we can now offer support for Windows 8.1 Universal Apps, both Native and Cordova based. The Cordova functionality means that we also support Forms Apps on Windows 8.1 in any form factor.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/09/welcome_windows.jpg&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/09/welcome_windows-1024x799.jpg&#34; alt=&#34;welcome_windows&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;You can read about how Windows is supported &lt;a href=&#34;http://docs.feedhenry.com/v3/guides/windows_platform_support.html&#34;&gt;here&lt;/a&gt; and how to compile Forms Apps &lt;a href=&#34;http://docs.feedhenry.com/v3/guides/windows_store_apps_tutorial.html&#34;&gt;here&lt;/a&gt;. You can also make use of a Native &lt;a href=&#34;https://github.com/feedhenry-templates/welcome-windows&#34;&gt;Welcome template App&lt;/a&gt; which will soon be available in the Studio. Expect news on Windows 10 very shortly.&lt;/p&gt;
+
+&lt;h3 id=&#34;cloud-app-deployment-history&#34;&gt;Cloud App Deployment History&lt;/h3&gt;
+
+&lt;p&gt;This much-reqested feature shows you all of the specifics of your Cloud App deployments so you know exactly what was deployed to which Environment and when. In addition, you can now navigate away during deployment to do other things and come back whenever it suits you to check the status.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/09/deploy_history.jpg&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/09/deploy_history-1024x629.jpg&#34; alt=&#34;deploy_history&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;We&amp;rsquo;ll be following this soon with v3.6.x which integrates the AeroGear Unified Push Server into RHMAP. All the details here shortly!&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

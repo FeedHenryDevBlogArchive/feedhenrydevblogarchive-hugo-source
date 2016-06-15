@@ -1,0 +1,7 @@
+baseurl: http://feedhenrydevblogarchive.github.io
+disablePathToLower: true
+languageCode: en-us
+title: Archive of FeedHenry Developer Blog 2012-2016
+theme: blackburn
+
+...

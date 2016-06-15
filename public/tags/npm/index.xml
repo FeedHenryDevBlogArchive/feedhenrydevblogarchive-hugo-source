@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Npm on Archive of FeedHenry Developer Blog 2012-2016</title>
+    <link>http://feedhenrydevblogarchive.github.io/tags/npm/</link>
+    <description>Recent content in Npm on Archive of FeedHenry Developer Blog 2012-2016</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 24 Jun 2014 17:26:33 +0000</lastBuildDate>
+    <atom:link href="http://feedhenrydevblogarchive.github.io/tags/npm/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>A summary of the FeedHenry 3 changes in our fhc command-line tool</title>
+      <link>http://feedhenrydevblogarchive.github.io/summary-new-feedhenry-3-features-fhc-command-line-tool/</link>
+      <pubDate>Tue, 24 Jun 2014 17:26:33 +0000</pubDate>
+      
+      <guid>http://feedhenrydevblogarchive.github.io/summary-new-feedhenry-3-features-fhc-command-line-tool/</guid>
+      <description>
+
+&lt;p&gt;We develop everything in FeedHenry API-first ,which means our command-line tooling is just as powerful as our Web UIs, with the added advantage of automation and scriptability.&lt;/p&gt;
+
+&lt;p&gt;The main FeedHenry CLI is called &lt;em&gt;fhc&lt;/em&gt; and it is how most developers interact with the platform. Version 0.30.x has had quite a few changes (to put it mildly!) for FeedHenry 3 and we&amp;rsquo;ll summarise those changes here. &lt;em&gt;fhc&lt;/em&gt; will continue to work with both FeedHenry 3 and previous versions of the platform for the foreseeable future. Of course, being a Node.js App, it supports Windows, OSX and Linux.&lt;/p&gt;
+
+&lt;h2 id=&#34;new-feedhenry-3-commands&#34;&gt;New FeedHenry 3 Commands&lt;/h2&gt;
+
+&lt;h3 id=&#34;fhc-projects&#34;&gt;fhc projects&lt;/h3&gt;
+
+&lt;p&gt;Projects are a major new concept within FeedHenry 3 and enable groups of developers to work together on different but related Apps (e.g. iOS Native Client,  Cordova Client, Cloud Code and mBaaS Service). You can this command to list/create/update/read/delete or clone a project. &amp;ldquo;Clone&amp;rdquo; is particularly powerful as it does a &amp;lsquo;git clone&amp;rsquo; of each App in your Project into the current working directory.&lt;/p&gt;
+
+&lt;h3 id=&#34;fhc-services&#34;&gt;fhc services&lt;/h3&gt;
+
+&lt;p&gt;Services are one of the other main pillars of FeedHenry 3, enabling you to create standalone cloud services which are re-usable across one or more projects. This makes them ideal as connectors to your back-end systems and we are regularly expanding the list of out-of-the-box services. You can this command to list/create/update/read or delete a service.&lt;/p&gt;
+
+&lt;h3 id=&#34;fhc-connections&#34;&gt;fhc connections&lt;/h3&gt;
+
+&lt;p&gt;Connections provide the ability to dynamically reconfigure which Cloud Code a specific app (and app version) communicates with. This can be done without needing to release new versions of your apps. Different apps/versions can simultaneously talk to different versions of your cloud code. You can use this command to easily list and change the connections.&lt;/p&gt;
+
+&lt;h3 id=&#34;fhc-artifacts&#34;&gt;fhc artifacts&lt;/h3&gt;
+
+&lt;p&gt;In FeedHenry 3, you can now view your build artifacts including the download URL and credential credential bundles used. This command shows you Platform, App Version, Date, Type, Credentials and URL for a given Project and App. Since our Build Farm now supports native iOS, Android and Windows Phone 8, all of those are available too.&lt;/p&gt;
+
+&lt;h3 id=&#34;fhc-forms-fhc-submissions-and-fhc-themes&#34;&gt;fhc forms, fhc submissions and fhc themes&lt;/h3&gt;
+
+&lt;p&gt;Our zero-code Drag and Drop Apps, based around Forms, had a massive upgrade in FeedHenry 3 and they have really been grabbing everyone&amp;rsquo;s attention. Everything you can do with Forms in the Studio, you can also do on the command line. For Forms themselves, this includes list/create/update/get/delete. Similar commands are available for Forms Apps, Forms Groups, Forms Themes and Forms Notifications. Everything is built on JSON and can be easily modified and moved. All of the data submitted by users using Drag and Drop Apps is also available&lt;/p&gt;
+
+&lt;h3 id=&#34;fhc-templates&#34;&gt;fhc templates&lt;/h3&gt;
+
+&lt;p&gt;We have an ever expanding set of template/sample/tutorial Apps which can be listed and read on the command line.&lt;/p&gt;
+
+&lt;h3 id=&#34;fhc-ssh-keys-and-fhc-user-keys&#34;&gt;fhc ssh-keys and fhc user-keys&lt;/h3&gt;
+
+&lt;p&gt;You can manage both your ssh keys and FeedHenry API Keys from the cli including commands like list/add/delete/read/update.&lt;/p&gt;
+
+&lt;h2 id=&#34;changes-to-existing-commands&#34;&gt;Changes to existing commands&lt;/h2&gt;
+
+&lt;h3 id=&#34;fhc-apps&#34;&gt;fhc apps&lt;/h3&gt;
+
+&lt;p&gt;The apps command, instead of just listing apps as it did in the past, contains all apps related sub commands like list/create/read/update/delete.&lt;/p&gt;
+
+&lt;p&gt;The following older apps related commands still exist but have been deprecated:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;fhc read&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;fhc delete&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;fhc update&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;fhc delete&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;fhc-import&#34;&gt;fhc import&lt;/h3&gt;
+
+&lt;p&gt;This is now invoked as follows:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;fhc import &amp;lt;project-id&amp;gt; &amp;lt;app-title&amp;gt; &amp;lt;app-template-type&amp;gt; [&amp;lt;zip-file&amp;gt; || &amp;lt;git-repo&amp;gt;]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Note: if no file or repo is specified, a bare git repo is created&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Dealing with Express 4.0 backwards incompatibilities</title>
+      <link>http://feedhenrydevblogarchive.github.io/dealing-express-4-0-backwards-incompatibilities/</link>
+      <pubDate>Wed, 05 Mar 2014 17:02:20 +0000</pubDate>
+      
+      <guid>http://feedhenrydevblogarchive.github.io/dealing-express-4-0-backwards-incompatibilities/</guid>
+      <description>&lt;p&gt;If you have been running into issues with your Node code today, it is probably due to the new version of Express (4.0) which is now in NPM. In a FeedHenry context you may be seeing that all of your cloud calls respond with the same message - &amp;ldquo;Your Cloud App is Running&amp;rdquo;.&lt;/p&gt;
+
+&lt;p&gt;This will happen if your package.json contains a wildcard &amp;ldquo;*&amp;rdquo; for the Express version. So when you deploy your app, it automatically picks the latest version from NPM. Version 4 of Express has a range of backwards compatibility issues which are causing problems.&lt;/p&gt;
+
+&lt;p&gt;To deal with this, you should set the Express version number to something like &amp;ldquo;3.3.4&amp;rdquo; in that file. In general it is good configuration management practice to specify version numbers for all of the packages you use in your Node code.&lt;/p&gt;
+
+&lt;p&gt;As Express 4 is at RC stage, we (and they) do not recommend using it in production. If you wish to know more about what will be involved when it comes time to move to Express 4, you can read the migration guide on the Express &lt;a href=&#34;https://github.com/visionmedia/express/wiki/Migrating-from-3.x-to-4.x&#34;&gt;GitHub repo&lt;/a&gt;. We will provide further updated information on Express 4 when it is ready for production and is in use internally by our own systems.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Enterprise Development on Archive of FeedHenry Developer Blog 2012-2016</title>
+    <link>http://feedhenrydevblogarchive.github.io/tags/enterprise-development/</link>
+    <description>Recent content in Enterprise Development on Archive of FeedHenry Developer Blog 2012-2016</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 26 Sep 2014 14:58:22 +0000</lastBuildDate>
+    <atom:link href="http://feedhenrydevblogarchive.github.io/tags/enterprise-development/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Mobile Solution Development for the enterprise - the 5 steps to bring order to chaos</title>
+      <link>http://feedhenrydevblogarchive.github.io/mobile-solution-development-5-steps/</link>
+      <pubDate>Fri, 26 Sep 2014 14:58:22 +0000</pubDate>
+      
+      <guid>http://feedhenrydevblogarchive.github.io/mobile-solution-development-5-steps/</guid>
+      <description>
+
+&lt;h1 id=&#34;overview&#34;&gt;Overview&lt;/h1&gt;
+
+&lt;p&gt;We&amp;rsquo;re often asked to explain the best approach to take when building complex mobile solutions and how the FeedHenry mobile application platform helps to simplify, manage and streamline the process.&lt;/p&gt;
+
+&lt;p&gt;The best way to fully answer this question is with a practical example, so let&amp;rsquo;s walk through a recent use case which perfectly showcases the power of the FeedHenry platform in 5 simple steps.&lt;/p&gt;
+
+&lt;h1 id=&#34;what-was-required&#34;&gt;What was required&lt;/h1&gt;
+
+&lt;p&gt;An insurance policy management system with the following components:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;A Native iOS App&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;A Native Android App&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;A Web Based Admin Portal&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;All backed by a nice, clean, secure Node.js RESTful API Server&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;what-we-had-to-work-with&#34;&gt;What we had to work with&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;A SAML Identity Provider in the back end network&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;A web server which only returned HTML - i.e no SOAP or RESTful APIs&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;how-we-went-about-it&#34;&gt;How we went about it&lt;/h1&gt;
+
+&lt;p&gt;By following the basic 5 step plan below, we were able to deliver a working prototype, fully integrated into both the authentication service and the web server within a few days.&lt;/p&gt;
+
+&lt;h3 id=&#34;step-1-define-the-architecture&#34;&gt;Step 1 - Define the architecture&lt;/h3&gt;
+
+&lt;p&gt;The first step in any project is to define the architecture of the solution. In this case, we had 3 clients, an API server and some back end systems. For interfacing with the back end systems, we had two obvious options:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Connect directly from the Node.js API server&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Create some micro services for connecting to the back end and interface with these from the Node.js API server&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Given the option, it is almost always preferable to go the micro service route&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;It allows for the functionality to be easily integrated and re-used in other projects.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;It promotes developing smaller, cleaner, more focused modules - following the linux principle of doing one thing well&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;It promotes separation of concerns - allowing more developers to contribute to the effort without stepping on each others toes&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So, with an architecture in mind (see below) it was time to start figuring out integration.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/09/Mobile-Solution-Architecture1.png&#34; alt=&#34;Mobile Solution Architecture&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;step-2-create-the-components&#34;&gt;Step 2 - Create the components&lt;/h3&gt;
+
+&lt;p&gt;Once the architecture was in place and we had decided which components were going to communicate with each other, it was time to represent this in the platform as projects, apps and services. To do this we created the following components:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;A Web App for the Web Portal - An Express.js Node app set up for static file serving with the FeedHenry SDK already embedded in the default index.html page&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;A Native iOS App - A standard iOS project with the FeedHenry SDK already embedded&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;A Native Android App - A standard Android project with the FeedHenry SDK already embedded&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;A Cloud App - a Node.js API Server to provide data to the 3 client apps&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;A micro service for the SAML Integration&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;A micro service for scraping the back end web server and returning JSON data&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Once all these were created, and the services were bound to our new project, our setup looked like this (notice how closely it maps to our architecture diagram above):&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/09/Screenshot-2014-09-26-12.22.10.png&#34; alt=&#34;Platform Component Architecture&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;step-3-define-the-apis&#34;&gt;Step 3 - Define the APIs&lt;/h3&gt;
+
+&lt;p&gt;With the architecture defined and laid down as projects, apps and services, we had something concrete to work with and had 6 git repos (one for each of the components) that we could start coding against. We had already decided which components were going to communicate with each other so we now needed to define the contracts for those communications - i.e. the APIs. Thanks to the platform support for &lt;a href=&#34;http://apiblueprint.org/&#34;&gt;API Blueprint&lt;/a&gt; we were very quickly able to define the APIs for the Node.js API server which the mobile and web clients would require. In order to allow client development to kick off as soon as possible, we started out with the APIs returning mock data. This is a great approach for getting &amp;ldquo;working&amp;rdquo; APIs up and running in a really short time frame (i.e. within about an hour).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/09/Screenshot-2014-09-26-10.11.20.png&#34; alt=&#34;API Documentation Browser&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Even though the responses from these API&amp;rsquo;s were static mock data (for now), as far as the clients were concerned, they were real, functional, remote APIs. This meant that client development could progress as if the API&amp;rsquo;s were fully functional - no need to start mocking out the APIs for each of the three clients.&lt;/p&gt;
+
+&lt;h3 id=&#34;step-4-build-out-the-functionality&#34;&gt;Step 4 - Build out the functionality&lt;/h3&gt;
+
+&lt;p&gt;At this stage, we were only a few hours in and we already had our architecture nailed down and our touch points (i.e. APIs) defined. This allowed us to get to the fun stuff (i.e. the coding) really quickly, but with everyone already having a clear picture of how the solution was put together and how each piece would communicate. One of the really superb things about this approach is that we could now (within a very short time period) get a full team of developers, with vastly different skill sets (native client developers, web developers, Node.js API developers, Authentication integrators, screen scraping hackers) working together with a minimum of confusion or communication. Each piece of the solution was a stand alone component with it&amp;rsquo;s own git repo so there would be no merge conflicts between the components. Furthermore, the API touch points between the components were already programatically defined, and could be interacted with via the platform using the interactive documentation &amp;amp; discovery functionality.&lt;/p&gt;
+
+&lt;p&gt;Over the course of the next several hours, each team member worked on their component with autonomy. At regular intervals, we had each developer push their code back up to the platform&amp;rsquo;s hosted git repositories so we could keep an eye on progress and get working prototypes out into the hands of the customer. Thanks to the platforms hosted build farms, we were even able to co-ordinate the generation and distribution of app binaries.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/09/Screenshot-2014-09-26-15.01.46.png&#34; alt=&#34;Platform Binary Building&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;step-5-integrate-the-micro-services&#34;&gt;Step 5 - Integrate the micro services&lt;/h3&gt;
+
+&lt;p&gt;Once the various micro services were functional, it was time to integrate them into the API server. Again, thanks to API blueprint definitions of the services&amp;rsquo; API&amp;rsquo;s the API Server developer was able to complete this integration with minimal input from the service developers - the API contracts for the micro services had already been defined and the actual implementation detail of the service was completely transparent to the API Server developer.&lt;/p&gt;
+
+&lt;p&gt;Meanwhile, the mobile and web client development was continuing to progress independently against the mock data being returned by the API Server. Once the micro services were integrated, it was as simple as toggling an environment variable (fully managed via the platform) to switch from mock data to live data. There were no changes required on the client - their API contract remained exactly the same, but with the flick of a &amp;ldquo;switch&amp;rdquo; the API server was now returning live data.&lt;/p&gt;
+
+&lt;h1 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h1&gt;
+
+&lt;p&gt;Mobile solutions - especially ones for Enterprise - are typically more complex than just an app on a device; even if this is the most visable bit, and the part of the solution which most people tend to focus on. However, it is vitally important to understand and define up front the full solution. By taking this approach, the various components and integration points can be defined early - giving a solid skeleton upon which to build your solution.&lt;/p&gt;
+
+&lt;p&gt;Additionally, the use of micro services to isolate and encapsulate functionality - particularly enterprise integration logic - provides an excellent return on investment, both for the initial solution and for all the ones which come after it and leverage those micro services.&lt;/p&gt;
+
+&lt;p&gt;When done right, and with the support of a strong mobile app platform, even the most complex mobile solutions can be a pleasure, rather than a challenge, to implement.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

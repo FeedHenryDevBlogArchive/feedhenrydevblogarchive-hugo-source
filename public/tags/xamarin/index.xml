@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Xamarin on Archive of FeedHenry Developer Blog 2012-2016</title>
+    <link>http://feedhenrydevblogarchive.github.io/tags/xamarin/</link>
+    <description>Recent content in Xamarin on Archive of FeedHenry Developer Blog 2012-2016</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 16 Jul 2014 09:04:45 +0000</lastBuildDate>
+    <atom:link href="http://feedhenrydevblogarchive.github.io/tags/xamarin/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Import and integrate your existing apps into FeedHenry 3 in 12 minutes</title>
+      <link>http://feedhenrydevblogarchive.github.io/import-integrate-existing-apps-feedhenry-3-12-minutes/</link>
+      <pubDate>Wed, 16 Jul 2014 09:04:45 +0000</pubDate>
+      
+      <guid>http://feedhenrydevblogarchive.github.io/import-integrate-existing-apps-feedhenry-3-12-minutes/</guid>
+      <description>&lt;p&gt;FeedHenry 3 offers a range of App importing and on-boarding options including Cordova, Native Android, Native iOS, Native Windows Phone 8, Web Apps, Appcelerator and Xamarin Apps. Our built-in Git support means that you can either manage all of the source code in our Git servers or make use of Git’s power to push/pull code from your existing Git repositories into/out-of FeedHenry.&lt;/p&gt;
+
+&lt;p&gt;Integrating the FeedHenry SDKs into your Apps so that they can make use of the FeedHenry back-end services, including the mBaaS, is extremely easy and the Studio walks you through all of the steps.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/07/import.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In this video, Jason shows you how to import and integrate an iOS app into FeedHenry 3. He does this in 12 minutes flat and so can you!&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://vimeo.com/100323062&#34;&gt;FeedHenry 3 - App Import&lt;/a&gt; from &lt;a href=&#34;http://vimeo.com/feedhenry&#34;&gt;FeedHenry Ltd.&lt;/a&gt; on &lt;a href=&#34;https://vimeo.com&#34;&gt;Vimeo&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Announcing the FeedHenry C#/.NET Native SDK for Windows Phone and Xamarin </title>
+      <link>http://feedhenrydevblogarchive.github.io/announcing-feedhenry-c-net-native-sdk-windows-phone-xamarin/</link>
+      <pubDate>Wed, 18 Jun 2014 16:25:59 +0000</pubDate>
+      
+      <guid>http://feedhenrydevblogarchive.github.io/announcing-feedhenry-c-net-native-sdk-windows-phone-xamarin/</guid>
+      <description>&lt;p&gt;If you are a .NET developer, you can now use our .NET SDK to develop native cross-platform cloud-connected apps. It can be used to develop Windows Phone 8+ apps (using Visual Studio) as well as iOS and Android apps (using Xamarin Studio). The SDK is open source and available &lt;a href=&#34;https://github.com/feedhenry/fh-dotnet-sdk&#34;&gt;here&lt;/a&gt; on GitHub. It can be downloaded via the NuGet .NET package management system &lt;a href=&#34;https://www.nuget.org/packages/FH.SDK/&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;We have an &lt;a href=&#34;https://ngui-demo.sandbox.feedhenry.com/docs/dev_tools/sdks.html&#34;&gt;introduction&lt;/a&gt; to the .NET SDK, and all of our SDKs on our docs site. You can then read the &lt;a href=&#34;https://ngui-demo.sandbox.feedhenry.com/docs/guides/sdk_dotnet.html&#34;&gt;.NET SDK usage guide&lt;/a&gt; and finally dig into the details with our &lt;a href=&#34;https://ngui-demo.sandbox.feedhenry.com/docs/guides/xamarin_tutorial.html&#34;&gt;.NET SDK and Xamarin tutorial&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Once you&amp;rsquo;ve done all the reading, you can get your hands dirty with our &lt;a href=&#34;https://github.com/feedhenry-templates/team-todo-xamarin&#34;&gt;Xamarin Team To-Do Sample App&lt;/a&gt; which uses the same &lt;a href=&#34;https://github.com/feedhenry-templates/team-todo-cloud&#34;&gt;Cloud code&lt;/a&gt; as our Team To-Do &lt;a href=&#34;https://github.com/feedhenry-templates/team-todo-backbone-app&#34;&gt;Cordova/Backbone App&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/06/architecture.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/06/architecture.png&#34; alt=&#34;architecture&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

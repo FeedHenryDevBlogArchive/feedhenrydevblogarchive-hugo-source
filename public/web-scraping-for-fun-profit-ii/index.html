@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.16" />
+
+  <title>Web Scraping for Fun &amp; Profit II &middot; Archive of FeedHenry Developer Blog 2012-2016</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+
+  <link rel="shortcut icon" href="http://feedhenrydevblogarchive.github.ioimg/favicon.ico" type="image/x-icon" />
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <a href="/"><img src = "/logo.png" /></a>
+    <small>Copyright Red Hat 2016</small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Web Scraping for Fun &amp; Profit II</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>08 Dec 2014, 15:36</time>
+  </div>
+
+  
+
+  
+
+  
+
+</div>
+
+  
+
+<p>In my <a href="http://www.feedhenry.com/web-scraping-fun-profit/">Web Scraping blog post</a>, I described some simple ways to retrieve data from a web page using Node.js. This means of data retrieval proves useful when no API is available.
+Today, I&rsquo;m going to describe similar techniques where reverse engineering &amp; more complex authentication flows are involved to retrieve data.</p>
+
+<h2 id="authentication">Authentication</h2>
+
+<p>When we need to authenticate before viewing the data we need to scrape, the complexity increases significantly. There&rsquo;s many different types of authentication - the vast majority of which we can tackle in Node.js.</p>
+
+<p>When an authentication API absolutely can&rsquo;t be exposed, for whatever reason, my next point of call is to the web version of the login. We&rsquo;re going to reverse engineer the login flow of my demo FeedHenry platform instance, and doing this requires as much information about the login flow as possible.
+First, it&rsquo;s over to the web browser to see how things work on the website. Using the Google Chrome inspector, and turning on recording of requests across page loads, we can see how the login flow works. Note I&rsquo;ve also ticked the &lsquo;Preserve Log&rsquo; option.</p>
+
+<p><a href="/wp-content/uploads/2014/12/Screen-Shot-2014-12-01-at-16.14.27.png"><img src="/wp-content/uploads/2014/12/Screen-Shot-2014-12-01-at-16.14.27-300x99.png" alt="Screen Shot 2014-12-01 at 16.14.27" /></a></p>
+
+<p>After a login request has been sent, we can inspect the request body, and find the information we need to reconstruct this request in Node.</p>
+
+<p><a href="/wp-content/uploads/2014/12/login2.png"><img src="/wp-content/uploads/2014/12/login2-300x243.png" alt="" /></a></p>
+
+<ol>
+<li><p><a href="https://gist.github.com/cianclarke/beb3ee79e0ebfed62f0b#file-feedhenrylogin-js-L8">Request URL</a></p></li>
+
+<li><p><a href="https://gist.github.com/cianclarke/beb3ee79e0ebfed62f0b#file-feedhenrylogin-js-L9">Request Method</a></p></li>
+
+<li><p>We note the response headers contains a cookie which enables us to authenticate future requests</p></li>
+
+<li><p>We take note of the content type - in this case, <code>application/json</code> data. (Passing<a href="https://gist.github.com/cianclarke/beb3ee79e0ebfed62f0b#file-feedhenrylogin-js-L11-L14"> a &lsquo;json&rsquo; property</a> to request automatically gives us this content type).</p></li>
+
+<li><p><a href="https://gist.github.com/cianclarke/beb3ee79e0ebfed62f0b#file-feedhenrylogin-js-L11-L14">We see the JSON payload being transmitted. </a></p></li>
+</ol>
+
+<p>This is a pretty simple example, but sometimes more advanced params are required. A good way to debug is right click on the request in the inspector tab (highlighted in blue above), and click &ldquo;Copy as cURL&rdquo;. This will copy a cURL command to your clipboard which you can run in a terminal window. Start dropping headers and other pieces of information that look unimportant until you&rsquo;re left with a bare-bones working request.</p>
+
+<p>From gathering this info in the chrome inspector, we can construct a <a href="https://gist.github.com/cianclarke/beb3ee79e0ebfed62f0b#file-feedhenrylogin-js">request in Node replicating this login flow</a>:</p>
+
+<pre><code>var request = require('request'),
+jsdom = require('jsdom'),
+jar = request.jar(), // stores cookies in the &quot;jar&quot;, we can re-use them in future authenticated requests
+
+// A closure function to enclose our code within
+(function(username, password){
+  request.post({
+    url : 'https://testing.feedhenry.me/box/srv/1.1/act/sys/auth/login',
+    method : 'post',
+    jar : jar,
+    json : {
+      u : username,
+      p : password,
+      d : &quot;testing&quot;
+    },
+  }, function(err, res, body){
+    if (err){
+      console.error(err);
+      return;
+    }
+
+    // We're in - we can now do subsequent, authenticated requests within the website by just including the same cookie jar, like so:
+
+    request.get({
+      url : 'https://testing.feedhenry.me/box/api/projects',
+      jar : jar,
+      json : true
+    }, function(err, res, body){
+      console.log('Got ' + body.length + ' projects');
+    });
+
+  });
+})(&quot;blog@demo.com&quot;, &quot;Blogpost123&quot;);
+</code></pre>
+
+<p>If we succeed, because our login information is stored in the shared &ldquo;Cookie Jar&rdquo; <a href="https://gist.github.com/cianclarke/beb3ee79e0ebfed62f0b#file-feedhenrylogin-js-L3">we constructed at the start</a>, we can now make authenticated requests to <a href="https://gist.github.com/cianclarke/beb3ee79e0ebfed62f0b#file-feedhenrylogin-js-L23-L30">other parts of the system</a>.
+This is a very simple way of performing a login flow.</p>
+
+<h2 id="interval-based-scraping-cron-cache">Interval-based Scraping: Cron &amp; Cache</h2>
+
+<p>Sometimes, we want to be able to reduce the time it takes for our scraper to run. Usually, we&rsquo;ll do this on an interval by caching the data.</p>
+
+<p>To do this, we&rsquo;ll <a href="https://gist.github.com/cianclarke/4e78314aafcc1b41ca44#file-polling-js-L10">extract our previous scraper code into a function</a>. Then, we&rsquo;ll modify our previous scraper - instead of <code>console.log</code>-ing the number of projects, we&rsquo;ll <a href="https://gist.github.com/cianclarke/4e78314aafcc1b41ca44#file-polling-js-L33">put them into a simple in-memory cache</a> using the <a href="https://github.com/ptarjan/node-cache">memory-cache module</a>.
+Now, we <a href="https://gist.github.com/cianclarke/4e78314aafcc1b41ca44#file-polling-js-L39">call our scraper function once</a> to prime the cache, and <a href="https://gist.github.com/cianclarke/4e78314aafcc1b41ca44#file-polling-js-L40-L42">set up an interval</a> (every <a href="https://gist.github.com/cianclarke/4e78314aafcc1b41ca44#file-polling-js-L8">15 mins</a> in this case) to refresh the cache.
+Lastly, we use a <a href="https://gist.github.com/cianclarke/4e78314aafcc1b41ca44#file-polling-js-L46-L50">simple web server to respond with the cached data</a>.</p>
+
+<p>This could easily be expanded using the fantastic <a href="https://github.com/ncb000gt/node-cron"><code>node-cron</code> module </a>to allow us to set up more advanced schedules in a unix crontab fashion. It&rsquo;d also be advisable to use Redis for caching this data over an in-memory cache - just use <a href="http://docs.feedhenry.com/v3/api/api_cache.html">$fh.cache</a> in FeedHenry.</p>
+
+<h2 id="other-popular-authentication-mechanisms">Other Popular Authentication Mechanisms</h2>
+
+<p>A myriad of authentication mechanisms exist- often much more advanced use cases. I&rsquo;ve attempted to cover some here, with a worked example.</p>
+
+<h3 id="form-data"><strong>Form Data</strong></h3>
+
+<p>We can identify Form Data in the browser by looking for the request content-type <code>application/x-www-form-urlencoded</code>, along with a Form Data section in the request inspector of the browser:</p>
+
+<p><a href="/wp-content/uploads/2014/12/Screen-Shot-2014-12-01-at-16.39.00.png"><img src="/wp-content/uploads/2014/12/Screen-Shot-2014-12-01-at-16.39.00-300x62.png" alt="" /></a></p>
+
+<p>Node.js makes Form Data really simple. It can be appended to the request by replacing our <a href="https://gist.github.com/cianclarke/21aacdd06f22d33e663c#file-gistfile1-js-L10-L14"><code>json</code> option with <code>form</code>.</a></p>
+
+<h3 id="csrf-tokens"><strong>CSRF Tokens</strong></h3>
+
+<p>Some sites will require a <a href="http://en.wikipedia.org/wiki/Cross-site_request_forgery">CSRF (Cross Site Request Forgery)</a> token from the login page before even performing the login request. This token is usually a hidden input on the page. If we can identify the CSRF token in the browser, we can then search the HTML source of the page for it.
+To overcome these tokens in node.js code, we can first load the login page using a <code>GET</code> request, and then use JSDom to pick out the CSRF token.</p>
+
+<h3 id="redirects"><strong>Redirects</strong></h3>
+
+<p>Another popular flow is many redirects before reaching final destination - <a href="https://github.com/mikeal/request#requestoptions-callback">the &lsquo;followAllRedirects&rsquo; option of request</a> is useful when this is required.</p>
+
+<h3 id="an-example-openshift-online">An Example - OpenShift Online</h3>
+
+<p>The login form for OpenShift Online illustrates these concepts perfectly - namely:</p>
+
+<ol>
+<li><p>A CSRF-like token <a href="https://gist.github.com/cianclarke/54d58cad0c3a9cbecdd5#file-gistfile1-txt-L17">pulled from the page using JSDom</a></p></li>
+
+<li><p><a href="https://gist.github.com/cianclarke/54d58cad0c3a9cbecdd5#file-gistfile1-txt-L24-L30">Form data</a></p></li>
+
+<li><p><a href="https://gist.github.com/cianclarke/54d58cad0c3a9cbecdd5#file-gistfile1-txt-L9">The need to follow through redirects</a></p>
+
+<p>var request = require(&lsquo;request&rsquo;),
+jsdom = require(&lsquo;jsdom&rsquo;),
+jar = request.jar(); // stores cookies in the &ldquo;jar&rdquo;, we can re-use them in future authenticated requests</p>
+
+<p>request({
+  url : &lsquo;<a href="https://openshift.redhat.com/app/login'">https://openshift.redhat.com/app/login'</a>,
+  method : &lsquo;get&rsquo;,
+  jar : jar,
+  followAllRedirects : true
+}, function(err, response, body){
+  if (err){
+    console.error(err);
+    return;
+  }
+  jsdom.env(body,[&ldquo;<a href="http://code.jquery.com/jquery.js&quot;">http://code.jquery.com/jquery.js&quot;</a>], function (errors, window) {
+    var $ = window.$,
+    token = $(&lsquo;input[name=authenticity_token]&lsquo;).val(),
+    utf8 = $(&lsquo;input[name=utf8]&lsquo;).val();
+    request.post({
+      url : &lsquo;<a href="https://openshift.redhat.com/app/login'">https://openshift.redhat.com/app/login'</a>,
+      method : &lsquo;post&rsquo;,
+      jar : jar,
+      followAllRedirects : true,
+      form : {
+        &ldquo;web_user[rhlogin]&rdquo; : &ldquo;foo@bar.com&rdquo;,
+        &ldquo;web_user[password]&rdquo; : &ldquo;foobar&rdquo;,
+        &ldquo;commit&rdquo; : &ldquo;Sign in&rdquo;,
+        &ldquo;authenticity_token&rdquo; : token,
+        &ldquo;utf8&rdquo; : utf8
+      }
+    }, function(err, res, body){
+      if (body.indexOf(&lsquo;My Account&rsquo;)&gt;-1){
+        console.log(&lsquo;We\&rsquo;re in, and have headers in the jar to allow us to do authenticated requests!&lsquo;);
+      }
+    });
+  });
+});</p></li>
+</ol>
+
+<h3 id="token-based-authentication"><strong>Token based Authentication</strong></h3>
+
+<p>Many authentication systems can perform authentication flows where a username and password is passed to the backend, and it returns an authentication token which is appended to future request bodies. This is common with SOAP based services, but can exist in JSON APIs too. How these work are best investigated using the network tab of the inspector, then mimicking the flow in code.</p>
+
+<h3 id="debugging-with-a-proxy"><strong>Debugging with a Proxy</strong></h3>
+
+<p><a href="/wp-content/uploads/2014/12/Screen-Shot-2014-12-05-at-09.58.33.png"><img src="/wp-content/uploads/2014/12/Screen-Shot-2014-12-05-at-09.58.33-300x196.png" alt="Using Charles Proxy" /></a>If we&rsquo;re trying to replicate the login flow of a mobile app, command line utility, or software tool that doesn&rsquo;t live in a browser, I often use the Charles debugging proxy to inspect the data flow just like we did with the browser above. To use this, your target needs to support a HTTP proxy. Most command line utilities and software packages do, and to set it up with a mobile phone, just use the system proxy. <a href="http://cianclarke.com/blog/how-popular-apps-access-apis/">See my previous post on this</a> for more details on using a debugging proxy.
+It&rsquo;s also beneficial to be able to track the progress of requests through a Node.js application - you can use the charles proxy when using request like so:</p>
+
+<pre><code>request.get({
+  url : 'http://www.google.ie',
+  proxy : 'http://127.0.0.1:8080'
+}, function(error, response, body){ 
+  // This request has now flown through the Charles proxy
+});
+</code></pre>
+
+<h1 id="further-reading-tools">Further Reading &amp; Tools</h1>
+
+<ul>
+<li><p><a href="http://www.feedhenry.com/web-scraping-fun-profit/">Web Scraping for Fun &amp; Profit I</a> - Precursor to this post</p></li>
+
+<li><p><a href="https://github.com/tmpvar/jsdom">JSDom</a> - Run jQuery DOM queries (&amp; others) on a web page from ServerSide</p></li>
+
+<li><p><a href="http://phantomjs.org/">PhantomJS</a> - Headless browser &amp; JavaScript API</p></li>
+
+<li><p><a href="http://www.charlesproxy.com/">Charles</a> -  Debugging Proxy</p></li>
+
+<li><p><a href="http://casperjs.org/">CasperJS</a> - Testing utility which could also be used to build advanced scraping utilities</p></li>
+</ul>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="http://feedhenrydevblogarchive.github.io/the-feedhenry-red-hat-devoxx-keynote-demo-team-explains-it-all/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="http://feedhenrydevblogarchive.github.io/the-feedhenry-red-hat-devoxx-keynote-demo-team-explains-it-all/">The FeedHenry &amp; Red Hat Devoxx Keynote Demo Team explains it all</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="http://feedhenrydevblogarchive.github.io/microservices-for-mobile/">Evolving a Mobile-centric Architecture: The Microservices Way</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="http://feedhenrydevblogarchive.github.io/microservices-for-mobile/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+  
+
+</div>
+
+</div>
+</div>
+<script src="http://feedhenrydevblogarchive.github.iojs/ui.js"></script>
+
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.16" />
+
+  <title>Publishing the gitlab-shell Java client to the Maven Central Repository &middot; Archive of FeedHenry Developer Blog 2012-2016</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+
+  <link rel="shortcut icon" href="http://feedhenrydevblogarchive.github.ioimg/favicon.ico" type="image/x-icon" />
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <a href="/"><img src = "/logo.png" /></a>
+    <small>Copyright Red Hat 2016</small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Publishing the gitlab-shell Java client to the Maven Central Repository</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>18 Oct 2014, 10:08</time>
+  </div>
+
+  
+
+  
+
+  
+
+</div>
+
+  
+
+<h1 id="what-library-is-being-published-and-why">What library is being published, and why?</h1>
+
+<p>The library being published to maven is a java client for interacting remotely with gitlab-shell <a href="https://github.com/gitlabhq/gitlab-shell">https://github.com/gitlabhq/gitlab-shell</a>.
+It uses the <a href="http://www.jcraft.com/jsch/">Jsch</a> libary to remotely connect (SSH) to the machine with gitlab-shell installed, and execute gitlab-shell administration commands.</p>
+
+<p>The reason for creating this library is because one did not exist already. There are many different gitlab client libraries, but none for interacting directly with gitlab-shell, the underlying git repository service for gitlab.</p>
+
+<h1 id="creating-a-new-gradle-project-in-eclipse">Creating a new gradle project in Eclipse</h1>
+
+<p>To configure Eclipse for working with Gradle projects, the update site at <a href="http://dist.springsource.com/release/TOOLS/gradle">http://dist.springsource.com/release/TOOLS/gradle</a> was added, and the &lsquo;Gradle IDE&rsquo; plugin installed.
+Once installed, a new `Gradle Project&rsquo; was created based off the &lsquo;Java Quickstart&rsquo; sample project.
+The sample project includes the following files &amp; directories by default:</p>
+
+<pre><code>&lt;code&gt;.classpath
+.gradle/
+.project
+.settings/
+bin/
+build/
+build.gradle
+src/main/java/
+src/main/resources/
+src/test/java/
+src/test/resources/
+&lt;/code&gt;
+</code></pre>
+
+<p>The most important files &amp; folders here are:</p>
+
+<ul>
+<li><p>.classpath - projcect classpath with a sepcial entry for &lsquo;gradle&rsquo; (org.springsource.ide.eclipse.gradle.classpathcontainer)</p></li>
+
+<li><p>build.gradle - the gradle project build file. A right-click context menu called &lsquo;Gradle&rsquo; will give some useful tasks to run against your project</p></li>
+
+<li><p>src/main/java - your java source files</p></li>
+</ul>
+
+<p>A sample <code>.gitignore</code> file for what should &amp; shouldn&rsquo;t be checked into git can be found here <a href="https://github.com/feedhenry/gitlab-shell-client/blob/master/.gitignore">https://github.com/feedhenry/gitlab-shell-client/blob/master/.gitignore</a></p>
+
+<h1 id="writing-the-library">Writing the library</h1>
+
+<p>Before starting to write the library, the sample contents in the src folders was removed.
+The library is going to be quite simple as it has 2 primary tasks:</p>
+
+<ul>
+<li><p>remotely connect to a machine over ssh</p></li>
+
+<li><p>execute a command</p></li>
+</ul>
+
+<p>To perform the ssh connection, we&rsquo;re using Jsch, a java implementation of the SSH client.
+To allow importing it in our source code, we added the following dependency to build.gradle.</p>
+
+<pre><code>&lt;code&gt;dependencies {
+    compile 'com.jcraft:jsch:0.1.51'
+}
+&lt;/code&gt;
+</code></pre>
+
+<p>We&rsquo;re focusing on creating and publishing an artifact to maven central in this article, so the library implementation details will be kept brief.
+The client follows the Builder pattern, and allows adding, removing &amp; listing both projects &amp; keys.
+The java source code for doing this can be found at <a href="https://github.com/feedhenry/gitlab-shell-client/blob/master/src/main/java/com/feedhenry/gitlabshell/GLSClient.java">https://github.com/feedhenry/gitlab-shell-client/blob/master/src/main/java/com/feedhenry/gitlabshell/GLSClient.java</a>.
+Usage instructions &amp; sample code can be found in the README file <a href="https://github.com/feedhenry/gitlab-shell-client">https://github.com/feedhenry/gitlab-shell-client</a></p>
+
+<h1 id="publishing-the-library">Publishing the library</h1>
+
+<p>Before the library can be published to maven central <a href="http://search.maven.org/">http://search.maven.org/</a>, we have to publish it to the Sonatype OSS Nexus Repository, then &lsquo;Release&rsquo; it to the central maven repository.
+This process is long-winded compared to other package manager repos, such as npm <a href="https://www.npmjs.org/">https://www.npmjs.org/</a> for node.js pacakges, but becomes easier after the first publication.
+For the most part, the guide at <a href="http://central.sonatype.org/pages/ossrh-guide.html">http://central.sonatype.org/pages/ossrh-guide.html</a> was followed.</p>
+
+<ul>
+<li><p>Create a JIRA account at <a href="https://issues.sonatype.org">https://issues.sonatype.org</a></p></li>
+
+<li><p>Create a &lsquo;New Project&rsquo; ticket, giving details of the project such as the &lsquo;Group ID&rsquo; (we&rsquo;re using com.feedhenry)</p></li>
+
+<li><p>Wait for a reply, giving details of the repositories that can now be published to and downloaded from</p></li>
+
+<li><p>Publish the release artifact (using gradle) to the staging repository</p></li>
+
+<li><p>Promote the uploaded artifact from &lsquo;Staged&rsquo; to &lsquo;Releases&rsquo;</p></li>
+
+<li><p>Comment back on the JIRA ticket, giving details for the promoted artifact, so that syncronisation of your artifacts to maven central is activated</p></li>
+</ul>
+
+<p>A example of this ticket process from start to finish can be seen at <a href="https://issues.sonatype.org/browse/OSSRH-11591">https://issues.sonatype.org/browse/OSSRH-11591</a>.
+Of all these steps, the hardest is the publishing, as it requires some important configuration before running the publish command.</p>
+
+<p>The first tricky step is configuring your <code>gradle.properties</code> file in <code>~/.gradle/</code>.
+This file contains your username &amp; password for <a href="http://central.sonatype.org">http://central.sonatype.org</a>, and gpg key &amp; password details for signing artifacts before uploading them.</p>
+
+<pre><code>&lt;code&gt;signing.keyId=YourKeyId
+signing.password=YourPublicKeyPassword
+signing.secretKeyRingFile=PathToYourKeyRingFile
+
+ossrhUsername=your-jira-id
+ossrhPassword=your-jira-password
+&lt;/code&gt;
+</code></pre>
+
+<p>The username &amp; password are those from your created account above.
+The guide at <a href="http://central.sonatype.org/pages/working-with-pgp-signatures.html">http://central.sonatype.org/pages/working-with-pgp-signatures.html</a> was followed for setting up a gpg key.
+A sample filled in properties file would be:</p>
+
+<pre><code>&lt;code&gt;signing.keyId=171147D9
+signing.password=password
+signing.secretKeyRingFile=/Users/dmartin/.gnupg/secring.gpg
+
+ossrhUsername=david.martin.fh
+ossrhPassword=password
+&lt;/code&gt;
+</code></pre>
+
+<p>The second tricky step is the build.gradle file.
+There are a few important configuration blocks needed to tell gradle what we&rsquo;re uploading and where to upload it to.
+The guide at <a href="http://central.sonatype.org/pages/gradle.html">http://central.sonatype.org/pages/gradle.html</a> was very useful in filling out these details.
+A full working build.gradle file can be seen at <a href="https://github.com/feedhenry/gitlab-shell-client/blob/master/build.gradle">https://github.com/feedhenry/gitlab-shell-client/blob/master/build.gradle</a>
+The important blocks are:</p>
+
+<pre><code>&lt;code&gt;// artifacts to upload i.e. built archive, javadoc &amp; source code, all in jar format
+artifacts {
+  archives javadocJar, sourcesJar
+}
+
+// sign the content before uploading
+signing {
+  sign configurations.archives
+}
+
+// upload our artifacts to the staging repository mentioned in the JIRA ticket
+uploadArchives {
+  repositories {
+    mavenDeployer {
+      // ...
+
+      repository(url: &quot;https://oss.sonatype.org/service/local/staging/deploy/maven2/&quot;) {
+        authentication(userName: ossrhUsername, password: ossrhPassword)
+      }
+// ...
+&lt;/code&gt;
+</code></pre>
+
+<p>Once all of this is configured, the artifact can be published with:</p>
+
+<pre><code>&lt;code&gt;gradle uploadArchives
+&lt;/code&gt;
+</code></pre>
+
+<p>If the upload was successful, the next step is to &lsquo;promote&rsquo; the artifact from staging to release.
+The guide at <a href="http://central.sonatype.org/pages/releasing-the-deployment.html">http://central.sonatype.org/pages/releasing-the-deployment.html</a> was followed for this step.
+This step can be made easier by using the &lsquo;Nexus Staging Maven Plugin&rsquo;, but for now we used the website.</p>
+
+<p>Once done, a comment can be left on the JIRA ticket with details of the &lsquo;released&rsquo; artifact.
+After some time, there should be a response indicating the maven central sync has been enabled (and may take some time to update)
+If everything has gone to plan, you can search for your artifact e.g. <a href="http://search.maven.org/#artifactdetails%7Ccom.feedhenry.gitlabshell%7Cgitlab-shell-client%7C1.0%7Cjar">http://search.maven.org/#artifactdetails%7Ccom.feedhenry.gitlabshell%7Cgitlab-shell-client%7C1.0%7Cjar</a></p>
+
+<h1 id="using-the-libary-in-other-projects">Using the libary in other projects</h1>
+
+<p>The artifact details page on maven central shows Dependency Information for various build tools.
+Using the library is a matter of copying &amp; pasting the sample code.
+For example, to include our gitlab-shell-client module in a gradle project, we include the following in build.gradle:</p>
+
+<pre><code>&lt;code&gt;dependencies {
+    compile 'com.feedhenry.gitlabshell:gitlab-shell-client:1.0'
+}
+&lt;/code&gt;
+</code></pre>
+
+<p>Similarly, to use the artifact in a maven project, we include the following in our pom.xml:</p>
+
+<pre><code>&lt;code&gt;&lt;dependency&gt;
+    &lt;groupId&gt;com.feedhenry.gitlabshell&lt;/groupId&gt;
+    &lt;artifactId&gt;gitlab-shell-client&lt;/artifactId&gt;
+    &lt;version&gt;1.0&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;/code&gt;
+</code></pre>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="http://feedhenrydevblogarchive.github.io/gitlab-shell-chef-cookbook/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="http://feedhenrydevblogarchive.github.io/gitlab-shell-chef-cookbook/">Creating &amp; Publishing a Chef Cookbook for gitlab-shell</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="http://feedhenrydevblogarchive.github.io/using-fh-db-in-your-apps/">Using fh.db in your apps.</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="http://feedhenrydevblogarchive.github.io/using-fh-db-in-your-apps/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+  
+
+</div>
+
+</div>
+</div>
+<script src="http://feedhenrydevblogarchive.github.iojs/ui.js"></script>
+
+
+
+
+</body>
+</html>
+

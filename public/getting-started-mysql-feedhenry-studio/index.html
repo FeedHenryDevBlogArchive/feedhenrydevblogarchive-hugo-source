@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.16" />
+
+  <title>Getting started with MySQL and the FeedHenry studio. &middot; Archive of FeedHenry Developer Blog 2012-2016</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+
+  <link rel="shortcut icon" href="http://feedhenrydevblogarchive.github.ioimg/favicon.ico" type="image/x-icon" />
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <a href="/"><img src = "/logo.png" /></a>
+    <small>Copyright Red Hat 2016</small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Getting started with MySQL and the FeedHenry studio.</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>04 Apr 2014, 13:43</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="http://feedhenrydevblogarchive.github.iotags/amazon">amazon</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://feedhenrydevblogarchive.github.iotags/AWS">AWS</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://feedhenrydevblogarchive.github.iotags/mysql">mysql</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://feedhenrydevblogarchive.github.iotags/plugin">plugin</a>
+    
+  </div>
+  
+  
+
+</div>
+
+  
+
+<h1 id="introduction">Introduction</h1>
+
+<p>The FeedHenry platform allows apps to connect to external MySQL instances.  The following is a run-through of the process required to create a MYSQL instance within the Amazon cloud and creating an app to pull data from it. This document contains many screenshots of the process as a visual aid to the procedure but it is possible that websites outside of FeedHenrys control may change and not match the screenshots in the future. For the purposes of this procedure, we are going to create a micro RDS instance of MySQL on the Amazon cloud.  The MySQL instance documented here is for demonstration purposes.  There is currently no charge by Amazon for running this instance but that could possibly change.</p>
+
+<h1 id="method">Method</h1>
+
+<h2 id="part-1-amazon">Part 1 - Amazon</h2>
+
+<p>The first requirement for this task is to create your MySQL instance within the cloud.  In this case, we will use Amazon&rsquo;s RDS facility. The first step is to set yourself up with an Amazon AWS account.  Instructions on how to do this can be found at <a href="http://aws.amazon.com/">http://aws.amazon.com/</a> by clicking &ldquo;Sign Up&rdquo;.  Follow the on screen instructions to create your Amazon AWS account. Next, making sure you are logged into your new account, go to <a href="https://console.aws.amazon.com/console/home?#">https://console.aws.amazon.com/console/home?#</a> and select RDS &hellip;..</p>
+
+<p><a href="/wp-content/uploads/2014/03/Screenshot-2014-03-20-15.34.40.png"><img src="/wp-content/uploads/2014/03/Screenshot-2014-03-20-15.34.40.png" alt="Screenshot 2014-03-20 15.34.40" /></a></p>
+
+<p>&hellip;. which will take you to the RDS console where you can keep track of all your database instances.</p>
+
+<p>To begin creating an instance of MySQL, click on the _Launch a DB Instance_ button.</p>
+
+<p><a href="/wp-content/uploads/2014/03/Screenshot-2014-03-20-15.37.29.png"><img src="/wp-content/uploads/2014/03/Screenshot-2014-03-20-15.37.29.png" alt="Screenshot 2014-03-20 15.37.29" /></a></p>
+
+<p>Once here, we are presented with a selection of databases to choose from.  Select MySQL.</p>
+
+<p><a href="/wp-content/uploads/2014/03/Screenshot-2014-03-20-15.41.01.png"><img src="/wp-content/uploads/2014/03/Screenshot-2014-03-20-15.41.01.png" alt="Screenshot 2014-03-20 15.41.01" /></a></p>
+
+<p>For our purposes, we will use RDS free usage.  Select that option and select <em>Next Step</em>.</p>
+
+<p><a href="/wp-content/uploads/2014/03/Screenshot-2014-03-20-15.47.55.png"><img src="/wp-content/uploads/2014/03/Screenshot-2014-03-20-15.47.55.png" alt="Screenshot 2014-03-20 15.47.55" /></a></p>
+
+<p>We will stick with the defaults here.  However, there are a few field that need to be filled in by the user.  For this demonstration, we will keep things small.  Select the following values &hellip;</p>
+
+<ul>
+<li><p>Db Instance Class is <em>db.t1.micro</em>.</p></li>
+
+<li><p>Multi-AX Deployment is <em>No</em>.</p></li>
+
+<li><p>Allocated Storage is the minimum <em>5Gb</em>.</p></li>
+
+<li><p>Db Instance Identifier is the name you wish to give to your MySQL instance.  In this case, we will go with <em>myTestInstance</em>.</p></li>
+
+<li><p>Master Username and Master Password are up to you.  Just make sure to write them down after you decide them.</p></li>
+</ul>
+
+<p><a href="/wp-content/uploads/2014/03/Screenshot-2014-03-20-15.54.42.png"><img src="/wp-content/uploads/2014/03/Screenshot-2014-03-20-15.54.42.png" alt="Screenshot 2014-03-20 15.54.42" /></a></p>
+
+<p>Click <em>Next Step</em></p>
+
+<p>__ <a href="/wp-content/uploads/2014/03/Screenshot-2014-03-20-20.21.00.png"><img src="/wp-content/uploads/2014/03/Screenshot-2014-03-20-20.21.00.png" alt="Screenshot 2014-03-20 20.21.00" /></a></p>
+
+<p><strong>Note that this document assumes that you are using a brand new, just created, AWS account.  A new account will provide the correct default values for VPC settings shown here but for older accounts, the default values may be different.  There may not be a <em>Choose a VPC</em> option available, for example.  You can find details regarding the differences in VPC for older accounts at <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/default-vpc.html">http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/default-vpc.html</a>.  </strong></p>
+
+<p>Pick a Database name (in this case, I have picked <em>testDb1</em>).  Leave the rest of the fields with their default values and click <em>Next Step.</em></p>
+
+<p><a href="/wp-content/uploads/2014/03/Screenshot-2014-03-20-20.24.47.png"><img src="/wp-content/uploads/2014/03/Screenshot-2014-03-20-20.24.47.png" alt="Screenshot 2014-03-20 20.24.47" /></a></p>
+
+<p>Keep the defaults and select <em>Next Step.</em></p>
+
+<p><a href="/wp-content/uploads/2014/03/Screenshot-2014-03-20-16.56.11.png"><img src="/wp-content/uploads/2014/03/Screenshot-2014-03-20-16.56.11.png" alt="Screenshot 2014-03-20 16.56.11" /></a></p>
+
+<p>Final step, for now.  Select <em>Launch Db Instance</em>. The DB Instance takes a few minutes to create.  You can view the progress of the instance creation by clicking on the <em>View your DB Instances on the DB Instances page</em> link.</p>
+
+<p><a href="/wp-content/uploads/2014/03/Screenshot-2014-03-20-16.58.34.png"><img src="/wp-content/uploads/2014/03/Screenshot-2014-03-20-16.58.34.png" alt="Screenshot 2014-03-20 16.58.34" /></a></p>
+
+<p>Eventually, the instance is up and running.  Click on the instance in the <em>DB Instances</em> page to see its details.</p>
+
+<h3 id="security">Security</h3>
+
+<p>The instance you have just created is up and running.  However, we must ensure that the security group the instance is running with will allow MySQL connections, otherwise connecting our app to this instance will be impossible.</p>
+
+<p><a href="/wp-content/uploads/2014/03/Screenshot-2014-03-20-20.39.35.png"><img src="/wp-content/uploads/2014/03/Screenshot-2014-03-20-20.39.35.png" alt="Screenshot 2014-03-20 20.39.35" /></a></p>
+
+<p>Click on the link beside <em>Security Groups</em> within your instance and select the <em>Inbound</em> tab</p>
+
+<p><a href="/wp-content/uploads/2014/03/Screenshot-2014-03-20-20.49.11.png"><img src="/wp-content/uploads/2014/03/Screenshot-2014-03-20-20.49.11.png" alt="Screenshot 2014-03-20 20.49.11" /></a></p>
+
+<p>Add a new rule consisting of &hellip;.
+<table align="left" border="0" >
+<tbody >
+<tr ></p>
+
+<p><td ><strong>Type</strong>
+</td></p>
+
+<p><td ><strong>Protocol</strong>
+</td></p>
+
+<p><td ><strong>Port Range</strong>
+</td></p>
+
+<p><td ><strong>Source</strong>
+</td>
+</tr>
+<tr ></p>
+
+<p><td >MYSQL
+</td></p>
+
+<p><td >TCP
+</td></p>
+
+<p><td >3306
+</td></p>
+
+<p><td >0.0.0.0/0
+</td>
+</tr>
+</tbody>
+</table></p>
+
+<p>&hellip; to allow access from a MySQL client/app.</p>
+
+<p>Part 2 - Creating your app.</p>
+
+<p>Almost there!  Final stage is to create an app that can access the instance of RDS that you have created.  Within the studio, select &ldquo;Plugins&rdquo; &hellip;.</p>
+
+<p><a href="/wp-content/uploads/2014/04/Screenshot-2014-04-03-12.10.502.png"><img src="/wp-content/uploads/2014/04/Screenshot-2014-04-03-12.10.502.png" alt="Screenshot 2014-04-03 12.10.50" /></a></p>
+
+<p>&hellip; and then select &ldquo;MySQL&rdquo;.</p>
+
+<p><a href="/wp-content/uploads/2014/04/Screenshot-2014-04-03-12.13.49.png"><img src="/wp-content/uploads/2014/04/Screenshot-2014-04-03-12.13.49.png" alt="Screenshot 2014-04-03 12.13.49" /></a></p>
+
+<p>The current instructions for adding the MySQL plugin will be displayed.</p>
+
+<p><a href="/wp-content/uploads/2014/04/Screenshot-2014-04-03-12.16.05.png"><img src="/wp-content/uploads/2014/04/Screenshot-2014-04-03-12.16.05.png" alt="Screenshot 2014-04-03 12.16.05" /></a></p>
+
+<p>In order to get you started faster, here&rsquo;s an app we rustled up earlier that you can use to access your MySQL instance!  You can find it at <a href="https://github.com/FeedHenrySuprt/fh_mysql">https://github.com/FeedHenrySuprt/fh_mysql</a>.</p>
+
+<p>Perform the following &hellip;</p>
+
+<p>First, login into your GitHub account (if you do not have a GitHub account, you can set one up at <a href="https://github.com/">https://github.com/</a>).  Once logged in, go to <a href="https://github.com/FeedHenrySuprt/fh_mysql">https://github.com/FeedHenrySuprt/fh_mysql</a> and fork this repository to your own.</p>
+
+<p>Then, in a 2nd browser tab, log into your FeedHenry domain.</p>
+
+<p>Under the <em>Apps</em> tab, press <em>Create an App</em></p>
+
+<p><a href="/wp-content/uploads/2014/04/Screenshot-2014-04-03-12.21.01.png"><img src="/wp-content/uploads/2014/04/Screenshot-2014-04-03-12.21.01.png" alt="Screenshot 2014-04-03 12.21.01" /></a></p>
+
+<p>On the pop up screen, select <em>Create an App from a Git Repository</em> and click <em>Next</em>.</p>
+
+<p><a href="/wp-content/uploads/2014/04/Screenshot-2014-04-03-12.22.36.png"><img src="/wp-content/uploads/2014/04/Screenshot-2014-04-03-12.22.36.png" alt="Screenshot 2014-04-03 12.22.36" /></a></p>
+
+<p>Give your app a name, use the &ldquo;SSH Clone URL&rdquo; of the forked app as your <em>Git URL</em> and enter <em>Master</em> for the branch.  Click <em>Next</em></p>
+
+<p><a href="/wp-content/uploads/2014/04/Screenshot-2014-04-03-12.24.27.png"><img src="/wp-content/uploads/2014/04/Screenshot-2014-04-03-12.24.27.png" alt="Screenshot 2014-04-03 12.24.27" /></a></p>
+
+<p>The next screen gives you a public key to add to your git setup.</p>
+
+<p><a href="/wp-content/uploads/2014/04/Screenshot-2014-04-03-12.32.32.png"><img src="/wp-content/uploads/2014/04/Screenshot-2014-04-03-12.32.32.png" alt="Screenshot 2014-04-03 12.32.32" /></a></p>
+
+<p>You add this to your github account by copying the entire key to your clipboard, going to <a href="https://github.com/settings/ssh">https://github.com/settings/ssh</a> and adding the key.  Once added, click <em>Next</em> and your app will be created.</p>
+
+<p><a href="/wp-content/uploads/2014/04/Screenshot-2014-04-03-12.58.02.png"><img src="/wp-content/uploads/2014/04/Screenshot-2014-04-03-12.58.02.png" alt="Screenshot 2014-04-03 12.58.02" /></a></p>
+
+<p>Click <em>Finish</em>.</p>
+
+<p>Soon be finished.  The FeedHenry studio has a facility to create <em>Environment Variables</em> that you can place the details of your MySQL instance into that can be accessed by the app.  This is quite a handy facility as it means you can change the database that the app points to fairly easily.</p>
+
+<p>On the sidebar, select <em>Environment Variables</em></p>
+
+<p><a href="/wp-content/uploads/2014/04/Screenshot-2014-04-03-17.14.13.png"><img src="/wp-content/uploads/2014/04/Screenshot-2014-04-03-17.14.13.png" alt="Screenshot 2014-04-03 17.14.13" /></a></p>
+
+<p>&hellip; and create the following variable and push them, to both Dev and Live.</p>
+
+<p>MYSQL_HOST - This is the endpoint for your instance.  You can get the value for this from the AWS display for your RDS instance.</p>
+
+<p><a href="/wp-content/uploads/2014/04/scr.png"><img src="/wp-content/uploads/2014/04/scr.png" alt="scr" /></a></p>
+
+<p>MYSQL_USERNAME - Username for your instance.</p>
+
+<p>MYSQL_PASSWORD - Password for your instance.</p>
+
+<p>Don&rsquo;t forget to push your variables once they have been created.</p>
+
+<p>Once that is done, you are ready to go.  Go to the <em>Details</em> section of your studio and click on the _Emulator_ at the right side of the screen &hellip;</p>
+
+<p><a href="/wp-content/uploads/2014/04/Screenshot-2014-04-03-17.27.31.png"><img src="/wp-content/uploads/2014/04/Screenshot-2014-04-03-17.27.31.png" alt="Screenshot 2014-04-03 17.27.31" /></a></p>
+
+<p>to spawn an emulator window for the app.</p>
+
+<p>You can enter SQL command into the white text field and view the returned results in the green field.  Try the following to get started (make sure you use the correct database name when making your SQL queries as specified in the <em>Additional Config</em> section in the AWS setup process), make sure you hit <em>Submit</em> after each line and watch the results in the green section.</p>
+
+<p>[code]</p>
+
+<p>create table testDb1.myStudents (student_number int, firstname varchar(30), surname varchar(30));</p>
+
+<p>insert into testDb1.students (student_number, firstname, surname) values (1, &lsquo;Joe&rsquo;, &lsquo;Bloggs&rsquo;);
+insert into testDb1.students (student_number, firstname, surname) values (2, &lsquo;Jane&rsquo;, &lsquo;Brown&rsquo;);
+insert into testDb1.students (student_number, firstname, surname) values (3, &lsquo;Mick&rsquo;, &lsquo;Jones&rsquo;);</p>
+
+<p>select * from testDb1.students;</p>
+
+<p>[/code]</p>
+
+<p><a href="/wp-content/uploads/2014/04/Screenshot-2014-04-04-08.47.04.png"><img src="/wp-content/uploads/2014/04/Screenshot-2014-04-04-08.47.04.png" alt="Screenshot 2014-04-04 08.47.04" /></a></p>
+
+<p>Final Thoughts.</p>
+
+<p>Now that you have basic app that can access a MySQL database running on the cloud, the stage is set for you to integrate all MySQL functionality into your FeedHenry apps from now on.  You can find more information about using the FeedHenry MySQL plugin <a href="https://github.com/felixge/node-mysql">here</a> as well as more information about <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.html">getting started with AWS</a> as well.</p>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="http://feedhenrydevblogarchive.github.io/using-sns-push-notifications-node-js/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="http://feedhenrydevblogarchive.github.io/using-sns-push-notifications-node-js/">Using SNS Push Notifications with Node.js</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="http://feedhenrydevblogarchive.github.io/feedhenry-update-heartbleed-ssl-security-vulnerability-cve-2014-0160/">FeedHenry update on Heartbleed (SSL Security Vulnerability CVE-2014-0160)</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="http://feedhenrydevblogarchive.github.io/feedhenry-update-heartbleed-ssl-security-vulnerability-cve-2014-0160/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+  
+
+</div>
+
+</div>
+</div>
+<script src="http://feedhenrydevblogarchive.github.iojs/ui.js"></script>
+
+
+
+
+</body>
+</html>
+

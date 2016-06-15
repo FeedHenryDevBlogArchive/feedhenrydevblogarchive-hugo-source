@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Services on Archive of FeedHenry Developer Blog 2012-2016</title>
+    <link>http://feedhenrydevblogarchive.github.io/tags/services/</link>
+    <description>Recent content in Services on Archive of FeedHenry Developer Blog 2012-2016</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 10 Jul 2014 11:06:49 +0000</lastBuildDate>
+    <atom:link href="http://feedhenrydevblogarchive.github.io/tags/services/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Creating re-usable mBaaS Services in FeedHenry 3</title>
+      <link>http://feedhenrydevblogarchive.github.io/creating-re-usable-mbaas-services-feedhenry-3/</link>
+      <pubDate>Thu, 10 Jul 2014 11:06:49 +0000</pubDate>
+      
+      <guid>http://feedhenrydevblogarchive.github.io/creating-re-usable-mbaas-services-feedhenry-3/</guid>
+      <description>&lt;p&gt;One of the most powerful features in FeedHenry 3 is the ability to deploy mBaaS Services that can be accessed by multiple projects. This means you can, for example, encapsulate all of the functionality to access one of your back-end systems and then provide a consistent interface to it for all of your projects. This also facilitates a separation of concerns between those building mobile apps or Node.js business logic and those creating the services for them. The consumers of the services never need know about the nitty gritty of how back-end systems are accessed, they just develop against the provided APIs.&lt;/p&gt;
+
+&lt;p&gt;In this video, Jason walks you through the mBaaS Service functionality and you will see the types of efficiencies possible by taking a Microservices approach.&lt;/p&gt;
+
+&lt;p&gt;In addition to using one of our off-the-shelf services, you can easily generate your own custom mBaaS Services by creating an &lt;a href=&#34;http://expressjs.com/&#34;&gt;Express 4&lt;/a&gt; Node.js application and documenting the RESTful API end-points you wish to expose with &lt;a href=&#34;http://apiblueprint.org/&#34;&gt;API Blueprint&lt;/a&gt;. Doing this gives your Service consumers a dashboard in FeedHenry 3 which provides both the information needed to use the service and an interactive tool to exercise the service directly.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/07/oracle_service-1024x504.jpg&#34; alt=&#34;oracle_service&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Making developers more productive was one of FeedHenry 3&amp;rsquo;s biggest drivers. With mBaaS Services, they can mobilise their back-end systems once, rather than re-inventing the wheel on each new project.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

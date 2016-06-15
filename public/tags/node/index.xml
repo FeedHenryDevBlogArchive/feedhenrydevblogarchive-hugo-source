@@ -1,0 +1,591 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Node on Archive of FeedHenry Developer Blog 2012-2016</title>
+    <link>http://feedhenrydevblogarchive.github.io/tags/node/</link>
+    <description>Recent content in Node on Archive of FeedHenry Developer Blog 2012-2016</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 24 Jun 2014 17:26:33 +0000</lastBuildDate>
+    <atom:link href="http://feedhenrydevblogarchive.github.io/tags/node/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>A summary of the FeedHenry 3 changes in our fhc command-line tool</title>
+      <link>http://feedhenrydevblogarchive.github.io/summary-new-feedhenry-3-features-fhc-command-line-tool/</link>
+      <pubDate>Tue, 24 Jun 2014 17:26:33 +0000</pubDate>
+      
+      <guid>http://feedhenrydevblogarchive.github.io/summary-new-feedhenry-3-features-fhc-command-line-tool/</guid>
+      <description>
+
+&lt;p&gt;We develop everything in FeedHenry API-first ,which means our command-line tooling is just as powerful as our Web UIs, with the added advantage of automation and scriptability.&lt;/p&gt;
+
+&lt;p&gt;The main FeedHenry CLI is called &lt;em&gt;fhc&lt;/em&gt; and it is how most developers interact with the platform. Version 0.30.x has had quite a few changes (to put it mildly!) for FeedHenry 3 and we&amp;rsquo;ll summarise those changes here. &lt;em&gt;fhc&lt;/em&gt; will continue to work with both FeedHenry 3 and previous versions of the platform for the foreseeable future. Of course, being a Node.js App, it supports Windows, OSX and Linux.&lt;/p&gt;
+
+&lt;h2 id=&#34;new-feedhenry-3-commands&#34;&gt;New FeedHenry 3 Commands&lt;/h2&gt;
+
+&lt;h3 id=&#34;fhc-projects&#34;&gt;fhc projects&lt;/h3&gt;
+
+&lt;p&gt;Projects are a major new concept within FeedHenry 3 and enable groups of developers to work together on different but related Apps (e.g. iOS Native Client,  Cordova Client, Cloud Code and mBaaS Service). You can this command to list/create/update/read/delete or clone a project. &amp;ldquo;Clone&amp;rdquo; is particularly powerful as it does a &amp;lsquo;git clone&amp;rsquo; of each App in your Project into the current working directory.&lt;/p&gt;
+
+&lt;h3 id=&#34;fhc-services&#34;&gt;fhc services&lt;/h3&gt;
+
+&lt;p&gt;Services are one of the other main pillars of FeedHenry 3, enabling you to create standalone cloud services which are re-usable across one or more projects. This makes them ideal as connectors to your back-end systems and we are regularly expanding the list of out-of-the-box services. You can this command to list/create/update/read or delete a service.&lt;/p&gt;
+
+&lt;h3 id=&#34;fhc-connections&#34;&gt;fhc connections&lt;/h3&gt;
+
+&lt;p&gt;Connections provide the ability to dynamically reconfigure which Cloud Code a specific app (and app version) communicates with. This can be done without needing to release new versions of your apps. Different apps/versions can simultaneously talk to different versions of your cloud code. You can use this command to easily list and change the connections.&lt;/p&gt;
+
+&lt;h3 id=&#34;fhc-artifacts&#34;&gt;fhc artifacts&lt;/h3&gt;
+
+&lt;p&gt;In FeedHenry 3, you can now view your build artifacts including the download URL and credential credential bundles used. This command shows you Platform, App Version, Date, Type, Credentials and URL for a given Project and App. Since our Build Farm now supports native iOS, Android and Windows Phone 8, all of those are available too.&lt;/p&gt;
+
+&lt;h3 id=&#34;fhc-forms-fhc-submissions-and-fhc-themes&#34;&gt;fhc forms, fhc submissions and fhc themes&lt;/h3&gt;
+
+&lt;p&gt;Our zero-code Drag and Drop Apps, based around Forms, had a massive upgrade in FeedHenry 3 and they have really been grabbing everyone&amp;rsquo;s attention. Everything you can do with Forms in the Studio, you can also do on the command line. For Forms themselves, this includes list/create/update/get/delete. Similar commands are available for Forms Apps, Forms Groups, Forms Themes and Forms Notifications. Everything is built on JSON and can be easily modified and moved. All of the data submitted by users using Drag and Drop Apps is also available&lt;/p&gt;
+
+&lt;h3 id=&#34;fhc-templates&#34;&gt;fhc templates&lt;/h3&gt;
+
+&lt;p&gt;We have an ever expanding set of template/sample/tutorial Apps which can be listed and read on the command line.&lt;/p&gt;
+
+&lt;h3 id=&#34;fhc-ssh-keys-and-fhc-user-keys&#34;&gt;fhc ssh-keys and fhc user-keys&lt;/h3&gt;
+
+&lt;p&gt;You can manage both your ssh keys and FeedHenry API Keys from the cli including commands like list/add/delete/read/update.&lt;/p&gt;
+
+&lt;h2 id=&#34;changes-to-existing-commands&#34;&gt;Changes to existing commands&lt;/h2&gt;
+
+&lt;h3 id=&#34;fhc-apps&#34;&gt;fhc apps&lt;/h3&gt;
+
+&lt;p&gt;The apps command, instead of just listing apps as it did in the past, contains all apps related sub commands like list/create/read/update/delete.&lt;/p&gt;
+
+&lt;p&gt;The following older apps related commands still exist but have been deprecated:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;fhc read&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;fhc delete&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;fhc update&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;fhc delete&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;fhc-import&#34;&gt;fhc import&lt;/h3&gt;
+
+&lt;p&gt;This is now invoked as follows:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;fhc import &amp;lt;project-id&amp;gt; &amp;lt;app-title&amp;gt; &amp;lt;app-template-type&amp;gt; [&amp;lt;zip-file&amp;gt; || &amp;lt;git-repo&amp;gt;]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Note: if no file or repo is specified, a bare git repo is created&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Dealing with Express 4.0 backwards incompatibilities</title>
+      <link>http://feedhenrydevblogarchive.github.io/dealing-express-4-0-backwards-incompatibilities/</link>
+      <pubDate>Wed, 05 Mar 2014 17:02:20 +0000</pubDate>
+      
+      <guid>http://feedhenrydevblogarchive.github.io/dealing-express-4-0-backwards-incompatibilities/</guid>
+      <description>&lt;p&gt;If you have been running into issues with your Node code today, it is probably due to the new version of Express (4.0) which is now in NPM. In a FeedHenry context you may be seeing that all of your cloud calls respond with the same message - &amp;ldquo;Your Cloud App is Running&amp;rdquo;.&lt;/p&gt;
+
+&lt;p&gt;This will happen if your package.json contains a wildcard &amp;ldquo;*&amp;rdquo; for the Express version. So when you deploy your app, it automatically picks the latest version from NPM. Version 4 of Express has a range of backwards compatibility issues which are causing problems.&lt;/p&gt;
+
+&lt;p&gt;To deal with this, you should set the Express version number to something like &amp;ldquo;3.3.4&amp;rdquo; in that file. In general it is good configuration management practice to specify version numbers for all of the packages you use in your Node code.&lt;/p&gt;
+
+&lt;p&gt;As Express 4 is at RC stage, we (and they) do not recommend using it in production. If you wish to know more about what will be involved when it comes time to move to Express 4, you can read the migration guide on the Express &lt;a href=&#34;https://github.com/visionmedia/express/wiki/Migrating-from-3.x-to-4.x&#34;&gt;GitHub repo&lt;/a&gt;. We will provide further updated information on Express 4 when it is ready for production and is in use internally by our own systems.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Server side PDF generation with Node.js</title>
+      <link>http://feedhenrydevblogarchive.github.io/server-side-pdf-generation-node-js/</link>
+      <pubDate>Fri, 21 Feb 2014 16:45:55 +0000</pubDate>
+      
+      <guid>http://feedhenrydevblogarchive.github.io/server-side-pdf-generation-node-js/</guid>
+      <description>
+
+&lt;h1 id=&#34;overview-of-what-was-required&#34;&gt;Overview of what was required&lt;/h1&gt;
+
+&lt;p&gt;A solution in Node.js for dynamically generating a PDF version of submitted form data.
+The form data is stored in a mongo database, backed by some mongoose models. What this boils down to is we have a collection (JSON array) of forms (JSON objects) with a number of key-value pairs. These key-value pairs have to be written out to a PDF file. The layout of the PDF file could be tweaked later to present the data in the best possible way. The tricky part was how to create the PDF file and add content to it.&lt;/p&gt;
+
+&lt;h1 id=&#34;options-for-creating-pdfs&#34;&gt;Options for creating PDFs&lt;/h1&gt;
+
+&lt;h2 id=&#34;pdfkit&#34;&gt;PDFKit&lt;/h2&gt;
+
+&lt;p&gt;The first option explored was PDFKit, &amp;lsquo;a PDF generation library for Node.js&amp;rsquo; &lt;a href=&#34;http://pdfkit.org/&#34;&gt;http://pdfkit.org/&lt;/a&gt;. The API looked good, but it was too high level. It would require a lot of time to get a dynamically generated layout working. This was an important factor as the order, types and number of fields to include in the PDF would be outside our control e.g. there could be any number of text fields followed by any number of image files, which could span multiple pages. Calculating where to put each of these would require a lot of time to get right, especially trying to prevent images spanning the bottom of 1 page and the top of the next page.&lt;/p&gt;
+
+&lt;p&gt;The next 2 options took a different approach of converting html to pdf. By working with html, it would allow us to get a nicer layout together much quicker. It also meant we could leverage existing experience with html &amp;amp; css.&lt;/p&gt;
+
+&lt;h2 id=&#34;wkhtmltopdf&#34;&gt;Wkhtmltopdf&lt;/h2&gt;
+
+&lt;p&gt;wkhtmltopdf, &lt;a href=&#34;https://code.google.com/p/wkhtmltopdf/&#34;&gt;https://code.google.com/p/wkhtmltopdf/&lt;/a&gt;, is a shell tool for converting html to pdf by using the webkit rendering engine. There is a Node.js module, by the same name, that wraps this shell tool &lt;a href=&#34;https://npmjs.org/package/wkhtmltopdf&#34;&gt;https://npmjs.org/package/wkhtmltopdf&lt;/a&gt;. It looks like a great tool and provides a lot of features. However, we didn&amp;rsquo;t choose this option because we were more familiar with the next option.&lt;/p&gt;
+
+&lt;h2 id=&#34;phantomjs&#34;&gt;PhantomJS&lt;/h2&gt;
+
+&lt;p&gt;The third, and chosen option, was to use the built in PDF rendering capabilities of PhantomJS. PhantomJS is a headless WebKit with a javascript API. The API allows for writing acceptance tests, capturing screenshots or simply rendering and modifying html in a server-side environment. There are plenty of Node.js modules available to integrate with PhantomJS. We chose phantomjs-node &lt;a href=&#34;https://github.com/sgentle/phantomjs-node&#34;&gt;https://github.com/sgentle/phantomjs-node&lt;/a&gt;. We&amp;rsquo;re very familiar with PhantomJS, and use it for unit and functional tests for our frontend systems (via grunt &lt;a href=&#34;http://gruntjs.com/&#34;&gt;http://gruntjs.com/&lt;/a&gt;) and html5 Apps. This familiarily made the choice easier, but still left a few challenges.&lt;/p&gt;
+
+&lt;h1 id=&#34;phantomjs-solution&#34;&gt;PhantomJS Solution&lt;/h1&gt;
+
+&lt;h2 id=&#34;challenges&#34;&gt;Challenges&lt;/h2&gt;
+
+&lt;p&gt;Rendering a PDF was the easiest part. Theres an API call &lt;a href=&#34;http://phantomjs.org/api/webpage/method/render.html&#34;&gt;http://phantomjs.org/api/webpage/method/render.html&lt;/a&gt;. The generated PDF is saved to disk with the given filename.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;code&amp;gt;page.render(&#39;/tmp/file.pdf&#39;, function() {
+  // file is now written to disk
+});
+&amp;lt;/code&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Some challenges to solve were:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;how to control the size of the PDF i.e. have an A4 page size&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;how to dynamically build the html content&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;how to style the content in the PDF&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;how to load/inject images into the PDF&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;controlling-the-viewport-size&#34;&gt;Controlling the viewport size&lt;/h3&gt;
+
+&lt;p&gt;There&amp;rsquo;s a page API for setting the page size. The exact dimensions of the pages can be set, or the format can be specified e.g. A4.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;code&amp;gt;page.set(&#39;paperSize&#39;, {
+  format: &#39;A4&#39;
+}, function() {
+  // continue with page setup
+});
+&amp;lt;/code&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;dynamically-building-the-pdf-content&#34;&gt;Dynamically building the PDF content&lt;/h3&gt;
+
+&lt;p&gt;How to build the html dynamically was an easy decision. We went with a Handlebars template &lt;a href=&#34;http://handlebarsjs.com/&#34;&gt;http://handlebarsjs.com/&lt;/a&gt;, and iterated over each of the form fields, constructing a different block of html depending on the field type. e.g.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;code&amp;gt;{{#each fields}}
+  {{#is &#39;file&#39; type}}
+    &amp;lt;a href=&amp;quot;{{this.downloadUrl}}&amp;quot;&amp;gt;{{this.downloadUrl}}&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+  {{/is}}
+
+  {{#is &#39;number&#39; &#39;radio&#39; type}}
+    &amp;lt;span&amp;gt;{{this}}&amp;lt;/span&amp;gt;
+  {{/is}}
+
+  {{#is &#39;text&#39; &#39;emailAddress&#39; &#39;dropdown&#39; type}}
+    &amp;lt;p&amp;gt;{{this}}&amp;lt;/p&amp;gt;
+  {{/is}}
+{{/each}}
+&amp;lt;/code&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;styling-the-pdf-content&#34;&gt;Styling the PDF content&lt;/h3&gt;
+
+&lt;p&gt;Styling was done with CSS. Some specific styles were added to ensure images never overflow vertically (across pages) or horizontally (partially visible). An extra class was added to allow forcing a page break too.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;code&amp;gt;* {
+  overflow: visible !important; // forces a built-in PDF rendering gotcha in WebKit so that images never span 2 pages
+}
+img {
+  margin-top:20px;
+  max-width: 92%; // images will never overflow off the right hand side of a page
+}
+.page-break {
+  display: block;
+  page-break-before: always; // force a page break
+}
+&amp;lt;/code&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;loading-injecting-images-into-the-pdf-content&#34;&gt;Loading/Injecting images into the PDF content&lt;/h3&gt;
+
+&lt;p&gt;Images for the PDF are, like the rest of the content, private and stored behind an auth protected server. This meant that writing the src url of images as a direct image url wouldn&amp;rsquo;t work. A Cookie could have been added to the PhantomJS session, but that posed other problems. Also, fetching remote images would have slowed down the rendering time.
+To get around this problem, we retrieved any images needed for the PDF directly from gridfs, and saved them to the local filesystem. This allowed us to use the local filesystem image url e.g. file:///tmp/image.png.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;code&amp;gt;&amp;lt;!-- Load image from file:///, will have been pre-saved to disk --&amp;gt;
+&amp;lt;img src=&amp;quot;{{this.localUrl}}&amp;quot;/&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;/code&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;extra-challenges&#34;&gt;Extra Challenges&lt;/h2&gt;
+
+&lt;p&gt;Adding this solution to a running Node.js server posed a couple of extra challenges:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;how to download the PDF file&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;how to avoid the time overhead of initialising the PhantomJS process for every PDF render&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;how to avoid the PhantomJS process hanging around when the Node.js server stops&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;downloading-the-generated-pdf-in-express&#34;&gt;Downloading the generated PDF in express&lt;/h3&gt;
+
+&lt;p&gt;Our server that would generate these PDF&amp;rsquo;s was a Node.js server using expressjs &lt;a href=&#34;http://expressjs.com/&#34;&gt;http://expressjs.com/&lt;/a&gt;. Theres a handy one-liner in express to initiate a file download for a file on disk &lt;a href=&#34;http://expressjs.com/api.html#res.download&#34;&gt;http://expressjs.com/api.html#res.download&lt;/a&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;code&amp;gt;res.download(&#39;/file.pdf&#39;, &#39;file:///tmp/file.pdf&#39;);
+&amp;lt;/code&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;avoiding-phantomjs-init-for-every-pdf-generation&#34;&gt;Avoiding PhantomJS init for every PDF generation&lt;/h3&gt;
+
+&lt;p&gt;The initial overhead of starting phantom was ~1-3 seconds. This meant a file download would take some time before the download actually began. To get around this, we only created a PhantomJS session if one was not already running, and keep a reference to it. Each PDF render would happen in a new page inside the same session. We had to ensure the page was closed when the rendering complete (or if the rendering failed). Creating a new page inside an existing PhantomJS session is a lot quicker than starting a new session.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;code&amp;gt;var renderPdf = function(session, cb) {
+  var page;
+
+  try {
+    session.createPage(function(_page) {
+      page = _page;
+      // ...
+      var file = &#39;/tmp/file.pdf&#39;;
+      page.render(file, function() {
+        page.close();
+        page = null;
+        return cb(null, file);
+      });
+    });
+  } catch(e) {
+    try {
+      if (page != null) {
+        page.close(); // try close the page in case it opened but never rendered a pdf due to other issues
+      }
+    } catch(e) {
+      // ignore as page may not have been initialised
+    }
+    return cb(&#39;Exception rendering pdf:&#39; + e.toString());
+  }
+};
+&amp;lt;/code&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;avoiding-phantomjs-processes-hanging-around&#34;&gt;Avoiding PhantomJS processes hanging around&lt;/h3&gt;
+
+&lt;p&gt;If the Node.js server was to stop (either intentially or a crash) and a PhantomJS session was open, the associated PhantomJS process would stay running. This would caused issues with extra resources being used and port conflicts when the server was restarted (PhantomJS listens on a few ports).
+To prevent this from happening, we had to add a best effort attempt to shutdown the session when the Node.js server exits.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;code&amp;gt;var session;
+var createPhantomSession = function(cb) {
+  if (session) {
+    return cb(null, session);
+  } else {
+    require(&#39;phantom&#39;).create({}, function(_session) {
+      session = _session;
+      return cb(null, session);
+    });
+  }
+};
+
+process.on(&#39;exit&#39;, function(code, signal) {
+  session.exit();
+});
+&amp;lt;/code&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;performance&#34;&gt;Performance&lt;/h2&gt;
+
+&lt;p&gt;There are so many ways that this feature could have been implemented. The choices made above were driven by a few main factors:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Familiarity &amp;amp; previous experience with the tools &amp;amp; modules available&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Research into available technologies&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Personal choice&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Performance implications of a paritcular solution&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Some time was spent on performance testing during development. Various scenarios were run on the best way to start/stop a phantom session, and how best to use session pages, if at all. Each run generated a total of 100 PDFs. Results show observed time, cpu &amp;amp; memory for PhantomJS and Node.js for each scenario. The first run had the following critera:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;create and teardown a phantomjs session for each page being rendered to PDF&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;load (1) image remotely from web server with an auth cookie&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;modify image source with jQuery after page is rendered (this wasnt needed in the end)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;was not calling page.close after each page rendered (leaving processes hanging around)&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;table &gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;tr &gt;
+Comment
+Time
+Phantomjs Max CPU
+Phantomjs Max Mem
+Node Max CPU
+Node Max Mem
+&lt;/tr&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;tbody &gt;
+&lt;tr &gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td &gt;Create and teardown a phantom session each time
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: center;&#34; &gt;1m47.205s
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: right;&#34; &gt;n/a (too quick)
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: right;&#34; &gt;n/a (too quick)
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: right;&#34; &gt;2%
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: right;&#34; &gt;330M
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr &gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td &gt;Create and leave a single phantom session open
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: center;&#34; &gt;0m19.954s
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: right;&#34; &gt;95%
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: right;&#34; &gt;338M
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: right;&#34; &gt;2%
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: right;&#34; &gt;130M
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr &gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td &gt;Same as above,but calling page.close() after each gen
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: center;&#34; &gt;0m20.645s
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: right;&#34; &gt;95%
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: right;&#34; &gt;275M
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: right;&#34; &gt;2%
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: right;&#34; &gt;130M
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr &gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td &gt;same as above,but all in parallel i.e. open 100 pages in phantomjs
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: center;&#34; &gt;0m22.139s
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: right;&#34; &gt;100%
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: right;&#34; &gt;700M
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: right;&#34; &gt;2%
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: right;&#34; &gt;117M
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr &gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td &gt;same as above,but with jQuery loading/DOM manipulation removed
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: center;&#34; &gt;0m17.497s
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: right;&#34; &gt;n/a
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: right;&#34; &gt;n/a
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: right;&#34; &gt;n/a
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: right;&#34; &gt;n/a
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr &gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td &gt;same as above,but with image loading using file:///
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: center;&#34; &gt;0m14.655s
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: right;&#34; &gt;n/a
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: right;&#34; &gt;n/a
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: right;&#34; &gt;n/a
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: right;&#34; &gt;n/a
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+Although this was a lightweight test, it showed some useful information. The outcome of this can be summarised in the following notes (taken after an initial &amp;lsquo;spike&amp;rsquo; and prior to the actual implementation):&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;creating a new phantom session for each pdf generation is slow, so best to keep a single phantomjs session alive and create pages as required.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;need to ensure phantom session is closed on process exit (prevent phantomjs processes hanging about)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;ensure the page is &amp;lsquo;closed&amp;rsquo; each time after pdf generation to release memory &lt;a href=&#34;https://github.com/ariya/phantomjs/wiki/API-Reference-WebPage#wiki-webpage-close&#34;&gt;https://github.com/ariya/phantomjs/wiki/API-Reference-WebPage#wiki-webpage-close&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;avoid injecting external scripts if possible, jQuery in particular, as this can slow down the generation process&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;avoid evaluating code in the phantom page if possible as this causes extra requests over the phantom bridge &lt;a href=&#34;https://github.com/ariya/phantomjs/wiki/API-Reference-WebPage#evaluatefunction-arg1-arg2--object&#34;&gt;https://github.com/ariya/phantomjs/wiki/API-Reference-WebPage#evaluatefunction-arg1-arg2&amp;ndash;object&lt;/a&gt;. Better to include any required js in the initial content&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;avoid loading remote images as this adds time compared to loading files from disk (Overhead of retrieving binary from gridfs is less than retrieving image via http auth protected endpoint)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;based on load tests, the best solution to avoid heavy cpu and memory usage is to not have any concurrency with pdf generation, and to use a queue. (However this recommendation was deferred due to expected load not being an issue currently)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;A time limit could be imposed on pdf generation to avoid the queue hanging. Tests indicate that at best, a simple pdf can be generated every 150ms (~7/second). This time will vary depending on the number images/files and fields.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;requirements-fulfilled&#34;&gt;Requirements Fulfilled&lt;/h1&gt;
+
+&lt;p&gt;This solution uses a variety of Node.js modules, and PhantomJS, a cross OS tool that allows use to convert html to PDF.
+An overview of some of the modules used:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;phantomjs-node &lt;a href=&#34;https://github.com/sgentle/phantomjs-node&#34;&gt;https://github.com/sgentle/phantomjs-node&lt;/a&gt; (PhantomJS integration module for NodeJS)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Handlebars &lt;a href=&#34;https://github.com/wycats/handlebars.js/&#34;&gt;https://github.com/wycats/handlebars.js/&lt;/a&gt; (For dynamic templating)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Express &lt;a href=&#34;https://github.com/visionmedia/express&#34;&gt;https://github.com/visionmedia/express&lt;/a&gt; (Web framework)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Mongoose &lt;a href=&#34;http://mongoosejs.com/&#34;&gt;http://mongoosejs.com/&lt;/a&gt; (modelling for mongodb)&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The outcome of this is a PDF generation feature where the content can be easily modified with html (and Handlebars templating), and the style can easily be modified with CSS.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Transforming the Enterprise with Node.js </title>
+      <link>http://feedhenrydevblogarchive.github.io/transforming-enterprise-node-js-feedhenry/</link>
+      <pubDate>Wed, 04 Dec 2013 18:11:23 +0000</pubDate>
+      
+      <guid>http://feedhenrydevblogarchive.github.io/transforming-enterprise-node-js-feedhenry/</guid>
+      <description>
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;By Damian Beresford - Engineering. Conor O&amp;rsquo;Neill - Product Management. Joe O&amp;rsquo;Reilly - Solutions Architecture.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Node.js has gone in a few short years from an interesting twist on server-side JavaScript to the engine of change in Enterprise Architecture. This blog post explores the market trends in using Node.js as a core tool for improving, mobilising and potentially migrating Enterprise legacy systems. It amalgamates our own experiences in integrating with legacy applications  and how we&amp;rsquo;ve helped our Enterprise customers begin the mobilisation of legacy systems and evaluate candidates for moving to a next generation platform. It also draws upon recent case studies and conference talks from companies such as PayPal, Walmart, Ebay, Groupon, etc who are using Node.js in production to run their businesses.&lt;/p&gt;
+
+&lt;h2 id=&#34;mobile&#34;&gt;Mobile&lt;/h2&gt;
+
+&lt;p&gt;Mobile is the chief driving force behind new requirements for these Enterprise Systems. The internal and external demands for attractive, high-performance apps increases daily. The work force also expects all internal systems (web applications in particular) to work well on mobile phones and tablets. Current systems are struggling to keep up with this flood of mobile requirements and the cutting edge technology demanded of them.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2013/12/Traditional_Mobilisation.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2013/12/Traditional_Mobilisation.png&#34; alt=&#34;Traditional_Mobilisation&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Fig 1: Traditional mobilisation of an existing Enterprise System&lt;/p&gt;
+
+&lt;h2 id=&#34;node-js-as-an-emerging-best-of-breed-enterprise-solution&#34;&gt;Node.js as an emerging best-of-breed Enterprise solution&lt;/h2&gt;
+
+&lt;p&gt;FeedHenry provides a Mobile Application Platform which provides all of the end-to-end tools and infrastructure you need to build Cloud-powered Mobile Apps. Node is a critical part of our platform and enables our customers to connect mobile apps to complex Enterprise systems without drama.&lt;/p&gt;
+
+&lt;p&gt;We fundamentally believe that Node.js is the best tool for enabling organizations to meet the requirements of cutting edge Enterprise Mobile development. We, among many others, find Node.js to be an order of magnitude faster than other tools for developing services.&lt;/p&gt;
+
+&lt;p&gt;We highly recommend you watch this &amp;ldquo;&lt;a href=&#34;http://www.youtube.com/watch?v=V5yk5SZxWX4&#34;&gt;Releasing the Kraken&lt;/a&gt;&amp;rdquo; video by PayPal&amp;rsquo;s Bill Scott at the recent Nodeconf EU which FeedHenry sponsored. Some of his metrics around efficiencies gained are genuinely shocking. Also check out the great post about it on the &lt;a href=&#34;http://www.nearform.com/nodecrunch/?p=109&#34;&gt;nearForm blog&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Jeff Harrell of PayPal has followed it up &lt;a href=&#34;https://www.paypal-engineering.com/2013/11/22/node-js-at-paypal/&#34;&gt;with another post&lt;/a&gt; and Eran Hammer of Walmart &lt;a href=&#34;https://twitter.com/search?q=%23nodebf%20%40eranhammer&amp;amp;src=typd&#34;&gt;live-tweeted&lt;/a&gt; the zero-drama nature of running all of their mobile traffic through Node on Black Friday. &lt;/p&gt;
+
+&lt;h2 id=&#34;legacy-systems-node-proxy-as-a-first-step&#34;&gt;Legacy Systems - Node Proxy as a first step&lt;/h2&gt;
+
+&lt;p&gt;Node can initially be used to implement the &amp;lsquo;&lt;a href=&#34;http://www.eaipatterns.com/SmartProxy.html&#34;&gt;Smart Proxy&lt;/a&gt;&amp;rsquo; pattern which can be applied to migrating requests from an old System to new System services. Node.js makes for a highly efficient request proxy. The idea here is that Node sits in front of your existing Enterprise Systems (usually a portal server, e.g. Apache/Tomcat) and simply routes http traffic to its correct destination.This pattern also helps with API backward compatibility, e.g. for a new service that replaces a part of the old System.&lt;/p&gt;
+
+&lt;p&gt;From a development perspective, the first version of Proxy can be a simple pass-through, i.e. just forward each request to the back end without any routing/modification. Not only will this give you a foothold in production, but also confidence that there is only a minimal performance overhead with the proxy (~10 milliseconds).&lt;/p&gt;
+
+&lt;p&gt;As a bonus here, the Proxy can log all API requests to the backend allowing you to effectively see what parts of the backend API are being used most frequently. Once the initial version is embedded in Production, it’s then time to start routing requests to new services and start consolidating API’s from various different sources.&lt;/p&gt;
+
+&lt;h2 id=&#34;node-and-development-of-micro-business-services&#34;&gt;Node and development of micro business services&lt;/h2&gt;
+
+&lt;p&gt;Node is purpose-built for developing small web services. In fact, even the &amp;ldquo;hello world&amp;rdquo; example on nodejs.org is a simple web server. And thanks to the Node community, a huge number of NPM modules exist for all sorts of integrations. There are also various Node.js based frameworks for assisting with micro service development, e.g. hapijs.com.&lt;/p&gt;
+
+&lt;p&gt;In Node, these micro services should consist of several smaller component modules which are versioned and used in node via NPM. These modules can be shared with other services, also via NPM, allowing you to implement a truly &lt;em&gt;component-based architecture&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Architecturally, depending on your system boundaries, these business services may be new business requirements, or replacing a part of the old System that had heavy technical debt. Also bear in mind that you may never get to replace all of an old System, due to legal or other complications.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2013/12/Proxy_Micro_services_03.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2013/12/Proxy_Micro_services_03.png&#34; alt=&#34;Proxy_Micro_services_03&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Fig 2: Moving to proxying and micro-services with Node&lt;/p&gt;
+
+&lt;h2 id=&#34;enterprise-system-migration&#34;&gt;Enterprise System Migration&lt;/h2&gt;
+
+&lt;p&gt;CIOs are under constant pressure to deliver new mobility-focused services whilst preserving the integrity of existing mission-critical systems.  Many Enterprise systems are well architected, resilient and scalable under load but many others can be monolithic and brittle in nature, fuelled by years of entropy.&lt;/p&gt;
+
+&lt;p&gt;Organizations often mitigate risk by having long and complicated change approval processes and test-release cycles. The systems become ever-more-difficult to change and extend, particularly for core system modules which are essential to overall system stability. It is a serious challenge facing Enterprises to be able to meet high velocity requirements and drive the business forward.&lt;/p&gt;
+
+&lt;p&gt;However, these existing systems are the foundation of the Enterprise’s business, and are typically what generates revenue. Migrating large Enterprise Systems in one large rewrite rarely works out well. Typically this is done by forming a new team, who plan to deliver ‘like for like’ functionality in a ‘greenfield’ environment. Often new teams under-estimate the size/complexity of the old system and fail to deliver. Meanwhile, the old system has been held together by a skeletal team, and overall the migration effort has been an expensive set-back to the business.&lt;/p&gt;
+
+&lt;p&gt;Instead of the big rewrite, we have found that working with the old system from the start, and then creating new micro-services built around it, is a more successful approach. This is sometimes referred to as a ‘brownfield’ development effort. These new services are then either replacement parts of the old System, or services purpose-built for new business requirements.&lt;/p&gt;
+
+&lt;p&gt;Eventually over time, the old system can get smaller and less core to the overall architecture, whilst these new micro-services grow more numerous in number and also in depth of functionality.&lt;/p&gt;
+
+&lt;p&gt;Having smaller decoupled, autonomous micro-services is a more desirable modern architecture. It allows for quicker development and testing, less risk on production stability, and faster/better turnaround of requirements, allowing the development teams to focus on adding business value.&lt;/p&gt;
+
+&lt;h2 id=&#34;flexible-cloud-hosted-node-js-backend&#34;&gt;Flexible Cloud-hosted Node.js backend&lt;/h2&gt;
+
+&lt;p&gt;FeedHenry made the move to Node.js a long time ago (in Node years) at the beginning of 2011 when it was at v0.4. Our flexible Node-powered backend enables you to quickly and easily develop Node.js services that can interact with your existing business systems on one side and your mobile apps on the other. Using the FeedHenry cloud, you don’t need to expose your existing systems directly on the internet in order to interact with mobile applications. Instead, your mobile applications talk to the proven robust, scalable infrastructure of the FeedHenry Cloud which then talks securely to your backend systems.&lt;/p&gt;
+
+&lt;p&gt;This pattern is in active use today by all of our customers including a major UK rail infrastructure company, a leading airline, large UK utility companies and Government agencies. In every case, existing systems provide both the data sources and sinks for totally new mobile applications with all of the necessary management and manipulation happening securely in the Node.js business logic.&lt;/p&gt;
+
+&lt;h2 id=&#34;professional-services-consultancy&#34;&gt;Professional Services/Consultancy&lt;/h2&gt;
+
+&lt;p&gt;Our long history with Node is critically important to your business success. Rather than being just another hot technology that has attracted bandwagon-jumpers, we made the strategic decision several years ago that Node should be at the heart of everything we do. In addition to a battle-hardened Node infrastructure, we also have a battle-hardened Professional Services team who have been delivering high-performance robust resilient Node-powered mobile solutions for many years.&lt;/p&gt;
+
+&lt;p&gt;But they provide far more than point-solutions and can take you on the journey we have described above from initial micro-services and mobile applications to our full Mobile Application Platform. Our PS team understands that mobility is not just about Apps. By taking a strategic platform approach, they can guide you through the architectural, process and implementation decisions you need to make, to put mobility and agility at the heart of your enterprise and transform your business.&lt;/p&gt;
+
+&lt;h2 id=&#34;large-enterprises-making-the-transition-to-node-js&#34;&gt;Large Enterprises making the transition to Node.js&lt;/h2&gt;
+
+&lt;p&gt;The velocity of Node.js through the software development community has frankly been jaw-dropping. We have never before seen any tech become so important so quickly to so many businesses. What is even more shocking is how large corporations have embraced it and have begun evangelising it both internally and externally. They are doing so because of one reason - Node is transforming the Enterprise.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://engineering.groupon.com/2013/node-js/geekon-i-tier/&#34;&gt;Groupon&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.ebaytechblog.com/2013/05/17/how-we-built-ebays-first-node-js-application/&#34;&gt;eBay&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://venturebeat.com/2012/01/24/why-walmart-is-using-node-js/&#34;&gt;Walmart&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.nearform.com/nodecrunch/how-node-js-has-revolutionized-the-mailonline#.UpS7eMRdV8E&#34;&gt;The Daily Mail&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://nodered.org/&#34;&gt;IBM&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://venturebeat.com/2011/08/16/linkedin-node/&#34;&gt;LinkedIn&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.slideshare.net/gblock/node-js-enterprise-class&#34;&gt;Microsoft&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;And &lt;a href=&#34;http://nodejs.org/industry/&#34;&gt;many many more&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
+
+&lt;p&gt;By using Node.js in a step-wise fashion, large Enterprises can move at a pace that works for their organisation. A mobility strategy using Node in the modes we have described above can eventually lead to fundamental changes in how you deliver services to your employees and customers.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

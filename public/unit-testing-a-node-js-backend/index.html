@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.16" />
+
+  <title>Unit Testing a Node.js Backend &middot; Archive of FeedHenry Developer Blog 2012-2016</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+
+  <link rel="shortcut icon" href="http://feedhenrydevblogarchive.github.ioimg/favicon.ico" type="image/x-icon" />
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <a href="/"><img src = "/logo.png" /></a>
+    <small>Copyright Red Hat 2016</small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Unit Testing a Node.js Backend</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>16 Aug 2012, 10:59</time>
+  </div>
+
+  
+
+  
+
+  
+
+</div>
+
+  
+
+<p>Unit tests are an essential part of the lifecycle of any app development project, and today we&rsquo;re going to discuss the use of cloud based unit tests. Using the FeedHenry platform as a mobile Backend as a Service (mBaaS), and writing integrations with complex systems as a series of cloud based services, is an excellent strategy for developing a series of mobile applications with modular, re-usable integrations.</p>
+
+<p>However, these integration points become a vital interface between your backend systems and the rest of the world. Every line of cloud logic could potentially affect hundreds of thousands of connecting mobile clients, so this code is of vital importance. For this reason, having a substantial test coverage rate is critical.</p>
+
+<h2 id="writing-tests">Writing tests</h2>
+
+<p>A myriad of options exist when choosing a testing framework. The frameworks vary in their delceration style ( BDD, should(), expect() and plain assert() ), and also the reporters used to return the results (Spec, Plaintext, JSON, &hellip;). The most popular unit testing frameworks are <a href="http://visionmedia.github.com/expresso/">Expresso</a> (no longer actively maintained, but in widespread use), <a href="http://visionmedia.github.com/mocha/">Mocha</a> (superceeds Expresso), and <a href="http://vowsjs.org/">VowsJS</a>. Choice of framework depends largely on personal preference, and a train of thought exists that would suggest framework free, plain JS tests are the best approach. Whatever the choice of method, the core concept remains the same - verify that with some input, we receive an expected set of output.</p>
+
+<p>For the purpose of this article, we&rsquo;re not going to use a framework. Instead, we&rsquo;re going to use the assert module, which comes with NodeJS by default, and we&rsquo;re going to write a simple set of assertions that, combined with some console logging, verify our cloud code does as we expect.</p>
+
+<h2 id="coverage">Coverage</h2>
+
+<p>In a FeedHenry application, all functions that exists in the cloud/main.js file that are exported are public. For example</p>
+
+<pre><code>exports.a = function(params, callback){
+    return callback(null, {a: 1});
+}
+function b(params, callback){
+    return callback(null, {b: 2});
+}
+exports.b = b;
+function _c(params, callback){
+    return callback(null, {c: 3});
+}
+</code></pre>
+
+<p>In the above example, function a and function b are exported - so these are public functions, accessible from mobile devices.
+As a bare minimum, these publicly exported functions should both be tested. Function _c is not exported, so doesn&rsquo;t have to be tested - in fact, since it&rsquo;s not available outside this file, we can&rsquo;t test it.</p>
+
+<p>In addition to testing all the exports that exist in main.js (i.e. all those available to out mobile devices), often we will have some utility modules that we might write to assist with data massaging, parsing, or integrating. Testcases should also exist for any exported functions that are a part of these modules.</p>
+
+<h2 id="the-tests">The Tests</h2>
+
+<p>We create our tests in a file within cloud/test/tests.js:</p>
+
+<pre><code>var main = require('../main'),
+assert = require('assert');
+
+
+
+
+main.findStores({ query: '' }, function(err, res){
+   console.log(&quot;findStores: Running tests&quot;);
+   assert.ok(!err);
+   assert.ok(res);
+   assert.ok(res.data);
+   assert.ok(res.data.length &gt; 0);
+   var data = res.data,
+   aRecord = data[0];
+   assert.ok(aRecord);
+   assert.ok(aRecord.county);
+   assert.ok(aRecord.address &amp;&amp; typeof aRecord.address === &quot;object&quot;);
+   assert.ok(aRecord.distance &amp;&amp; typeof aRecord.distance === &quot;number&quot;);
+   console.log(&quot;findStores: Tests passed OK.&quot;);
+});
+</code></pre>
+
+<p>This is a simple example which invokes the findStores function of main.js with one paramater - a query string of &ldquo;, and asserts the existence of &amp; type of a number of properties in the response data.</p>
+
+<h2 id="when-to-run">When to run?</h2>
+
+<p>Here&rsquo;s some scenarios where running a unit test suite can &lsquo;save your bacon&rsquo;:</p>
+
+<ul>
+<li><p>Before you check in a change that modifies a file in /cloud
+_You&rsquo;ll catch an error before it&rsquo;s even made it into the repository, never mind into production. The code is fresh in your head - the error is easy to fix. _</p></li>
+
+<li><p>You receive an alert from your monitoring system saying &ldquo;stuff is down&rdquo;
+<em>Your unit test suite will serve as a quick sanity check, pinpointing the line of code where &lsquo;stuff went wrong&rsquo;, and should tell you if the issue is with your code, the endpoint you&rsquo;re integrating with, or otherwise..</em></p></li>
+
+<li><p>Running on a Continuos Integration box
+<em>A change was checked in without running the test cases, or the data returned by the endpoint we integrate with has changed &amp; we haven&rsquo;t managed to handle it. Bad - but at least we&rsquo;ve caught the issue before we push to production!</em></p></li>
+</ul>
+
+<h2 id="screencast">Screencast</h2>
+
+<p>To illustrate the points made, we&rsquo;re now going to write a small unit test for one of our example apps, <a href="http://github.com/feedhenry/Store-Finder">Store Finder</a>.</p>
+
+<p><a href="https://vimeo.com/47468233/">You can view the screencast on vimeo</a></p>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="http://feedhenrydevblogarchive.github.io/building-a-developer-studio-in-nodejs/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="http://feedhenrydevblogarchive.github.io/building-a-developer-studio-in-nodejs/">Building a Developer Studio in NodeJS</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="http://feedhenrydevblogarchive.github.io/so-long-jquery-ui-hello-bootstrap/">So long jQuery-UI, hello Bootstrap</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="http://feedhenrydevblogarchive.github.io/so-long-jquery-ui-hello-bootstrap/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+  
+
+</div>
+
+</div>
+</div>
+<script src="http://feedhenrydevblogarchive.github.iojs/ui.js"></script>
+
+
+
+
+</body>
+</html>
+

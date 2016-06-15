@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Red Hat on Archive of FeedHenry Developer Blog 2012-2016</title>
+    <link>http://feedhenrydevblogarchive.github.io/tags/red-hat/</link>
+    <description>Recent content in Red Hat on Archive of FeedHenry Developer Blog 2012-2016</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 10 Jun 2015 13:29:44 +0000</lastBuildDate>
+    <atom:link href="http://feedhenrydevblogarchive.github.io/tags/red-hat/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>AeroGear quick start push Templates</title>
+      <link>http://feedhenrydevblogarchive.github.io/aerogear-push-templates/</link>
+      <pubDate>Wed, 10 Jun 2015 13:29:44 +0000</pubDate>
+      
+      <guid>http://feedhenrydevblogarchive.github.io/aerogear-push-templates/</guid>
+      <description>&lt;p&gt;Currently in software development the biggest challenge is integrating. A lot of what we do involves integrating with other platforms or libraries. Knowing how to integrate is important, so here I&amp;rsquo;m going to show how to integrate the Unified Push Server (UPS) with Feedhenry, for adding push notification support. To make things even easier we created a Feedhenry Template that you can use as a starting point for your application that contains all the parts you&amp;rsquo;ll need.&lt;/p&gt;
+
+&lt;p&gt;To illustrate how to use the FeedHenry Template for push notifications, you will build a set of sample applications for receiving sports news. You will use a centralized cloud application that integrates with both a push server as well as any client applications. The centralized cloud app contains various categories (i.e. different sports) and news stories associated with one or more categories. There are also two client applications:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Console web application: Let administrators create and update the category list, as well as create news stories on the centralized cloud app&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Mobile application: Lets users subscribe to any of the available categories and receive a push notification whenever a new story is posted with that category&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;To build a project based on this template:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Create a new project.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Click &lt;strong&gt;Sample Projects&lt;/strong&gt;, and then find the Project named: &lt;strong&gt;Push Hello World&lt;/strong&gt;.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Click select type a name, and then click &lt;strong&gt;create&lt;/strong&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/05/1.png&#34; alt=&#34;1&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now you have three apps one Cloud Code App and two Client Apps.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/05/5.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/05/5.png&#34; alt=&#34;5&#34; /&gt;&lt;/a&gt;
+The &lt;em&gt;Push Cloud App&lt;/em&gt; is a simple server-side CRUD application for categories. The &lt;em&gt;Push Console App&lt;/em&gt; is a &amp;ldquo;management inteface&amp;rdquo; where you create and delete these categories. These categories are used by the &lt;em&gt;Push Notifications Mobile Client&lt;/em&gt; to &amp;ldquo;subscribe&amp;rdquo; to. For example I have a sports news site and I push messages about different sports to the mobile users. The users &lt;em&gt;subscribe&lt;/em&gt; to different sports they want to receive notifications about.&lt;/p&gt;
+
+&lt;p&gt;With this generated project all that is left to do is connect the Unified Push Server to this project, first go to openshift.com and create an UPS instance, search on AeroGear pick a name and &amp;ldquo;Create Application&amp;rdquo;. For more information on how to set up a unified push server on Openshift have a look at the &lt;a href=&#34;https://aerogear.org/docs/unifiedpush/ups_userguide/index/#openshift&#34;&gt;AeroGear documentation&lt;/a&gt;. Now you have a running UPS on Openshift you need to login and create an &amp;ldquo;application&amp;rdquo; that will be used by your Feedhenry apps to send push notifications. Note down the &lt;code&gt;Application ID&lt;/code&gt;, &lt;code&gt;Master Secret&lt;/code&gt; and the &lt;code&gt;Server URL&lt;/code&gt; as we going to need those later on.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/05/10.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/05/10.png&#34; alt=&#34;10&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the clients that we want to use (e.g. Android iOS) we need to create variants, for more information on how to do this have a look at the UPS documentation for &lt;a href=&#34;https://aerogear.org/docs/unifiedpush/aerogear-push-android/&#34;&gt;Android&lt;/a&gt; and &lt;a href=&#34;https://aerogear.org/docs/unifiedpush/aerogear-push-ios/&#34;&gt;iOS&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Next we need to do two things we need create a &amp;ldquo;Service connector&amp;rdquo; for UPS and we need to tell the Cloud App the &lt;code&gt;GUID&lt;/code&gt; of the &amp;ldquo;Service connector&amp;rdquo; so that it can use this to send messages to UPS. First we setup the &amp;ldquo;Service connector&amp;rdquo; to connect to our openshift UPS instance, go to the &lt;code&gt;Services &amp;amp;amp; APIs&lt;/code&gt; tab and click &lt;code&gt;Provision mBaaS Service/API&lt;/code&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/05/3.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/05/3.png&#34; alt=&#34;3&#34; /&gt;&lt;/a&gt;
+Then choose &lt;code&gt;AeroGear Push Service&lt;/code&gt;, give it a name and click &lt;code&gt;Next&lt;/code&gt;, fill in the &lt;code&gt;Server URL&lt;/code&gt;, &lt;code&gt;Application ID&lt;/code&gt; and &lt;code&gt;Master Secret&lt;/code&gt; and click &lt;code&gt;Next&lt;/code&gt; now it will create your &amp;ldquo;Service connector&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/05/7.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/05/7.png&#34; alt=&#34;7&#34; /&gt;&lt;/a&gt;
+After that is done go back to your project, here we need to add the service so that we can use it click the &amp;ldquo;+&amp;rdquo; in the mBaas Services box in the overview page:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/05/2.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/05/2.png&#34; alt=&#34;2&#34; /&gt;&lt;/a&gt;
+Select the created &amp;ldquo;Service connector&amp;rdquo; and then the &amp;ldquo;Associate Service&amp;rdquo; button. Now you&amp;rsquo;ll see the &amp;ldquo;Service Connector&amp;rdquo; in the &amp;ldquo;mBaas Services&amp;rdquo; column. Let&amp;rsquo;s configure the &amp;ldquo;Cloud App&amp;rdquo; to use this &amp;ldquo;Service Connector&amp;rdquo;, for that we need to the GUID of the &amp;ldquo;Service Connector&amp;rdquo;, click on it and you will see the info page:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/05/4.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/05/4.png&#34; alt=&#34;4&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;On the info page copy the &lt;code&gt;Service ID&lt;/code&gt; and under access control add you project, then click save.&lt;/p&gt;
+
+&lt;p&gt;Then in the project click on the &amp;ldquo;Push Cloud App&amp;rdquo; and select &amp;ldquo;Environment variables&amp;rdquo; from the sidebar. Click &amp;ldquo;Add Variable&amp;rdquo; and enter &lt;code&gt;AEROGEAR_SERVICE_GUID&lt;/code&gt; for name and paste the &lt;code&gt;Service ID&lt;/code&gt; you copied earlier for the &amp;ldquo;Development&amp;rdquo; label. Next click on &amp;ldquo;Push Environment Variables&amp;rdquo; to publish these.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/05/6.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/05/6.png&#34; alt=&#34;6&#34; /&gt;&lt;/a&gt;
+Now that that is all setup, the &amp;ldquo;Cloud App&amp;rdquo; can use the &amp;ldquo;GUID&amp;rdquo; to fetch the &amp;ldquo;Service Connector&amp;rdquo;, that connects to UPS to send the messages.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s fire up a browser and open the &lt;em&gt;Push Console App&lt;/em&gt; to create a couple of categories for instance: Football, Rugby and Basketball:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/05/8.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/05/8.png&#34; alt=&#34;8&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Now go to your &lt;em&gt;Push Notifications Mobile Client&lt;/em&gt; and open the file called &lt;code&gt;push-config.json&lt;/code&gt;. You&amp;rsquo;ll need to update the &lt;em&gt;Variant ID&lt;/em&gt; and &lt;em&gt;Variant Secret&lt;/em&gt; for each platform and the &lt;em&gt;pushServerURL&lt;/em&gt; to the location of your UnifiedPush Server, so that it can register itself with the UnifiedPush Server in order to receive messages. For Android you also need to specify the &lt;em&gt;senderID&lt;/em&gt; (also called project number on the google console) inside of that JSON file. Finally build and install the &lt;em&gt;Push Notifications Mobile Client&lt;/em&gt; on a device and select the categories you want to receive.&lt;/p&gt;
+
+&lt;p&gt;Now go back to the &lt;em&gt;Push Console App&lt;/em&gt; and send a message. If all worked well, you will see how the push notifications arrive on the mobile client.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/05/9.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/05/9.png&#34; alt=&#34;9&#34; /&gt;&lt;/a&gt;
+You can use and extend this template for your own use case. More detailed information on the setup of this template can be found in the help of the App Console&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

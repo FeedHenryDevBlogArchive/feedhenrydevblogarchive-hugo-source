@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.16" />
+
+  <title>Getting started with the Red Hat Mobile API Mapper &middot; Archive of FeedHenry Developer Blog 2012-2016</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+
+  <link rel="shortcut icon" href="http://feedhenrydevblogarchive.github.ioimg/favicon.ico" type="image/x-icon" />
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <a href="/"><img src = "/logo.png" /></a>
+    <small>Copyright Red Hat 2016</small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Getting started with the Red Hat Mobile API Mapper</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>16 Feb 2016, 14:24</time>
+  </div>
+
+  
+
+  
+
+  
+
+</div>
+
+  
+
+<p>Two weeks ago <a href="http://www.feedhenry.com/release-of-rhmap-3-7/">we announced the 3.7.0 release</a> of the Red Hat Mobile Application Platform including a Preview of our all new <a href="http://docs.feedhenry.com/v3/guides/api_mapper.html">API Mapper</a>. The API Mapper enables everyone from new Node.js developers to hardcore map-reducers to interact with existing back-end APIs and customise them for use in their mobile applications.</p>
+
+<p>This simple-looking but extremely powerful tool provides the following features:</p>
+
+<ul>
+<li><p>Create GET/POST/PUT/PATCH/DELETE/HEAD/OPTIONS requests</p></li>
+
+<li><p>Set headers</p></li>
+
+<li><p>Save your Requests</p></li>
+
+<li><p>Create a Mapping from a Request</p></li>
+
+<li><p>Map fields (Include/Exclude/Rename)</p></li>
+
+<li><p>Carry out complex data Transforms using custom Node.js code</p></li>
+
+<li><p>Mount mappings to specific end-points</p></li>
+
+<li><p>Make mappings accessible to your Cloud Code</p></li>
+
+<li><p>Automatically generate Node.js code and Curl requests</p></li>
+</ul>
+
+<p>In this post, I&rsquo;m going to walk through the functionality from the simplest request all the way to creating custom transforms.</p>
+
+<p>There are a few simple setup steps needed in the Preview which you can read <a href="http://docs.feedhenry.com/v3/guides/api_mapper.html">in the Docs</a> that I’m going to skip over. Note that you can use the API Mapper either within the Studio or popped out into its own browser tab.</p>
+
+<p><a href="/wp-content/uploads/2016/02/apimapper02_small2.jpg"><img src="/wp-content/uploads/2016/02/apimapper02_small2.jpg" alt="apimapper02_small2" /></a></p>
+
+<h3 id="home-page">Home Page</h3>
+
+<p>The home page shows you all of your existing saved Mappings. You can Edit, Delete or Export them as JSON files.</p>
+
+<p><a href="/wp-content/uploads/2016/02/apimapper01_small2.jpg"><img src="/wp-content/uploads/2016/02/apimapper01_small2.jpg" alt="apimapper01_small2" /></a></p>
+
+<h3 id="enter-a-url">Enter a URL</h3>
+
+<p>To build a new mapping, you first start with a New Request.</p>
+
+<p><a href="/wp-content/uploads/2016/02/apimapper03_small.jpg"><img src="/wp-content/uploads/2016/02/apimapper03_small.jpg" alt="apimapper03_small" /></a></p>
+
+<p>Let’s use the OpenShift Online REST API to find out what version it is currently on and its status.</p>
+
+<p>Their API is at:</p>
+
+<pre><code>https://openshift.redhat.com/broker/rest/api
+</code></pre>
+
+<h3 id="headers">Headers</h3>
+
+<p>Enter that URL and use the default GET option</p>
+
+<p>The OpenShift API requires one simple header which is the type of response you want so add</p>
+
+<p>Header Key = Accept
+Header Value = application/json</p>
+
+<p><a href="/wp-content/uploads/2016/02/apimapper04_small.jpg"><img src="/wp-content/uploads/2016/02/apimapper04_small.jpg" alt="apimapper04_small" /></a></p>
+
+<p>and click SEND REQUEST.</p>
+
+<p>You can click on the tabs to see the Raw Request, Response Headers and Raw Response.</p>
+
+<p><a href="/wp-content/uploads/2016/02/apimapper05_small.jpg"><img src="/wp-content/uploads/2016/02/apimapper05_small.jpg" alt="apimapper05_small" /></a></p>
+
+<p><a href="/wp-content/uploads/2016/02/apimapper06_small.jpg"><img src="/wp-content/uploads/2016/02/apimapper06_small.jpg" alt="apimapper06_small" /></a></p>
+
+<p>You can continue to try out requests and add relevant headers (e.g for Auth) until you are satisfied with the basic request. Don’t forget you can use POST, PUT, DELETE, etc requests on your API if they are supported.</p>
+
+<h3 id="mount-path">Mount Path</h3>
+
+<p>Next you should give the request a reasonable Mount Path. Let’s use /osoapi</p>
+
+<p><a href="/wp-content/uploads/2016/02/apimapper10_small.jpg"><img src="/wp-content/uploads/2016/02/apimapper10_small.jpg" alt="apimapper10_small" /></a></p>
+
+<p>You can then click Create Request to save it in the Home Page list and start working with mappings and transformations.</p>
+
+<p>Click Try Request to refresh the data.</p>
+
+<p>Now we’re going to Map that API and turn it into something simple. So click Add Mapping.</p>
+
+<p><a href="/wp-content/uploads/2016/02/apimapper07_small.jpg"><img src="/wp-content/uploads/2016/02/apimapper07_small.jpg" alt="apimapper07_small" /></a></p>
+
+<p>You can now see all of the fields in a hierarchical collapse/expand view along with the Unmapped and Mapped output. At this point they are, of course, the same. Now start clicking on various elements and unticking them from “Use this field?”. Note that unticking a parent will untick all of the children too.</p>
+
+<p>As you do this, the Mapped output is updated automatically. Untick everything except api_version and status and you will end up with this:</p>
+
+<p><a href="/wp-content/uploads/2016/02/apimapper08_small.jpg"><img src="/wp-content/uploads/2016/02/apimapper08_small.jpg" alt="apimapper08_small" /></a></p>
+
+<h3 id="simple-transformations">Simple Transformations</h3>
+
+<p>The simplest and most common of all transformations is to rename so that is highlighted separately in the UI. Let’s rename api_version to current_version.</p>
+
+<p>If you click on the Transform dropdown, the only option is “round” since it’s a numeric field. Another example is Arrays where you can pick “sum”. However let’s click on the status element in the api and then click on transform. As it’s text we can capitalize or lowercase. Let’s pick capitalize, which results in:</p>
+
+<p><a href="/wp-content/uploads/2016/02/apimapper09_small.jpg"><img src="/wp-content/uploads/2016/02/apimapper09_small.jpg" alt="apimapper09_small" /></a></p>
+
+<h3 id="using-the-mapped-api">Using the Mapped API</h3>
+
+<p>Now that we are happy with our Mapped API, we can use it in a variety of ways</p>
+
+<p>First, you can see where it’s available directly on a URL by clicking the mount path.</p>
+
+<p><a href="/wp-content/uploads/2016/02/apimapper11_small.jpg"><img src="/wp-content/uploads/2016/02/apimapper11_small.jpg" alt="apimapper11_small" /></a></p>
+
+<p>And clicking on the Sample Code tab gives you everything you need to get going in your own coding. So you have</p>
+
+<ul>
+<li><p>an fh.service snippet for use in your Cloud code</p></li>
+
+<li><p>a direct Node.js request module snippet</p></li>
+
+<li><p>and finally the correct Curl command</p></li>
+</ul>
+
+<p><a href="/wp-content/uploads/2016/02/apimapper12_small.jpg"><img src="/wp-content/uploads/2016/02/apimapper12_small.jpg" alt="apimapper12_small" /></a></p>
+
+<h3 id="advanced-transformations-using-node-js">Advanced Transformations using Node.js</h3>
+
+<p>For many users, the features I’ve just described are more than enough to work with. But for advanced users, we have one more card up our sleeve. You can write your own transformations in Node.js and make them available for use inside your instance of the API Mapper.</p>
+
+<p>Let’s look at an example in the Studio Editor.</p>
+
+<p><a href="/wp-content/uploads/2016/02/apimapper13_small.jpg"><img src="/wp-content/uploads/2016/02/apimapper13_small.jpg" alt="apimapper13_small" /></a></p>
+
+<p>In application.js you can see a transformations object where you can specify the transformations you want to make available. In the case of our OpenShift API, it might be useful to return the minimum API version supported as a distinct thing. So let’s create a transformation called minimumArrayTransform which takes an array and returns the minimum value in it.</p>
+
+<p>Update application.js like so:</p>
+
+<pre><code>// fhlint-begin: custom-routes
+ app.use('/', apiMapper({
+ transformations: {
+ // Add your custom transformations here! `customMixedArrayTransform` is an example of this.
+ mixedArrayTransform: require('./transformations/mixedArrayTransform.js'),
+ minimumArrayTransform: require('./transformations/minimumArrayTransform.js')
+ }
+ }));
+</code></pre>
+
+<p><a href="/wp-content/uploads/2016/02/apimapper14_small.jpg"><img src="/wp-content/uploads/2016/02/apimapper14_small.jpg" alt="apimapper14_small" /></a></p>
+
+<p>And create a new minimumArrayTransform.js in the transformations directory with these contents:</p>
+
+<pre><code>// First, tell the mapper what value types this transformation is valid for
+ exports.type = &quot;array&quot;;
+ // Then, implement the transformation function
+ exports.transform = function(arr){
+ return arr.reduce(function (p, v) {
+ console.log(&quot;p = &quot; + p + &quot; v = &quot; + v)
+ return ( p &lt; v ? p : v );
+ });
+ };
+</code></pre>
+
+<p><a href="/wp-content/uploads/2016/02/apimapper15_small.jpg"><img src="/wp-content/uploads/2016/02/apimapper15_small.jpg" alt="apimapper15_small" /></a></p>
+
+<p>Deploy your updated code and now go back to API Mapper and refresh the screen to pick up the new transform. Go to the Mapper section and re-enable the supported_api_versions field, change its name to minimum_api_version and select minimumArrayTransform from the drop-down list. You should now see the updated API output that you were looking for.</p>
+
+<p><a href="/wp-content/uploads/2016/02/apimapper16_small.jpg"><img src="/wp-content/uploads/2016/02/apimapper16_small.jpg" alt="apimapper16_small" /></a></p>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>You can expect to see lots more features coming in later releases and we’d be delighted to hear any feedback that you have.</p>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="http://feedhenrydevblogarchive.github.io/release-of-rhmap-3-7/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="http://feedhenrydevblogarchive.github.io/release-of-rhmap-3-7/">Release of RHMAP 3.7 including API Mapper preview</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="http://feedhenrydevblogarchive.github.io/upcoming-deployment-of-version-3-8-of-the-red-hat-mobile-application-platform/">Upcoming deployment of version 3.8 of the Red Hat Mobile Application Platform</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="http://feedhenrydevblogarchive.github.io/upcoming-deployment-of-version-3-8-of-the-red-hat-mobile-application-platform/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+  
+
+</div>
+
+</div>
+</div>
+<script src="http://feedhenrydevblogarchive.github.iojs/ui.js"></script>
+
+
+
+
+</body>
+</html>
+

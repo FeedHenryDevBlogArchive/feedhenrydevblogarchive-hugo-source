@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.16" />
+
+  <title>Agile in a Services Based Team &middot; Archive of FeedHenry Developer Blog 2012-2016</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+
+  <link rel="shortcut icon" href="http://feedhenrydevblogarchive.github.ioimg/favicon.ico" type="image/x-icon" />
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <a href="/"><img src = "/logo.png" /></a>
+    <small>Copyright Red Hat 2016</small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Agile in a Services Based Team</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>03 Sep 2012, 10:56</time>
+  </div>
+
+  
+
+  
+
+  
+
+</div>
+
+  
+
+<p>Practicing agile on an engineering product is something which has been well documented and practiced worldwide - but introducing agile approaches to a services based team brings its own set of challenges. Here&rsquo;s some of the challenges we&rsquo;ve come across, and how we&rsquo;ve dealt with them here at FeedHenry.</p>
+
+<h2 id="iteration-velocity-is-not-a-constant">Iteration velocity is not a constant</h2>
+
+<p>When building a product, eventually the team will reach a plateau where iteration velocity can be accurately measured. It becomes easy to define just how much can be delivered in N number of weeks, before it&rsquo;s time to sit back, review, and plan the next set of deliverables.</p>
+
+<p>In a services based environment, this isn&rsquo;t always the case. Iteration velocity varies from project to project, and depends on the duration, scale, and level of developer experience. Velocity can vary massively, from wildly productive to utterly blocked by an API that hasn&rsquo;t become available. The team, and the agile process, needs to be able to adapt to this consideration.</p>
+
+<h2 id="team-size-varies">Team size varies</h2>
+
+<p>Agile product development usually centers around a core team of developers, who may be working on separate features. In a services team, we&rsquo;re still one team - but project assignment can change from week to week, depending on project workload. Ideally, a developer is assigned to one project throughout its course - but in the event of blockers the team needs to be pretty flexible.</p>
+
+<h2 id="scrum">Scrum</h2>
+
+<p>When it comes to scrum, the rules stay pretty much the same. It might seem that when different team members are working on different customer projects, what benefit could a group standup possibly bring - but in reality, we&rsquo;re often solving similar problems in a slightly different shape or form. Scrum is hugely beneficial, just the same as it would be in a services environment.
+The logistics don&rsquo;t differ either - updates are sub-30 seconds, scrum master is rotated &amp; is responsible for keeping on top of any blockers.</p>
+
+<h2 id="the-traditional-rules-still-apply">The traditional rules still apply</h2>
+
+<h3 id="1-unit-tests">1) Unit Tests</h3>
+
+<p>Unit tests are still an essential part of the development cycle of a services team. In particular, unit testing the cloud side integrations of a project can be a huge lifesaver. In the event something goes wrong, the unit tests can often help quickly pinpoint the exact source of a problem. You can read more about how we <a href="http://www.feedhenry.com/2012/08/unit-testing-a-node-js-backend/">unit test cloud applications here</a>.</p>
+
+<p>One of the things we&rsquo;ve recently worked hard on improving is how we unit test client side JavaScript logic - the part of the app that sits on device. In particular, we&rsquo;ve focused on testing any complicated pieces of business logic that exist on the client. The principles are similar to those of cloud unit tests - given a certain input X, we expect output Y succeed and return these properties.</p>
+
+<h3 id="2-code-quality">2) Code Quality</h3>
+
+<p>In a services based team, we occasionally find ourselves working with development partners for certain phases of a project. Developers often have different coding styles, and vary their strategy of indentation type and length - so we need to enforce a uniform code style across the team. In addition to this, we mandate an IDE which is capable of running JSHint code quality tests within the editor.</p>
+
+<h3 id="3-pulling-it-all-together-continuous-integration">3) Pulling it all together: Continuous Integration</h3>
+
+<p>In a services environment, the list of projects to be added to the Continuous Integration box is ever growing. A project is developed for a period of N weeks, then released &amp; the codebase is static until some future phase of the project. This can be quite different to a product based team, and it means the setup cost of adding an app to a Continuous Integration server has to be incredibly low for the developer. To ensure this, our CI setup process simply involves the developer creating a simple shell script which can test various parts of the application. A typical build.sh script might look like this:</p>
+
+<table cellpadding="0" cellspacing="0" >
+<tbody >
+<tr >
+
+<td width="100%" >
+
+
+
+
+
+#! /bin/bash
+
+
+
+
+
+
+
+cd cloud
+
+
+
+
+echo 'Installing dependencies'
+
+
+
+
+npm install -d
+
+
+
+
+export NODE_PATH=$PWD
+
+
+
+
+echo 'Running npm test'
+
+
+
+
+npm test
+
+
+
+
+cd ..
+
+
+
+
+
+
+
+</td>
+</tr>
+</tbody>
+</table>
+
+<p>Our continuous integration server (<a href="http://jenkins-ci.org/">Jenkins</a>) then runs this shell script, which sets the current execution environment of Node to the cloud directory (to ensure relative paths work as expected).
+Once it&rsquo;s ready to run the node code, it pulls together 1) and 2) above - running the unit tests, and JSHint.</p>
+
+<p>In the event the tests fail, a lead developer (or the whole team) get emailed a report and the build is marked unstable.</p>
+
+<p>If you&rsquo;re actively practicing agile in a services environment, we&rsquo;d love to hear how you&rsquo;ve managed this in your team! Any comments or suggestions, please reach out in the comments.</p>
+
+<p><em>Cian leads FeedHenry’s development of complex mobile apps built in web technologies. He is the author of numerous Node.js modules, and is an active open source contributor. Find him on twitter <a href="http://www.twitter.com/cianclarke">@cianclarke</a>, or <a href="http://www.github.com/cianclarke">github</a></em></p>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="http://feedhenrydevblogarchive.github.io/so-long-jquery-ui-hello-bootstrap/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="http://feedhenrydevblogarchive.github.io/so-long-jquery-ui-hello-bootstrap/">So long jQuery-UI, hello Bootstrap</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="http://feedhenrydevblogarchive.github.io/feedhenry-workflow/">FeedHenry Workflow</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="http://feedhenrydevblogarchive.github.io/feedhenry-workflow/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+  
+
+</div>
+
+</div>
+</div>
+<script src="http://feedhenrydevblogarchive.github.iojs/ui.js"></script>
+
+
+
+
+</body>
+</html>
+

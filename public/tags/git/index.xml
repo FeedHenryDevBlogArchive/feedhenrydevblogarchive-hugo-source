@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Git on Archive of FeedHenry Developer Blog 2012-2016</title>
+    <link>http://feedhenrydevblogarchive.github.io/tags/git/</link>
+    <description>Recent content in Git on Archive of FeedHenry Developer Blog 2012-2016</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 11 Oct 2014 12:25:34 +0000</lastBuildDate>
+    <atom:link href="http://feedhenrydevblogarchive.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Creating &amp; Publishing a Chef Cookbook for gitlab-shell</title>
+      <link>http://feedhenrydevblogarchive.github.io/gitlab-shell-chef-cookbook/</link>
+      <pubDate>Sat, 11 Oct 2014 12:25:34 +0000</pubDate>
+      
+      <guid>http://feedhenrydevblogarchive.github.io/gitlab-shell-chef-cookbook/</guid>
+      <description>
+
+&lt;h1 id=&#34;what-was-done-and-why&#34;&gt;What was done and why?&lt;/h1&gt;
+
+&lt;p&gt;This article details the steps that were followed to:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Create a new chef cookbook (for installing gitlab-shell)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Write a recipe, with a set of configurable attributes&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Deploy/Publish this cookbook to the &amp;lsquo;Chef Supermarket&amp;rsquo;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Include the newly published cookbook in chef based project&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The main reason for doing this was because a cookbook for installing &lt;strong&gt;just&lt;/strong&gt; gitlab-shell did not exist (More than 1 for a full gitlab installation did)&lt;/p&gt;
+
+&lt;h1 id=&#34;creating-the-cookbook&#34;&gt;Creating the cookbook&lt;/h1&gt;
+
+&lt;p&gt;The &lt;code&gt;knife&lt;/code&gt; command is the main cli tool for doing chef stuff. For example, to create a new cookbook in the default cookbook location, do this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;code&amp;gt;knife cookbook create &amp;lt;coobookname&amp;gt;
+&amp;lt;/code&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The default location is usually &lt;code&gt;~/.chef/cookbooks/&lt;/code&gt;. To specify a location, the &lt;code&gt;-o&lt;/code&gt; switch can be used e.g.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;code&amp;gt;knife cookbook create gitlab-shell -o ~/work
+&amp;lt;/code&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This creates a bunch of files &amp;amp; folders, a lot of which won&amp;rsquo;t be needed this time. Some files will have useful placeholder info, especially the README.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;code&amp;gt;-rw-r--r-- CHANGELOG.md
+-rw-r--r-- README.md
+drwxr-xr-x attributes
+drwxr-xr-x definitions
+drwxr-xr-x files
+drwxr-xr-x libraries
+-rw-r--r-- metadata.rb
+drwxr-xr-x providers
+drwxr-xr-x recipes
+drwxr-xr-x resources
+drwxr-xr-x templates
+&amp;lt;/code&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The main files &amp;amp; folders are:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;metadata.rb - cookbook definition &amp;amp; version&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;README.md - cookbook details, usage and attributes/config information&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;CHANGELOG.md - your cookbook changes for each version&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;/attributes - configuration files go in here&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;/recipes - installation &amp;amp; setup script(s)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;/files - files to &amp;lsquo;drop in&amp;rsquo; during installation and setup&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;/templates - files to &amp;lsquo;drop in&amp;rsquo; with placeholders replaced with config values&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;cookbook-recipe&#34;&gt;Cookbook recipe&lt;/h1&gt;
+
+&lt;p&gt;This is a simple recipe, so we can do everything in a single file to install &amp;amp; setup gitlab-shell. This file is &lt;code&gt;recipes/default.rb&lt;/code&gt; To install gitlab-shell, there are a few steps&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Create a new user called &lt;code&gt;git&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Clone the gitlab-shell repo from github&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Create a config.yml file using a chef template file&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Ensure the gitlab repositories path is created and has the correct perms&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Ensure the &lt;code&gt;git&lt;/code&gt; users authorized_keys file is created with the correct perms&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The complete source for this can be found at &lt;a href=&#34;https://github.com/feedhenry-cookbooks/gitlab-shell/blob/master/recipes/default.rb&#34;&gt;https://github.com/feedhenry-cookbooks/gitlab-shell/blob/master/recipes/default.rb&lt;/a&gt; The most interesting part of the recipe is the template file for config.yml. The template file is in templates/default/gitlab_shell.yml.erb &lt;a href=&#34;https://github.com/feedhenry-cookbooks/gitlab-shell/blob/master/templates/default/gitlab_shell.yml.erb&#34;&gt;https://github.com/feedhenry-cookbooks/gitlab-shell/blob/master/templates/default/gitlab_shell.yml.erb&lt;/a&gt; It&amp;rsquo;s an embedded ruby template file, so there are some ruby placeholders in it. For example, the url to call back to for checking repo access and key permissions is injected here:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;code&amp;gt;gitlab_url: &amp;lt;%= @url %&amp;gt;
+&amp;lt;/code&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Back in the recipe, the template file is output to the gitlab-shell install directory as config.yml. The code to do this looks like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;code&amp;gt;template File.join(gitlab_shell[&#39;shell_path&#39;], &amp;quot;config.yml&amp;quot;) do
+  source &amp;quot;gitlab_shell.yml.erb&amp;quot;
+  user gitlab_shell[&#39;user&#39;]
+  group gitlab_shell[&#39;group&#39;]
+  variables({
+    # ....
+    :url =&amp;gt; gitlab_shell[&#39;url&#39;],
+    # ....
+  })
+end
+&amp;lt;/code&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The variables section is the object/hash passed into the template file. The value for this config is obtained from the cookbook attributes. More specifically, the file at attributes/default.rb &lt;a href=&#34;https://github.com/feedhenry-cookbooks/gitlab-shell/blob/master/attributes/default.rb&#34;&gt;https://github.com/feedhenry-cookbooks/gitlab-shell/blob/master/attributes/default.rb&lt;/a&gt; The &lt;code&gt;gitlab_url&lt;/code&gt; value comes from the following attribute:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;code&amp;gt;default[&#39;gitlab-shell&#39;][&#39;url&#39;] = &amp;quot;http://localhost:3000/&amp;quot;
+&amp;lt;/code&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;cookbook-preparation-for-publish&#34;&gt;Cookbook preparation for publish&lt;/h1&gt;
+
+&lt;p&gt;Now that we have a cookbook, we can publish it to the Chef Supermarked at &lt;a href=&#34;https://supermarket.getchef.com&#34;&gt;https://supermarket.getchef.com&lt;/a&gt;. To do this, we need an account. At the time of writing, and account can be created at &lt;a href=&#34;https://manage.opscode.com/signup?ref=community&#34;&gt;https://manage.opscode.com/signup?ref=community&lt;/a&gt;. After creating one and signing in, you&amp;rsquo;ll be prompted to download/save your newly generated private key. The suggested location is &lt;code&gt;~/.chef/&amp;lt;userid&amp;gt;.pem&lt;/code&gt;. This can be used later when we want to upload our cookbook from the terminal. Before uploading, we should make sure our README.md and metadata.rb files are in order.&lt;/p&gt;
+
+&lt;h2 id=&#34;readme-md&#34;&gt;README.md&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/feedhenry-cookbooks/gitlab-shell/blob/master/README.md&#34;&gt;https://github.com/feedhenry-cookbooks/gitlab-shell/blob/master/README.md&lt;/a&gt; This file is whats shown to users browsing cookbooks in the Chef Supermarket. The suggested content, based on the generated file form the &lt;code&gt;knife&lt;/code&gt; command earlier, is:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Requirements - e.g. other cookbook dependencies, platforms supported&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Attributes - List (or better yet, a table) of attributes you cookbook uses, with their default values&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Usage - Which recipe to run - usually ::default.rb&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Contributing Guide - if you cookbook is open source/public&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;License &amp;amp; Authors&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;metadata-rb&#34;&gt;metadata.rb&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/feedhenry-cookbooks/gitlab-shell/blob/master/metadata.rb&#34;&gt;https://github.com/feedhenry-cookbooks/gitlab-shell/blob/master/metadata.rb&lt;/a&gt; This is the most imporant file when uploading your cookbook. It contains the cookbook name &amp;amp; version number, among other things:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;code&amp;gt;name             &#39;gitlab-shell&#39;
+maintainer       &#39;FeedHenry&#39;
+maintainer_email &#39;david.martin@feedhenry.com&#39;
+license          &#39;All rights reserved&#39;
+description      &#39;Installs/Configures gitlab-shell&#39;
+long_description IO.read(File.join(File.dirname(__FILE__), &#39;README.md&#39;))
+version          &#39;0.3.0&#39;
+&amp;lt;/code&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Ever time we want to publish our cookbook, we should bump the version number. This ensures we keep a history of the coookbook and don&amp;rsquo;t break it for users of previous versions. When we&amp;rsquo;re happy that everything is in order &amp;amp; ready to go, the publish command is:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;code&amp;gt;knife cookbook site share -k ~/.chef/&amp;lt;userid&amp;gt;.pem &amp;quot;&amp;lt;cookbook_name&amp;gt;&amp;quot; &amp;quot;&amp;lt;category&amp;gt;&amp;quot; -u &amp;lt;userid&amp;gt; -VV -o &amp;lt;cookbook_location&amp;gt;
+&amp;lt;/code&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;For example:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;code&amp;gt;knife cookbook site share -k ~/.chef/davidmartin.pem &amp;quot;gitlab-shell&amp;quot; &amp;quot;Other&amp;quot; -u davidmartin -VV -o ~/work
+&amp;lt;/code&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;More details on the &lt;code&gt;knife cookbook site&lt;/code&gt; command, including available categories, can be found here &lt;a href=&#34;https://docs.getchef.com/knife_cookbook_site.html&#34;&gt;https://docs.getchef.com/knife_cookbook_site.html&lt;/a&gt; After publishing, we can find our cookbook by searching on the Chef Supermarket &lt;a href=&#34;https://supermarket.getchef.com/cookbooks&#34;&gt;https://supermarket.getchef.com/cookbooks&lt;/a&gt; The finished product for this article can be found at &lt;a href=&#34;https://supermarket.getchef.com/cookbooks/gitlab-shell&#34;&gt;https://supermarket.getchef.com/cookbooks/gitlab-shell&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;using-the-cookbook&#34;&gt;Using the cookbook&lt;/h1&gt;
+
+&lt;p&gt;Using the cookbook is simple. In your Chef project, add the following line to your Chefile&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;code&amp;gt;cookbook &#39;gitlab-shell&#39;
+&amp;lt;/code&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;and run&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;code&amp;gt;librarian-chef install
+&amp;lt;/code&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;after which you should see the cookbook installed into cookbooks/gitlab-shell in your project.&lt;/p&gt;
+
+&lt;h1 id=&#34;credit&#34;&gt;Credit&lt;/h1&gt;
+
+&lt;p&gt;Credit goes to the maintainers of the gitlab cookbook at &lt;a href=&#34;https://gitlab.com/gitlab-org/cookbook-gitlab/tree/master&#34;&gt;https://gitlab.com/gitlab-org/cookbook-gitlab/tree/master&lt;/a&gt;. This gitlab-shell cookbook is a subset of the gitlab cookbook.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

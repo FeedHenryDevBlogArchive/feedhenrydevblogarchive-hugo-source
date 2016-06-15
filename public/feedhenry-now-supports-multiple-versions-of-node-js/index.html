@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.16" />
+
+  <title>FeedHenry now supports multiple versions of Node.js &middot; Archive of FeedHenry Developer Blog 2012-2016</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+
+  <link rel="shortcut icon" href="http://feedhenrydevblogarchive.github.ioimg/favicon.ico" type="image/x-icon" />
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <a href="/"><img src = "/logo.png" /></a>
+    <small>Copyright Red Hat 2016</small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>FeedHenry now supports multiple versions of Node.js</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>27 Aug 2013, 08:48</time>
+  </div>
+
+  
+
+  
+
+  
+
+</div>
+
+  
+
+<p>Node.js is a fast moving and cutting-edge server side platform. Updates to it happen often. In fact, just take a look at  <a href="http://blog.nodejs.org/">their blog </a> to see how many changes are happening and how fast.</p>
+
+<p>At FeedHenry, we use Node.js for many of the components which make up our platform, including those that manage the Node.js hosting platform. As developers we always want to keep up with the latest releases. The reasons for this are twofold: firstly we are developers and we enjoy using the new features and improved performance that often come with an update, and secondly as we are offering a Node.js platform on which you can host your apps, it is important that we fully understand everything that is happening in the Node world.</p>
+
+<h2 id="node-v0-6">Node v0.6</h2>
+
+<p>For quite some time the only Node.js runtime that we have been able to offer in our hosted environment has been Node 0.6. While this was current at the time, it is now significantly out of date; so much so, that several well known modules have dropped support for it.</p>
+
+<p>However, we didn’t want to simply change the version of node across the board and not give our customers any choice in the matter. So we took this as an opportunity to develop a feature into the FeedHenry platform that allows our customers to choose which version of Node.js they want to use on an application by application basis.</p>
+
+<h2 id="node-v0-6-node-v0-8-node-v0-10">Node v0.6 / Node v0.8 / Node v0.10</h2>
+
+<p>We are pleased to announce that you can now choose from Node v0.6, Node v0.8 and Node v0.10 when deploying your application to the FeedHenry platform. This can be done in two ways. Firstly through the FeedHenry AppStudio, where you can choose from a clear drop down when deploying your App and secondly with the fhc command line tool using the stage command.</p>
+
+<p>You can read more about this on <a href="http://docs.feedhenry.com/v2/set_node_vers.html">our documentation site.</a></p>
+
+<p>The default version of Node.js will now be v0.8. We highly recommend that you test your app against this version of Node.js locally using fhc local or using the dev version of your app before deploying your live app. If you don’t wish to change to the latest version of Node.js, then simply choose one of the earlier versions from the dropdown when deploying. All existing apps will continue to run on the version of node they were deployed with (i.e. Node v0.6) until such time as they are re-deployed against a different version of Node. We have no plans to deprecate support for Node v0.6 at this time, so there is no need to re-stage any apps unless you wish to take advantage of the features and benefits that later versions of Node offer.</p>
+
+<h3 id="what-does-this-mean-for-developers-and-enterprises">What does this mean for Developers and Enterprises?</h3>
+
+<p>Being able to clearly see and choose the underlying version of Node.js that your application is deployed on means that you can safely lock down your module dependencies and be sure they will work on the version of node that your app is running on. Having a development environment that closely mirrors the environment that your application is going to be running on within FeedHenry,  allows for the reduction of unexpected bugs and faster, more thorough error resolution. Because you have control, if your app is running on Node v0.6 for example and you found that you needed a module that required Node v0.8 then you could decide to move your application to that runtime and take advantage of that module.</p>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="http://feedhenrydevblogarchive.github.io/using-cloud-plugins-to-accelerate-your-mobile-app-development/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="http://feedhenrydevblogarchive.github.io/using-cloud-plugins-to-accelerate-your-mobile-app-development/">Using Cloud Plugins to accelerate your mobile App development</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="http://feedhenrydevblogarchive.github.io/managing-and-understanding-your-cloud-environments-in-the-feedhenry-platform/">Managing and understanding your Cloud Environments in the FeedHenry platform</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="http://feedhenrydevblogarchive.github.io/managing-and-understanding-your-cloud-environments-in-the-feedhenry-platform/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+  
+
+</div>
+
+</div>
+</div>
+<script src="http://feedhenrydevblogarchive.github.iojs/ui.js"></script>
+
+
+
+
+</body>
+</html>
+

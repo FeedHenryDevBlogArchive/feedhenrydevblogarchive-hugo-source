@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Phantomjs on Archive of FeedHenry Developer Blog 2012-2016</title>
+    <link>http://feedhenrydevblogarchive.github.io/tags/phantomjs/</link>
+    <description>Recent content in Phantomjs on Archive of FeedHenry Developer Blog 2012-2016</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 21 Feb 2014 16:45:55 +0000</lastBuildDate>
+    <atom:link href="http://feedhenrydevblogarchive.github.io/tags/phantomjs/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Server side PDF generation with Node.js</title>
+      <link>http://feedhenrydevblogarchive.github.io/server-side-pdf-generation-node-js/</link>
+      <pubDate>Fri, 21 Feb 2014 16:45:55 +0000</pubDate>
+      
+      <guid>http://feedhenrydevblogarchive.github.io/server-side-pdf-generation-node-js/</guid>
+      <description>
+
+&lt;h1 id=&#34;overview-of-what-was-required&#34;&gt;Overview of what was required&lt;/h1&gt;
+
+&lt;p&gt;A solution in Node.js for dynamically generating a PDF version of submitted form data.
+The form data is stored in a mongo database, backed by some mongoose models. What this boils down to is we have a collection (JSON array) of forms (JSON objects) with a number of key-value pairs. These key-value pairs have to be written out to a PDF file. The layout of the PDF file could be tweaked later to present the data in the best possible way. The tricky part was how to create the PDF file and add content to it.&lt;/p&gt;
+
+&lt;h1 id=&#34;options-for-creating-pdfs&#34;&gt;Options for creating PDFs&lt;/h1&gt;
+
+&lt;h2 id=&#34;pdfkit&#34;&gt;PDFKit&lt;/h2&gt;
+
+&lt;p&gt;The first option explored was PDFKit, &amp;lsquo;a PDF generation library for Node.js&amp;rsquo; &lt;a href=&#34;http://pdfkit.org/&#34;&gt;http://pdfkit.org/&lt;/a&gt;. The API looked good, but it was too high level. It would require a lot of time to get a dynamically generated layout working. This was an important factor as the order, types and number of fields to include in the PDF would be outside our control e.g. there could be any number of text fields followed by any number of image files, which could span multiple pages. Calculating where to put each of these would require a lot of time to get right, especially trying to prevent images spanning the bottom of 1 page and the top of the next page.&lt;/p&gt;
+
+&lt;p&gt;The next 2 options took a different approach of converting html to pdf. By working with html, it would allow us to get a nicer layout together much quicker. It also meant we could leverage existing experience with html &amp;amp; css.&lt;/p&gt;
+
+&lt;h2 id=&#34;wkhtmltopdf&#34;&gt;Wkhtmltopdf&lt;/h2&gt;
+
+&lt;p&gt;wkhtmltopdf, &lt;a href=&#34;https://code.google.com/p/wkhtmltopdf/&#34;&gt;https://code.google.com/p/wkhtmltopdf/&lt;/a&gt;, is a shell tool for converting html to pdf by using the webkit rendering engine. There is a Node.js module, by the same name, that wraps this shell tool &lt;a href=&#34;https://npmjs.org/package/wkhtmltopdf&#34;&gt;https://npmjs.org/package/wkhtmltopdf&lt;/a&gt;. It looks like a great tool and provides a lot of features. However, we didn&amp;rsquo;t choose this option because we were more familiar with the next option.&lt;/p&gt;
+
+&lt;h2 id=&#34;phantomjs&#34;&gt;PhantomJS&lt;/h2&gt;
+
+&lt;p&gt;The third, and chosen option, was to use the built in PDF rendering capabilities of PhantomJS. PhantomJS is a headless WebKit with a javascript API. The API allows for writing acceptance tests, capturing screenshots or simply rendering and modifying html in a server-side environment. There are plenty of Node.js modules available to integrate with PhantomJS. We chose phantomjs-node &lt;a href=&#34;https://github.com/sgentle/phantomjs-node&#34;&gt;https://github.com/sgentle/phantomjs-node&lt;/a&gt;. We&amp;rsquo;re very familiar with PhantomJS, and use it for unit and functional tests for our frontend systems (via grunt &lt;a href=&#34;http://gruntjs.com/&#34;&gt;http://gruntjs.com/&lt;/a&gt;) and html5 Apps. This familiarily made the choice easier, but still left a few challenges.&lt;/p&gt;
+
+&lt;h1 id=&#34;phantomjs-solution&#34;&gt;PhantomJS Solution&lt;/h1&gt;
+
+&lt;h2 id=&#34;challenges&#34;&gt;Challenges&lt;/h2&gt;
+
+&lt;p&gt;Rendering a PDF was the easiest part. Theres an API call &lt;a href=&#34;http://phantomjs.org/api/webpage/method/render.html&#34;&gt;http://phantomjs.org/api/webpage/method/render.html&lt;/a&gt;. The generated PDF is saved to disk with the given filename.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;code&amp;gt;page.render(&#39;/tmp/file.pdf&#39;, function() {
+  // file is now written to disk
+});
+&amp;lt;/code&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Some challenges to solve were:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;how to control the size of the PDF i.e. have an A4 page size&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;how to dynamically build the html content&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;how to style the content in the PDF&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;how to load/inject images into the PDF&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;controlling-the-viewport-size&#34;&gt;Controlling the viewport size&lt;/h3&gt;
+
+&lt;p&gt;There&amp;rsquo;s a page API for setting the page size. The exact dimensions of the pages can be set, or the format can be specified e.g. A4.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;code&amp;gt;page.set(&#39;paperSize&#39;, {
+  format: &#39;A4&#39;
+}, function() {
+  // continue with page setup
+});
+&amp;lt;/code&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;dynamically-building-the-pdf-content&#34;&gt;Dynamically building the PDF content&lt;/h3&gt;
+
+&lt;p&gt;How to build the html dynamically was an easy decision. We went with a Handlebars template &lt;a href=&#34;http://handlebarsjs.com/&#34;&gt;http://handlebarsjs.com/&lt;/a&gt;, and iterated over each of the form fields, constructing a different block of html depending on the field type. e.g.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;code&amp;gt;{{#each fields}}
+  {{#is &#39;file&#39; type}}
+    &amp;lt;a href=&amp;quot;{{this.downloadUrl}}&amp;quot;&amp;gt;{{this.downloadUrl}}&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;
+  {{/is}}
+
+  {{#is &#39;number&#39; &#39;radio&#39; type}}
+    &amp;lt;span&amp;gt;{{this}}&amp;lt;/span&amp;gt;
+  {{/is}}
+
+  {{#is &#39;text&#39; &#39;emailAddress&#39; &#39;dropdown&#39; type}}
+    &amp;lt;p&amp;gt;{{this}}&amp;lt;/p&amp;gt;
+  {{/is}}
+{{/each}}
+&amp;lt;/code&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;styling-the-pdf-content&#34;&gt;Styling the PDF content&lt;/h3&gt;
+
+&lt;p&gt;Styling was done with CSS. Some specific styles were added to ensure images never overflow vertically (across pages) or horizontally (partially visible). An extra class was added to allow forcing a page break too.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;code&amp;gt;* {
+  overflow: visible !important; // forces a built-in PDF rendering gotcha in WebKit so that images never span 2 pages
+}
+img {
+  margin-top:20px;
+  max-width: 92%; // images will never overflow off the right hand side of a page
+}
+.page-break {
+  display: block;
+  page-break-before: always; // force a page break
+}
+&amp;lt;/code&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;loading-injecting-images-into-the-pdf-content&#34;&gt;Loading/Injecting images into the PDF content&lt;/h3&gt;
+
+&lt;p&gt;Images for the PDF are, like the rest of the content, private and stored behind an auth protected server. This meant that writing the src url of images as a direct image url wouldn&amp;rsquo;t work. A Cookie could have been added to the PhantomJS session, but that posed other problems. Also, fetching remote images would have slowed down the rendering time.
+To get around this problem, we retrieved any images needed for the PDF directly from gridfs, and saved them to the local filesystem. This allowed us to use the local filesystem image url e.g. file:///tmp/image.png.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;code&amp;gt;&amp;lt;!-- Load image from file:///, will have been pre-saved to disk --&amp;gt;
+&amp;lt;img src=&amp;quot;{{this.localUrl}}&amp;quot;/&amp;gt;&amp;lt;br/&amp;gt;
+&amp;lt;/code&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;extra-challenges&#34;&gt;Extra Challenges&lt;/h2&gt;
+
+&lt;p&gt;Adding this solution to a running Node.js server posed a couple of extra challenges:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;how to download the PDF file&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;how to avoid the time overhead of initialising the PhantomJS process for every PDF render&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;how to avoid the PhantomJS process hanging around when the Node.js server stops&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;downloading-the-generated-pdf-in-express&#34;&gt;Downloading the generated PDF in express&lt;/h3&gt;
+
+&lt;p&gt;Our server that would generate these PDF&amp;rsquo;s was a Node.js server using expressjs &lt;a href=&#34;http://expressjs.com/&#34;&gt;http://expressjs.com/&lt;/a&gt;. Theres a handy one-liner in express to initiate a file download for a file on disk &lt;a href=&#34;http://expressjs.com/api.html#res.download&#34;&gt;http://expressjs.com/api.html#res.download&lt;/a&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;code&amp;gt;res.download(&#39;/file.pdf&#39;, &#39;file:///tmp/file.pdf&#39;);
+&amp;lt;/code&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;avoiding-phantomjs-init-for-every-pdf-generation&#34;&gt;Avoiding PhantomJS init for every PDF generation&lt;/h3&gt;
+
+&lt;p&gt;The initial overhead of starting phantom was ~1-3 seconds. This meant a file download would take some time before the download actually began. To get around this, we only created a PhantomJS session if one was not already running, and keep a reference to it. Each PDF render would happen in a new page inside the same session. We had to ensure the page was closed when the rendering complete (or if the rendering failed). Creating a new page inside an existing PhantomJS session is a lot quicker than starting a new session.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;code&amp;gt;var renderPdf = function(session, cb) {
+  var page;
+
+  try {
+    session.createPage(function(_page) {
+      page = _page;
+      // ...
+      var file = &#39;/tmp/file.pdf&#39;;
+      page.render(file, function() {
+        page.close();
+        page = null;
+        return cb(null, file);
+      });
+    });
+  } catch(e) {
+    try {
+      if (page != null) {
+        page.close(); // try close the page in case it opened but never rendered a pdf due to other issues
+      }
+    } catch(e) {
+      // ignore as page may not have been initialised
+    }
+    return cb(&#39;Exception rendering pdf:&#39; + e.toString());
+  }
+};
+&amp;lt;/code&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;avoiding-phantomjs-processes-hanging-around&#34;&gt;Avoiding PhantomJS processes hanging around&lt;/h3&gt;
+
+&lt;p&gt;If the Node.js server was to stop (either intentially or a crash) and a PhantomJS session was open, the associated PhantomJS process would stay running. This would caused issues with extra resources being used and port conflicts when the server was restarted (PhantomJS listens on a few ports).
+To prevent this from happening, we had to add a best effort attempt to shutdown the session when the Node.js server exits.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;code&amp;gt;var session;
+var createPhantomSession = function(cb) {
+  if (session) {
+    return cb(null, session);
+  } else {
+    require(&#39;phantom&#39;).create({}, function(_session) {
+      session = _session;
+      return cb(null, session);
+    });
+  }
+};
+
+process.on(&#39;exit&#39;, function(code, signal) {
+  session.exit();
+});
+&amp;lt;/code&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;performance&#34;&gt;Performance&lt;/h2&gt;
+
+&lt;p&gt;There are so many ways that this feature could have been implemented. The choices made above were driven by a few main factors:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Familiarity &amp;amp; previous experience with the tools &amp;amp; modules available&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Research into available technologies&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Personal choice&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Performance implications of a paritcular solution&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Some time was spent on performance testing during development. Various scenarios were run on the best way to start/stop a phantom session, and how best to use session pages, if at all. Each run generated a total of 100 PDFs. Results show observed time, cpu &amp;amp; memory for PhantomJS and Node.js for each scenario. The first run had the following critera:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;create and teardown a phantomjs session for each page being rendered to PDF&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;load (1) image remotely from web server with an auth cookie&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;modify image source with jQuery after page is rendered (this wasnt needed in the end)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;was not calling page.close after each page rendered (leaving processes hanging around)&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;table &gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;tr &gt;
+Comment
+Time
+Phantomjs Max CPU
+Phantomjs Max Mem
+Node Max CPU
+Node Max Mem
+&lt;/tr&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;tbody &gt;
+&lt;tr &gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td &gt;Create and teardown a phantom session each time
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: center;&#34; &gt;1m47.205s
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: right;&#34; &gt;n/a (too quick)
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: right;&#34; &gt;n/a (too quick)
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: right;&#34; &gt;2%
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: right;&#34; &gt;330M
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr &gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td &gt;Create and leave a single phantom session open
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: center;&#34; &gt;0m19.954s
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: right;&#34; &gt;95%
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: right;&#34; &gt;338M
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: right;&#34; &gt;2%
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: right;&#34; &gt;130M
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr &gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td &gt;Same as above,but calling page.close() after each gen
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: center;&#34; &gt;0m20.645s
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: right;&#34; &gt;95%
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: right;&#34; &gt;275M
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: right;&#34; &gt;2%
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: right;&#34; &gt;130M
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr &gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td &gt;same as above,but all in parallel i.e. open 100 pages in phantomjs
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: center;&#34; &gt;0m22.139s
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: right;&#34; &gt;100%
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: right;&#34; &gt;700M
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: right;&#34; &gt;2%
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: right;&#34; &gt;117M
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr &gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td &gt;same as above,but with jQuery loading/DOM manipulation removed
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: center;&#34; &gt;0m17.497s
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: right;&#34; &gt;n/a
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: right;&#34; &gt;n/a
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: right;&#34; &gt;n/a
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: right;&#34; &gt;n/a
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr &gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td &gt;same as above,but with image loading using file:///
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: center;&#34; &gt;0m14.655s
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: right;&#34; &gt;n/a
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: right;&#34; &gt;n/a
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: right;&#34; &gt;n/a
+&lt;/td&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;td style=&#34;text-align: right;&#34; &gt;n/a
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+Although this was a lightweight test, it showed some useful information. The outcome of this can be summarised in the following notes (taken after an initial &amp;lsquo;spike&amp;rsquo; and prior to the actual implementation):&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;creating a new phantom session for each pdf generation is slow, so best to keep a single phantomjs session alive and create pages as required.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;need to ensure phantom session is closed on process exit (prevent phantomjs processes hanging about)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;ensure the page is &amp;lsquo;closed&amp;rsquo; each time after pdf generation to release memory &lt;a href=&#34;https://github.com/ariya/phantomjs/wiki/API-Reference-WebPage#wiki-webpage-close&#34;&gt;https://github.com/ariya/phantomjs/wiki/API-Reference-WebPage#wiki-webpage-close&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;avoid injecting external scripts if possible, jQuery in particular, as this can slow down the generation process&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;avoid evaluating code in the phantom page if possible as this causes extra requests over the phantom bridge &lt;a href=&#34;https://github.com/ariya/phantomjs/wiki/API-Reference-WebPage#evaluatefunction-arg1-arg2--object&#34;&gt;https://github.com/ariya/phantomjs/wiki/API-Reference-WebPage#evaluatefunction-arg1-arg2&amp;ndash;object&lt;/a&gt;. Better to include any required js in the initial content&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;avoid loading remote images as this adds time compared to loading files from disk (Overhead of retrieving binary from gridfs is less than retrieving image via http auth protected endpoint)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;based on load tests, the best solution to avoid heavy cpu and memory usage is to not have any concurrency with pdf generation, and to use a queue. (However this recommendation was deferred due to expected load not being an issue currently)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;A time limit could be imposed on pdf generation to avoid the queue hanging. Tests indicate that at best, a simple pdf can be generated every 150ms (~7/second). This time will vary depending on the number images/files and fields.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;requirements-fulfilled&#34;&gt;Requirements Fulfilled&lt;/h1&gt;
+
+&lt;p&gt;This solution uses a variety of Node.js modules, and PhantomJS, a cross OS tool that allows use to convert html to PDF.
+An overview of some of the modules used:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;phantomjs-node &lt;a href=&#34;https://github.com/sgentle/phantomjs-node&#34;&gt;https://github.com/sgentle/phantomjs-node&lt;/a&gt; (PhantomJS integration module for NodeJS)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Handlebars &lt;a href=&#34;https://github.com/wycats/handlebars.js/&#34;&gt;https://github.com/wycats/handlebars.js/&lt;/a&gt; (For dynamic templating)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Express &lt;a href=&#34;https://github.com/visionmedia/express&#34;&gt;https://github.com/visionmedia/express&lt;/a&gt; (Web framework)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Mongoose &lt;a href=&#34;http://mongoosejs.com/&#34;&gt;http://mongoosejs.com/&lt;/a&gt; (modelling for mongodb)&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The outcome of this is a PDF generation feature where the content can be easily modified with html (and Handlebars templating), and the style can easily be modified with CSS.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
