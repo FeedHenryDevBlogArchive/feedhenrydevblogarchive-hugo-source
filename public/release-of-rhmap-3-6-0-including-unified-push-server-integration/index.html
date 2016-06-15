@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.16" />
+
+  <title>Release of RHMAP 3.6 including UnifiedPush Server integration &middot; Archive of FeedHenry Developer Blog 2012-2016</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+
+  <link rel="shortcut icon" href="http://feedhenrydevblogarchive.github.ioimg/favicon.ico" type="image/x-icon" />
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <a href="/"><img src = "/logo.png" /></a>
+    <small>Copyright Red Hat 2016</small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Release of RHMAP 3.6 including UnifiedPush Server integration</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>16 Dec 2015, 12:44</time>
+  </div>
+
+  
+
+  
+
+  
+
+</div>
+
+  
+
+<p>Version 3.6 of the Red Hat Mobile Application Platform has been released to all of our actively-updated production clusters and to the <a href="http://openshift.feedhenry.com/">Community Edition</a>. The main focus of this release was the integration of the Aerogear UnifiedPush Server into the platform. This means you now have iOS, Android and Windows Phone Push Notification capabilities inside RHMAP.</p>
+
+<p>We also:</p>
+
+<ul>
+<li><p>Added Windows 10 support, including Hybrid Apps, Native Apps and Forms Builder Apps</p></li>
+
+<li><p>Added Forms Builder support to <a href="http://openshift.feedhenry.com/">openshift.feedhenry.com</a>.</p></li>
+
+<li><p>Closed over 350 JIRA tickets including Forms bug-fixes and Community Edition bug-fixes</p></li>
+
+<li><p>Removed our old Cloud Plugins lists</p></li>
+</ul>
+
+<h2 id="ups">UPS</h2>
+
+<p>Several months ago, we introduced you to the UnifiedPush Server on RHMAP, leveraging our MBaaS Services along with an OpenShift instance of UPS. We&rsquo;re really pleased to now have UPS as a fully integrated component of RHMAP. This integration includes a full admin console inside the platform and updated SDKs for Native iOS, Native Android, Native Windows Phone and Cordova.</p>
+
+<p>This diagram shows how it all connects together in the platform:</p>
+
+<p><a href="/wp-content/uploads/2015/12/push_notifications.png"><img src="/wp-content/uploads/2015/12/push_notifications-1024x692.png" alt="push_notifications" /></a></p>
+
+<p>UPS enables you to send native push messages to different mobile operating systems. We currently support:</p>
+
+<ul>
+<li><p><a href="https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html">Apple’s APNs</a></p></li>
+
+<li><p><a href="https://developers.google.com/cloud-messaging/">Google Cloud Messaging</a></p></li>
+
+<li><p><a href="https://msdn.microsoft.com/en-us/library/windows/apps/ff402558.aspx">Microsoft’s Push Notification service (MPNs)</a></p></li>
+</ul>
+
+<p>If you want to get going now, you should first read our <a href="https://docs.feedhenry.com/v3/product_features/push_notifications.html">Introduction to Push</a> and then dig into our <a href="https://docs.feedhenry.com/v3/guides/using_push_notifications.html">End-to-End Tutorial</a>. Expert users can also study the updated <a href="https://docs.feedhenry.com/v3/api/api_push.html">Push APIs</a>.</p>
+
+<p>One of our UPS developers,  Matthias Wessendorf, has created an excellent walkthrough of the integrated functionality, using iOS as the example.</p>
+
+<p>Note that we have kept the original <a href="https://docs.feedhenry.com/v3/guides/app_development_push.html">Services-based template</a> for Push in the Platform and now refer to it as the Community version. This is for users who wish to make use of the upstream <a href="https://aerogear.org/push/">AeroGear Push</a> Open Source project which may have features that have not yet been productized. However please note that this is a Community-supported solution only.</p>
+
+<h2 id="windows-10">Windows 10</h2>
+
+<p>The platform APIs, SDKs and Template Apps now support Windows 10 in addition to Windows 8.1. You can use Visual Studio to locally build both Native and Cordova Apps for Windows 10 that work with the Mobile Application platform through our SDKs.</p>
+
+<p>You can read all about our Windows support <a href="https://docs.feedhenry.com/v3/guides/windows_platform_support.html">here</a>.</p>
+
+<p>We have also added Forms App support for Windows 1o so you can build Universal Windows 10 Apps with Forms functionality. You can learn how to use this functionality in <a href="https://docs.feedhenry.com/v3/guides/windows_forms_apps_tutorial.html">our tutorial</a>.</p>
+
+<p>Note that our Build Farm currently does not support Windows 8.1 or Windows 10 for Microsoft licensing reasons.</p>
+
+<h2 id="platform-version-number-and-grid-name">Platform Version Number and Grid Name</h2>
+
+<p>It&rsquo;s a small thing but oft-requested. If you look in the bottom right hand corner of the Studio, you will now see both the current RHMAP version and the Grid (instance) of RHMAP you are using. If you ever have to open a support ticket, please quote both.</p>
+
+<h2 id="community-edition-using-openshift">Community Edition using OpenShift</h2>
+
+<p>We have added Forms Builder support to OpenShift._ _<strong>Note this requires some extra setup compared to non-OpenShift grids</strong>. You can find <a href="https://openshift.feedhenry.com/docs/guides/forms_support_openshift.html">the instructions for that here</a>. Community Edition users have already been notified of this release.</p>
+
+<p>We have also added information about how to get Community Support on <a href="http://openshift.feedhenry.com">openshift.feedhenry.com</a> including an updated email template for new users. For reference, that Community Support is:</p>
+
+<ul>
+<li><p><a href="irc://irc.freenode.net/feedhenry">#feedhenry</a> on Freenode IRC</p></li>
+
+<li><p>The <a href="https://www.redhat.com/mailman/listinfo/redhat-mobile-open-access-users">redhat-mobile-open-access-users</a> mailing list</p></li>
+</ul>
+
+<p>There were also bug fixes on the Community Edition around Data Browser and Logging.</p>
+
+<h2 id="cloud-plugins-removal">Cloud Plugins Removal</h2>
+
+<p>In the past, back when <a href="https://www.npmjs.com/">NPM</a> had <em>only</em> 50,000 modules we had a list of recommended commonly used Node modules in the platform which we called &ldquo;Cloud Plugins&rdquo;. As NPM has continued to grow and improve, this list has become redundant and some found it confusing. For these reasons, we have removed this section from the Studio.</p>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="http://feedhenrydevblogarchive.github.io/madrid-hackathon/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="http://feedhenrydevblogarchive.github.io/madrid-hackathon/">Madrid Hackathon</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="http://feedhenrydevblogarchive.github.io/release-of-rhmap-3-7/">Release of RHMAP 3.7 including API Mapper preview</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="http://feedhenrydevblogarchive.github.io/release-of-rhmap-3-7/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+  
+
+</div>
+
+</div>
+</div>
+<script src="http://feedhenrydevblogarchive.github.iojs/ui.js"></script>
+
+
+
+
+</body>
+</html>
+

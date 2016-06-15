@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.16" />
+
+  <title>Release of v3.10 of the Red Hat Mobile Application Platform including Swift 2.1 and WFM &middot; Archive of FeedHenry Developer Blog 2012-2016</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+
+  <link rel="shortcut icon" href="http://feedhenrydevblogarchive.github.ioimg/favicon.ico" type="image/x-icon" />
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <a href="/"><img src = "/logo.png" /></a>
+    <small>Copyright Red Hat 2016</small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Release of v3.10 of the Red Hat Mobile Application Platform including Swift 2.1 and WFM</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>12 May 2016, 18:05</time>
+  </div>
+
+  
+
+  
+
+  
+
+</div>
+
+  
+
+<p>This post was <a href="http://developerblog.redhat.com/">originally published</a> on Red Hat Developers, the community to learn, code, and share faster. To read the original post, click <a href="http://developers.redhat.com/blog/2016/05/12/announcing-v3-10-of-the-red-hat-mobile-application-platform-including-swift-2-1-and-wfm/">here</a>.</p>
+
+<p>We have just completed the deployment of the Red Hat Mobile Application Platform v3.10 to all our actively updated grids.</p>
+
+<p>The main features of this release are:</p>
+
+<ul>
+<li><p>iOS SDK now has full <a href="https://developer.apple.com/swift/">Swift 2.1</a> support</p></li>
+
+<li><p>First Tech Preview release of our Field Workforce Management (WFM) modules</p></li>
+
+<li><p>Forms performance improvements, bug fixes and import/export</p></li>
+</ul>
+
+<h2 id="swift-sdk">Swift SDK</h2>
+
+<p>Our iOS SDK now has full <a href="https://developer.apple.com/swift/">Swift</a> 2.1 support. You can learn how to use it by following these links:</p>
+
+<ul>
+<li><p><a href="https://docs.feedhenry.com/v3/dev_tools/sdks/ios-swift.html">Swift SDK Docs</a>, with links to SDK and Sample App</p></li>
+
+<li><p><a href="http://docs.feedhenry.com/v3/api.html">All API Docs</a> including code snippets</p></li>
+</ul>
+
+<p>The following project templates now have Swift App options:</p>
+
+<pre><code>* Blank - Minimal starting point
+
+
+* Hello World - Simple Client and Cloud
+
+
+* Push - Push Notifications
+
+
+* Data Sync - Offline and Data Sync
+
+
+* SAML- Starting point for your SAML integrations
+</code></pre>
+
+<p>Both the Data Sync Framework and the Unified Push Server are now fully supported in Swift.</p>
+
+<p>The Build Farm is using <a href="https://developer.apple.com/swift/resources/">Xcode 7.2 and Swift 2.1</a>. Note that some whilst most Swift 2.2 syntax will work, some 2.2 syntax not work on our Build Farm and we will update to Xcode 7.3 in a later release to support full 2.2.</p>
+
+<p><strong>IMPORTANT NOTE:</strong> Customers who use their own Enterprise Certificates  to build Swift applications will have to check if the certificate has the Organizational Unit field within the subject name section. This is not the same as “Organization”. You will have to revoke and reissue a new Apple enterprise certificate for distribution. <a href="https://developer.apple.com/support/certificates/expiration/">See Apple documentation</a> around this.</p>
+
+<h2 id="wfm-modules-tech-preview">WFM Modules - Tech Preview</h2>
+
+<p>Red Hat Mobile WFM modules are a set of more than 20 reusable npm modules (JavaScript and Node.js) for building field mobile workforce management solutions.</p>
+
+<p>These modules cover the top features for a field workforce management multi-platform mobile solution and include integration with the Red Hat Mobile Application Platform (RHMAP) Forms Builder, where apps can easily use forms built within RHMAP.</p>
+
+<p>Some of the modules include:</p>
+
+<ul>
+<li><p>fh-wfm-workorder - For work orders</p></li>
+
+<li><p>fh-wfm-sync - For data synchronization</p></li>
+
+<li><p>fh-wfm-schedule - For job scheduling</p></li>
+
+<li><p>fh-wfm-vehicle-inspection - For vehicle inspections</p></li>
+
+<li><p>fh-wfm-mediator - An implementation of the <a href="https://addyosmani.com/largescalejavascript/">mediator pattern</a></p></li>
+</ul>
+
+<p>The modules come with a sample mobile application and web portal based on <a href="https://angularjs.org/">Angular.js</a>, using Material Design,  which you can use to quickly bootstrap your own developments and create solutions like this:</p>
+
+<p><a href="/wp-content/uploads/2016/05/wfm01.jpg"><img src="/wp-content/uploads/2016/05/wfm01.jpg" alt="wfm01" /></a></p>
+
+<p><a href="/wp-content/uploads/2016/05/wfm06.png"><img src="/wp-content/uploads/2016/05/wfm06.png" alt="wfm06" /></a></p>
+
+<p>Our <a href="https://github.com/feedhenry-staff/wfm-doc/blob/master/Getting-Started.md">Getting Started Guide</a> explains how to setup and use the sample application.</p>
+
+<p>You can see the <a href="https://www.npmjs.com/search?q=fh-wfm">full set of modules on NPM here</a>. Each one can be installed as usual via the npm command line.</p>
+
+<p>As this is a Tech Preview, we will be iterating the functionality and documentation with your feedback and input. You can expect to see more blog posts and videos about WFM shortly. You can read the <a href="https://github.com/feedhenry-staff/wfm-doc/blob/master/Release-Notes.md">current release notes here</a>.</p>
+
+<h2 id="forms-builder">Forms Builder</h2>
+
+<ul>
+<li><p>Import/Export buttons for Forms</p></li>
+
+<li><p>FHC Command to import/export forms</p></li>
+
+<li><p>Performance improvements on Forms Submission viewing with large number of submissions</p></li>
+
+<li><p>Performance improvements on Rules Engine for complex Forms</p></li>
+</ul>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="http://feedhenrydevblogarchive.github.io/upcoming-deployment-of-version-3-10-of-the-red-hat-mobile-application-platform/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="http://feedhenrydevblogarchive.github.io/upcoming-deployment-of-version-3-10-of-the-red-hat-mobile-application-platform/">Upcoming deployment of version 3.10 of the Red Hat Mobile Application Platform</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+  </div>
+</div>
+
+
+
+  
+
+</div>
+
+</div>
+</div>
+<script src="http://feedhenrydevblogarchive.github.iojs/ui.js"></script>
+
+
+
+
+</body>
+</html>
+

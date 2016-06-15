@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.16" />
+
+  <title>Release of RHMAP 3.7 including API Mapper preview &middot; Archive of FeedHenry Developer Blog 2012-2016</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+
+  <link rel="shortcut icon" href="http://feedhenrydevblogarchive.github.ioimg/favicon.ico" type="image/x-icon" />
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <a href="/"><img src = "/logo.png" /></a>
+    <small>Copyright Red Hat 2016</small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Release of RHMAP 3.7 including API Mapper preview</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>03 Feb 2016, 17:17</time>
+  </div>
+
+  
+
+  
+
+  
+
+</div>
+
+  
+
+<p>Hot on the heels of our 3.6 releases just before Christmas, we have completed our roll-out of version 3.7 of the Red Hat Mobile Application Platform to all of our actively updated grids.</p>
+
+<p>The main points of interest in this release are:</p>
+
+<ul>
+<li><p>Build Farm and SDK support for Android M(arshmallow), 6.0, API 23</p></li>
+
+<li><p>Support for Cordova CLI 5.x on Android</p></li>
+
+<li><p>API Mapper Service Preview</p></li>
+
+<li><p>Cocoapods Support and Template</p></li>
+
+<li><p>Example templates for SAML-based applications</p></li>
+
+<li><p>Over 100 bugs were fixed</p></li>
+
+<li><p>Removal of MonkeyTalk, Urban Airship Push and Flurry Analytics</p></li>
+</ul>
+
+<h2 id="android-m-arshmallow-6-0-api-23">Android M(arshmallow), 6.0, API 23</h2>
+
+<p>You can now use the latest version of Android in both your Native and Full Cordova Apps in RHMAP. This includes support for the new <a href="http://developer.android.com/training/permissions/requesting.html">fine-grained permissions system</a>. You can see the full list of Android 6.0 changes (not specific to RHMAP) <a href="http://developer.android.com/about/versions/marshmallow/android-6.0.html">here</a>.</p>
+
+<p>Our Native Android templates now use targetSdkVersion 23 and minSdkVersion 10 (Android 2.3.3).</p>
+
+<p>Note that Forms Apps and Cordova Light Apps will continue to use API 19 and Cordova 3.x for the moment. A later release of RHMAP will bring both of these, along with the plugins they use, fully up to date too.</p>
+
+<h2 id="cordova-cli-5-2-0-for-android">Cordova CLI 5.2.0 for Android</h2>
+
+<p>With this release, we have upgraded our Build Farm to use <a href="http://cordova.apache.org/docs/en/latest/guide/cli/index.html">Cordova CLI 5.2.0</a>. This means you can now specify any version of Cordova Android from 3.5.1 to 5.0.0 in your full Cordova Apps.</p>
+
+<p>If you don’t specify a Cordova version in your Apps, we will build your applications using the Cordova platform versions that are pinned to 5.2.0. The version used for Android is Cordova-Android 4.1.x</p>
+
+<p>In addition, the Build Farm now respects the Cordova&rsquo;s config.xml file as a way of specifying <a href="http://cordova.apache.org/docs/en/latest/platform_plugin_versioning_ref/index.html">platform versions and plugins</a>.</p>
+
+<p>Note that Cordova CLI for iOS will be updated in RHMAP 3.8. Also note again the comment above about Cordova Light and Forms Apps.</p>
+
+<h2 id="api-mapper-service-preview">API Mapper Service Preview</h2>
+
+<p>We’re really pleased to give you a Preview of our new API Mapper Service. This simple-looking but extremely powerful tool provides the following features:</p>
+
+<ul>
+<li><p>Interact with your back-end APIs</p></li>
+
+<li><p>Create GET/POST/PUT/PATCH/DELETE/HEAD/OPTIONS requests</p></li>
+
+<li><p>Set headers</p></li>
+
+<li><p>Save your Requests</p></li>
+
+<li><p>Create a Mapping from a Request</p></li>
+
+<li><p>Map fields (Include/Exclude/Rename)</p></li>
+
+<li><p>Carry out complex data Transforms using custom Node.js code</p></li>
+
+<li><p>Mount mappings to specific end-points</p></li>
+
+<li><p>Make mappings accessible to your Cloud Code</p></li>
+
+<li><p>Automatically generate Node.js code and Curl requests</p></li>
+</ul>
+
+<p><a href="/wp-content/uploads/2016/02/API-Mapper.png"><img src="/wp-content/uploads/2016/02/API-Mapper.png" alt="API Mapper" /></a></p>
+
+<p>The fact that the API Mapper runs in your MBaaS means that, if you have VPN connectivity from RHMAP to your back-end systems, it can access those systems.</p>
+
+<p>As it’s a Preview, there are a few simple setup steps required. But once they are done you’ll be able to make use of all the initial features. <a href="http://docs.feedhenry.com/v3/guides/api_mapper.html">Our Docs</a> have the details on getting started.</p>
+
+<p>We have a lot more functionality planned for API Mapper and welcome all your feedback on things you’d like to see. Look out for a more detailed post about API Mapper in the coming days.</p>
+
+<h2 id="cocoapods-support-and-template">Cocoapods Support and Template</h2>
+
+<p>We now have support for <a href="https://cocoapods.org/">Cocoapods</a> in the Build Farm and have added our first Cocoapods-based template to the Studio.</p>
+
+<p><a href="/wp-content/uploads/2016/02/cocoapods.jpg"><img src="/wp-content/uploads/2016/02/cocoapods.jpg" alt="cocoapods" /></a></p>
+
+<p>In RHMAP 3.8, all templates should be available in Cocoapods.</p>
+
+<h2 id="saml-templates">SAML Templates</h2>
+
+<p>We’ve had various requests for example templates showing how to use <a href="https://wiki.oasis-open.org/security/FrontPage">SAML</a> with RHMAP. We have added Client and Cloud templates for the following:</p>
+
+<ul>
+<li><p>Cordova</p></li>
+
+<li><p>iOS</p></li>
+
+<li><p>Android</p></li>
+
+<li><p>Windows</p></li>
+</ul>
+
+<p><a href="/wp-content/uploads/2016/02/saml01.jpg"><img src="/wp-content/uploads/2016/02/saml01.jpg" alt="saml01" /></a></p>
+
+<p>These can easily be wired up to (for example) an ADFS instance to see the entire flow working. Learn all about the functionality and templates in <a href="http://docs.feedhenry.com/v3/guides/using_saml_for_authentication.html">our Docs</a>.</p>
+
+<h2 id="removals">Removals</h2>
+
+<p>As <a href="http://www.feedhenry.com/updates-industry-releases-related-to-mobile-oses-sdks-and-tools-on-rhmap/">previously announced</a>, we have removed the following SDKs from our Build Farm. You can continue to manually include them in your projects if you wish.</p>
+
+<ul>
+<li><p>MonkeyTalk</p></li>
+
+<li><p>Urban Airship Push</p></li>
+
+<li><p>Flurry Analytics</p></li>
+</ul>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="http://feedhenrydevblogarchive.github.io/release-of-rhmap-3-6-0-including-unified-push-server-integration/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="http://feedhenrydevblogarchive.github.io/release-of-rhmap-3-6-0-including-unified-push-server-integration/">Release of RHMAP 3.6 including UnifiedPush Server integration</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="http://feedhenrydevblogarchive.github.io/get-started-with-the-red-hat-mobile-api-mapper/">Getting started with the Red Hat Mobile API Mapper</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="http://feedhenrydevblogarchive.github.io/get-started-with-the-red-hat-mobile-api-mapper/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+  
+
+</div>
+
+</div>
+</div>
+<script src="http://feedhenrydevblogarchive.github.iojs/ui.js"></script>
+
+
+
+
+</body>
+</html>
+

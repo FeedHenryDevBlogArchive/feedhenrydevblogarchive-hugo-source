@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.16" />
+
+  <title>Release of Red Hat Mobile Application Platform v3.9 including Forms Data Sources &middot; Archive of FeedHenry Developer Blog 2012-2016</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+
+  <link rel="shortcut icon" href="http://feedhenrydevblogarchive.github.ioimg/favicon.ico" type="image/x-icon" />
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <a href="/"><img src = "/logo.png" /></a>
+    <small>Copyright Red Hat 2016</small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Release of Red Hat Mobile Application Platform v3.9 including Forms Data Sources</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>06 Apr 2016, 05:27</time>
+  </div>
+
+  
+
+  
+
+  
+
+</div>
+
+  
+
+<p>We have just completed the deployment of version 3.9 of the Red Hat Mobile Application Platform to all actively updated Grids.</p>
+
+<h3 id="summary">Summary</h3>
+
+<p>The main items of note in this release are:</p>
+
+<ul>
+<li><p>Data Sources for Forms</p></li>
+
+<li><p>Swift Apps can be built in the Build Farm. Our SDKs will move to Swift in a later release</p></li>
+
+<li><p>New Default Red Hat Forms Theme</p></li>
+
+<li><p>New Read-Only Text type for Forms which can optionally use Data Sources</p></li>
+
+<li><p>Performance improvements and bug fixes for Forms</p></li>
+</ul>
+
+<h3 id="forms-data-sources">Forms Data Sources</h3>
+
+<p>The major new feature of this release is Data Sources for Forms which I&rsquo;m really pleased to tell you about.</p>
+
+<p>As you may know, our Forms Builder enables you to generate mobile applications with a dynamic set of Forms that contain both standard web controls and mobile-specific controls like location capture, signature, maps, etc. These apps can be auto-generated, then built in our Build Farm and distributed in our Enterprise App Store without ever seeing a line of code.</p>
+
+<p>Data Sources builds on this by enabling your developers to create reusable data sets from your back-end systems that non-developers can then attach to Forms elements.</p>
+
+<ul>
+<li><p>You can create custom Data Sources that can connect to any back-end system</p></li>
+
+<li><p>You can set the update schedule for contents returned by the Data Source</p></li>
+
+<li><p>You implement each Data Source as an MBaaS Service in Node.js</p></li>
+
+<li><p>We provide three example Data Sources as starting points - Static File, MongoDB and Internet</p></li>
+
+<li><p>You can populate various Form fields from Data Sources including drop-downs and radio-boxes</p></li>
+
+<li><p>You can display read-only textual information from Data Sources in Forms using a new field type</p></li>
+
+<li><p>Non-technical users can make use of Data Sources without coding</p></li>
+
+<li><p>You can share Data Sources across Forms</p></li>
+
+<li><p>Multiple Data Sources can be served on different URLs from one MBaaS Service</p></li>
+</ul>
+
+<p>The easiest way to get started is to use one of our examples. Lets create a Data Source which pulls information from a remote CSV file and makes it usable in a Drop Down field in a Form.</p>
+
+<h3 id="create-a-data-source-service">Create a Data Source Service</h3>
+
+<ol>
+<li><p>In the Studio, navigate to Services &amp; APIs. Click Provision MBaaS Service/API.</p></li>
+
+<li><p>On the left, choose the Data Sources category.<a href="/wp-content/uploads/2016/04/forms_data_sources_04.png"><img src="/wp-content/uploads/2016/04/forms_data_sources_04.png" alt="forms_data_sources_04" /></a></p></li>
+
+<li><p>Select the Static Data Source template</p></li>
+
+<li><p>Choose a name for the service and deploy it to an environment.</p></li>
+
+<li><p>Go to Service Details and make the Service public and then re-deploy when instructed to</p></li>
+</ol>
+
+<h3 id="customise-the-data-source-service-to-work-with-csv">Customise the Data Source Service to work with CSV</h3>
+
+<ol>
+<li><p>Go to the Editor for the Service and change application.js to add the second line here in the appropriate location:</p>
+
+<p>app.use(&lsquo;/static_ds&rsquo;, require(&lsquo;./lib/static-datasource.js&rsquo;));
+app.use(&lsquo;/csv_ds&rsquo;, require(&lsquo;./lib/csv-datasource.js&rsquo;));</p></li>
+
+<li><p>Browse to the lib directory in the Editor and create csv-datasource.js with the following contents:</p>
+
+<p>var express = require(&lsquo;express&rsquo;);
+var request = require(&lsquo;request&rsquo;);
+var router = express.Router();</p>
+
+<p>router.get(&lsquo;/&rsquo;, function (req, res) {</p>
+
+<p>var url = &lsquo;<a href="https://gist.githubusercontent.com/conoro/2090f52225832787766b3340c1c3caaf/raw/847108af1026bc07c42297ac699e0dbdc3a12195/workers.csv'">https://gist.githubusercontent.com/conoro/2090f52225832787766b3340c1c3caaf/raw/847108af1026bc07c42297ac699e0dbdc3a12195/workers.csv'</a>;</p>
+
+<p>request(url, function (err, resp, html) {
+if (err) {
+console.log(err)
+return handleError(err, res);
+}
+var people = [];</p>
+
+<p>var lines = html.toString().split(&rsquo;\n&rsquo;);
+for (var i = 0; i &lt; lines.length; i++) {
+people.push({&ldquo;key&rdquo;: i, value: lines[i].toString().split(&lsquo;,&rsquo;)[0], selected: true});
+}
+res.send(people);</p>
+
+<p>});
+});</p>
+
+<p>module.exports = router;</p></li>
+
+<li><p>The code above simply reads the remote CSV file and converts it to the specific JSON format we need. Your code here can be as complex as you need to get at the data you want and crunch it down to the data sets for your forms.</p></li>
+
+<li><p>You can view the example CSV I&rsquo;ve created over on <a href="https://gist.githubusercontent.com/conoro/2090f52225832787766b3340c1c3caaf/raw/847108af1026bc07c42297ac699e0dbdc3a12195/workers.csv">GitHub Gist</a>. You could host your data anywhere. My example is a simple single column CSV file with a list of names.</p>
+
+<p>Roger Flopple,
+Demetrius Levenworth,
+Salamander Hammerhead,
+Ferrari Montenegro,
+Paul Corduroy,
+Hank Fracas,
+Ludwig Von Instagram,
+Lisa Toboggan,
+Heather Kerfuffle,
+Rebecca Beretta,
+Lindsay McMartinhamson,
+Mirandella Houndstooth,</p></li>
+
+<li><p>Edit package.json to add the request module in this location:</p>
+
+<p>&ldquo;express&rdquo;: &ldquo;^4.13.3&rdquo;,
+&ldquo;fh-mbaas-api&rdquo;: &ldquo;5.9.1&rdquo;,
+&ldquo;request&rdquo;: &ldquo;~2.40.0&rdquo;
+},</p></li>
+
+<li><p>Re-deploy the Service code with those changes</p></li>
+
+<li><p>Get the URL of your Service in its details page and browse to <a href="https://the.url.of.the.service/csv_ds">https://the.url.of.the.service/csv_ds</a> and you should see a JSON version of your CSV returned.</p>
+
+<p>[{&ldquo;key&rdquo;:0,&ldquo;value&rdquo;:&ldquo;Roger Flopple&rdquo;,&ldquo;selected&rdquo;:true},{&ldquo;key&rdquo;:1,&ldquo;value&rdquo;:&ldquo;Demetrius Levenworth&rdquo;,&ldquo;selected&rdquo;:true},{&ldquo;key&rdquo;:2,&ldquo;value&rdquo;:&ldquo;Salamander Hammerhead&rdquo;,&ldquo;selected&rdquo;:true},{&ldquo;key&rdquo;:3,&ldquo;value&rdquo;:&ldquo;Ferrari Montenegro&rdquo;,&ldquo;selected&rdquo;:true},{&ldquo;key&rdquo;:4,&ldquo;value&rdquo;:&ldquo;Paul Corduroy&rdquo;,&ldquo;selected&rdquo;:true},{&ldquo;key&rdquo;:5,&ldquo;value&rdquo;:&ldquo;Hank Fracas&rdquo;,&ldquo;selected&rdquo;:true},{&ldquo;key&rdquo;:6,&ldquo;value&rdquo;:&ldquo;Ludwig Von Instagram&rdquo;,&ldquo;selected&rdquo;:true},{&ldquo;key&rdquo;:7,&ldquo;value&rdquo;:&ldquo;Lisa Toboggan&rdquo;,&ldquo;selected&rdquo;:true},{&ldquo;key&rdquo;:8,&ldquo;value&rdquo;:&ldquo;Heather Kerfuffle&rdquo;,&ldquo;selected&rdquo;:true},{&ldquo;key&rdquo;:9,&ldquo;value&rdquo;:&ldquo;Rebecca Beretta&rdquo;,&ldquo;selected&rdquo;:true},{&ldquo;key&rdquo;:10,&ldquo;value&rdquo;:&ldquo;Lindsay McMartinhamson&rdquo;,&ldquo;selected&rdquo;:true},{&ldquo;key&rdquo;:11,&ldquo;value&rdquo;:&ldquo;Mirandella Houndstooth&rdquo;,&ldquo;selected&rdquo;:true}]</p></li>
+</ol>
+
+<p>This is the format the Data Source needs.</p>
+
+<h3 id="create-the-data-source">Create the Data Source</h3>
+
+<ol>
+<li><p>In the Studio, navigate to Drag &amp; Drop Apps &gt; Data Sources. Click New Data Source.</p></li>
+
+<li><p>Set a name and a description. Both are required.</p></li>
+
+<li><p>Choose your previously created MBaaS service and set /csv_ds as its endpoint</p></li>
+
+<li><p>Check you have done everything correctly using the Validate button</p></li>
+
+<li><p>Leave the other settings as they are</p></li>
+
+<li><p>Click Create Data Source</p></li>
+</ol>
+
+<h3 id="forms-data-sources-03-wp-content-uploads-2016-04-forms-data-sources-03-png-wp-content-uploads-2016-04-forms-data-sources-03-png"><a href="/wp-content/uploads/2016/04/forms_data_sources_03.png"><img src="/wp-content/uploads/2016/04/forms_data_sources_03.png" alt="forms_data_sources_03" /></a></h3>
+
+<h3 id="using-the-data-source-in-a-form">Using the Data Source in a Form</h3>
+
+<p>Note, these steps can be carried out by non-developers. Once you have your Data Sources setup and configured the access to them, your Forms creators can then make use of them without having to know the technical details of where the data is coming from.</p>
+
+<ol>
+<li><p>Navigate to Drag &amp; Drop Apps &gt; Forms Builder</p></li>
+
+<li><p>Open an existing form, or create a new form.</p></li>
+
+<li><p>Drag a Dropdown field on to the Form and select the created field</p></li>
+
+<li><p>In the Options section, check Use a Data Source</p></li>
+
+<li><p>Select the data source created in the previous step<a href="/wp-content/uploads/2016/04/forms_data_sources_08.png"><img src="/wp-content/uploads/2016/04/forms_data_sources_08.png" alt="forms_data_sources_08" /></a></p></li>
+
+<li><p>Save and deploy the form.</p></li>
+
+<li><p>See the data in the dropdown in the Forms Preview or just Build the App and use it</p></li>
+</ol>
+
+<p><a href="/wp-content/uploads/2016/04/forms_data_sources_01.png"><img src="/wp-content/uploads/2016/04/forms_data_sources_01.png" alt="forms_data_sources_01" /></a></p>
+
+<p><a href="/wp-content/uploads/2016/04/forms_data_sources_10.png"><img src="/wp-content/uploads/2016/04/forms_data_sources_10.png" alt="forms_data_sources_10" /></a></p>
+
+<p>You can read more of the technical information <a href="http://docs.feedhenry.com/v3/product_features/forms/data_sources.html">here</a> and <a href="http://docs.feedhenry.com/v3/guides/create_forms_data_source.html">here</a> on our Docs site.</p>
+
+<p>We&rsquo;re looking forward to seeing how you make use of this new feature set that many of you have been eager to try.</p>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="http://feedhenrydevblogarchive.github.io/rhmap-google-accounts-android/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="http://feedhenrydevblogarchive.github.io/rhmap-google-accounts-android/">RHMAP and Google Accounts in Android</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="http://feedhenrydevblogarchive.github.io/upcoming-deployment-of-version-3-10-of-the-red-hat-mobile-application-platform/">Upcoming deployment of version 3.10 of the Red Hat Mobile Application Platform</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="http://feedhenrydevblogarchive.github.io/upcoming-deployment-of-version-3-10-of-the-red-hat-mobile-application-platform/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+  
+
+</div>
+
+</div>
+</div>
+<script src="http://feedhenrydevblogarchive.github.iojs/ui.js"></script>
+
+
+
+
+</body>
+</html>
+

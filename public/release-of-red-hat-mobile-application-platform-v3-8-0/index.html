@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.16" />
+
+  <title>Release of Red Hat Mobile Application Platform v3.8.0 &middot; Archive of FeedHenry Developer Blog 2012-2016</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+
+  <link rel="shortcut icon" href="http://feedhenrydevblogarchive.github.ioimg/favicon.ico" type="image/x-icon" />
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <a href="/"><img src = "/logo.png" /></a>
+    <small>Copyright Red Hat 2016</small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Release of Red Hat Mobile Application Platform v3.8.0</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>09 Mar 2016, 18:33</time>
+  </div>
+
+  
+
+  
+
+  
+
+</div>
+
+  
+
+<p>In keeping with our recent release cadence, version 3.8 of the Red Hat Mobile Application Platform has just been deployed to all actively updated Grids.</p>
+
+<p>The main features of this release are:</p>
+
+<h2 id="ios-9-updates">iOS 9 updates</h2>
+
+<ul>
+<li><p>Full iOS 9 support in the Build Farm has now been added. All iOS apps are now built using Xcode 7.2 and target iOS 9.2.1 by default, including Forms Apps and Cordova Light Apps.</p></li>
+
+<li><p>All of our iOS templates work without any code change on iOS9</p></li>
+
+<li><p>No iOS9 specific SDK updates are needed</p></li>
+
+<li><p>All Studio iOS template apps are now <a href="http://www.redhat.com/blog/mobile/cocoapods-and-rhmap-a-love-story/">based on Cocoapods</a></p></li>
+
+<li><p>Note that full Swift support is coming in a later release. However you can already use our current SDK with ObjC if you are writing in mixed Swift/ObjC.</p></li>
+</ul>
+
+<h2 id="cordova-updates">Cordova updates</h2>
+
+<ul>
+<li><p>In RHMAP 3.7, we added support for the latest version of Cordova Android. We are now doing the same for Cordova iOS which is at v3.9.x and is the default for Full Cordova Apps.</p></li>
+
+<li><p>Both iOS and Android now use Cordova CLI 5.2.0 which gives you access to all the latest Cordova platforms and plugins. As mentioned in the <a href="http://www.redhat.com/blog/mobile/release-of-rhmap-3-7-including-api-mapper-preview/">RHMAP 3.7.0 release notes</a>, you can now use Cordova’s config.xml to specify platform versions and plugins.</p></li>
+
+<li><p>Forms Apps and Cordova Light App continue to use Cordova 3.x on iOS. We will be upgrading these in a later release.</p></li>
+</ul>
+
+<h2 id="integration-with-the-apperian-mam">Integration with the Apperian MAM</h2>
+
+<p>If you make use of <a href="https://www.apperian.com/">Apperian</a> for Mobile Application Management, you can now automatically send your built mobile binaries from our Build Farm to your Apperian App Store.</p>
+
+<p><a href="/wp-content/uploads/2016/03/apperian_feedhenry_blog.png"><img src="/wp-content/uploads/2016/03/apperian_feedhenry_blog.png" alt="apperian_feedhenry_blog" /></a></p>
+
+<p>Detailed blogpost and video will follow soon on this.</p>
+
+<h2 id="sustaining-engineering">Sustaining Engineering</h2>
+
+<p>There were a large number of bug-fixes and enhancements made in this release, including:</p>
+
+<ul>
+<li><p>A major focus on migrating very large MongoDB datasets via the Studio and providing more progress information about the migration.</p></li>
+
+<li><p>Adding a strict step on project deletion to avoid mistakes by users</p></li>
+
+<li><p>Adding more metadata to Forms Submission Export</p></li>
+
+<li><p>Fixing App Preview refresh</p></li>
+</ul>
+
+<h2 id="unified-push-server-updates">Unified Push Server updates</h2>
+
+<p>We have updated our integrated Unified Push Server based on the <a href="https://aerogear.org/push/">Aerogear Push</a> Open Source upstream project  v1.1.1. Release notes for that are <a href="https://issues.jboss.org/secure/ReleaseNote.jspa?projectId=12313724&amp;version=12327457&amp;_sscc=t">available here</a>.</p>
+
+<h2 id="data-sync-offline-support-updates">Data Sync / Offline Support updates</h2>
+
+<p>We updated the <a href="http://docs.feedhenry.com/v3/api/api_sync.html">Data Sync example code/snippets</a> in Docs for iOS, Windows and Android.</p>
+
+<h2 id="known-issue-s">Known Issue(s)</h2>
+
+<p>When trying to download an app built through the Build Farm on an iOS 9.1 device, the message &ldquo;Unable to Download App&rdquo; is shown and the app can not be downloaded/installed.</p>
+
+<p>This issue only affects version 9.1 of iOS. To work around it, you can either build the app locally in Xcode, or upgrade your device to an iOS version higher than 9.1.</p>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="http://feedhenrydevblogarchive.github.io/upcoming-deployment-of-version-3-8-of-the-red-hat-mobile-application-platform/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="http://feedhenrydevblogarchive.github.io/upcoming-deployment-of-version-3-8-of-the-red-hat-mobile-application-platform/">Upcoming deployment of version 3.8 of the Red Hat Mobile Application Platform</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="http://feedhenrydevblogarchive.github.io/upcoming-deployment-of-version-3-9-of-the-red-hat-mobile-application-platform/">Upcoming deployment of version 3.9 of the Red Hat Mobile Application Platform</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="http://feedhenrydevblogarchive.github.io/upcoming-deployment-of-version-3-9-of-the-red-hat-mobile-application-platform/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+  
+
+</div>
+
+</div>
+</div>
+<script src="http://feedhenrydevblogarchive.github.iojs/ui.js"></script>
+
+
+
+
+</body>
+</html>
+
