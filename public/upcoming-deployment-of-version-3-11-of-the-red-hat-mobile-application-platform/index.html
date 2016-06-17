@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.16" />
+
+  <title>Upcoming deployment of version 3.11 of the Red Hat Mobile Application Platform &middot; Archive of FeedHenry Developer Blog 2012-2016</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+
+  <link rel="shortcut icon" href="http://feedhenrydevblogarchive.github.ioimg/favicon.ico" type="image/x-icon" />
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <a href="/"><img src = "/logo.png" /></a>
+    <small>Copyright Red Hat 2016</small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Upcoming deployment of version 3.11 of the Red Hat Mobile Application Platform</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>17 Jun 2016, 14:52</time>
+  </div>
+
+  
+
+  
+
+  
+
+</div>
+
+  
+
+<h1 id="important-potential-breaking-changes-below"><strong>IMPORTANT: POTENTIAL BREAKING CHANGES BELOW.</strong></h1>
+
+<p>  We will begin deploying v3.11 to our actively updated grids in the next 10 days. The main features of this release are:</p>
+
+<ul>
+<li>Tech preview of Node.js 4.4.2 LTS as an option for your Cloud Code</li>
+<li>Google Play Store changes (Possible Action Required)</li>
+<li>Updating Forms Apps to new versions of Cordova and Cordova Plugins</li>
+<li>Updating Cordova “Light” Apps to new versions of Cordova and Cordova Plugins</li>
+<li>Announcement of  future deprecation of Node.js 0.8.x</li>
+<li>Updating Xamarin support to v5.x</li>
+<li>Addition of options for CSV and PDF in Forms Submissions retrieval via API</li>
+</ul>
+
+<h2 id="node-js-4-4-2-lts-tech-preview">Node.js 4.4.2 LTS Tech Preview</h2>
+
+<p>When you deploy your Cloud Code or Services, you can now select Node 4.4.2 LTS as the target version, in addition to the existing Node 0.10.x. Note that 0.10.x remains the default in this release. Re-deployment of existing code will also default to 0.10 unless you manually select 4.4.2. Whilst 4.4.2 is fully functional for your code, we are calling it a Tech Preview as not all of our templates have been fully ported to this version.  </p>
+
+<h2 id="google-play-store-changes-possible-action-required">Google Play Store changes (Possible Action Required)</h2>
+
+<p>It is important to note that Cordova apps of any kind, built with Cordova &lt; 4.1.1 will be rejected by the Google Play Store after July 11 2016. This affects Cordova, Cordova Light and Forms Apps on RHMAP, whether you build them locally or on our Build Farm. If you wish to put those apps in the <strong>public</strong> Google Play Store after July 11, you must update those Apps to Cordova &gt; 4.1.1 or they will be rejected the next time you try to upload a new version. See <a href="https://support.google.com/faqs/answer/6325474?hl=en">Google FAQ here</a>. If you wish to update your Apps, you should do the following:</p>
+
+<ul>
+<li><p>Cordova Apps - Please check your Cordova config.xml. If you are specifying a version of Cordova there, it must be updated to be 4.1.0 (this strangely means 4.1.1 to Cordova) or greater. E.g.</p>
+
+<pre><engine name="android" spec="~5.2.0" /></pre>
+
+<p>If it’s not specified, you don’t need to change that file. Note: You will have to test any plugins you use to ensure they are Cordova 5.2 compatible and update as needed. Then rebuild your app in the Build Farm and upload it to the Google Play Store.</p></li>
+
+<li><p>Light Apps - Once you rebuild your Light App in the RHMAP 3.11 Build Farm, it will automatically use Cordova 5.x. The older versions of our default plugins (<a href="http://docs.feedhenry.com/v3/guides/using_cordova_plugins.html#using_cordova_plugins-considerations_for_cordova_light_apps">see list here</a>) have been tested to work with Cordova 5.2.Note: If you have added other plugins to config.json, you will need to test if they still work with 5.2 and possibly update them to the latest versions.</p></li>
+
+<li><p>Forms Apps - Once you rebuild your standard auto-generated Forms App in the RHMAP 3.11 Build Farm, it will automatically use Cordova 5.x.Note: If you have customised the default app and added other plugins to config.json, you will need to test if they still work with 5.2 and possibly update them to the latest versions.</p></li>
+</ul>
+
+<h2 id="latest-cordova-for-forms-and-light-apps">Latest Cordova for Forms and Light Apps</h2>
+
+<p>In our recent releases we updated our Cordova support for standard Cordova Apps to Cordova CLI 5.2. We are now updating both our Forms Apps and Cordova Light Apps to the same level for iOS, Android and Windows. In a tiny number of cases, this can break some Cordova Light Apps and you need to ensure you follow the update procedure below, only if this applies to you.</p>
+
+<h3 id="forms-apps">Forms Apps</h3>
+
+<p>You should see no functional difference in the auto-generated Forms Apps with this update. Existing Forms Apps do not need to be changed. On your next Build Farm build, they will automatically use Cordova CLI 5.2. New Forms Apps will automatically use Cordova CLI 5.2 in the Build Farm and no action is required on your part.</p>
+
+<h3 id="cordova-light-apps-potential-breaking-change">Cordova Light Apps (Potential Breaking Change)</h3>
+
+<p>Cordova Light Apps are specific to Red Hat Mobile and provide a simple way to generate Cordova Apps using just HTML/CSS/JS. All of the Cordova pieces are handled for you by our Build Farm. Existing Cordova Light Apps will continue to run without change. The vast majority of existing Cordova Light Apps will continue to build in our Build Farm without change. However, if you have Cordova Light apps, you must check the following (This does not apply to standard Cordova Apps):</p>
+
+<ol>
+<li>If your App is a Cordova Light App (you can see its type in the Project in the Studio)</li>
+<li>And if it is missing the www/config.json file</li>
+<li>And if you are using one of a set of Cordova plugins <a href="https://access.redhat.com/articles/2361891">listed here</a></li>
+<li>And if you are going to re-build your application</li>
+<li>Then you need to create a www/config.json file  and update your code, <a href="https://access.redhat.com/articles/2361891">using the instructions here</a></li>
+</ol>
+
+<p>Again note that it is extremely unlikely that your app meets all of the above conditions, but you should check to be absolutely sure. If you are creating any new Cordova Light Apps from scratch, you must include config.json. If you start with any of our Cordova Light templates, you will get this by default.</p>
+
+<h2 id="future-deprecation-of-node-js-0-8-x">Future deprecation of Node.js 0.8.x</h2>
+
+<p>Note that Node.js 0.8 is still selectable as a target version in this release. However it has not been the default for over two years in RHMAP. This version of Node.js has been long obsolete and is not supported by the Node.js Foundation or by Red Hat Software Collections. For all of these reasons, we will be removing support for Node.js 0.8 by September 30 2016. It is very unlikely you are using Node.js 0.8, but if you are, you will need to carry out any porting work to update it to Node.js 4.4.2 by this time. If your app does not need any changes, or never needs a clean redeployment, an upgrade of the Node.js version is not necessary, but is recommended.</p>
+
+<h2 id="xamarin">Xamarin</h2>
+
+<p>We have updated our Xamarin support to v5.x and refreshed the templates appropriately. Note that Push functionality in the SDK is still in development and won’t be released in 3.11. Xamarin Apps must still be built locally and cannot use the Build Farm.</p>
+
+<h2 id="forms-submissions">Forms Submissions</h2>
+
+<p>Forms Submissions retrieval via API now offer options for CSV and PDF. API details will be <a href="http://docs.feedhenry.com/v3/api/api_forms.html#api_forms-node_js_api">here</a>.</p>
+
+<h2 id="known-issues">Known Issues</h2>
+
+<ul>
+<li>Forms and broken Environments - If you have Environments that are no longer accessible, you will get errors from the Forms section of the Studio. Please contact Red Hat Support to fix the problem.</li>
+</ul>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="http://feedhenrydevblogarchive.github.io/release-of-v3-10-of-the-red-hat-mobile-application-platform-including-swift-2-1-and-wfm/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="http://feedhenrydevblogarchive.github.io/release-of-v3-10-of-the-red-hat-mobile-application-platform-including-swift-2-1-and-wfm/">Release of v3.10 of the Red Hat Mobile Application Platform including Swift 2.1 and WFM</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+  </div>
+</div>
+
+
+
+  
+
+</div>
+
+</div>
+</div>
+<script src="http://feedhenrydevblogarchive.github.iojs/ui.js"></script>
+
+
+
+
+</body>
+</html>
+
