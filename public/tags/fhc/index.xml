@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Fhc on Archive of FeedHenry Developer Blog 2012-2016</title>
-    <link>http://feedhenrydevblogarchive.github.io/tags/fhc/</link>
+    <link>http://blog.feedhenry.com/tags/fhc/</link>
     <description>Recent content in Fhc on Archive of FeedHenry Developer Blog 2012-2016</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 24 Jun 2014 17:26:33 +0000</lastBuildDate>
-    <atom:link href="http://feedhenrydevblogarchive.github.io/tags/fhc/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.feedhenry.com/tags/fhc/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>A summary of the FeedHenry 3 changes in our fhc command-line tool</title>
-      <link>http://feedhenrydevblogarchive.github.io/summary-new-feedhenry-3-features-fhc-command-line-tool/</link>
+      <link>http://blog.feedhenry.com/summary-new-feedhenry-3-features-fhc-command-line-tool/</link>
       <pubDate>Tue, 24 Jun 2014 17:26:33 +0000</pubDate>
       
-      <guid>http://feedhenrydevblogarchive.github.io/summary-new-feedhenry-3-features-fhc-command-line-tool/</guid>
+      <guid>http://blog.feedhenry.com/summary-new-feedhenry-3-features-fhc-command-line-tool/</guid>
       <description>
 
 &lt;p&gt;We develop everything in FeedHenry API-first ,which means our command-line tooling is just as powerful as our Web UIs, with the added advantage of automation and scriptability.&lt;/p&gt;

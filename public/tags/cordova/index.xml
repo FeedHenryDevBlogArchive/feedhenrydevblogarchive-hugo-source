@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Cordova on Archive of FeedHenry Developer Blog 2012-2016</title>
-    <link>http://feedhenrydevblogarchive.github.io/tags/cordova/</link>
+    <link>http://blog.feedhenry.com/tags/cordova/</link>
     <description>Recent content in Cordova on Archive of FeedHenry Developer Blog 2012-2016</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 29 Aug 2014 08:36:01 +0000</lastBuildDate>
-    <atom:link href="http://feedhenrydevblogarchive.github.io/tags/cordova/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.feedhenry.com/tags/cordova/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Extending the Cordova Mobile Spec Tester App into the Cloud</title>
-      <link>http://feedhenrydevblogarchive.github.io/extending-cordova-mobile-spec-tester-app-cloud/</link>
+      <link>http://blog.feedhenry.com/extending-cordova-mobile-spec-tester-app-cloud/</link>
       <pubDate>Fri, 29 Aug 2014 08:36:01 +0000</pubDate>
       
-      <guid>http://feedhenrydevblogarchive.github.io/extending-cordova-mobile-spec-tester-app-cloud/</guid>
+      <guid>http://blog.feedhenry.com/extending-cordova-mobile-spec-tester-app-cloud/</guid>
       <description>&lt;p&gt;Here at FeedHenry we&amp;rsquo;re big fans of &lt;a href=&#34;http://cordova.apache.org/&#34;&gt;Apache Cordova&lt;/a&gt; - the leading Hybrid App Development Framework - and have been supporting it in our Mobile App Platform for several years now. Over that time, we have upgraded our supported version of Cordova many times (we first started supported cordova at version 0.9). One of the core parts of the FeedHenry product offering is our Cloud Hosted &lt;a href=&#34;http://www.feedhenry.com/mobile-application-platform/app-development/&#34;&gt;Build Farm&lt;/a&gt; which &amp;ldquo;&amp;hellip;provides builds for native and hybrid apps for iOS, Android, Windows Phone and Blackberry, generating the build and digitally signing the apps&amp;rdquo;. As we maintain and upgrade the Build Farm - to support new versions of Cordova, new versions and flavours of mobile Operating Systems (iOS 8 support Coming Soon) - a crucial task is to ensure that we do not break support for any device APIs. To assist with this, we have found the &lt;a href=&#34;https://github.com/apache/cordova-mobile-spec&#34;&gt;Cordova Mobile Spec App&lt;/a&gt; to be an excellent tool. It is &amp;ldquo;a set of automated &amp;amp; manual tests that test Cordova core functionality&amp;rdquo; which allow us to manually verify API functionality on various devices and mobile OS versions pre and post upgrade. However, there are a few limitations to this approach:&lt;/p&gt;
 
 &lt;ul&gt;
@@ -27,39 +27,39 @@
 
 &lt;p&gt;By using the FeedHenry platform, we were quickly able to deal with these limitations and turn a stand alone app into one part of a Cloud Powered Mobile Solution. Here&amp;rsquo;s what we did: First, we forked the Mobile Spec App into the GitHub organisation we use for &lt;a href=&#34;https://github.com/feedhenry-templates/fh-mobile-spec-app&#34;&gt;template apps&lt;/a&gt; and added the &lt;a href=&#34;http://docs.feedhenry.com/v3/dev_tools/sdks/cordova.html&#34;&gt;FeedHenry Cordova SDK&lt;/a&gt;. This allowed the mobile app to communicate with the FeedHenry Cloud.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/08/2014-08-27-12.00.11.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/08/2014-08-27-12.00.11-168x300.png&#34; alt=&#34;2014-08-27 12.00.11&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2014/08/2014-08-27-12.00.11.png&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2014/08/2014-08-27-12.00.11-168x300.png&#34; alt=&#34;2014-08-27 12.00.11&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;Next, we created a standard &lt;a href=&#34;https://github.com/feedhenry-templates/fh-mobile-spec-cloud&#34;&gt;FeedHenry  Node.js Cloud Application&lt;/a&gt; for the Mobile Spec App to submit it test results to. &lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/08/App-Cloud-API-Docs.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/08/App-Cloud-API-Docs-947x1024.png&#34; alt=&#34;App Cloud API Docs&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Next, we created a standard &lt;a href=&#34;https://github.com/feedhenry-templates/fh-mobile-spec-cloud&#34;&gt;FeedHenry  Node.js Cloud Application&lt;/a&gt; for the Mobile Spec App to submit it test results to. &lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2014/08/App-Cloud-API-Docs.png&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2014/08/App-Cloud-API-Docs-947x1024.png&#34; alt=&#34;App Cloud API Docs&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Then, we added a &lt;a href=&#34;http://jasmine.github.io/&#34;&gt;Jasmine test runner&lt;/a&gt; to the Mobile App to allow the full suite of API test to be run automatically &amp;amp; uploaded the results to the Node.js Cloud App using the standard &lt;a href=&#34;http://docs.feedhenry.com/v3/api/api_act.html&#34;&gt;$fh.cloud() API call&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/08/2014-08-27-12.00.59-168x300.png&#34; alt=&#34;2014-08-27 12.00.59&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2014/08/2014-08-27-12.00.59-168x300.png&#34; alt=&#34;2014-08-27 12.00.59&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Finally, we created a &lt;a href=&#34;https://github.com/feedhenry-templates/fh-mobile-spec-portal&#34;&gt;FeedHenry Web Portal&lt;/a&gt; (also powered by Node.js) to allow the test results from individual runs of the app on any mobile device to be viewed, sorted, searched, aggregated and graphed.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/08/Screenshot-2014-08-25-17.44.23.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/08/Screenshot-2014-08-25-17.44.23-300x121.png&#34; alt=&#34;Screenshot 2014-08-25 17.44.23&#34; /&gt;&lt;/a&gt;   &lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/08/Screenshot-2014-08-25-17.44.41.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/08/Screenshot-2014-08-25-17.44.41-300x160.png&#34; alt=&#34;Screenshot 2014-08-25 17.44.41&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2014/08/Screenshot-2014-08-25-17.44.23.png&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2014/08/Screenshot-2014-08-25-17.44.23-300x121.png&#34; alt=&#34;Screenshot 2014-08-25 17.44.23&#34; /&gt;&lt;/a&gt;   &lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2014/08/Screenshot-2014-08-25-17.44.41.png&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2014/08/Screenshot-2014-08-25-17.44.41-300x160.png&#34; alt=&#34;Screenshot 2014-08-25 17.44.41&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/08/Screenshot-2014-08-25-17.45.08.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/08/Screenshot-2014-08-25-17.45.08-300x160.png&#34; alt=&#34;Screenshot 2014-08-25 17.45.08&#34; /&gt;&lt;/a&gt;   &lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/08/Screenshot-2014-08-25-17.45.27.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/08/Screenshot-2014-08-25-17.45.27-300x158.png&#34; alt=&#34;Screenshot 2014-08-25 17.45.27&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2014/08/Screenshot-2014-08-25-17.45.08.png&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2014/08/Screenshot-2014-08-25-17.45.08-300x160.png&#34; alt=&#34;Screenshot 2014-08-25 17.45.08&#34; /&gt;&lt;/a&gt;   &lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2014/08/Screenshot-2014-08-25-17.45.27.png&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2014/08/Screenshot-2014-08-25-17.45.27-300x158.png&#34; alt=&#34;Screenshot 2014-08-25 17.45.27&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/08/Screenshot-2014-08-25-17.45.46.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/08/Screenshot-2014-08-25-17.45.46-300x145.png&#34; alt=&#34;Screenshot 2014-08-25 17.45.46&#34; /&gt;&lt;/a&gt;   &lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/08/Screenshot-2014-08-25-17.46.25.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/08/Screenshot-2014-08-25-17.46.25-300x151.png&#34; alt=&#34;Screenshot 2014-08-25 17.46.25&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2014/08/Screenshot-2014-08-25-17.45.46.png&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2014/08/Screenshot-2014-08-25-17.45.46-300x145.png&#34; alt=&#34;Screenshot 2014-08-25 17.45.46&#34; /&gt;&lt;/a&gt;   &lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2014/08/Screenshot-2014-08-25-17.46.25.png&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2014/08/Screenshot-2014-08-25-17.46.25-300x151.png&#34; alt=&#34;Screenshot 2014-08-25 17.46.25&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;The result -  a full mobility project for automated Cordova API Testing which persists, aggregates and visualises test data for the Cordova Mobile Spec App. This project is available as one of our standard FeedHenry 3 templates, so feel free to take a look and use it for your own automated testing.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/08/Screenshot-2014-08-27-12.53.12.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/08/Screenshot-2014-08-27-12.53.12-300x200.png&#34; alt=&#34;Screenshot 2014-08-27 12.53.12&#34; /&gt;   &lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/08/Screenshot-2014-08-27-12.53.32-300x124.png&#34; alt=&#34;Screenshot 2014-08-27 12.53.32&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2014/08/Screenshot-2014-08-27-12.53.12.png&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2014/08/Screenshot-2014-08-27-12.53.12-300x200.png&#34; alt=&#34;Screenshot 2014-08-27 12.53.12&#34; /&gt;   &lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2014/08/Screenshot-2014-08-27-12.53.32-300x124.png&#34; alt=&#34;Screenshot 2014-08-27 12.53.32&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Several ways to avoid problems with the Cordova File API in your mobile apps</title>
-      <link>http://feedhenrydevblogarchive.github.io/several-ways-avoid-problems-cordova-file-api-mobile-apps/</link>
+      <link>http://blog.feedhenry.com/several-ways-avoid-problems-cordova-file-api-mobile-apps/</link>
       <pubDate>Wed, 06 Aug 2014 09:22:48 +0000</pubDate>
       
-      <guid>http://feedhenrydevblogarchive.github.io/several-ways-avoid-problems-cordova-file-api-mobile-apps/</guid>
+      <guid>http://blog.feedhenry.com/several-ways-avoid-problems-cordova-file-api-mobile-apps/</guid>
       <description>
 
 &lt;p&gt;The Cordova File API is one of the most widely used APIs when developing Cordova apps (Ranked as the No.3 the most downloaded plugin on the Cordova plugin registry). It implements the &lt;a href=&#34;http://www.w3.org/TR/FileAPI/&#34;&gt;W3C File API&lt;/a&gt; for hybrid mobile apps. However, due to the complexity of the W3C specification, and the fact that each mobile OS handles file system for apps differently, the File API itself is quite complicated compared to other Cordova APIs. If you are planning to use the File API in your apps, you should read this &lt;a href=&#34;http://www.html5rocks.com/en/tutorials/file/filesystem/&#34;&gt;excellent article on html5rocks&lt;/a&gt; about how to use it. However, there are a few other things you should be aware of. In this post, I would like summarize some of them.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cordova.apache.org/&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/08/cordova_logo_normal_dark-300x133.png&#34; alt=&#34;cordova_logo_normal_dark&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://cordova.apache.org/&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2014/08/cordova_logo_normal_dark-300x133.png&#34; alt=&#34;cordova_logo_normal_dark&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;requesting-the-file-system-after-cordova-is-ready&#34;&gt;Requesting the file system after Cordova is ready&lt;/h2&gt;
 

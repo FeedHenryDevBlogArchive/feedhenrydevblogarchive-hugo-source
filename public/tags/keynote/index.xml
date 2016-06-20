@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Keynote on Archive of FeedHenry Developer Blog 2012-2016</title>
-    <link>http://feedhenrydevblogarchive.github.io/tags/keynote/</link>
+    <link>http://blog.feedhenry.com/tags/keynote/</link>
     <description>Recent content in Keynote on Archive of FeedHenry Developer Blog 2012-2016</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 28 Jun 2015 21:30:58 +0000</lastBuildDate>
-    <atom:link href="http://feedhenrydevblogarchive.github.io/tags/keynote/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.feedhenry.com/tags/keynote/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Red Hat Middleware Keynote: Behind the Scenes</title>
-      <link>http://feedhenrydevblogarchive.github.io/red-hat-middleware-keynote-behind-the-scenes/</link>
+      <link>http://blog.feedhenry.com/red-hat-middleware-keynote-behind-the-scenes/</link>
       <pubDate>Sun, 28 Jun 2015 21:30:58 +0000</pubDate>
       
-      <guid>http://feedhenrydevblogarchive.github.io/red-hat-middleware-keynote-behind-the-scenes/</guid>
+      <guid>http://blog.feedhenry.com/red-hat-middleware-keynote-behind-the-scenes/</guid>
       <description>&lt;p&gt;Last Tuesday, I had the great pleasure of presenting as part of the Middleware keynote session at Red Hat Summit. I&amp;rsquo;ve presented lots before - almost weekly to smaller audiences as part of sales, and plenty of developer evangelism presentations too.I&amp;rsquo;ve probably presented to an audience of ~200&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/06/Cian_Burr.jpg&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/06/Cian_Burr-300x225.jpg&#34; alt=&#34;Cian_Burr&#34; /&gt;&lt;/a&gt;It&amp;rsquo;s interesting being involved in such a high-profile demo from start to finish. There&amp;rsquo;s a huge amount of preparation behind the scenes - our keynote efforts started a month before the presentation.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2015/06/Cian_Burr.jpg&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2015/06/Cian_Burr-300x225.jpg&#34; alt=&#34;Cian_Burr&#34; /&gt;&lt;/a&gt;It&amp;rsquo;s interesting being involved in such a high-profile demo from start to finish. There&amp;rsquo;s a huge amount of preparation behind the scenes - our keynote efforts started a month before the presentation.&lt;/p&gt;
 
 &lt;p&gt;There&amp;rsquo;s also a huge amount of rehearsals. We walked through our demo so many times it was practically muscle memory - being on stage is really the easy part. We spent so much time in the auditorium, I ended up getting two previews of our CEO Jim Whitehurst&amp;rsquo;s keynote. When you present in an auditorium with capacity for ~2,000 people, this introduces a multitude of new concerns which don&amp;rsquo;t always apply to smaller events:&lt;/p&gt;
 
@@ -33,7 +33,7 @@
 
 &lt;p&gt;Lastly, with a demo as elaborate as ours, there&amp;rsquo;s a very complicated storyboard which the audio-visual team uses to determine what gets displayed on the super-wide conference screen at any one time. It&amp;rsquo;s important to pace the demo with filler conversations, watching the stage monitors, ensuring the correct storyboard is cued - and thus, the audience is seeing the correct laptop and camera output for the current relevant scene.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/06/keynote_summit.jpg&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/06/keynote_summit-300x225.jpg&#34; alt=&#34;keynote_summit&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2015/06/keynote_summit.jpg&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2015/06/keynote_summit-300x225.jpg&#34; alt=&#34;keynote_summit&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;There were some miscellaneous surprises too. I&amp;rsquo;ve heard talk of the heat of stage lights, but didn&amp;rsquo;t notice it during our many rehearsals. It turns out a full auditorium is pretty warm, however! Maybe it was just perception. Also of note is how even the most rehearsed of scripts can cause a stumble. I stumbled over the description of our Apps Column, where &amp;ldquo;the application which gets installed on the mobile phone device lives&amp;rdquo; - something I&amp;rsquo;ve probably described a thousand times.&lt;/p&gt;
 

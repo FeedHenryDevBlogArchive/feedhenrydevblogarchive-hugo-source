@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blog on Archive of FeedHenry Developer Blog 2012-2016</title>
-    <link>http://feedhenrydevblogarchive.github.io/categories/blog/</link>
+    <link>http://blog.feedhenry.com/categories/blog/</link>
     <description>Recent content in Blog on Archive of FeedHenry Developer Blog 2012-2016</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 07 Dec 2015 13:19:42 +0000</lastBuildDate>
-    <atom:link href="http://feedhenrydevblogarchive.github.io/categories/blog/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.feedhenry.com/categories/blog/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Madrid Hackathon</title>
-      <link>http://feedhenrydevblogarchive.github.io/madrid-hackathon/</link>
+      <link>http://blog.feedhenry.com/madrid-hackathon/</link>
       <pubDate>Mon, 07 Dec 2015 13:19:42 +0000</pubDate>
       
-      <guid>http://feedhenrydevblogarchive.github.io/madrid-hackathon/</guid>
+      <guid>http://blog.feedhenry.com/madrid-hackathon/</guid>
       <description>&lt;p&gt;In Madrid, in a cool location in the centre of the city, Red Hat sponsored a IoT hackathon, 3 groups used RHMAP (Red Hat Mobile Application Platform) to build their entry for the competition. Over the course of two days (19 - 20th November), 11 groups and 6 individuals battled to find out who could build the best application.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/11/Windows-phone_20151119_22_36_23_Rich_LI.jpg&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/11/Windows-phone_20151119_22_36_23_Rich_LI.jpg&#34; alt=&#34;Windows phone_20151119_22_36_23_Rich_LI&#34; /&gt;&lt;/a&gt; &lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/11/Windows-phone_20151119_10_39_06_Rich_LI.jpg&#34; alt=&#34;Windows phone_20151119_10_39_06_Rich_LI&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2015/11/Windows-phone_20151119_22_36_23_Rich_LI.jpg&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2015/11/Windows-phone_20151119_22_36_23_Rich_LI.jpg&#34; alt=&#34;Windows phone_20151119_22_36_23_Rich_LI&#34; /&gt;&lt;/a&gt; &lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2015/11/Windows-phone_20151119_10_39_06_Rich_LI.jpg&#34; alt=&#34;Windows phone_20151119_10_39_06_Rich_LI&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;We where there to get them going and help where needed. For most of them doing anything mobile or IoT was completely new, but they had some experience with Node.js, once we explained them how things globally worked and shown them how to build a simple &amp;ldquo;Hello World&amp;rdquo; they where off. Remarkably, little help was needed the most questions we got where: &amp;ldquo;how do I do &amp;lsquo;xyz&amp;rsquo;&amp;rdquo; or &amp;ldquo;what is the best approach to add a feature like this&amp;rdquo;. Although I had explained that you could develop / run things locally some contestants where comfortable using a online approach developing locally and testing the app in the &amp;lsquo;App Preview&amp;rsquo; window.&lt;/p&gt;
 
-&lt;p&gt;It wasn&amp;rsquo;t all work, there was some entertainment as well, there where some guys making jokes and some presentations about the possible future of IoT. Everything that happened was documented with some sketch notes. My portrait is also on it:&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/11/Windows-phone_20151119_20_45_17_Rich_LI.jpg&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/11/Windows-phone_20151119_20_45_17_Rich_LI.jpg&#34; alt=&#34;Windows phone_20151119_20_45_17_Rich_LI&#34; /&gt;&lt;/a&gt; &lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/11/Windows-phone_20151119_10_39_06_Rich_LI.jpg&#34;&gt;
+&lt;p&gt;It wasn&amp;rsquo;t all work, there was some entertainment as well, there where some guys making jokes and some presentations about the possible future of IoT. Everything that happened was documented with some sketch notes. My portrait is also on it:&lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2015/11/Windows-phone_20151119_20_45_17_Rich_LI.jpg&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2015/11/Windows-phone_20151119_20_45_17_Rich_LI.jpg&#34; alt=&#34;Windows phone_20151119_20_45_17_Rich_LI&#34; /&gt;&lt;/a&gt; &lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2015/11/Windows-phone_20151119_10_39_06_Rich_LI.jpg&#34;&gt;
 &lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;One of &amp;ldquo;our&amp;rdquo; teams won the big prize of 6000 euros, they got 2 checks like the one in the picture. As you can see from the eyes they pulled an &amp;ldquo;all nighter&amp;rdquo; to get something cool in the end.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/11/20151120_123940.jpg&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/11/20151120_123940.jpg&#34; alt=&#34;20151120_123940&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2015/11/20151120_123940.jpg&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2015/11/20151120_123940.jpg&#34; alt=&#34;20151120_123940&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;So a very successful and cool event, for us an opportunity to see how easy it is to get going on the platform and get ideas to improve the getting started. Till next year.&lt;/p&gt;
 </description>
@@ -34,10 +34,10 @@
     
     <item>
       <title>AeroGear quick start push Templates</title>
-      <link>http://feedhenrydevblogarchive.github.io/aerogear-push-templates/</link>
+      <link>http://blog.feedhenry.com/aerogear-push-templates/</link>
       <pubDate>Wed, 10 Jun 2015 13:29:44 +0000</pubDate>
       
-      <guid>http://feedhenrydevblogarchive.github.io/aerogear-push-templates/</guid>
+      <guid>http://blog.feedhenry.com/aerogear-push-templates/</guid>
       <description>&lt;p&gt;Currently in software development the biggest challenge is integrating. A lot of what we do involves integrating with other platforms or libraries. Knowing how to integrate is important, so here I&amp;rsquo;m going to show how to integrate the Unified Push Server (UPS) with Feedhenry, for adding push notification support. To make things even easier we created a Feedhenry Template that you can use as a starting point for your application that contains all the parts you&amp;rsquo;ll need.&lt;/p&gt;
 
 &lt;p&gt;To illustrate how to use the FeedHenry Template for push notifications, you will build a set of sample applications for receiving sports news. You will use a centralized cloud application that integrates with both a push server as well as any client applications. The centralized cloud app contains various categories (i.e. different sports) and news stories associated with one or more categories. There are also two client applications:&lt;/p&gt;
@@ -58,58 +58,58 @@
 &lt;li&gt;&lt;p&gt;Click select type a name, and then click &lt;strong&gt;create&lt;/strong&gt;.&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/05/1.png&#34; alt=&#34;1&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2015/05/1.png&#34; alt=&#34;1&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Now you have three apps one Cloud Code App and two Client Apps.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/05/5.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/05/5.png&#34; alt=&#34;5&#34; /&gt;&lt;/a&gt;
+&lt;p&gt;&lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2015/05/5.png&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2015/05/5.png&#34; alt=&#34;5&#34; /&gt;&lt;/a&gt;
 The &lt;em&gt;Push Cloud App&lt;/em&gt; is a simple server-side CRUD application for categories. The &lt;em&gt;Push Console App&lt;/em&gt; is a &amp;ldquo;management inteface&amp;rdquo; where you create and delete these categories. These categories are used by the &lt;em&gt;Push Notifications Mobile Client&lt;/em&gt; to &amp;ldquo;subscribe&amp;rdquo; to. For example I have a sports news site and I push messages about different sports to the mobile users. The users &lt;em&gt;subscribe&lt;/em&gt; to different sports they want to receive notifications about.&lt;/p&gt;
 
 &lt;p&gt;With this generated project all that is left to do is connect the Unified Push Server to this project, first go to openshift.com and create an UPS instance, search on AeroGear pick a name and &amp;ldquo;Create Application&amp;rdquo;. For more information on how to set up a unified push server on Openshift have a look at the &lt;a href=&#34;https://aerogear.org/docs/unifiedpush/ups_userguide/index/#openshift&#34;&gt;AeroGear documentation&lt;/a&gt;. Now you have a running UPS on Openshift you need to login and create an &amp;ldquo;application&amp;rdquo; that will be used by your Feedhenry apps to send push notifications. Note down the &lt;code&gt;Application ID&lt;/code&gt;, &lt;code&gt;Master Secret&lt;/code&gt; and the &lt;code&gt;Server URL&lt;/code&gt; as we going to need those later on.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/05/10.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/05/10.png&#34; alt=&#34;10&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2015/05/10.png&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2015/05/10.png&#34; alt=&#34;10&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;For the clients that we want to use (e.g. Android iOS) we need to create variants, for more information on how to do this have a look at the UPS documentation for &lt;a href=&#34;https://aerogear.org/docs/unifiedpush/aerogear-push-android/&#34;&gt;Android&lt;/a&gt; and &lt;a href=&#34;https://aerogear.org/docs/unifiedpush/aerogear-push-ios/&#34;&gt;iOS&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Next we need to do two things we need create a &amp;ldquo;Service connector&amp;rdquo; for UPS and we need to tell the Cloud App the &lt;code&gt;GUID&lt;/code&gt; of the &amp;ldquo;Service connector&amp;rdquo; so that it can use this to send messages to UPS. First we setup the &amp;ldquo;Service connector&amp;rdquo; to connect to our openshift UPS instance, go to the &lt;code&gt;Services &amp;amp;amp; APIs&lt;/code&gt; tab and click &lt;code&gt;Provision mBaaS Service/API&lt;/code&gt;:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/05/3.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/05/3.png&#34; alt=&#34;3&#34; /&gt;&lt;/a&gt;
+&lt;p&gt;&lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2015/05/3.png&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2015/05/3.png&#34; alt=&#34;3&#34; /&gt;&lt;/a&gt;
 Then choose &lt;code&gt;AeroGear Push Service&lt;/code&gt;, give it a name and click &lt;code&gt;Next&lt;/code&gt;, fill in the &lt;code&gt;Server URL&lt;/code&gt;, &lt;code&gt;Application ID&lt;/code&gt; and &lt;code&gt;Master Secret&lt;/code&gt; and click &lt;code&gt;Next&lt;/code&gt; now it will create your &amp;ldquo;Service connector&amp;rdquo;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/05/7.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/05/7.png&#34; alt=&#34;7&#34; /&gt;&lt;/a&gt;
+&lt;p&gt;&lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2015/05/7.png&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2015/05/7.png&#34; alt=&#34;7&#34; /&gt;&lt;/a&gt;
 After that is done go back to your project, here we need to add the service so that we can use it click the &amp;ldquo;+&amp;rdquo; in the mBaas Services box in the overview page:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/05/2.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/05/2.png&#34; alt=&#34;2&#34; /&gt;&lt;/a&gt;
+&lt;p&gt;&lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2015/05/2.png&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2015/05/2.png&#34; alt=&#34;2&#34; /&gt;&lt;/a&gt;
 Select the created &amp;ldquo;Service connector&amp;rdquo; and then the &amp;ldquo;Associate Service&amp;rdquo; button. Now you&amp;rsquo;ll see the &amp;ldquo;Service Connector&amp;rdquo; in the &amp;ldquo;mBaas Services&amp;rdquo; column. Let&amp;rsquo;s configure the &amp;ldquo;Cloud App&amp;rdquo; to use this &amp;ldquo;Service Connector&amp;rdquo;, for that we need to the GUID of the &amp;ldquo;Service Connector&amp;rdquo;, click on it and you will see the info page:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/05/4.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/05/4.png&#34; alt=&#34;4&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2015/05/4.png&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2015/05/4.png&#34; alt=&#34;4&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;On the info page copy the &lt;code&gt;Service ID&lt;/code&gt; and under access control add you project, then click save.&lt;/p&gt;
 
 &lt;p&gt;Then in the project click on the &amp;ldquo;Push Cloud App&amp;rdquo; and select &amp;ldquo;Environment variables&amp;rdquo; from the sidebar. Click &amp;ldquo;Add Variable&amp;rdquo; and enter &lt;code&gt;AEROGEAR_SERVICE_GUID&lt;/code&gt; for name and paste the &lt;code&gt;Service ID&lt;/code&gt; you copied earlier for the &amp;ldquo;Development&amp;rdquo; label. Next click on &amp;ldquo;Push Environment Variables&amp;rdquo; to publish these.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/05/6.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/05/6.png&#34; alt=&#34;6&#34; /&gt;&lt;/a&gt;
+&lt;p&gt;&lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2015/05/6.png&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2015/05/6.png&#34; alt=&#34;6&#34; /&gt;&lt;/a&gt;
 Now that that is all setup, the &amp;ldquo;Cloud App&amp;rdquo; can use the &amp;ldquo;GUID&amp;rdquo; to fetch the &amp;ldquo;Service Connector&amp;rdquo;, that connects to UPS to send the messages.&lt;/p&gt;
 
 &lt;p&gt;Let&amp;rsquo;s fire up a browser and open the &lt;em&gt;Push Console App&lt;/em&gt; to create a couple of categories for instance: Football, Rugby and Basketball:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/05/8.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/05/8.png&#34; alt=&#34;8&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2015/05/8.png&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2015/05/8.png&#34; alt=&#34;8&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Now go to your &lt;em&gt;Push Notifications Mobile Client&lt;/em&gt; and open the file called &lt;code&gt;push-config.json&lt;/code&gt;. You&amp;rsquo;ll need to update the &lt;em&gt;Variant ID&lt;/em&gt; and &lt;em&gt;Variant Secret&lt;/em&gt; for each platform and the &lt;em&gt;pushServerURL&lt;/em&gt; to the location of your UnifiedPush Server, so that it can register itself with the UnifiedPush Server in order to receive messages. For Android you also need to specify the &lt;em&gt;senderID&lt;/em&gt; (also called project number on the google console) inside of that JSON file. Finally build and install the &lt;em&gt;Push Notifications Mobile Client&lt;/em&gt; on a device and select the categories you want to receive.&lt;/p&gt;
 
 &lt;p&gt;Now go back to the &lt;em&gt;Push Console App&lt;/em&gt; and send a message. If all worked well, you will see how the push notifications arrive on the mobile client.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/05/9.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/05/9.png&#34; alt=&#34;9&#34; /&gt;&lt;/a&gt;
+&lt;p&gt;&lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2015/05/9.png&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2015/05/9.png&#34; alt=&#34;9&#34; /&gt;&lt;/a&gt;
 You can use and extend this template for your own use case. More detailed information on the setup of this template can be found in the help of the App Console&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Evolving a Mobile-centric Architecture: The Microservices Way</title>
-      <link>http://feedhenrydevblogarchive.github.io/microservices-for-mobile/</link>
+      <link>http://blog.feedhenry.com/microservices-for-mobile/</link>
       <pubDate>Wed, 08 Apr 2015 13:54:34 +0000</pubDate>
       
-      <guid>http://feedhenrydevblogarchive.github.io/microservices-for-mobile/</guid>
+      <guid>http://blog.feedhenry.com/microservices-for-mobile/</guid>
       <description>
 
 &lt;p&gt;There seems to have been an explosion in the use of the term “microservices” recently. I’ve been peripherally aware of the concept for some time now, but it seems it first came to light with a fantastic collection of &lt;a href=&#34;http://martinfowler.com/articles/microservices.html&#34;&gt;thoughts by Martin Fowler&lt;/a&gt;[1] - some great reading on the topic.&lt;/p&gt;
@@ -148,7 +148,7 @@ You can use and extend this template for your own use case. More detailed infor
 
 &lt;p&gt;This makes for some very special considerations when architecting for mobile. The lifespan of any APIs the mobile application touches need to be much longer-lived, and APIs should be built with this in mind. Consider versioning, and some way of forcing users to update.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/04/Microservices_diag1.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/04/Microservices_diag1.png&#34; alt=&#34;Microservices_diag1&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2015/04/Microservices_diag1.png&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2015/04/Microservices_diag1.png&#34; alt=&#34;Microservices_diag1&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;Mobile release cycles are much longer, leading to tighter coupling between client and API&lt;/em&gt;&lt;/p&gt;
 
@@ -266,7 +266,7 @@ curl &#39;http://127.0.0.1:3002/sms&#39; -H &#39;Content-Type: application/json&
 
 &lt;h2 id=&#34;take-1-client-side-business-logic&#34;&gt;Take 1: Client-Side Business Logic&lt;/h2&gt;
 
-&lt;p&gt;First, we&amp;rsquo;ll build this application the way many existing mobile apps are built - we&amp;rsquo;ll implement a lot of business logic on the client (scaling the order according to the rainfall microservice, submitting to the orders microservice, then notifying the account manager via the SMS microservice), and make three separate REST calls from the mobile device.Sure, we&amp;rsquo;ve still got microservices on the server-side - but we could equally picture this as a monolith, for what little use we&amp;rsquo;re making of the microservices philosophy.&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/04/microservices_2.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/04/microservices_2.png&#34; alt=&#34;microservices_2&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;First, we&amp;rsquo;ll build this application the way many existing mobile apps are built - we&amp;rsquo;ll implement a lot of business logic on the client (scaling the order according to the rainfall microservice, submitting to the orders microservice, then notifying the account manager via the SMS microservice), and make three separate REST calls from the mobile device.Sure, we&amp;rsquo;ve still got microservices on the server-side - but we could equally picture this as a monolith, for what little use we&amp;rsquo;re making of the microservices philosophy.&lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2015/04/microservices_2.png&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2015/04/microservices_2.png&#34; alt=&#34;microservices_2&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;This illustrates the &amp;ldquo;wrong way.&amp;rdquo;&lt;/p&gt;
 
@@ -278,7 +278,7 @@ curl &#39;http://127.0.0.1:3002/sms&#39; -H &#39;Content-Type: application/json&
 
 &lt;h2 id=&#34;take-2-microservices-for-mobile&#34;&gt;Take 2: Microservices for Mobile&lt;/h2&gt;
 
-&lt;p&gt;As before, we&amp;rsquo;re going to achieve this integration using a series of microservices - but we&amp;rsquo;re going to meld the data together in a fourth and final mobile-specific microservice.&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/04/microservices-3.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/04/microservices-3.png&#34; alt=&#34;microservices-3&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;As before, we&amp;rsquo;re going to achieve this integration using a series of microservices - but we&amp;rsquo;re going to meld the data together in a fourth and final mobile-specific microservice.&lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2015/04/microservices-3.png&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2015/04/microservices-3.png&#34; alt=&#34;microservices-3&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Now, we send our order information to a new mobile specific microservice which wraps up the three steps we took in “take 1.” We’re now making one call from the mobile device. We&amp;rsquo;ve got one simple API to maintain, a perfectly reasonable POST of a JSON payload, and this integration becomes a much looser coupling. We&amp;rsquo;re not sending unnecessary data back to the mobile app.&lt;/p&gt;
 
@@ -294,7 +294,7 @@ curl &#39;http://127.0.0.1:3002/sms&#39; -H &#39;Content-Type: application/json&
 
 &lt;h3 id=&#34;response-times&#34;&gt;Response Times&lt;/h3&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/04/responseTimes.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/04/responseTimes.png&#34; alt=&#34;Response Times&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2015/04/responseTimes.png&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2015/04/responseTimes.png&#34; alt=&#34;Response Times&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Examining the results, we see nominal difference between approaches using a 4G network. When we move to a 3G network, the gap widens - there&amp;rsquo;s eight** seconds** in the difference across requests. Edge networks show a wider gap still, with an increase in average request time of almost &lt;strong&gt;27 seconds&lt;/strong&gt;. At this point, the end user would really feel the pain of an inferior architecture. Lastly, over GPRS the impact of implementing multiple calls on the client is eye-opening. With average request times of &lt;strong&gt;more than 2&lt;/strong&gt;** minutes**, the application would be effectively unusable. Compare this to a microservice based architecture, with response times averaging 12 seconds, the application is slow but still usable. The key take away from this benchmark is that as the network slows, &lt;strong&gt;response times grow exponentially&lt;/strong&gt; when not considering mobile in your microservice architecture.&lt;/p&gt;
 
@@ -314,7 +314,7 @@ curl &#39;http://127.0.0.1:3002/sms&#39; -H &#39;Content-Type: application/json&
 
 &lt;p&gt;Watch a powerful &lt;a href=&#34;http://www2.feedhenry.com/mobile-tech-talk-microservices&#34;&gt;10-minute video&lt;/a&gt; on this content that includes a live demo of the benchmarking exercise.&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;&lt;a href=&#34;http://www.twitter.com/cianclarke&#34;&gt;@cianclarke&lt;/a&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/06/Screen-Shot-2014-06-11-at-15.56.07.png&#34;&gt; &lt;/a&gt;is a Software Engineer with FeedHenry. Primarily focused on the mobile-backend-as-a-service space, Cian is responsible for many of FeedHenry’s mBaaS developer features.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;a href=&#34;http://www.twitter.com/cianclarke&#34;&gt;@cianclarke&lt;/a&gt;&lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2014/06/Screen-Shot-2014-06-11-at-15.56.07.png&#34;&gt; &lt;/a&gt;is a Software Engineer with FeedHenry. Primarily focused on the mobile-backend-as-a-service space, Cian is responsible for many of FeedHenry’s mBaaS developer features.&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;*[mBaaS]: Mobile Backend As A Service&lt;/p&gt;
 </description>
@@ -322,10 +322,10 @@ curl &#39;http://127.0.0.1:3002/sms&#39; -H &#39;Content-Type: application/json&
     
     <item>
       <title>Web Scraping for Fun &amp; Profit II</title>
-      <link>http://feedhenrydevblogarchive.github.io/web-scraping-for-fun-profit-ii/</link>
+      <link>http://blog.feedhenry.com/web-scraping-for-fun-profit-ii/</link>
       <pubDate>Mon, 08 Dec 2014 15:36:19 +0000</pubDate>
       
-      <guid>http://feedhenrydevblogarchive.github.io/web-scraping-for-fun-profit-ii/</guid>
+      <guid>http://blog.feedhenry.com/web-scraping-for-fun-profit-ii/</guid>
       <description>
 
 &lt;p&gt;In my &lt;a href=&#34;http://www.feedhenry.com/web-scraping-fun-profit/&#34;&gt;Web Scraping blog post&lt;/a&gt;, I described some simple ways to retrieve data from a web page using Node.js. This means of data retrieval proves useful when no API is available.
@@ -338,11 +338,11 @@ Today, I&amp;rsquo;m going to describe similar techniques where reverse engine
 &lt;p&gt;When an authentication API absolutely can&amp;rsquo;t be exposed, for whatever reason, my next point of call is to the web version of the login. We&amp;rsquo;re going to reverse engineer the login flow of my demo FeedHenry platform instance, and doing this requires as much information about the login flow as possible.
 First, it&amp;rsquo;s over to the web browser to see how things work on the website. Using the Google Chrome inspector, and turning on recording of requests across page loads, we can see how the login flow works. Note I&amp;rsquo;ve also ticked the &amp;lsquo;Preserve Log&amp;rsquo; option.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/12/Screen-Shot-2014-12-01-at-16.14.27.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/12/Screen-Shot-2014-12-01-at-16.14.27-300x99.png&#34; alt=&#34;Screen Shot 2014-12-01 at 16.14.27&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2014/12/Screen-Shot-2014-12-01-at-16.14.27.png&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2014/12/Screen-Shot-2014-12-01-at-16.14.27-300x99.png&#34; alt=&#34;Screen Shot 2014-12-01 at 16.14.27&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;After a login request has been sent, we can inspect the request body, and find the information we need to reconstruct this request in Node.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/12/login2.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/12/login2-300x243.png&#34; alt=&#34;&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2014/12/login2.png&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2014/12/login2-300x243.png&#34; alt=&#34;&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;ol&gt;
 &lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://gist.github.com/cianclarke/beb3ee79e0ebfed62f0b#file-feedhenrylogin-js-L8&#34;&gt;Request URL&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
@@ -416,7 +416,7 @@ Lastly, we use a &lt;a href=&#34;https://gist.github.com/cianclarke/4e78314aafcc
 
 &lt;p&gt;We can identify Form Data in the browser by looking for the request content-type &lt;code&gt;application/x-www-form-urlencoded&lt;/code&gt;, along with a Form Data section in the request inspector of the browser:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/12/Screen-Shot-2014-12-01-at-16.39.00.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/12/Screen-Shot-2014-12-01-at-16.39.00-300x62.png&#34; alt=&#34;&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2014/12/Screen-Shot-2014-12-01-at-16.39.00.png&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2014/12/Screen-Shot-2014-12-01-at-16.39.00-300x62.png&#34; alt=&#34;&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Node.js makes Form Data really simple. It can be appended to the request by replacing our &lt;a href=&#34;https://gist.github.com/cianclarke/21aacdd06f22d33e663c#file-gistfile1-js-L10-L14&#34;&gt;&lt;code&gt;json&lt;/code&gt; option with &lt;code&gt;form&lt;/code&gt;.&lt;/a&gt;&lt;/p&gt;
 
@@ -485,7 +485,7 @@ jar = request.jar(); // stores cookies in the &amp;ldquo;jar&amp;rdquo;, we can 
 
 &lt;h3 id=&#34;debugging-with-a-proxy&#34;&gt;&lt;strong&gt;Debugging with a Proxy&lt;/strong&gt;&lt;/h3&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/12/Screen-Shot-2014-12-05-at-09.58.33.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/12/Screen-Shot-2014-12-05-at-09.58.33-300x196.png&#34; alt=&#34;Using Charles Proxy&#34; /&gt;&lt;/a&gt;If we&amp;rsquo;re trying to replicate the login flow of a mobile app, command line utility, or software tool that doesn&amp;rsquo;t live in a browser, I often use the Charles debugging proxy to inspect the data flow just like we did with the browser above. To use this, your target needs to support a HTTP proxy. Most command line utilities and software packages do, and to set it up with a mobile phone, just use the system proxy. &lt;a href=&#34;http://cianclarke.com/blog/how-popular-apps-access-apis/&#34;&gt;See my previous post on this&lt;/a&gt; for more details on using a debugging proxy.
+&lt;p&gt;&lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2014/12/Screen-Shot-2014-12-05-at-09.58.33.png&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2014/12/Screen-Shot-2014-12-05-at-09.58.33-300x196.png&#34; alt=&#34;Using Charles Proxy&#34; /&gt;&lt;/a&gt;If we&amp;rsquo;re trying to replicate the login flow of a mobile app, command line utility, or software tool that doesn&amp;rsquo;t live in a browser, I often use the Charles debugging proxy to inspect the data flow just like we did with the browser above. To use this, your target needs to support a HTTP proxy. Most command line utilities and software packages do, and to set it up with a mobile phone, just use the system proxy. &lt;a href=&#34;http://cianclarke.com/blog/how-popular-apps-access-apis/&#34;&gt;See my previous post on this&lt;/a&gt; for more details on using a debugging proxy.
 It&amp;rsquo;s also beneficial to be able to track the progress of requests through a Node.js application - you can use the charles proxy when using request like so:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;request.get({
@@ -514,15 +514,15 @@ It&amp;rsquo;s also beneficial to be able to track the progress of requests thro
     
     <item>
       <title>A walkthrough of our new Teams &amp; Collaboration functionality</title>
-      <link>http://feedhenrydevblogarchive.github.io/a-walkthrough-of-our-new-teams-collaboration-functionality/</link>
+      <link>http://blog.feedhenry.com/a-walkthrough-of-our-new-teams-collaboration-functionality/</link>
       <pubDate>Wed, 19 Nov 2014 17:03:47 +0000</pubDate>
       
-      <guid>http://feedhenrydevblogarchive.github.io/a-walkthrough-of-our-new-teams-collaboration-functionality/</guid>
+      <guid>http://blog.feedhenry.com/a-walkthrough-of-our-new-teams-collaboration-functionality/</guid>
       <description>&lt;p&gt;Today &lt;a href=&#34;http://www.feedhenry.com/red-hat-new-teams-and-collaboration-enhancement-feedhenry/&#34;&gt;we announced&lt;/a&gt; our new Teams &amp;amp; Collaboration feature-set which enables both technical and non-technical teams to work together on complex enterprise mobility projects in both a collaborative and controlled way.&lt;/p&gt;
 
 &lt;p&gt;FeedHenry 3 projects often have native Android and iOS teams, a Hybrid team, a web-app team, a Node.js team and Enterprise connector teams before you even consider outsourcers, configuration managers and data processors.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/11/teams_collabs.jpg&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/11/teams_collabs.jpg&#34; alt=&#34;teams_collabs&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2014/11/teams_collabs.jpg&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2014/11/teams_collabs.jpg&#34; alt=&#34;teams_collabs&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Teams &amp;amp; Collaboration is built on several simple but powerful concepts so that complex teams, organisations and projects such as these can be setup. You get fine-grained control over every component in the platform so that the right people have the right access to the right things and nothing else.&lt;/p&gt;
 
@@ -532,10 +532,10 @@ It&amp;rsquo;s also beneficial to be able to track the progress of requests thro
     
     <item>
       <title>FeedHenry and Red Hat Pushing ahead with Integrations</title>
-      <link>http://feedhenrydevblogarchive.github.io/feedhenry-and-red-hat-pushing-ahead-with-integrations/</link>
+      <link>http://blog.feedhenry.com/feedhenry-and-red-hat-pushing-ahead-with-integrations/</link>
       <pubDate>Mon, 10 Nov 2014 16:41:47 +0000</pubDate>
       
-      <guid>http://feedhenrydevblogarchive.github.io/feedhenry-and-red-hat-pushing-ahead-with-integrations/</guid>
+      <guid>http://blog.feedhenry.com/feedhenry-and-red-hat-pushing-ahead-with-integrations/</guid>
       <description>
 
 &lt;h1 id=&#34;overview&#34;&gt;Overview&lt;/h1&gt;
@@ -546,13 +546,13 @@ It&amp;rsquo;s also beneficial to be able to track the progress of requests thro
 
 &lt;p&gt;The &lt;a href=&#34;http://aerogear.org/&#34;&gt;AeroGear&lt;/a&gt; project is a one stop solution for all your Push Notification needs - covering Native iOS &amp;amp; Android, Cordova Hybrid as well as Simple Push for Web. It is available to use right now from the &lt;a href=&#34;https://marketplace.openshift.com/apps/9907#!overview&#34;&gt;OpenShift Marketplace&lt;/a&gt; - so feel free to give it a whirl.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/11/AeroGear-on-OpenShift.png&#34; alt=&#34;AeroGear on OpenShift&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2014/11/AeroGear-on-OpenShift.png&#34; alt=&#34;AeroGear on OpenShift&#34; /&gt;&lt;/p&gt;
 
 &lt;h1 id=&#34;mbaas-integration&#34;&gt;MBaaS Integration&lt;/h1&gt;
 
 &lt;p&gt;The new AeroGear MBaaS Integration Services leverages the excellent &lt;a href=&#34;https://www.npmjs.org/package/aerogear-sender-client&#34;&gt;Node.js module&lt;/a&gt; already developed by the AeroGear team and provides a simple, secure way to integrate Push Notifications into your FeedHenry apps. As you would expect, it uses all the out of the box functionality offered by FeedHenry MBaaS services such as interactive API documentation, wizard based configuration and a fine grained security model. The service itself is quick and painless to set up - simply provide the details of your AeroGear installation and credentials for the AeroGear app you want to use and you are ready to go. Using the service is just as easy - as a standard FeedHenry MBaaS service, you can call it in exactly the same way as you would any other MBaaS service - with a clean, crisp FeedHenry API call. For more information on FeedHenry MBaaS Services, check out &lt;a href=&#34;http://vimeo.com/98683877&#34;&gt;this video&lt;/a&gt; or &lt;a href=&#34;http://www.feedhenry.com/contact/&#34;&gt;send us a message&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/11/AeroGear-MBaaS-Service.png&#34; alt=&#34;AeroGear MBaaS Service&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2014/11/AeroGear-MBaaS-Service.png&#34; alt=&#34;AeroGear MBaaS Service&#34; /&gt;&lt;/p&gt;
 
 &lt;h1 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h1&gt;
 
@@ -562,10 +562,10 @@ It&amp;rsquo;s also beneficial to be able to track the progress of requests thro
     
     <item>
       <title>Publishing the gitlab-shell Java client to the Maven Central Repository</title>
-      <link>http://feedhenrydevblogarchive.github.io/publishing-jar-maven-central-repository/</link>
+      <link>http://blog.feedhenry.com/publishing-jar-maven-central-repository/</link>
       <pubDate>Sat, 18 Oct 2014 10:08:51 +0000</pubDate>
       
-      <guid>http://feedhenrydevblogarchive.github.io/publishing-jar-maven-central-repository/</guid>
+      <guid>http://blog.feedhenry.com/publishing-jar-maven-central-repository/</guid>
       <description>
 
 &lt;h1 id=&#34;what-library-is-being-published-and-why&#34;&gt;What library is being published, and why?&lt;/h1&gt;
@@ -749,10 +749,10 @@ For example, to include our gitlab-shell-client module in a gradle project, we i
     
     <item>
       <title>Creating &amp; Publishing a Chef Cookbook for gitlab-shell</title>
-      <link>http://feedhenrydevblogarchive.github.io/gitlab-shell-chef-cookbook/</link>
+      <link>http://blog.feedhenry.com/gitlab-shell-chef-cookbook/</link>
       <pubDate>Sat, 11 Oct 2014 12:25:34 +0000</pubDate>
       
-      <guid>http://feedhenrydevblogarchive.github.io/gitlab-shell-chef-cookbook/</guid>
+      <guid>http://blog.feedhenry.com/gitlab-shell-chef-cookbook/</guid>
       <description>
 
 &lt;h1 id=&#34;what-was-done-and-why&#34;&gt;What was done and why?&lt;/h1&gt;
@@ -934,10 +934,10 @@ version          &#39;0.3.0&#39;
     
     <item>
       <title>Web Scraping for Fun &amp; Profit</title>
-      <link>http://feedhenrydevblogarchive.github.io/web-scraping-fun-profit/</link>
+      <link>http://blog.feedhenry.com/web-scraping-fun-profit/</link>
       <pubDate>Tue, 30 Sep 2014 19:15:58 +0000</pubDate>
       
-      <guid>http://feedhenrydevblogarchive.github.io/web-scraping-fun-profit/</guid>
+      <guid>http://blog.feedhenry.com/web-scraping-fun-profit/</guid>
       <description>
 
 &lt;p&gt;There’s a number of ways to retrieve data from a backend system within mobile projects. In an ideal world, everything would have a RESTful JSON API - but often, this isn’t the case.Sometimes, SOAP is the language of the backend. Sometimes, it’s some proprietary protocol which might not even be HTTP-based. Then, there’s scraping.&lt;/p&gt;
@@ -954,7 +954,7 @@ version          &#39;0.3.0&#39;
 
 &lt;p&gt;For purpose of Illustration, we&amp;rsquo;re going to scrape the blog page of FeedHenry&amp;rsquo;s website. &lt;a href=&#34;https://gist.github.com/cianclarke/78b67dd614403cd90fb8&#34;&gt;I’ve built a small code snippet&lt;/a&gt; that retrieves the contents of the blog, and translates it into a JSON API. To find the queries I need to run, first I need to look at the HTML of the page. To do this, in Chrome, I right-click the element I&amp;rsquo;m looking to inspect on the page, and click &amp;ldquo;Inspect Element&amp;rdquo;.&lt;/p&gt;
 
-&lt;p&gt;[caption id=&amp;ldquo;attachment_5025&amp;rdquo; align=&amp;ldquo;alignnone&amp;rdquo; width=&amp;ldquo;631&amp;rdquo;]&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/09/Screen-Shot-2014-09-30-at-10.44.38.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/09/Screen-Shot-2014-09-30-at-10.44.38.png&#34; alt=&#34;Screen Shot 2014-09-30 at 10.44.38&#34; /&gt;&lt;/a&gt; Articles on the FeedHenry blog are a series of &amp;lsquo;div&amp;rsquo; elements with the &amp;lsquo;.itemContainer&amp;rsquo; class[/caption]&lt;/p&gt;
+&lt;p&gt;[caption id=&amp;ldquo;attachment_5025&amp;rdquo; align=&amp;ldquo;alignnone&amp;rdquo; width=&amp;ldquo;631&amp;rdquo;]&lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2014/09/Screen-Shot-2014-09-30-at-10.44.38.png&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2014/09/Screen-Shot-2014-09-30-at-10.44.38.png&#34; alt=&#34;Screen Shot 2014-09-30 at 10.44.38&#34; /&gt;&lt;/a&gt; Articles on the FeedHenry blog are a series of &amp;lsquo;div&amp;rsquo; elements with the &amp;lsquo;.itemContainer&amp;rsquo; class[/caption]&lt;/p&gt;
 
 &lt;p&gt;Searching for a pattern in the HTML to query all blog post elements, we construct the &lt;code&gt;div.itemContainer&lt;/code&gt; query. In jQuery, we can iterate over these using the .each method:&lt;/p&gt;
 
@@ -966,7 +966,7 @@ $(&#39;div.itemContainer&#39;).each(function(index, item){
 
 &lt;p&gt;From there, we pick off the heading, author and post summary using a child selector on the original post, querying the relevant semantic elements:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/09/scrapingChildElements.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/09/scrapingChildElements.png&#34; alt=&#34;&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2014/09/scrapingChildElements.png&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2014/09/scrapingChildElements.png&#34; alt=&#34;&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;ol&gt;
 &lt;li&gt;&lt;p&gt;Post Title, using jQuery:&lt;/p&gt;
@@ -1006,7 +1006,7 @@ jsdom.env(
 );
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/09/Screen-Shot-2014-09-30-at-11.03.52.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/09/Screen-Shot-2014-09-30-at-11.03.52-300x91.png&#34; alt=&#34;&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2014/09/Screen-Shot-2014-09-30-at-11.03.52.png&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2014/09/Screen-Shot-2014-09-30-at-11.03.52-300x91.png&#34; alt=&#34;&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;a-note-on-building-css-queries&#34;&gt;A note on building CSS Queries&lt;/h3&gt;
 
@@ -1075,29 +1075,29 @@ Get blog posts endpoint, returns JSON data.
 
 &lt;p&gt;We can now try out the scraper service in the studio, and see the response:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/09/Screen-Shot-2014-09-30-at-15.03.10.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/09/Screen-Shot-2014-09-30-at-15.03.10-300x252.png&#34; alt=&#34;&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2014/09/Screen-Shot-2014-09-30-at-15.03.10.png&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2014/09/Screen-Shot-2014-09-30-at-15.03.10-300x252.png&#34; alt=&#34;&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;scraping-the-ultimate-in-api-creation&#34;&gt;Scraping - The Ultimate in API Creation?&lt;/h2&gt;
 
 &lt;p&gt;Now that I&amp;rsquo;ve described some modern techniques for effectively scraping data from web sites, it&amp;rsquo;s time for some major caveats. First,  WordPress blogs like ours already have feeds and APIs available to developers - there&amp;rsquo;s no need to ever scrape any of this content. Web Scraping is &lt;strong&gt;not a replacement for an API&lt;/strong&gt;. It should be used only as a &lt;strong&gt;last resort&lt;/strong&gt;, after every endeavour to discover an API has already been made. Using a web scraper in a commercial setting requires much time set aside to maintain the queries, and an agreement with the source data is being scraped on to alert developers in the event the page changes structure.
 With all this in mind, it can be a useful tool to iterate quickly on an integration when waiting for an API, or as a fun hack project.&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;&lt;a href=&#34;http://www.twitter.com/cianclarke&#34;&gt;@cianclarke&lt;/a&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/06/Screen-Shot-2014-06-11-at-15.56.07.png&#34;&gt; &lt;/a&gt;is a Software Engineer with FeedHenry. Primarily focused on the mobile-backend-as-a-service space, Cian is responsible for many of FeedHenry&amp;rsquo;s mBaaS developer features.&lt;/em&gt;
+&lt;p&gt;&lt;em&gt;&lt;a href=&#34;http://www.twitter.com/cianclarke&#34;&gt;@cianclarke&lt;/a&gt;&lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2014/06/Screen-Shot-2014-06-11-at-15.56.07.png&#34;&gt; &lt;/a&gt;is a Software Engineer with FeedHenry. Primarily focused on the mobile-backend-as-a-service space, Cian is responsible for many of FeedHenry&amp;rsquo;s mBaaS developer features.&lt;/em&gt;
   *[mBaaS]: Mobile Backend As A Service&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Import and integrate your existing apps into FeedHenry 3 in 12 minutes</title>
-      <link>http://feedhenrydevblogarchive.github.io/import-integrate-existing-apps-feedhenry-3-12-minutes/</link>
+      <link>http://blog.feedhenry.com/import-integrate-existing-apps-feedhenry-3-12-minutes/</link>
       <pubDate>Wed, 16 Jul 2014 09:04:45 +0000</pubDate>
       
-      <guid>http://feedhenrydevblogarchive.github.io/import-integrate-existing-apps-feedhenry-3-12-minutes/</guid>
+      <guid>http://blog.feedhenry.com/import-integrate-existing-apps-feedhenry-3-12-minutes/</guid>
       <description>&lt;p&gt;FeedHenry 3 offers a range of App importing and on-boarding options including Cordova, Native Android, Native iOS, Native Windows Phone 8, Web Apps, Appcelerator and Xamarin Apps. Our built-in Git support means that you can either manage all of the source code in our Git servers or make use of Git’s power to push/pull code from your existing Git repositories into/out-of FeedHenry.&lt;/p&gt;
 
 &lt;p&gt;Integrating the FeedHenry SDKs into your Apps so that they can make use of the FeedHenry back-end services, including the mBaaS, is extremely easy and the Studio walks you through all of the steps.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/07/import.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2014/07/import.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;In this video, Jason shows you how to import and integrate an iOS app into FeedHenry 3. He does this in 12 minutes flat and so can you!&lt;/p&gt;
 
@@ -1107,10 +1107,10 @@ With all this in mind, it can be a useful tool to iterate quickly on an integrat
     
     <item>
       <title>iBeacons: A Primer in Proximity Programming</title>
-      <link>http://feedhenrydevblogarchive.github.io/ibeacons-primer/</link>
+      <link>http://blog.feedhenry.com/ibeacons-primer/</link>
       <pubDate>Thu, 01 May 2014 21:37:54 +0000</pubDate>
       
-      <guid>http://feedhenrydevblogarchive.github.io/ibeacons-primer/</guid>
+      <guid>http://blog.feedhenry.com/ibeacons-primer/</guid>
       <description>
 
 &lt;p&gt;iBeacons are a low-power bluetooth device Apple quietly release as part of the iOS7 launch recently. They&amp;rsquo;re the Apple alternative to NFC, a small location aware device which developers can use to track user&amp;rsquo;s proximity to a location, and trigger various actions in a mobile app. Potential use cases include payments, exhibit information, proximity advertising and promotions (read: spam),  and many more besides. iBeacons are a departure from the normal way Apple deals with Hardware  - interestingly, any vendor is free to make iBeacons which will work with Apple SDKs. The devices are both simple and cheap, and it&amp;rsquo;s pretty easy to hack one together with a Raspberry Pi and a bluetooth receiver, or an old iPhone.&lt;/p&gt;
@@ -1185,10 +1185,10 @@ In summary: Unless you have a lot of time on your hands, or a higher level API 
     
     <item>
       <title>FeedHenry update on Heartbleed (SSL Security Vulnerability CVE-2014-0160)</title>
-      <link>http://feedhenrydevblogarchive.github.io/feedhenry-update-heartbleed-ssl-security-vulnerability-cve-2014-0160/</link>
+      <link>http://blog.feedhenry.com/feedhenry-update-heartbleed-ssl-security-vulnerability-cve-2014-0160/</link>
       <pubDate>Wed, 09 Apr 2014 18:35:51 +0000</pubDate>
       
-      <guid>http://feedhenrydevblogarchive.github.io/feedhenry-update-heartbleed-ssl-security-vulnerability-cve-2014-0160/</guid>
+      <guid>http://blog.feedhenry.com/feedhenry-update-heartbleed-ssl-security-vulnerability-cve-2014-0160/</guid>
       <description>&lt;p&gt;As you may know, the Internet is abuzz with stories surrounding the extremely serious OpenSSL security vulnerability (CVE-2014-0160) which has become known as &amp;ldquo;Heartbleed&amp;rdquo;. For an in-depth explanation of this issue, visit &lt;a href=&#34;http://heartbleed.com/&#34;&gt;heartbleed.com&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;FeedHenry has conducted a review of all its publicly-hosted cloud infrastructure and can confirm that none of its Enterprise cloud platforms were found to be vulnerable to this issue. If you have any questions about this, please contact our &lt;a href=&#34;http://support.feedhenry.com&#34;&gt;Support team&lt;/a&gt;.&lt;/p&gt;
@@ -1197,10 +1197,10 @@ In summary: Unless you have a lot of time on your hands, or a higher level API 
     
     <item>
       <title>Server side PDF generation with Node.js</title>
-      <link>http://feedhenrydevblogarchive.github.io/server-side-pdf-generation-node-js/</link>
+      <link>http://blog.feedhenry.com/server-side-pdf-generation-node-js/</link>
       <pubDate>Fri, 21 Feb 2014 16:45:55 +0000</pubDate>
       
-      <guid>http://feedhenrydevblogarchive.github.io/server-side-pdf-generation-node-js/</guid>
+      <guid>http://blog.feedhenry.com/server-side-pdf-generation-node-js/</guid>
       <description>
 
 &lt;h1 id=&#34;overview-of-what-was-required&#34;&gt;Overview of what was required&lt;/h1&gt;
@@ -1584,10 +1584,10 @@ An overview of some of the modules used:&lt;/p&gt;
     
     <item>
       <title>Transforming the Enterprise with Node.js </title>
-      <link>http://feedhenrydevblogarchive.github.io/transforming-enterprise-node-js-feedhenry/</link>
+      <link>http://blog.feedhenry.com/transforming-enterprise-node-js-feedhenry/</link>
       <pubDate>Wed, 04 Dec 2013 18:11:23 +0000</pubDate>
       
-      <guid>http://feedhenrydevblogarchive.github.io/transforming-enterprise-node-js-feedhenry/</guid>
+      <guid>http://blog.feedhenry.com/transforming-enterprise-node-js-feedhenry/</guid>
       <description>
 
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;By Damian Beresford - Engineering. Conor O&amp;rsquo;Neill - Product Management. Joe O&amp;rsquo;Reilly - Solutions Architecture.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
@@ -1598,7 +1598,7 @@ An overview of some of the modules used:&lt;/p&gt;
 
 &lt;p&gt;Mobile is the chief driving force behind new requirements for these Enterprise Systems. The internal and external demands for attractive, high-performance apps increases daily. The work force also expects all internal systems (web applications in particular) to work well on mobile phones and tablets. Current systems are struggling to keep up with this flood of mobile requirements and the cutting edge technology demanded of them.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2013/12/Traditional_Mobilisation.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2013/12/Traditional_Mobilisation.png&#34; alt=&#34;Traditional_Mobilisation&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2013/12/Traditional_Mobilisation.png&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2013/12/Traditional_Mobilisation.png&#34; alt=&#34;Traditional_Mobilisation&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Fig 1: Traditional mobilisation of an existing Enterprise System&lt;/p&gt;
 
@@ -1628,7 +1628,7 @@ An overview of some of the modules used:&lt;/p&gt;
 
 &lt;p&gt;Architecturally, depending on your system boundaries, these business services may be new business requirements, or replacing a part of the old System that had heavy technical debt. Also bear in mind that you may never get to replace all of an old System, due to legal or other complications.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2013/12/Proxy_Micro_services_03.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2013/12/Proxy_Micro_services_03.png&#34; alt=&#34;Proxy_Micro_services_03&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2013/12/Proxy_Micro_services_03.png&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2013/12/Proxy_Micro_services_03.png&#34; alt=&#34;Proxy_Micro_services_03&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Fig 2: Moving to proxying and micro-services with Node&lt;/p&gt;
 
@@ -1688,43 +1688,43 @@ An overview of some of the modules used:&lt;/p&gt;
     
     <item>
       <title>Managing and understanding your Cloud Environments in the FeedHenry platform</title>
-      <link>http://feedhenrydevblogarchive.github.io/managing-and-understanding-your-cloud-environments-in-the-feedhenry-platform/</link>
+      <link>http://blog.feedhenry.com/managing-and-understanding-your-cloud-environments-in-the-feedhenry-platform/</link>
       <pubDate>Wed, 09 Oct 2013 12:53:51 +0000</pubDate>
       
-      <guid>http://feedhenrydevblogarchive.github.io/managing-and-understanding-your-cloud-environments-in-the-feedhenry-platform/</guid>
+      <guid>http://blog.feedhenry.com/managing-and-understanding-your-cloud-environments-in-the-feedhenry-platform/</guid>
       <description>&lt;p&gt;Many MBaaS and Mobile Platform solutions provide you with black-box access to your cloud, making them completely inscrutable. You have no insight into or control over what the cloud parts of your applications are doing. Not so with FeedHenry. As an open platform we are always looking for ways to give our customers more management features in every aspect of their deployments.&lt;/p&gt;
 
 &lt;p&gt;It&amp;rsquo;s for this reason we know you are going to love our latest release which will be accessible to all our customers from today: Cloud Environments.&lt;/p&gt;
 
 &lt;p&gt;Starting at the top level of the Cloud Environments Tab in the Studio, you can see your aggregated values for Apps, Memory, CPU and Storage in both your Development and Production environments for all your Node.js code.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2013/10/env1.jpg&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2013/10/env1.jpg&#34; alt=&#34;env1&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2013/10/env1.jpg&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2013/10/env1.jpg&#34; alt=&#34;env1&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Drilling down into one of the Environments, you can then see Memory, CPU and Disk graphed over time.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2013/10/env2.jpg&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2013/10/env2.jpg&#34; alt=&#34;env2&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2013/10/env2.jpg&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2013/10/env2.jpg&#34; alt=&#34;env2&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Drilling down into memory shows you the detailed App breakdown.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2013/10/env8.jpg&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2013/10/env8.jpg&#34; alt=&#34;env8&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2013/10/env8.jpg&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2013/10/env8.jpg&#34; alt=&#34;env8&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;And of course the same is available for CPU and Disk:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2013/10/env6.jpg&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2013/10/env6.jpg&#34; alt=&#34;env6&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2013/10/env6.jpg&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2013/10/env6.jpg&#34; alt=&#34;env6&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2013/10/env9.jpg&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2013/10/env9.jpg&#34; alt=&#34;env9&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2013/10/env9.jpg&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2013/10/env9.jpg&#34; alt=&#34;env9&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;The Apps Tab gives you a full list of Apps and their top-level information:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2013/10/env3.jpg&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2013/10/env3.jpg&#34; alt=&#34;env3&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2013/10/env3.jpg&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2013/10/env3.jpg&#34; alt=&#34;env3&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Clicking on an individual App gives you full control over it including Start, Stop, and Undeploy.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2013/10/cloud_envs5.jpg&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2013/10/cloud_envs5.jpg&#34; alt=&#34;cloud_envs5&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2013/10/cloud_envs5.jpg&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2013/10/cloud_envs5.jpg&#34; alt=&#34;cloud_envs5&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;And finally, not forgetting the cache.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2013/10/env4.jpg&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2013/10/env4.jpg&#34; alt=&#34;env4&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2013/10/env4.jpg&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2013/10/env4.jpg&#34; alt=&#34;env4&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;This is just one part of a suite of functionality we have been releasing recently to make the lives of Developers and Ops people much easier. We&amp;rsquo;ll be announcing even more in the coming weeks.&lt;/p&gt;
 </description>

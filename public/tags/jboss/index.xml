@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Jboss on Archive of FeedHenry Developer Blog 2012-2016</title>
-    <link>http://feedhenrydevblogarchive.github.io/tags/jboss/</link>
+    <link>http://blog.feedhenry.com/tags/jboss/</link>
     <description>Recent content in Jboss on Archive of FeedHenry Developer Blog 2012-2016</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 01 Dec 2014 12:44:06 +0000</lastBuildDate>
-    <atom:link href="http://feedhenrydevblogarchive.github.io/tags/jboss/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.feedhenry.com/tags/jboss/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>The FeedHenry &amp; Red Hat Devoxx Keynote Demo Team explains it all</title>
-      <link>http://feedhenrydevblogarchive.github.io/the-feedhenry-red-hat-devoxx-keynote-demo-team-explains-it-all/</link>
+      <link>http://blog.feedhenry.com/the-feedhenry-red-hat-devoxx-keynote-demo-team-explains-it-all/</link>
       <pubDate>Mon, 01 Dec 2014 12:44:06 +0000</pubDate>
       
-      <guid>http://feedhenrydevblogarchive.github.io/the-feedhenry-red-hat-devoxx-keynote-demo-team-explains-it-all/</guid>
+      <guid>http://blog.feedhenry.com/the-feedhenry-red-hat-devoxx-keynote-demo-team-explains-it-all/</guid>
       <description>&lt;p&gt;It was a real pleasure to see how well the Red Hat keynote at &lt;a href=&#34;http://www.devoxx.be/&#34;&gt;Devoxx&lt;/a&gt; went in Antwerp recently.&lt;/p&gt;
 
 &lt;p&gt;We don&amp;rsquo;t have a video of that yet, but Markus Eisele &lt;a href=&#34;http://blog.eisele.net/2014/11/developer-interview-di-8-the-team-behind-the-red-hat-devoxx-keynote-demo.html?utm_source=dlvr.it&amp;amp;utm_medium=twitter&#34;&gt;got the band back&lt;/a&gt; together for an encore on Google Hangouts last week.&lt;/p&gt;

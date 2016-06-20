@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Heartbleed on Archive of FeedHenry Developer Blog 2012-2016</title>
-    <link>http://feedhenrydevblogarchive.github.io/tags/heartbleed/</link>
+    <link>http://blog.feedhenry.com/tags/heartbleed/</link>
     <description>Recent content in Heartbleed on Archive of FeedHenry Developer Blog 2012-2016</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 09 Apr 2014 18:35:51 +0000</lastBuildDate>
-    <atom:link href="http://feedhenrydevblogarchive.github.io/tags/heartbleed/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.feedhenry.com/tags/heartbleed/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>FeedHenry update on Heartbleed (SSL Security Vulnerability CVE-2014-0160)</title>
-      <link>http://feedhenrydevblogarchive.github.io/feedhenry-update-heartbleed-ssl-security-vulnerability-cve-2014-0160/</link>
+      <link>http://blog.feedhenry.com/feedhenry-update-heartbleed-ssl-security-vulnerability-cve-2014-0160/</link>
       <pubDate>Wed, 09 Apr 2014 18:35:51 +0000</pubDate>
       
-      <guid>http://feedhenrydevblogarchive.github.io/feedhenry-update-heartbleed-ssl-security-vulnerability-cve-2014-0160/</guid>
+      <guid>http://blog.feedhenry.com/feedhenry-update-heartbleed-ssl-security-vulnerability-cve-2014-0160/</guid>
       <description>&lt;p&gt;As you may know, the Internet is abuzz with stories surrounding the extremely serious OpenSSL security vulnerability (CVE-2014-0160) which has become known as &amp;ldquo;Heartbleed&amp;rdquo;. For an in-depth explanation of this issue, visit &lt;a href=&#34;http://heartbleed.com/&#34;&gt;heartbleed.com&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;FeedHenry has conducted a review of all its publicly-hosted cloud infrastructure and can confirm that none of its Enterprise cloud platforms were found to be vulnerable to this issue. If you have any questions about this, please contact our &lt;a href=&#34;http://support.feedhenry.com&#34;&gt;Support team&lt;/a&gt;.&lt;/p&gt;

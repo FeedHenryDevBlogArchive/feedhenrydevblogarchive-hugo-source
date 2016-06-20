@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Git on Archive of FeedHenry Developer Blog 2012-2016</title>
-    <link>http://feedhenrydevblogarchive.github.io/tags/git/</link>
+    <link>http://blog.feedhenry.com/tags/git/</link>
     <description>Recent content in Git on Archive of FeedHenry Developer Blog 2012-2016</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 11 Oct 2014 12:25:34 +0000</lastBuildDate>
-    <atom:link href="http://feedhenrydevblogarchive.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.feedhenry.com/tags/git/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Creating &amp; Publishing a Chef Cookbook for gitlab-shell</title>
-      <link>http://feedhenrydevblogarchive.github.io/gitlab-shell-chef-cookbook/</link>
+      <link>http://blog.feedhenry.com/gitlab-shell-chef-cookbook/</link>
       <pubDate>Sat, 11 Oct 2014 12:25:34 +0000</pubDate>
       
-      <guid>http://feedhenrydevblogarchive.github.io/gitlab-shell-chef-cookbook/</guid>
+      <guid>http://blog.feedhenry.com/gitlab-shell-chef-cookbook/</guid>
       <description>
 
 &lt;h1 id=&#34;what-was-done-and-why&#34;&gt;What was done and why?&lt;/h1&gt;

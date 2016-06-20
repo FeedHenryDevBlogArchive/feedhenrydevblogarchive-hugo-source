@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Sns on Archive of FeedHenry Developer Blog 2012-2016</title>
-    <link>http://feedhenrydevblogarchive.github.io/tags/sns/</link>
+    <link>http://blog.feedhenry.com/tags/sns/</link>
     <description>Recent content in Sns on Archive of FeedHenry Developer Blog 2012-2016</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 20 Mar 2014 14:19:30 +0000</lastBuildDate>
-    <atom:link href="http://feedhenrydevblogarchive.github.io/tags/sns/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.feedhenry.com/tags/sns/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Using SNS Push Notifications with Node.js</title>
-      <link>http://feedhenrydevblogarchive.github.io/using-sns-push-notifications-node-js/</link>
+      <link>http://blog.feedhenry.com/using-sns-push-notifications-node-js/</link>
       <pubDate>Thu, 20 Mar 2014 14:19:30 +0000</pubDate>
       
-      <guid>http://feedhenrydevblogarchive.github.io/using-sns-push-notifications-node-js/</guid>
+      <guid>http://blog.feedhenry.com/using-sns-push-notifications-node-js/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://blog.evanshortiss.com/&#34;&gt;Evan Shortiss&lt;/a&gt;, one of our great FeedHenry Developers, has written a &lt;a href=&#34;http://blog.evanshortiss.com/sns-push-notifications-using-nodejs/&#34;&gt;really useful introduction&lt;/a&gt; on how to use SNS Push Notifications with Node.js.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/03/SNS.png&#34; alt=&#34;SNS&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2014/03/SNS.png&#34; alt=&#34;SNS&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;It assumes no knowledge of the area and works through all of the server-side nitty-gritty. Stay tuned for further information here on how to connect in your mobile client to this.&lt;/p&gt;
 </description>

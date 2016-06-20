@@ -2,26 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Wp8.1 on Archive of FeedHenry Developer Blog 2012-2016</title>
-    <link>http://feedhenrydevblogarchive.github.io/tags/wp8/index.1/</link>
+    <link>http://blog.feedhenry.com/tags/wp8/index.1/</link>
     <description>Recent content in Wp8.1 on Archive of FeedHenry Developer Blog 2012-2016</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 18 Jun 2014 16:25:59 +0000</lastBuildDate>
-    <atom:link href="http://feedhenrydevblogarchive.github.io/tags/wp8.1/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.feedhenry.com/tags/wp8.1/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Announcing the FeedHenry C#/.NET Native SDK for Windows Phone and Xamarin </title>
-      <link>http://feedhenrydevblogarchive.github.io/announcing-feedhenry-c-net-native-sdk-windows-phone-xamarin/</link>
+      <link>http://blog.feedhenry.com/announcing-feedhenry-c-net-native-sdk-windows-phone-xamarin/</link>
       <pubDate>Wed, 18 Jun 2014 16:25:59 +0000</pubDate>
       
-      <guid>http://feedhenrydevblogarchive.github.io/announcing-feedhenry-c-net-native-sdk-windows-phone-xamarin/</guid>
+      <guid>http://blog.feedhenry.com/announcing-feedhenry-c-net-native-sdk-windows-phone-xamarin/</guid>
       <description>&lt;p&gt;If you are a .NET developer, you can now use our .NET SDK to develop native cross-platform cloud-connected apps. It can be used to develop Windows Phone 8+ apps (using Visual Studio) as well as iOS and Android apps (using Xamarin Studio). The SDK is open source and available &lt;a href=&#34;https://github.com/feedhenry/fh-dotnet-sdk&#34;&gt;here&lt;/a&gt; on GitHub. It can be downloaded via the NuGet .NET package management system &lt;a href=&#34;https://www.nuget.org/packages/FH.SDK/&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;We have an &lt;a href=&#34;https://ngui-demo.sandbox.feedhenry.com/docs/dev_tools/sdks.html&#34;&gt;introduction&lt;/a&gt; to the .NET SDK, and all of our SDKs on our docs site. You can then read the &lt;a href=&#34;https://ngui-demo.sandbox.feedhenry.com/docs/guides/sdk_dotnet.html&#34;&gt;.NET SDK usage guide&lt;/a&gt; and finally dig into the details with our &lt;a href=&#34;https://ngui-demo.sandbox.feedhenry.com/docs/guides/xamarin_tutorial.html&#34;&gt;.NET SDK and Xamarin tutorial&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Once you&amp;rsquo;ve done all the reading, you can get your hands dirty with our &lt;a href=&#34;https://github.com/feedhenry-templates/team-todo-xamarin&#34;&gt;Xamarin Team To-Do Sample App&lt;/a&gt; which uses the same &lt;a href=&#34;https://github.com/feedhenry-templates/team-todo-cloud&#34;&gt;Cloud code&lt;/a&gt; as our Team To-Do &lt;a href=&#34;https://github.com/feedhenry-templates/team-todo-backbone-app&#34;&gt;Cordova/Backbone App&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/06/architecture.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/06/architecture.png&#34; alt=&#34;architecture&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2014/06/architecture.png&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2014/06/architecture.png&#34; alt=&#34;architecture&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     

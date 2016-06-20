@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Transformation on Archive of FeedHenry Developer Blog 2012-2016</title>
-    <link>http://feedhenrydevblogarchive.github.io/tags/transformation/</link>
+    <link>http://blog.feedhenry.com/tags/transformation/</link>
     <description>Recent content in Transformation on Archive of FeedHenry Developer Blog 2012-2016</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 04 Dec 2013 18:11:23 +0000</lastBuildDate>
-    <atom:link href="http://feedhenrydevblogarchive.github.io/tags/transformation/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.feedhenry.com/tags/transformation/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Transforming the Enterprise with Node.js </title>
-      <link>http://feedhenrydevblogarchive.github.io/transforming-enterprise-node-js-feedhenry/</link>
+      <link>http://blog.feedhenry.com/transforming-enterprise-node-js-feedhenry/</link>
       <pubDate>Wed, 04 Dec 2013 18:11:23 +0000</pubDate>
       
-      <guid>http://feedhenrydevblogarchive.github.io/transforming-enterprise-node-js-feedhenry/</guid>
+      <guid>http://blog.feedhenry.com/transforming-enterprise-node-js-feedhenry/</guid>
       <description>
 
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;By Damian Beresford - Engineering. Conor O&amp;rsquo;Neill - Product Management. Joe O&amp;rsquo;Reilly - Solutions Architecture.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
@@ -25,7 +25,7 @@
 
 &lt;p&gt;Mobile is the chief driving force behind new requirements for these Enterprise Systems. The internal and external demands for attractive, high-performance apps increases daily. The work force also expects all internal systems (web applications in particular) to work well on mobile phones and tablets. Current systems are struggling to keep up with this flood of mobile requirements and the cutting edge technology demanded of them.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2013/12/Traditional_Mobilisation.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2013/12/Traditional_Mobilisation.png&#34; alt=&#34;Traditional_Mobilisation&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2013/12/Traditional_Mobilisation.png&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2013/12/Traditional_Mobilisation.png&#34; alt=&#34;Traditional_Mobilisation&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Fig 1: Traditional mobilisation of an existing Enterprise System&lt;/p&gt;
 
@@ -55,7 +55,7 @@
 
 &lt;p&gt;Architecturally, depending on your system boundaries, these business services may be new business requirements, or replacing a part of the old System that had heavy technical debt. Also bear in mind that you may never get to replace all of an old System, due to legal or other complications.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2013/12/Proxy_Micro_services_03.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2013/12/Proxy_Micro_services_03.png&#34; alt=&#34;Proxy_Micro_services_03&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2013/12/Proxy_Micro_services_03.png&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2013/12/Proxy_Micro_services_03.png&#34; alt=&#34;Proxy_Micro_services_03&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Fig 2: Moving to proxying and micro-services with Node&lt;/p&gt;
 

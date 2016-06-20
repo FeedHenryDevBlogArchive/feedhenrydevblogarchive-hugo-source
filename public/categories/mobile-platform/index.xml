@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Mobile Platform on Archive of FeedHenry Developer Blog 2012-2016</title>
-    <link>http://feedhenrydevblogarchive.github.io/categories/mobile-platform/</link>
+    <link>http://blog.feedhenry.com/categories/mobile-platform/</link>
     <description>Recent content in Mobile Platform on Archive of FeedHenry Developer Blog 2012-2016</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 07 Dec 2015 13:19:42 +0000</lastBuildDate>
-    <atom:link href="http://feedhenrydevblogarchive.github.io/categories/mobile-platform/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.feedhenry.com/categories/mobile-platform/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Madrid Hackathon</title>
-      <link>http://feedhenrydevblogarchive.github.io/madrid-hackathon/</link>
+      <link>http://blog.feedhenry.com/madrid-hackathon/</link>
       <pubDate>Mon, 07 Dec 2015 13:19:42 +0000</pubDate>
       
-      <guid>http://feedhenrydevblogarchive.github.io/madrid-hackathon/</guid>
+      <guid>http://blog.feedhenry.com/madrid-hackathon/</guid>
       <description>&lt;p&gt;In Madrid, in a cool location in the centre of the city, Red Hat sponsored a IoT hackathon, 3 groups used RHMAP (Red Hat Mobile Application Platform) to build their entry for the competition. Over the course of two days (19 - 20th November), 11 groups and 6 individuals battled to find out who could build the best application.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/11/Windows-phone_20151119_22_36_23_Rich_LI.jpg&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/11/Windows-phone_20151119_22_36_23_Rich_LI.jpg&#34; alt=&#34;Windows phone_20151119_22_36_23_Rich_LI&#34; /&gt;&lt;/a&gt; &lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/11/Windows-phone_20151119_10_39_06_Rich_LI.jpg&#34; alt=&#34;Windows phone_20151119_10_39_06_Rich_LI&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2015/11/Windows-phone_20151119_22_36_23_Rich_LI.jpg&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2015/11/Windows-phone_20151119_22_36_23_Rich_LI.jpg&#34; alt=&#34;Windows phone_20151119_22_36_23_Rich_LI&#34; /&gt;&lt;/a&gt; &lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2015/11/Windows-phone_20151119_10_39_06_Rich_LI.jpg&#34; alt=&#34;Windows phone_20151119_10_39_06_Rich_LI&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;We where there to get them going and help where needed. For most of them doing anything mobile or IoT was completely new, but they had some experience with Node.js, once we explained them how things globally worked and shown them how to build a simple &amp;ldquo;Hello World&amp;rdquo; they where off. Remarkably, little help was needed the most questions we got where: &amp;ldquo;how do I do &amp;lsquo;xyz&amp;rsquo;&amp;rdquo; or &amp;ldquo;what is the best approach to add a feature like this&amp;rdquo;. Although I had explained that you could develop / run things locally some contestants where comfortable using a online approach developing locally and testing the app in the &amp;lsquo;App Preview&amp;rsquo; window.&lt;/p&gt;
 
-&lt;p&gt;It wasn&amp;rsquo;t all work, there was some entertainment as well, there where some guys making jokes and some presentations about the possible future of IoT. Everything that happened was documented with some sketch notes. My portrait is also on it:&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/11/Windows-phone_20151119_20_45_17_Rich_LI.jpg&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/11/Windows-phone_20151119_20_45_17_Rich_LI.jpg&#34; alt=&#34;Windows phone_20151119_20_45_17_Rich_LI&#34; /&gt;&lt;/a&gt; &lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/11/Windows-phone_20151119_10_39_06_Rich_LI.jpg&#34;&gt;
+&lt;p&gt;It wasn&amp;rsquo;t all work, there was some entertainment as well, there where some guys making jokes and some presentations about the possible future of IoT. Everything that happened was documented with some sketch notes. My portrait is also on it:&lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2015/11/Windows-phone_20151119_20_45_17_Rich_LI.jpg&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2015/11/Windows-phone_20151119_20_45_17_Rich_LI.jpg&#34; alt=&#34;Windows phone_20151119_20_45_17_Rich_LI&#34; /&gt;&lt;/a&gt; &lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2015/11/Windows-phone_20151119_10_39_06_Rich_LI.jpg&#34;&gt;
 &lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;One of &amp;ldquo;our&amp;rdquo; teams won the big prize of 6000 euros, they got 2 checks like the one in the picture. As you can see from the eyes they pulled an &amp;ldquo;all nighter&amp;rdquo; to get something cool in the end.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/11/20151120_123940.jpg&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2015/11/20151120_123940.jpg&#34; alt=&#34;20151120_123940&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2015/11/20151120_123940.jpg&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2015/11/20151120_123940.jpg&#34; alt=&#34;20151120_123940&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;So a very successful and cool event, for us an opportunity to see how easy it is to get going on the platform and get ideas to improve the getting started. Till next year.&lt;/p&gt;
 </description>
@@ -34,10 +34,10 @@
     
     <item>
       <title>iBeacons: A Primer in Proximity Programming</title>
-      <link>http://feedhenrydevblogarchive.github.io/ibeacons-primer/</link>
+      <link>http://blog.feedhenry.com/ibeacons-primer/</link>
       <pubDate>Thu, 01 May 2014 21:37:54 +0000</pubDate>
       
-      <guid>http://feedhenrydevblogarchive.github.io/ibeacons-primer/</guid>
+      <guid>http://blog.feedhenry.com/ibeacons-primer/</guid>
       <description>
 
 &lt;p&gt;iBeacons are a low-power bluetooth device Apple quietly release as part of the iOS7 launch recently. They&amp;rsquo;re the Apple alternative to NFC, a small location aware device which developers can use to track user&amp;rsquo;s proximity to a location, and trigger various actions in a mobile app. Potential use cases include payments, exhibit information, proximity advertising and promotions (read: spam),  and many more besides. iBeacons are a departure from the normal way Apple deals with Hardware  - interestingly, any vendor is free to make iBeacons which will work with Apple SDKs. The devices are both simple and cheap, and it&amp;rsquo;s pretty easy to hack one together with a Raspberry Pi and a bluetooth receiver, or an old iPhone.&lt;/p&gt;

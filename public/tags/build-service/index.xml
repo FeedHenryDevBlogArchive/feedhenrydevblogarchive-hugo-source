@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Build Service on Archive of FeedHenry Developer Blog 2012-2016</title>
-    <link>http://feedhenrydevblogarchive.github.io/tags/build-service/</link>
+    <link>http://blog.feedhenry.com/tags/build-service/</link>
     <description>Recent content in Build Service on Archive of FeedHenry Developer Blog 2012-2016</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 04 Feb 2014 10:04:22 +0000</lastBuildDate>
-    <atom:link href="http://feedhenrydevblogarchive.github.io/tags/build-service/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.feedhenry.com/tags/build-service/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>A reminder to all developers about the iOS7 SDK</title>
-      <link>http://feedhenrydevblogarchive.github.io/reminder-developers-ios7-sdk/</link>
+      <link>http://blog.feedhenry.com/reminder-developers-ios7-sdk/</link>
       <pubDate>Tue, 04 Feb 2014 10:04:22 +0000</pubDate>
       
-      <guid>http://feedhenrydevblogarchive.github.io/reminder-developers-ios7-sdk/</guid>
+      <guid>http://blog.feedhenry.com/reminder-developers-ios7-sdk/</guid>
       <description>&lt;p&gt;One of the most popular features in the FeedHenry Platform is our &lt;a href=&#34;http://docs.feedhenry.com/v2/app_building_and_submission.html&#34;&gt;Cloud Binary Build Service&lt;/a&gt;. This enables you to build Hybrid iOS, Android, Windows Phone and Blackberry Apps from within our web-based Studio rather than needing all of the tools on your own machine.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/02/wtf4.png&#34;&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/02/wtf4.png&#34; alt=&#34;wtf4&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://blog.feedhenry.com/wp-content/uploads/2014/02/wtf4.png&#34;&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2014/02/wtf4.png&#34; alt=&#34;wtf4&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;If you are an iOS developer, you are probably aware that all apps submitted to the App Store after Feburary 1st have to be built with the iOS 7 SDK. Of course, if you are building locally on your own machine you need to update your setup. The big advantage of our Build Service is that you don&amp;rsquo;t have to worry about that and we fully support the iOS7 SDK.&lt;/p&gt;
 

@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Mobile Solution Development on Archive of FeedHenry Developer Blog 2012-2016</title>
-    <link>http://feedhenrydevblogarchive.github.io/tags/mobile-solution-development/</link>
+    <link>http://blog.feedhenry.com/tags/mobile-solution-development/</link>
     <description>Recent content in Mobile Solution Development on Archive of FeedHenry Developer Blog 2012-2016</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 26 Sep 2014 14:58:22 +0000</lastBuildDate>
-    <atom:link href="http://feedhenrydevblogarchive.github.io/tags/mobile-solution-development/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.feedhenry.com/tags/mobile-solution-development/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Mobile Solution Development for the enterprise - the 5 steps to bring order to chaos</title>
-      <link>http://feedhenrydevblogarchive.github.io/mobile-solution-development-5-steps/</link>
+      <link>http://blog.feedhenry.com/mobile-solution-development-5-steps/</link>
       <pubDate>Fri, 26 Sep 2014 14:58:22 +0000</pubDate>
       
-      <guid>http://feedhenrydevblogarchive.github.io/mobile-solution-development-5-steps/</guid>
+      <guid>http://blog.feedhenry.com/mobile-solution-development-5-steps/</guid>
       <description>
 
 &lt;h1 id=&#34;overview&#34;&gt;Overview&lt;/h1&gt;
@@ -71,7 +71,7 @@
 
 &lt;p&gt;So, with an architecture in mind (see below) it was time to start figuring out integration.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/09/Mobile-Solution-Architecture1.png&#34; alt=&#34;Mobile Solution Architecture&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2014/09/Mobile-Solution-Architecture1.png&#34; alt=&#34;Mobile Solution Architecture&#34; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;step-2-create-the-components&#34;&gt;Step 2 - Create the components&lt;/h3&gt;
 
@@ -93,13 +93,13 @@
 
 &lt;p&gt;Once all these were created, and the services were bound to our new project, our setup looked like this (notice how closely it maps to our architecture diagram above):&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/09/Screenshot-2014-09-26-12.22.10.png&#34; alt=&#34;Platform Component Architecture&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2014/09/Screenshot-2014-09-26-12.22.10.png&#34; alt=&#34;Platform Component Architecture&#34; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;step-3-define-the-apis&#34;&gt;Step 3 - Define the APIs&lt;/h3&gt;
 
 &lt;p&gt;With the architecture defined and laid down as projects, apps and services, we had something concrete to work with and had 6 git repos (one for each of the components) that we could start coding against. We had already decided which components were going to communicate with each other so we now needed to define the contracts for those communications - i.e. the APIs. Thanks to the platform support for &lt;a href=&#34;http://apiblueprint.org/&#34;&gt;API Blueprint&lt;/a&gt; we were very quickly able to define the APIs for the Node.js API server which the mobile and web clients would require. In order to allow client development to kick off as soon as possible, we started out with the APIs returning mock data. This is a great approach for getting &amp;ldquo;working&amp;rdquo; APIs up and running in a really short time frame (i.e. within about an hour).&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/09/Screenshot-2014-09-26-10.11.20.png&#34; alt=&#34;API Documentation Browser&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2014/09/Screenshot-2014-09-26-10.11.20.png&#34; alt=&#34;API Documentation Browser&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Even though the responses from these API&amp;rsquo;s were static mock data (for now), as far as the clients were concerned, they were real, functional, remote APIs. This meant that client development could progress as if the API&amp;rsquo;s were fully functional - no need to start mocking out the APIs for each of the three clients.&lt;/p&gt;
 
@@ -109,7 +109,7 @@
 
 &lt;p&gt;Over the course of the next several hours, each team member worked on their component with autonomy. At regular intervals, we had each developer push their code back up to the platform&amp;rsquo;s hosted git repositories so we could keep an eye on progress and get working prototypes out into the hands of the customer. Thanks to the platforms hosted build farms, we were even able to co-ordinate the generation and distribution of app binaries.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://feedhenrydevblogarchive.github.io/wp-content/uploads/2014/09/Screenshot-2014-09-26-15.01.46.png&#34; alt=&#34;Platform Binary Building&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.feedhenry.com/wp-content/uploads/2014/09/Screenshot-2014-09-26-15.01.46.png&#34; alt=&#34;Platform Binary Building&#34; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;step-5-integrate-the-micro-services&#34;&gt;Step 5 - Integrate the micro services&lt;/h3&gt;
 
