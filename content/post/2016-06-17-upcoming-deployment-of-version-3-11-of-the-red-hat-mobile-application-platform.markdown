@@ -3,7 +3,7 @@ author: conor.oneill
 categories:
 - Developers
 comments: false
-date: 2016-06-17T14:52:49Z
+date: 2016-06-17T16:52:49Z
 link: http://www.feedhenry.com/upcoming-deployment-of-version-3-11-of-the-red-hat-mobile-application-platform/
 slug: upcoming-deployment-of-version-3-11-of-the-red-hat-mobile-application-platform
 title: Upcoming deployment of version 3.11 of the Red Hat Mobile Application Platform

@@ -6,13 +6,13 @@
     <description>Recent content in Developers on Archive of FeedHenry Developer Blog 2012-2016</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 17 Jun 2016 14:52:49 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 17 Jun 2016 16:52:49 +0000</lastBuildDate>
     <atom:link href="http://feedhenrydevblogarchive.github.io/categories/developers/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Upcoming deployment of version 3.11 of the Red Hat Mobile Application Platform</title>
       <link>http://feedhenrydevblogarchive.github.io/upcoming-deployment-of-version-3-11-of-the-red-hat-mobile-application-platform/</link>
-      <pubDate>Fri, 17 Jun 2016 14:52:49 +0000</pubDate>
+      <pubDate>Fri, 17 Jun 2016 16:52:49 +0000</pubDate>
       
       <guid>http://feedhenrydevblogarchive.github.io/upcoming-deployment-of-version-3-11-of-the-red-hat-mobile-application-platform/</guid>
       <description>
@@ -81,9 +81,12 @@
 
 &lt;p&gt;We have updated our Xamarin support to v5.x and refreshed the templates appropriately. Note that Push functionality in the SDK is still in development and won’t be released in 3.11. Xamarin Apps must still be built locally and cannot use the Build Farm.&lt;/p&gt;
 
-&lt;h2 id=&#34;forms-submissions&#34;&gt;Forms Submissions&lt;/h2&gt;
+&lt;h2 id=&#34;forms&#34;&gt;Forms&lt;/h2&gt;
 
-&lt;p&gt;Forms Submissions retrieval via API now offer options for CSV and PDF. API details will be &lt;a href=&#34;http://docs.feedhenry.com/v3/api/api_forms.html#api_forms-node_js_api&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Forms Submissions retrieval via API now offer options for CSV and PDF. API details will be &lt;a href=&#34;http://docs.feedhenry.com/v3/api/api_forms.html#api_forms-node_js_api&#34;&gt;here&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Further performance improvements in submissions display in Studio with very large numbers of submissions&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h2 id=&#34;known-issues&#34;&gt;Known Issues&lt;/h2&gt;
 
