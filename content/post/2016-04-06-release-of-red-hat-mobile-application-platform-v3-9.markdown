@@ -125,17 +125,17 @@ The easiest way to get started is to use one of our examples. Lets create a Data
     
   1. Go to the Editor for the Service and change application.js to add the second line here in the appropriate location:
 
-    
+```javascript    
     app.use('/static_ds', require('./lib/static-datasource.js'));
     app.use('/csv_ds', require('./lib/csv-datasource.js'));
-
+```
 
 
 
     
   2. Browse to the lib directory in the Editor and create csv-datasource.js with the following contents:
 
-    
+```javascript    
     var express = require('express');
     var request = require('request');
     var router = express.Router();
@@ -162,7 +162,7 @@ The easiest way to get started is to use one of our examples. Lets create a Data
     
     module.exports = router;
 
-
+```
 
 
     
@@ -171,7 +171,7 @@ The easiest way to get started is to use one of our examples. Lets create a Data
     
   4. You can view the example CSV I've created over on [GitHub Gist](https://gist.githubusercontent.com/conoro/2090f52225832787766b3340c1c3caaf/raw/847108af1026bc07c42297ac699e0dbdc3a12195/workers.csv). You could host your data anywhere. My example is a simple single column CSV file with a list of names.
 
-    
+```csv    
     Roger Flopple,
     Demetrius Levenworth,
     Salamander Hammerhead,
@@ -184,19 +184,19 @@ The easiest way to get started is to use one of our examples. Lets create a Data
     Rebecca Beretta,
     Lindsay McMartinhamson,
     Mirandella Houndstooth,
-
+```
 
 
 
     
   5. Edit package.json to add the request module in this location:
 
-    
+```    
     "express": "^4.13.3",
     "fh-mbaas-api": "5.9.1",
     "request": "~2.40.0"
     },
-
+```
 
 
 
@@ -206,9 +206,9 @@ The easiest way to get started is to use one of our examples. Lets create a Data
     
   7. Get the URL of your Service in its details page and browse to https://the.url.of.the.service/csv_ds and you should see a JSON version of your CSV returned.
 
-    
+```    
     [{"key":0,"value":"Roger Flopple","selected":true},{"key":1,"value":"Demetrius Levenworth","selected":true},{"key":2,"value":"Salamander Hammerhead","selected":true},{"key":3,"value":"Ferrari Montenegro","selected":true},{"key":4,"value":"Paul Corduroy","selected":true},{"key":5,"value":"Hank Fracas","selected":true},{"key":6,"value":"Ludwig Von Instagram","selected":true},{"key":7,"value":"Lisa Toboggan","selected":true},{"key":8,"value":"Heather Kerfuffle","selected":true},{"key":9,"value":"Rebecca Beretta","selected":true},{"key":10,"value":"Lindsay McMartinhamson","selected":true},{"key":11,"value":"Mirandella Houndstooth","selected":true}]
-
+```
 
 This is the format the Data Source needs.
 

@@ -300,69 +300,83 @@
 &lt;h3 id=&#34;customise-the-data-source-service-to-work-with-csv&#34;&gt;Customise the Data Source Service to work with CSV&lt;/h3&gt;
 
 &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Go to the Editor for the Service and change application.js to add the second line here in the appropriate location:&lt;/p&gt;
+&lt;li&gt;Go to the Editor for the Service and change application.js to add the second line here in the appropriate location:&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;p&gt;app.use(&amp;lsquo;/static_ds&amp;rsquo;, require(&amp;lsquo;./lib/static-datasource.js&amp;rsquo;));
-app.use(&amp;lsquo;/csv_ds&amp;rsquo;, require(&amp;lsquo;./lib/csv-datasource.js&amp;rsquo;));&lt;/p&gt;&lt;/li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;    app.use(&#39;/static_ds&#39;, require(&#39;./lib/static-datasource.js&#39;));
+    app.use(&#39;/csv_ds&#39;, require(&#39;./lib/csv-datasource.js&#39;));
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;li&gt;&lt;p&gt;Browse to the lib directory in the Editor and create csv-datasource.js with the following contents:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Browse to the lib directory in the Editor and create csv-datasource.js with the following contents:&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;p&gt;var express = require(&amp;lsquo;express&amp;rsquo;);
-var request = require(&amp;lsquo;request&amp;rsquo;);
-var router = express.Router();&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;    var express = require(&#39;express&#39;);
+    var request = require(&#39;request&#39;);
+    var router = express.Router();
+    
+    router.get(&#39;/&#39;, function (req, res) {
+    
+    var url = &#39;https://gist.githubusercontent.com/conoro/2090f52225832787766b3340c1c3caaf/raw/847108af1026bc07c42297ac699e0dbdc3a12195/workers.csv&#39;;
+    
+    request(url, function (err, resp, html) {
+    if (err) {
+    console.log(err)
+    return handleError(err, res);
+    }
+    var people = [];
+    
+    var lines = html.toString().split(&#39;\n&#39;);
+    for (var i = 0; i &amp;lt; lines.length; i++) {
+    people.push({&amp;quot;key&amp;quot;: i, value: lines[i].toString().split(&#39;,&#39;)[0], selected: true});
+    }
+    res.send(people);
+    
+    });
+    });
+    
+    module.exports = router;
 
-&lt;p&gt;router.get(&amp;lsquo;/&amp;rsquo;, function (req, res) {&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;var url = &amp;lsquo;&lt;a href=&#34;https://gist.githubusercontent.com/conoro/2090f52225832787766b3340c1c3caaf/raw/847108af1026bc07c42297ac699e0dbdc3a12195/workers.csv&#39;&#34;&gt;https://gist.githubusercontent.com/conoro/2090f52225832787766b3340c1c3caaf/raw/847108af1026bc07c42297ac699e0dbdc3a12195/workers.csv&#39;&lt;/a&gt;;&lt;/p&gt;
-
-&lt;p&gt;request(url, function (err, resp, html) {
-if (err) {
-console.log(err)
-return handleError(err, res);
-}
-var people = [];&lt;/p&gt;
-
-&lt;p&gt;var lines = html.toString().split(&amp;rsquo;\n&amp;rsquo;);
-for (var i = 0; i &amp;lt; lines.length; i++) {
-people.push({&amp;ldquo;key&amp;rdquo;: i, value: lines[i].toString().split(&amp;lsquo;,&amp;rsquo;)[0], selected: true});
-}
-res.send(people);&lt;/p&gt;
-
-&lt;p&gt;});
-});&lt;/p&gt;
-
-&lt;p&gt;module.exports = router;&lt;/p&gt;&lt;/li&gt;
-
+&lt;ol&gt;
 &lt;li&gt;&lt;p&gt;The code above simply reads the remote CSV file and converts it to the specific JSON format we need. Your code here can be as complex as you need to get at the data you want and crunch it down to the data sets for your forms.&lt;/p&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;p&gt;You can view the example CSV I&amp;rsquo;ve created over on &lt;a href=&#34;https://gist.githubusercontent.com/conoro/2090f52225832787766b3340c1c3caaf/raw/847108af1026bc07c42297ac699e0dbdc3a12195/workers.csv&#34;&gt;GitHub Gist&lt;/a&gt;. You could host your data anywhere. My example is a simple single column CSV file with a list of names.&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;You can view the example CSV I&amp;rsquo;ve created over on &lt;a href=&#34;https://gist.githubusercontent.com/conoro/2090f52225832787766b3340c1c3caaf/raw/847108af1026bc07c42297ac699e0dbdc3a12195/workers.csv&#34;&gt;GitHub Gist&lt;/a&gt;. You could host your data anywhere. My example is a simple single column CSV file with a list of names.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;p&gt;Roger Flopple,
-Demetrius Levenworth,
-Salamander Hammerhead,
-Ferrari Montenegro,
-Paul Corduroy,
-Hank Fracas,
-Ludwig Von Instagram,
-Lisa Toboggan,
-Heather Kerfuffle,
-Rebecca Beretta,
-Lindsay McMartinhamson,
-Mirandella Houndstooth,&lt;/p&gt;&lt;/li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-csv&#34;&gt;    Roger Flopple,
+    Demetrius Levenworth,
+    Salamander Hammerhead,
+    Ferrari Montenegro,
+    Paul Corduroy,
+    Hank Fracas,
+    Ludwig Von Instagram,
+    Lisa Toboggan,
+    Heather Kerfuffle,
+    Rebecca Beretta,
+    Lindsay McMartinhamson,
+    Mirandella Houndstooth,
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;li&gt;&lt;p&gt;Edit package.json to add the request module in this location:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Edit package.json to add the request module in this location:&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;p&gt;&amp;ldquo;express&amp;rdquo;: &amp;ldquo;^4.13.3&amp;rdquo;,
-&amp;ldquo;fh-mbaas-api&amp;rdquo;: &amp;ldquo;5.9.1&amp;rdquo;,
-&amp;ldquo;request&amp;rdquo;: &amp;ldquo;~2.40.0&amp;rdquo;
-},&lt;/p&gt;&lt;/li&gt;
+&lt;pre&gt;&lt;code&gt;    &amp;quot;express&amp;quot;: &amp;quot;^4.13.3&amp;quot;,
+    &amp;quot;fh-mbaas-api&amp;quot;: &amp;quot;5.9.1&amp;quot;,
+    &amp;quot;request&amp;quot;: &amp;quot;~2.40.0&amp;quot;
+    },
+&lt;/code&gt;&lt;/pre&gt;
 
+&lt;ol&gt;
 &lt;li&gt;&lt;p&gt;Re-deploy the Service code with those changes&lt;/p&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;p&gt;Get the URL of your Service in its details page and browse to &lt;a href=&#34;https://the.url.of.the.service/csv_ds&#34;&gt;https://the.url.of.the.service/csv_ds&lt;/a&gt; and you should see a JSON version of your CSV returned.&lt;/p&gt;
-
-&lt;p&gt;[{&amp;ldquo;key&amp;rdquo;:0,&amp;ldquo;value&amp;rdquo;:&amp;ldquo;Roger Flopple&amp;rdquo;,&amp;ldquo;selected&amp;rdquo;:true},{&amp;ldquo;key&amp;rdquo;:1,&amp;ldquo;value&amp;rdquo;:&amp;ldquo;Demetrius Levenworth&amp;rdquo;,&amp;ldquo;selected&amp;rdquo;:true},{&amp;ldquo;key&amp;rdquo;:2,&amp;ldquo;value&amp;rdquo;:&amp;ldquo;Salamander Hammerhead&amp;rdquo;,&amp;ldquo;selected&amp;rdquo;:true},{&amp;ldquo;key&amp;rdquo;:3,&amp;ldquo;value&amp;rdquo;:&amp;ldquo;Ferrari Montenegro&amp;rdquo;,&amp;ldquo;selected&amp;rdquo;:true},{&amp;ldquo;key&amp;rdquo;:4,&amp;ldquo;value&amp;rdquo;:&amp;ldquo;Paul Corduroy&amp;rdquo;,&amp;ldquo;selected&amp;rdquo;:true},{&amp;ldquo;key&amp;rdquo;:5,&amp;ldquo;value&amp;rdquo;:&amp;ldquo;Hank Fracas&amp;rdquo;,&amp;ldquo;selected&amp;rdquo;:true},{&amp;ldquo;key&amp;rdquo;:6,&amp;ldquo;value&amp;rdquo;:&amp;ldquo;Ludwig Von Instagram&amp;rdquo;,&amp;ldquo;selected&amp;rdquo;:true},{&amp;ldquo;key&amp;rdquo;:7,&amp;ldquo;value&amp;rdquo;:&amp;ldquo;Lisa Toboggan&amp;rdquo;,&amp;ldquo;selected&amp;rdquo;:true},{&amp;ldquo;key&amp;rdquo;:8,&amp;ldquo;value&amp;rdquo;:&amp;ldquo;Heather Kerfuffle&amp;rdquo;,&amp;ldquo;selected&amp;rdquo;:true},{&amp;ldquo;key&amp;rdquo;:9,&amp;ldquo;value&amp;rdquo;:&amp;ldquo;Rebecca Beretta&amp;rdquo;,&amp;ldquo;selected&amp;rdquo;:true},{&amp;ldquo;key&amp;rdquo;:10,&amp;ldquo;value&amp;rdquo;:&amp;ldquo;Lindsay McMartinhamson&amp;rdquo;,&amp;ldquo;selected&amp;rdquo;:true},{&amp;ldquo;key&amp;rdquo;:11,&amp;ldquo;value&amp;rdquo;:&amp;ldquo;Mirandella Houndstooth&amp;rdquo;,&amp;ldquo;selected&amp;rdquo;:true}]&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Get the URL of your Service in its details page and browse to &lt;a href=&#34;https://the.url.of.the.service/csv_ds&#34;&gt;https://the.url.of.the.service/csv_ds&lt;/a&gt; and you should see a JSON version of your CSV returned.&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
+
+&lt;pre&gt;&lt;code&gt;    [{&amp;quot;key&amp;quot;:0,&amp;quot;value&amp;quot;:&amp;quot;Roger Flopple&amp;quot;,&amp;quot;selected&amp;quot;:true},{&amp;quot;key&amp;quot;:1,&amp;quot;value&amp;quot;:&amp;quot;Demetrius Levenworth&amp;quot;,&amp;quot;selected&amp;quot;:true},{&amp;quot;key&amp;quot;:2,&amp;quot;value&amp;quot;:&amp;quot;Salamander Hammerhead&amp;quot;,&amp;quot;selected&amp;quot;:true},{&amp;quot;key&amp;quot;:3,&amp;quot;value&amp;quot;:&amp;quot;Ferrari Montenegro&amp;quot;,&amp;quot;selected&amp;quot;:true},{&amp;quot;key&amp;quot;:4,&amp;quot;value&amp;quot;:&amp;quot;Paul Corduroy&amp;quot;,&amp;quot;selected&amp;quot;:true},{&amp;quot;key&amp;quot;:5,&amp;quot;value&amp;quot;:&amp;quot;Hank Fracas&amp;quot;,&amp;quot;selected&amp;quot;:true},{&amp;quot;key&amp;quot;:6,&amp;quot;value&amp;quot;:&amp;quot;Ludwig Von Instagram&amp;quot;,&amp;quot;selected&amp;quot;:true},{&amp;quot;key&amp;quot;:7,&amp;quot;value&amp;quot;:&amp;quot;Lisa Toboggan&amp;quot;,&amp;quot;selected&amp;quot;:true},{&amp;quot;key&amp;quot;:8,&amp;quot;value&amp;quot;:&amp;quot;Heather Kerfuffle&amp;quot;,&amp;quot;selected&amp;quot;:true},{&amp;quot;key&amp;quot;:9,&amp;quot;value&amp;quot;:&amp;quot;Rebecca Beretta&amp;quot;,&amp;quot;selected&amp;quot;:true},{&amp;quot;key&amp;quot;:10,&amp;quot;value&amp;quot;:&amp;quot;Lindsay McMartinhamson&amp;quot;,&amp;quot;selected&amp;quot;:true},{&amp;quot;key&amp;quot;:11,&amp;quot;value&amp;quot;:&amp;quot;Mirandella Houndstooth&amp;quot;,&amp;quot;selected&amp;quot;:true}]
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;This is the format the Data Source needs.&lt;/p&gt;
 
